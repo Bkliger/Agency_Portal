@@ -1,0 +1,48 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 1150px;
+  margin-bottom: 30px;
+}
+
+.popup-txt
+{
+	font-weight:600;
+	font-size: 18px;
+    padding-top: 4px;
+	}
+
+  .fit-picture {
+      width: 75px;
+  }
+
+  h3 {
+    color: red;
+  }
+  h4 {
+    color: red;
+  }
+
+  .table-head{
+    text-align: center;
+  }
+
+  .table-width{
+    width:25%;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 3px;
+}
