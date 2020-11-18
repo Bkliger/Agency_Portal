@@ -19,31 +19,40 @@ html {
     padding-top: 4px;
 	}
 
-  .fit-picture {
-      width: 75px;
-  }
 
-  h3 {
-    color: red;
-    font-size: 32px;
-  }
-  h4 {
-    color: red;
-  }
+.heading-border
+{
+  border: 2px solid black;
+  margin-bottom: 15px;
+  padding-top: 5px;
+  margin-right: 10px;
+}
 
-  .table-head{
-    text-align: center;
-  }
+.fit-picture {
+    width: 75px;
+}
 
-  .table-width{
-    width:25%;
-  }
+h3 {
+  color: red;
+  font-size: 32px;
+}
+h4 {
+  color: red;
+}
 
-  hr {
-    border: none;
-    border-top: 1px solid #333;
-    color: #333;
-    overflow: visible;
-    text-align: center;
-    height: 3px;
+.table-head{
+  text-align: center;
+}
+
+.table-width{
+  width:25%;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 3px;
 }
