@@ -56,3 +56,7 @@ hr {
   text-align: center;
   height: 3px;
 }
+
+input[type="text"]::-webkit-input-placeholder {
+  color: orange;
+}
