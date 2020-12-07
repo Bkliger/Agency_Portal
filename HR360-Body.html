@@ -1,0 +1,759 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal"><img class="fit-picture" src="assets/CCCLogo.png" alt="My test image"></h5>
+  <h3 class="my-0 mr-md-auto">Healthright 360</h3>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Log Out</a>
+
+  </nav>
+  <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
+</div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Budget</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Attachments</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <br>
+    <div class="container">
+      <div class="row">
+
+        <div class="col text-left">
+          <h2>Quarterly Data Entry (Statistics)</h2>
+
+        </div>
+
+
+        <!-- Popup with a button -->
+        <div class="col text-right">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Save </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Close </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Submit </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Print </button>
+
+
+        </div>
+      </div>
+    </div>
+
+{% fetchxml myquery %}
+<fetch mapping="logical">
+  <entity name="cr9aa_hr360">
+    <attribute name="cr9aa_id" />
+    <attribute name="cr9aa_goalswomennumcompletedatleast1goal" />
+    <attribute name="cr9aa_goalswomennumcompletedatleast2goals" />
+    <attribute name="cr9aa_goalswomennumcompletedatleast3goals" />
+    <attribute name="cr9aa_goalswomennumcompletedtransitionplan" />
+    <attribute name="cr9aa_goalswomennumcomptransitionplanwhincarc" />
+    <attribute name="cr9aa_goalswomennummatchedamentornavigator" />
+    <attribute name="cr9aa_goalswomennumreccasemgmtonrelease" />
+    <attribute name="cr9aa_hr360id" />
+    <attribute name="cr9aa_newparticipantsageunknown" />
+    <attribute name="cr9aa_newparticipantsasian" />
+    <attribute name="cr9aa_newparticipantsblack" />
+    <attribute name="cr9aa_newparticipantshispanic" />
+    <attribute name="cr9aa_newparticipantsmen" />
+    <attribute name="cr9aa_newparticipantsnativeamerican" />
+    <attribute name="cr9aa_newparticipantsnumaged2635" />
+    <attribute name="cr9aa_newparticipantsnumaged3645" />
+    <attribute name="cr9aa_newparticipantsnumaged4655" />
+    <attribute name="cr9aa_newparticipantsnumaged55" />
+    <attribute name="cr9aa_newparticipantsnumagedgt25" />
+    <attribute name="cr9aa_newparticipantsraceethnicityother" />
+    <attribute name="cr9aa_newparticipantsregioncentral" />
+    <attribute name="cr9aa_newparticipantsregioneast" />
+    <attribute name="cr9aa_newparticipantsregionwest" />
+    <attribute name="cr9aa_newparticipantstierab109prob" />
+    <attribute name="cr9aa_newparticipantstiercurrawaitingtrial" />
+    <attribute name="cr9aa_newparticipantstiercurrincust" />
+    <attribute name="cr9aa_newparticipantstiercurronctprob" />
+    <attribute name="cr9aa_newparticipantstiercurronparole" />
+    <attribute name="cr9aa_newparticipantstierfelonyprob" />
+    <attribute name="cr9aa_newparticipantstierlt30daysincustreleased" />
+    <attribute name="cr9aa_newparticipantstiernoneoftheabove" />
+    <attribute name="cr9aa_newparticipantstieroutofjurisdiction" />
+    <attribute name="cr9aa_newparticipantstierspecctprobbehavioraldv" />
+    <attribute name="cr9aa_newparticipantswhite" />
+    <attribute name="cr9aa_newparticipantswomen" />
+    <attribute name="cr9aa_numab109referrals" />
+    <attribute name="cr9aa_nummentornavigatorstrained" />
+    <attribute name="cr9aa_numnonab109referrals" />
+    <attribute name="cr9aa_numreferralsfromcccoe" />
+    <attribute name="cr9aa_numreferralsfromprob" />
+    <attribute name="cr9aa_numreferralstotal" />
+    <attribute name="cr9aa_outcomesnumnewslettersproduced" />
+    <attribute name="cr9aa_outcomesnumsuccessfullycompletedprog" />
+    <attribute name="cr9aa_outcomesnumunsucccompletedprog" />
+    <attribute name="cr9aa_referralsnumcompletedisps" />
+    <attribute name="cr9aa_svcsmennummatchedmentornavigator" />
+    <attribute name="cr9aa_svcsmennumrecneedsscreeningwhileincarc" />
+    <attribute name="cr9aa_svcsmennumrecreentryplanwhileincarc" />​
+      <filter type='and'>
+        <condition attribute='cr9aa_hr360id' operator='eq' value='{{request.params['id']}}' />
+      </filter>
+  </entity>
+</fetch>
+{% endfetchxml %}
+    <!-- TOTAL Referrals -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Referrals</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># referrals, total</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text" placeholder="{{myquery.results.entities[0].cr9aa_numreferralstotal}}">
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># non AB 109 referrals</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># referrals from probation</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># referrals from CCCOE</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed ISPs</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Demographic characteristics of new enrollees -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Demographic characteristics of new participants</h4>
+              </h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Race & Ethnicity</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Asian</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Black</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Hispanic</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Native American</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">White</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Other</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Age</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged ≤ 25</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 26-35</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 36-45</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 46-55</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged > 55</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Unknown</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Sex</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Men</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Women</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Region</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">West</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Central</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">East</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Tier</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">AB 109 Probation</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Felony Probation </p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">≥ 30 days in custody, released w/in last 3 yrs.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Currently awaiting trial</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Currently on court probation</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Special court probation (Behavioral, DV, drug)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Currently on Parole</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Currently in custody</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Out of jurisdiction</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">None of the above</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Goals completed by women: -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Goals completed by women:</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed a transition plan</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed transition plan while incarcerated</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># received case management upon release</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed at least 1 goal</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed at least 2 goals</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed at least 3 goals</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># matched to a mentor-navigator</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+
+          <!-- Services for men: -->
+
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Services for men:</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># received needs screening while incarcerated</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># received reentry plan while incarcerated</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># matched to a mentor-navigator</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Program Outcomes: -->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Program Outcomes:</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># successfully completed program</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># unsuccessfully completed program</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of newsletters produced</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># completed at least 1 goal</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col">
+
+          <!-- Mentor-Navigators: -->
+
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Mentor-Navigators:</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of mentor-navigators trained</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">average number of mentees/mentor</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+
+
+
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col text-left">
+          <h2>Quarterly Data Entry (Narrative)</h2>
+        </div>
+
+
+        <div class="col text-right">
+          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+
+    <form>
+      <div class="container">
+
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Fiscal Year</p>
+          </div>
+          <div class="col">
+            <p class="popup-txt">2020-21</p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Quarter</p>
+          </div>
+          <div class="col">
+            <p class="popup-txt">Jan-Mar</p>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section One: Performance and
+              Demographic Data Measures</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section two: Budget Expenditures</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Five: Next Steps</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">tab3</div>
+</div>
