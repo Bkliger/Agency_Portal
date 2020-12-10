@@ -60,3 +60,7 @@ hr {
 input[type="text"]::-webkit-input-placeholder {
   color: orange;
 }
+
+.test::-webkit-input-placeholder {
+  color: orange;
+}
