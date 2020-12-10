@@ -111,7 +111,7 @@
       <tbody>
         {% for record in myquery.results.entities %}
         <tr>
-          <th scope="row"><a href="https://agencytest.powerappsportals.com/hr360/?id="{{record.cr9aa_hr360id}}></a>{{record.cr9aa_hr360id}}</th>
+          <th scope="row"><a href="https://agencytest.powerappsportals.com/hr360/?id={{record.cr9aa_hr360id}}">{{record.cr9aa_hr360id}}</a></th>
           <td>{{record.cr9aa_id}}</td>
           <td>{{record.cr9aa_goalswomennumcompletedatleast1goal}}</td>
           <td>{{record.r9aa_goalswomennumcompletedatleast2goals}}</td>
