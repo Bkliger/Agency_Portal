@@ -6,10 +6,14 @@ html {
     font-size: 16px;
   }
 }
-
+table.dataTable thead th, table.dataTable thead td{
+  padding-left: 5px !important;
+}
+.footer{
+  display: none;
+}
 .container {
   max-width: 1150px;
-  margin-bottom: 30px;
 }
 
 .popup-txt
@@ -56,7 +60,17 @@ hr {
   text-align: center;
   height: 3px;
 }
-
-input[type="text"]::-webkit-input-placeholder {
-  color: orange;
+.margin{
+  margin-bottom:20px;
+}
+.heading-border{
+  width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.heading-border h4{
+  padding-left:10px;
+}
+.empty-space{
+  height:200px;
 }

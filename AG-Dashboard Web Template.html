@@ -1,0 +1,21 @@
+<div class="container">
+{% if user %}
+{% assign role = user.roles[0] %}
+    {% if role == "HR360" %}
+        {% include "HR360 Dashboard" %}
+    {% else if role == "CenterForce Role" %}
+        Center Force
+    {% endif %}
+{% else %}
+
+<h1 class="text-center">Please Login!</h1>
+
+{% endif %}
+</div>
+<script>
+$(document).ready(function(){
+
+$('.dashboard-table').DataTable();
+
+});
+</script>
