@@ -32,11 +32,11 @@
 
 <div class="container">
   <div class="row">
-  
+
     <div class="col text-left">
       <h2>Pittsburg Police Department--MHET </h2>
     </div>
-  
+
   </div>
   </div>
 
@@ -51,47 +51,47 @@
     </div>
     </div>
 
-    
-    
+
+
     <div class="row">
     <div class="col">
     <p class="popup-txt"># of new calls</p>
     </div>
     <div class="col">
-    <input class="form-control" type="number">
+   <input class="form-control" id="cr9aa_numnewcalls"  type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numnewcalls}} {% endif %}">
     </div>
     </div>
-    
+
     <div class="row">
     <div class="col">
     <p class="popup-txt"># of follow-up calls</p>
     </div>
     <div class="col">
-    <input class="form-control" type="number">
+     <input class="form-control" id="cr9aa_numfollowupcalls"  type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numfollowupcalls}} {% endif %}">
     </div>
     </div>
-    
+
     <div class="row">
     <div class="col">
     <p class="popup-txt"># of 5150s</p>
     </div>
     <div class="col">
-    <input class="form-control" type="number">
+   <input class="form-control" id="cr9aa_num5150s"  type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_num5150s}} {% endif %}">
     </div>
     </div>
 
 
-  
+
 
  </div>
  </div>
- </div>   
-  
+ </div>
 
-  
- 
 
- 
+
+
+
+
 
 
 
@@ -101,7 +101,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
+
 
 </body>
 </html>

@@ -26,7 +26,7 @@
 <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal"><img class="fit-picture" src="assets/CCCLogo.png" alt="My test image"></h5>
-    <h3 class = "my-0 mr-md-auto">Probation</h3>
+    <h3 class="my-0 mr-md-auto">Probation</h3>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="#">Log Out</a>
 
@@ -67,998 +67,998 @@
       </div>
     </div>
 
-      <!-- Pre trial services -->
+    <!-- Pre trial services -->
 
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <div class="col heading-border">
-                <h4>Pre-trial Services</h4>
-              </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Pre-trial Services</h4>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># of continuing cases</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of continuing cases</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># new clients assessed</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numcontinuingcasespretrial" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcontinuingcasespretrial}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># starting pretrial supervision (new cases)</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># new clients assessed</p>
             </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numnewclientsassessedpretrial" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numnewclientsassessedpretrial}} {% endif %}">
+            </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average DPO caseload</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># starting pretrial supervision (new cases)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numstartingpretrialsupervisionnewcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numstartingpretrialsupervisionnewcases}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average DPO caseload</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_averagedpocaseloadpretrial" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_averagedpocaseloadpretrial}} {% endif %}">
             </div>
           </div>
         </div>
       </div>
+    </div>
 
 
 
-      <div class="container">
-        <div class="row">
-          <div class="col">
+    <div class="container">
+      <div class="row">
+        <div class="col">
 
-            <!-- Probation Dept -->
+          <!-- Probation Dept -->
 
-            <div class="row">
-              <div class="col heading-border">
-                <h4>Demographic characteristics (new cases)</h4>
-              </div>
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Demographic characteristics (new cases)</h4>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Sex</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Men</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Women</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Age</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Aged ≤ 25</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Aged 26-35</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Aged 36-45</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Aged 46-55</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Aged > 55</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Unknown</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Region</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">West</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Central</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">East</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Out of Country</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Unknown</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Supervision contact level</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">High</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Above Average</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Below Average</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">No Score</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Current Housing</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Permanently Housed</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Homeless</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Current Employment</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Current Employed</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Unemployed</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Completions/Violations</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Successfully discharged</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Failure to Appear</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">New Offenses</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Technical Violations</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">CAF Rejection</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
           </div>
 
-          <div class="col">
-
-            <!-- PRCS: (Post release community supervision) -->
-
-            <div class="row">
-              <div class="col heading-border">
-                <h4>PRCS: (Post release community supervision)</h4>
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Sex</b></p>
             </div>
+          </div>
 
-            </br></br>
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># of continuing cases</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Men</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># of new cases</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_nummennewcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_nummennewcases}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average DPO caseload</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Women</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Sex</b></p>
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numwomennewcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numwomennewcases}} {% endif %}">
             </div>
+          </div>
 
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Male</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Age</b></p>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Female</p>
-              </div>
-              <div class="col">
-input
-              </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged ≤ 25</p>
             </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Region</b></p>
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numagedgt25" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numagedgt25}} {% endif %}">
             </div>
+          </div>
 
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">West</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 26-35</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Central</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numaged2635" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numaged2635}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">East</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 36-45</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Supervision contact level</b></p>
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numaged3645" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numaged3645}} {% endif %}">
             </div>
+          </div>
 
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">High</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged 46-55</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numaged4655" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numaged4655}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Low</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Aged > 55</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Referrals for</b></p>
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numaged55" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numaged55}} {% endif %}">
             </div>
+          </div>
 
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">AODS tx.</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Unknown</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Mental Health tx.</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numagedunknown" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numagedunknown}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Housing Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Region</b></p>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Employment Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">West</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Legal Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_regionwest" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_regionwest}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Mentoring</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Central</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Resource Service Center(West Country)</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_regioncentral" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_regioncentral}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">HR360 (East-Central Country)</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">East</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Reunification</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_regioneast" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_regioneast}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">T4C</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Out of Country</p>
             </div>
-
-            <div>
-              <div class="col">
-                <p class="popup-txt"><b>Completions/discharges</b></p>
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_regionoutcounty" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_regionoutcounty}} {% endif %}">
             </div>
+          </div>
 
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Successful</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Unknown</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">UnSuccessful</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_regionunknown" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_regionunknown}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Violations</b></p>
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Supervision contact level</b></p>
             </div>
+          </div>
 
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">New offenses/arrests</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">High</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">New Convictions</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_supervisioncontactlevelnumhigh" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumhigh}} {% endif %}">
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Revocation for technical violation</p>
-              </div>
-              <div class="col">
-input
-              </div>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Above Average</p>
             </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Revocation for new arrest</p>
-              </div>
-              <div class="col">
-input
-              </div>
+            <div class="col">
+              <input class="form-control" type="number">
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_supervisioncontactlevelnumaverage" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumaverage}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Below Average</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_supervisioncontactlevelnumbelowaverage" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumbelowaverage}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">No Score</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_supervisioncontactlevelnumnoscore" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumnoscore}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Current Housing</b></p>
+            </div>
+          </div>
 
 
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Permanently Housed</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numpermanentlyhoused" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numpermanentlyhoused}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Homeless</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numhomeless" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numhomeless}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Current Employment</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Current Employed</p>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+          <input class="form-control" id="cr9aa_numcurremployed" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcurremployed}} {% endif %}">
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Unemployed</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_numunemployed" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numunemployed}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Completions/Violations</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Successfully discharged</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_compsviolationsnumsuccessfullydischarged" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_compsviolationsnumsuccessfullydischarged}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Failure to Appear</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_compsviolationsnumfailappear" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_compsviolationsnumfailappear}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">New Offenses</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_compsviolationsnumnewoffenses" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_compsviolationsnumnewoffenses}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Technical Violations</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_compsviolationsnumtechnicalviolations" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_compsviolationsnumtechnicalviolations}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">CAF Rejection</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_compsviolationsnumcafrejection" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_compsviolationsnumcafrejection}} {% endif %}">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col">
+
+          <!-- PRCS: (Post release community supervision) -->
+
+          <div class="row">
+            <div class="col heading-border">
+              <h4>PRCS: (Post release community supervision)</h4>
+            </div>
+          </div>
+
+          </br></br>
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of continuing cases</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumcontinuingcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumcontinuingcases}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of new cases</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumnewcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumnewcases}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average DPO caseload</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsaveragedpocaseload" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsaveragedpocaseload}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Sex</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Male</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnummales" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnummales}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Female</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumfemales" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumfemales}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Region</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">West</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumwest" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumwest}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Central</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumcentral" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumcentral}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">East</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_prcsnumeast" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_prcsnumeast}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Supervision contact level</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">High</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrssupervisioncontactlevelnumhigh" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrssupervisioncontactlevelnumhigh}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrssupervisioncontactlevelnumaverage" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrssupervisioncontactlevelnumaverage}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Low</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrssupervisioncontactlevelnumlow" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrssupervisioncontactlevelnumlow}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Referrals for</b></p>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">AODS tx.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforaodstx" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforaodstx}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Mental Health tx.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsformentalhealthtx" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsformentalhealthtx}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Housing Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforhousingsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforhousingsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Employment Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforempsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforempsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Legal Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforlegalsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforlegalsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Mentoring</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsformentoring" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsformentoring}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Resource Service Center(West Country)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforresourceservicecenterwcounty" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforresourceservicecenterwcounty}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">HR360 (East-Central Country)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforhr360eastcentralcounty" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforhr360eastcentralcounty}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Reunification</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsforreunification" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsforreunification}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">T4C</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsrefsfort4c" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsrefsfort4c}} {% endif %}">
+            </div>
+          </div>
+
+          <div>
+            <div class="col">
+              <p class="popup-txt"><b>Completions/discharges</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Successful</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrscompsdischargesnumsuccessful" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrscompsdischargesnumsuccessful}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">UnSuccessful</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrscompsdischargesnumunsuc" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrscompsdischargesnumunsuc}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Violations</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">New offenses/arrests</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsviolationsnumnewoffensesarrests" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsviolationsnumnewoffensesarrests}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">New Convictions</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsviolationsnumnewconvictions" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsviolationsnumnewconvictions}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Revocation for technical violation</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsviolationsnumrevocationfortechvio" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsviolationsnumrevocationfortechvio}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Revocation for new arrest</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_pcrsviolationsnumrevocationfornewarrest" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsviolationsnumrevocationfornewarrest}} {% endif %}">
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col heading-border">
+              <h4>Among 1170s: (non/non/non)</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of continuing cases</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170numcontinuingcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170numcontinuingcases}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"># of new cases</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170numnewcases" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170numnewcases}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average DPO Caseload</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170averagedpocaseload" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170averagedpocaseload}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Sex</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Male</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170males" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170males}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Female</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170females" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170females}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Region</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">West</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170regionwest" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170regionwest}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Central</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170regioncentral" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170regioncentral}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">East</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170regioneast" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170regioneast}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Other Countries</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170regionothercounties" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170regionothercounties}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Supervision contact level</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">High</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170supervisioncontactlevelnumhigh" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170supervisioncontactlevelnumhigh}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Average</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170supervisioncontactlevelnumaverage" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170supervisioncontactlevelnumaverage}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Low</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170supervisioncontactlevelnumlow" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170supervisioncontactlevelnumlow}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Referrals for</b></p>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">AODS tx.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforaodstx" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforaodstx}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Mental Health tx.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsformentalhealthtx" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsformentalhealthtx}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Housing Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforhousingsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforhousingsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Employment Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforempsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforempsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Legal Services</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforlegalsvcs" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforlegalsvcs}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Mentoring</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsformentoring" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsformentoring}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Resource Service Center(West Country)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforresourceservicecenterwestcty" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforresourceservicecenterwestcty}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">HR360 (East-Central Country)</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforhr360eastcentralcounty" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforhr360eastcentralcounty}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Reunification</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsforreunification" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsforreunification}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">T4C</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170refsfort4c" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170refsfort4c}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Current housing</b></p>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Homeless or transient</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170currenthousingnumhomelessortransient" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170currenthousingnumhomelessortransient}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Completions/discharges</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Successful</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170compsdischargesnumsuccessful" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170compsdischargesnumsuccessful}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">UnSuccessful</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170compsdischargesnumunsuc" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170compsdischargesnumunsuc}} {% endif %}">
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt"><b>Violations</b></p>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">New offenses/arrests</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170violationsnumnewoffensesarrests" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170violationsnumnewoffensesarrests}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">New Convictions</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170violationsnumnewconvictions" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170violationsnumnewconvictions}} {% endif %}">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Revocation for technical violation</p>
+            </div>
+            <div class="col">
+              <input class="form-control" id="cr9aa_z1170violationsnumrevocationfortechnicalv" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_z1170violationsnumrevocationfortechnicalv}} {% endif %}">
+            </div>
           </div>
         </div>
       </div>
-
-
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="row">
-              <div class="col heading-border">
-                <h4>Among 1170s: (non/non/non)</h4>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># of continuing cases</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"># of new cases</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average DPO Caseload</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Sex</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Male</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Female</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Region</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">West</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Central</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">East</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Other Countries</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Supervision contact level</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">High</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Average</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Low</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number">
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Referrals for</b></p>
-              </div>
-            </div>
+    </div>
 
 
 
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">AODS tx.</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Mental Health tx.</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Housing Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Employment Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Legal Services</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Mentoring</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Resource Service Center(West Country)</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">HR360 (East-Central Country)</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Reunification</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">T4C</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Current housing</b></p>
-              </div>
-            </div>
-
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Homeless or transient</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Completions/discharges</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Successful</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">UnSuccessful</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt"><b>Violations</b></p>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">New offenses/arrests</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">New Convictions</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Revocation for technical violation</p>
-              </div>
-              <div class="col">
-input
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 </body>
