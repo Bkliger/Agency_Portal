@@ -359,10 +359,10 @@
               <p class="popup-txt">Current Employed</p>
             </div>
             <div class="col">
-
+          <input class="form-control" id="cr9aa_numcurremployed" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcurremployed}} {% endif %}">
             </div>
           </div>
-          <input class="form-control" id="cr9aa_numcurremployed" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcurremployed}} {% endif %}">
+
           <div class="row">
             <div class="col">
               <p class="popup-txt">Unemployed</p>
@@ -723,8 +723,6 @@
               <input class="form-control" id="cr9aa_pcrsviolationsnumrevocationfornewarrest" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_pcrsviolationsnumrevocationfornewarrest}} {% endif %}">
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
