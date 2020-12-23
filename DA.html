@@ -1,339 +1,342 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>DA-Statistics</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v4.1.1">
+  <title>DA-Statistics</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Bootstrap core CSS -->
-<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="pricing.css" rel="stylesheet">
 
-  </head>
-  <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">Home</a>
-    <a class="p-2 text-dark" href="#">About</a>
-    <a class="p-2 text-dark" href="#">Contact</a>
-    <a class="p-2 text-dark" href="#">Pricing</a>
-  </nav>
-  <a class="btn btn-outline-primary" href="#">Sign up</a>
-</div>
+</head>
 
-<div class="container">
-  <div class="row">
-  
-    <div class="col text-left">
-      <h2>District Attorney's Office</h2>
-    </div>
-  
+<body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="#">Home</a>
+      <a class="p-2 text-dark" href="#">About</a>
+      <a class="p-2 text-dark" href="#">Contact</a>
+      <a class="p-2 text-dark" href="#">Pricing</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Sign up</a>
   </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col text-left">
+        <h2>District Attorney's Office</h2>
+      </div>
+
+    </div>
   </div>
 
   <!-- Pre trial services -->
 
-<div class="container">
-  <div class="row">
-     <div class="col">
+  <div class="container">
+    <div class="row">
+      <div class="col">
         <div class="row">
-    <div class="col heading-border">
-    <h4>District Attorney's Office</h4>
-    </div>
-    </div>
+          <div class="col heading-border">
+            <h4>District Attorney's Office</h4>
+          </div>
+        </div>
 
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"><b># AB 109 individuals </b></p>
-    </div>
-    </div>   
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of AB 109 individuals with new felony charges</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of AB 109 individuals with new felony convictions</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of all other non AB 109 felony convictions</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b># AB 109 individuals </b></p>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of AB 109 individuals with new felony charges</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numab109individualswnewfelonychargesab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numab109individualswnewfelonychargesab109}} {% endif %}">
+          </div>
+        </div>
 
-<div class="row">
-    <div class="col">
-    <p class="popup-txt"><b>Types of sentences, AB 109:</b></p>
-    </div>
-    </div>  
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of AB 109 individuals with new felony convictions</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numab109individualswnewfelonyconvictionsa" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numab109individualswnewfelonyconvictionsa}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of all other non AB 109 felony convictions</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numallothernonab109felonyconvictionsab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numallothernonab109felonyconvictionsab109}} {% endif %}">
+          </div>
+        </div>
 
 
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of individuals sentenced to split sentence</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-<div class="row">
-    <div class="col">
-    <p class="popup-txt"># of individuals sentenced to supervision only</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># sentenced to jail only</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of all other non AB109 felony sentences</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b>Types of sentences, AB 109:</b></p>
+          </div>
+        </div>
 
 
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"><b>Supervision Revocations, AB 109:</b></p>
-    </div>
-    </div>  
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of individuals sentenced to split sentence</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numindividualssentsplitsentenceab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numindividualssentsplitsentenceab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of individuals sentenced to supervision only</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numindividualssentsupervisiononlyab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numindividualssentsupervisiononlyab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># sentenced to jail only</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numsentjailonlyab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numsentjailonlyab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of all other non AB109 felony sentences</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numallothernonab109felonysentencesab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numallothernonab109felonysentencesab109}} {% endif %}">
+          </div>
+        </div>
 
 
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of supervision revocations, overall total</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of supervision revocations, PRCS</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of supervision revocations, Parole</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of supervision revocations, 1170s</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"><b>ACER</b></p>
-    </div>
-    </div>   
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of felony arraignments</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of pre-release reports</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"><b>Victim-Witness Advocates</b></p>
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># new cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of active cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of closed cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
- 
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># assisted with victim impact statements</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># restitution claims</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
- 
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># case updates</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># individual services completed</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
- <div class="row">
-    <div class="col">
-    <p class="popup-txt"><b>Domestic Violence</b></p>
-    </div>
-    </div>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b>Supervision Revocations, AB 109:</b></p>
+          </div>
+        </div>
 
 
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of new cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-    
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># of active cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
 
-<div class="row">
-    <div class="col">
-    <p class="popup-txt"># of closed cases</p>
-    </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of supervision revocations, overall total</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numsupervisionrevocationsoveralltalab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numsupervisionrevocationsoveralltalab109}} {% endif %}">
+          </div>
+        </div>
 
-    <div class="row">
-    <div class="col">
-    <p class="popup-txt"># cases with life exposure</p>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of supervision revocations, PRCS</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numsupervisionrevocationsprcsab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numsupervisionrevocationsprcsab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of supervision revocations, Parole</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numsupervisionrevocationsparoleab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numsupervisionrevocationsparoleab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of supervision revocations, 1170s</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numsupervisionrevocations1170sab109" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numsupervisionrevocations1170sab109}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b>ACER</b></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of felony arraignments</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numfelonyarraignmentsacer" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numfelonyarraignmentsacer}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of pre-release reports</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numprereleasereportsacer" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numprereleasereportsacer}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b>Victim-Witness Advocates</b></p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># new cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numnewcasesvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numnewcasesvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of active cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numactivecasesvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numactivecasesvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of closed cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numclosedcasesvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numclosedcasesvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># assisted with victim impact statements</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numassistedwvictimimpactstatementsvwadvoc" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numassistedwvictimimpactstatementsvwadvoc}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># restitution claims</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numrestitutionclaimsvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numrestitutionclaimsvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># case updates</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numcaseupdatesvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcaseupdatesvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># individual services completed</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numindividualsvcscompletedvwadvocates" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numindividualsvcscompletedvwadvocates}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"><b>Domestic Violence</b></p>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of new cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numnewcasesdomviolence" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numnewcasesdomviolence}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of active cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numactivecasesdomviolence" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numactivecasesdomviolence}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># of closed cases</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numclosedcasesdomviolence" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numclosedcasesdomviolence}} {% endif %}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt"># cases with life exposure</p>
+          </div>
+          <div class="col">
+            <input class="form-control" id="cr9aa_numcaseswlifeexposuredomviolence" type="number" value="{% if recordCount>0 %}{{myquery.results.entities[0].cr9aa_numcaseswlifeexposuredomviolence}} {% endif %}">
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
-    <div class="col">
-    <input class="form-control" type="number">
-    </div>
-    </div>
-
-  
-
- </div>
- </div>
- </div>   
-  
-
-  
- 
-
- 
+  </div>
 
 
 
 
-<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
 </body>
+
 </html>
