@@ -12,9 +12,9 @@
     </entity>
   </fetch>
 {% endfetchxml %}
-{% fetchxml hr360 %}
+{% fetchxml Centerforce %}
   <fetch mapping="logical">
-    <entity name="cr9aa_hr360">
+    <entity name="cr9aa_Centerforce">
       <all-attributes />
     </entity>
   </fetch>
@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-        {% for item in hr360.results.entities %}
+        {% for item in Centerforce.results.entities %}
           <tr>
             <td>{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</td>
             <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>
@@ -94,7 +94,7 @@
      var endmonth=$(".quarters").find('option:selected').attr('endmonth');
      console.log(startyear+"-"+endyear);
      console.log(startmonth+"-"+endmonth);
-	 window.location="/hr360-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+	 window.location="/centerforce-statistics-page?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
   });
 
   </script>

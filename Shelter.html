@@ -77,7 +77,7 @@
                 <p class="popup-txt"># referrals, total</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_totalrefsrefstotal" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_totalrefsrefstotal}} {% endif %}">
               </div>
             </div>
 
@@ -86,7 +86,7 @@
                 <p class="popup-txt"># AB 109 referrals</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_totalrefsab109refs" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_totalrefsab109refs}} {% endif %}">
               </div>
             </div>
 
@@ -95,7 +95,7 @@
                 <p class="popup-txt"># non AB 109 referrals</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_totalrefsnonab109refs" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_totalrefsnonab109refs}} {% endif %}">
               </div>
             </div>
 
@@ -104,7 +104,7 @@
                 <p class="popup-txt"># screened and accepted for services</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_totalrefsscreenedandacceptedforsvcs" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_totalrefsscreenedandacceptedforsvcs}} {% endif %}">
               </div>
             </div>
 
@@ -113,7 +113,7 @@
                 <p class="popup-txt"># unscreened</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_totalrefsunscreened" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_totalrefsunscreened}} {% endif %}">
               </div>
             </div>
 
@@ -140,7 +140,7 @@
                 <p class="popup-txt"># intakes, ≤ 25</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsaged25" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsaged25}} {% endif %}">
               </div>
             </div>
 
@@ -149,7 +149,7 @@
                 <p class="popup-txt"># intakes, 26-35</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsaged2635" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsaged2635}} {% endif %}">
               </div>
             </div>
 
@@ -158,7 +158,7 @@
                 <p class="popup-txt"># intakes, 36-45</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsaged3645" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsaged3645}} {% endif %}">
               </div>
             </div>
 
@@ -167,7 +167,7 @@
                 <p class="popup-txt"># intakes, 46-55</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsaged4655" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsaged4655}} {% endif %}">
               </div>
             </div>
 
@@ -176,7 +176,16 @@
                 <p class="popup-txt"># intakes, &gt; 55</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsaged55" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsaged55}} {% endif %}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt"># intakes, Unknown</p>
+              </div>
+              <div class="col">
+                <input class="form-control" id="cr9aa_amongnewenrsageunknown" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsageunknown}} {% endif %}">
               </div>
             </div>
 
@@ -191,7 +200,7 @@
                 <p class="popup-txt">Asian</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethasian" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethasian}} {% endif %}">
               </div>
             </div>
 
@@ -200,7 +209,7 @@
                 <p class="popup-txt">Black</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethblack" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethblack}} {% endif %}">
               </div>
             </div>
 
@@ -209,7 +218,7 @@
                 <p class="popup-txt">Latino/a</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethlatinoa" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethlatinoa}} {% endif %}">
               </div>
             </div>
 
@@ -218,7 +227,7 @@
                 <p class="popup-txt">Native American</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethnativeamerican" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethnativeamerican}} {% endif %}">
               </div>
             </div>
 
@@ -227,7 +236,7 @@
                 <p class="popup-txt">White</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethwhite" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethwhite}} {% endif %}">
               </div>
             </div>
 
@@ -236,7 +245,7 @@
                 <p class="popup-txt">Other</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsraceethother" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsraceethother}} {% endif %}">
               </div>
             </div>
 
@@ -253,7 +262,7 @@
                 <p class="popup-txt">Female</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsgenderfemale" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsgenderfemale}} {% endif %}">
               </div>
             </div>
 
@@ -262,7 +271,7 @@
                 <p class="popup-txt">Male</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsgendermale" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsgendermale}} {% endif %}">
               </div>
             </div>
 
@@ -277,7 +286,7 @@
                 <p class="popup-txt">West</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsregionwest" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsregionwest}} {% endif %}">
               </div>
             </div>
 
@@ -286,7 +295,7 @@
                 <p class="popup-txt">Central</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsregioncentral" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsregioncentral}} {% endif %}">
               </div>
             </div>
 
@@ -295,7 +304,7 @@
                 <p class="popup-txt">East</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrsregioneast" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrsregioneast}} {% endif %}">
               </div>
             </div>
 
@@ -311,7 +320,7 @@
                 <p class="popup-txt">AB 109 Probation</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstierab109probation" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstierab109probation}} {% endif %}">
               </div>
             </div>
 
@@ -320,7 +329,7 @@
                 <p class="popup-txt">Felony Probation </p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstierfelonyprobation" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstierfelonyprobation}} {% endif %}">
               </div>
             </div>
 
@@ -329,7 +338,7 @@
                 <p class="popup-txt">≥ 30 days in custody, released w/in last 3 yrs.</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstier30daysincustodyreleased" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstier30daysincustodyreleased}} {% endif %}">
               </div>
             </div>
 
@@ -338,7 +347,7 @@
                 <p class="popup-txt">Currently awaiting trial</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstiercurrawaitingtrial" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstiercurrawaitingtrial}} {% endif %}">
               </div>
             </div>
 
@@ -347,7 +356,7 @@
                 <p class="popup-txt">Currently on court probation</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstiercurroncourtprobation" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstiercurroncourtprobation}} {% endif %}">
               </div>
             </div>
 
@@ -356,7 +365,7 @@
                 <p class="popup-txt">Special court probation (Behavioral, DV, drug)</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstierspecialcourtprobationbeha" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstierspecialcourtprobationbeha}} {% endif %}">
               </div>
             </div>
 
@@ -365,7 +374,7 @@
                 <p class="popup-txt">Currently on Parole</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstiercurronparole" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstiercurronparole}} {% endif %}">
               </div>
             </div>
 
@@ -374,7 +383,7 @@
                 <p class="popup-txt">Currently in custody</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstiercurrincustody" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstiercurrincustody}} {% endif %}">
               </div>
             </div>
 
@@ -383,7 +392,7 @@
                 <p class="popup-txt">Out of jurisdiction</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstieroutofjurisdiction" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstieroutofjurisdiction}} {% endif %}">
               </div>
             </div>
 
@@ -392,7 +401,7 @@
                 <p class="popup-txt">None of the above</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_amongnewenrstiernoneoftheabove" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_amongnewenrstiernoneoftheabove}} {% endif %}">
               </div>
             </div>
           </div>
@@ -422,7 +431,7 @@
                 <p class="popup-txt"># receiving housing assessment/plan</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingreceivinghousingassessme" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingreceivinghousingassessme}} {% endif %}">
               </div>
             </div>
 
@@ -431,7 +440,7 @@
                 <p class="popup-txt"># enrolled in case management</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingenrolledincasemanagemen" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingenrolledincasemanagemen}} {% endif %}">
               </div>
             </div>
 
@@ -440,7 +449,7 @@
                 <p class="popup-txt"># receiving case management services</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingreceivingcasemanagement" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingreceivingcasemanagement}} {% endif %}">
               </div>
             </div>
 
@@ -449,7 +458,7 @@
                 <p class="popup-txt">Average # of participants per Case Mgr.</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingavgofparticipantsperca" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingavgofparticipantsperca}} {% endif %}">
               </div>
             </div>
 
@@ -458,7 +467,7 @@
                 <p class="popup-txt"># living with family/friends; temporary while awaiting permanent housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousinglivingwithfamilyfriends" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousinglivingwithfamilyfriends}} {% endif %}">
               </div>
             </div>
 
@@ -467,7 +476,7 @@
                 <p class="popup-txt"># placed in SLE transitional housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingplacedinsletransitional" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingplacedinsletransitional}} {% endif %}">
               </div>
             </div>
 
@@ -476,7 +485,7 @@
                 <p class="popup-txt"># placed in stable housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingplacedinstablehousing" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingplacedinstablehousing}} {% endif %}">
               </div>
             </div>
 
@@ -485,7 +494,7 @@
                 <p class="popup-txt"># received short term financial rental assistance</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingreceivedshorttermfinanc" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingreceivedshorttermfinanc}} {% endif %}">
               </div>
             </div>
 
@@ -494,7 +503,7 @@
                 <p class="popup-txt"># of West County SLE beds available, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofwestctyslebedsavail" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofwestctyslebedsavail}} {% endif %}">
               </div>
             </div>
 
@@ -503,7 +512,7 @@
                 <p class="popup-txt"># of West County SLE beds occupied, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofwestctyslebedsoccup" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofwestctyslebedsoccup}} {% endif %}">
               </div>
             </div>
 
@@ -512,7 +521,7 @@
                 <p class="popup-txt"># of Central County SLE beds available, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofcentralctyslebedsav" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofcentralctyslebedsav}} {% endif %}">
               </div>
             </div>
 
@@ -521,7 +530,7 @@
                 <p class="popup-txt"># of Central County SLE beds occupied, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofcentralctyslebedsoc" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofcentralctyslebedsoc}} {% endif %}">
               </div>
             </div>
 
@@ -530,7 +539,7 @@
                 <p class="popup-txt"># of East County SLE beds available, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofeastctyslebedsavail" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofeastctyslebedsavail}} {% endif %}">
               </div>
             </div>
 
@@ -539,7 +548,7 @@
                 <p class="popup-txt"># of East County SLE beds occupied, on average</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingofeastctyslebedsoccup" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingofeastctyslebedsoccup}} {% endif %}">
               </div>
             </div>
 
@@ -554,7 +563,7 @@
                 <p class="popup-txt"># enrolled</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr}} {% endif %}">
               </div>
             </div>
 
@@ -569,7 +578,7 @@
                 <p class="popup-txt"># enrolled in financial education/credit counseling</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia}} {% endif %}">
               </div>
             </div>
 
@@ -584,7 +593,7 @@
                 <p class="popup-txt"># referred to legal services </p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcslegalsvcsreftolegalsvcs" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcslegalsvcsreftolegalsvcs}} {% endif %}">
               </div>
             </div>
 
@@ -599,7 +608,7 @@
                 <p class="popup-txt"># who are un or under employed</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcsemploymentrefswhoareunorunde" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcsemploymentrefswhoareunorunde}} {% endif %}">
               </div>
             </div>
 
@@ -608,7 +617,7 @@
                 <p class="popup-txt"># of un-under employed referred for employment services</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcsemploymentrefsofununderemploy" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcsemploymentrefsofununderemploy}} {% endif %}">
               </div>
             </div>
 
@@ -617,7 +626,7 @@
                 <p class="popup-txt">Among those referred for employment services AND maintain housing for 90 days, # with income higher than when referral to employment services was made</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcsemploymentrefsamongthosereffor" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcsemploymentrefsamongthosereffor}} {% endif %}">
               </div>
             </div>
 
@@ -632,7 +641,7 @@
                 <p class="popup-txt"># of SLE residents who maintained housing for at least 30 days</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurationtransitionsofsl" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurationtransitionsofsl}} {% endif %}">
               </div>
             </div>
 
@@ -641,7 +650,7 @@
                 <p class="popup-txt"># in stable housing who maintained for at least 30 days who exited to perm housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurationtransitionsinst" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurationtransitionsinst}} {% endif %}">
               </div>
             </div>
 
@@ -651,7 +660,7 @@
                   <# who exited to perm housing and stayed for at least 6 mos./p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurationtransitionswhoe" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurationtransitionswhoe}} {% endif %}">
               </div>
             </div>
 
@@ -660,7 +669,7 @@
                 <p class="popup-txt"># who exited to perm housing and stayed for at least 1 year</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurtranswhoexitedtope" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurtranswhoexitedtope}} {% endif %}">
               </div>
             </div>
 
@@ -669,7 +678,7 @@
                 <p class="popup-txt"># transitioned to unsubsidized permanent housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurationtransitionstrans" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurationtransitionstrans}} {% endif %}">
               </div>
             </div>
 
@@ -678,7 +687,7 @@
                 <p class="popup-txt"># moved out of SLE to other stable housing</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurationtransitionsmoved" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurationtransitionsmoved}} {% endif %}">
               </div>
             </div>
 
@@ -687,7 +696,7 @@
                 <p class="popup-txt"># transitioned by taking over responsibility for rent</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_newenrsvcshousingdurtranstransitionedby" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newenrsvcshousingdurtranstransitionedby}} {% endif %}">
               </div>
             </div>
 
@@ -702,7 +711,7 @@
                 <p class="popup-txt"># successfully completed program (i.e, exited to perm housing)</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomessuccessfullycompletedpgmieexite" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomessuccessfullycompletedpgmieexite}} {% endif %}">
               </div>
             </div>
 
@@ -711,7 +720,7 @@
                 <p class="popup-txt"># AB 109 successfully completed program</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesab109successfullycompletedpgm" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesab109successfullycompletedpgm}} {% endif %}">
               </div>
             </div>
 
@@ -726,7 +735,7 @@
                 <p class="popup-txt"># failure to meet requirements</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesunsuccessfulexitsfailuretomeetr" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesunsuccessfulexitsfailuretomeetr}} {% endif %}">
               </div>
             </div>
 
@@ -735,7 +744,7 @@
                 <p class="popup-txt"># due to court/criminal involvement (i.e., returned to custody)</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesunsuccessfulexitsduetocourtcrim" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesunsuccessfulexitsduetocourtcrim}} {% endif %}">
               </div>
             </div>
 
@@ -744,7 +753,7 @@
                 <p class="popup-txt"># due to lack of engagement</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesunsuccessfulexitsduetolackofen" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesunsuccessfulexitsduetolackofen}} {% endif %}">
               </div>
             </div>
 
@@ -753,7 +762,7 @@
                 <p class="popup-txt"># absconding</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesunsuccessfulexitsabsconding" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesunsuccessfulexitsabsconding}} {% endif %}">
               </div>
             </div>
 
@@ -762,7 +771,7 @@
                 <p class="popup-txt"># due to relocation/case transfer</p>
               </div>
               <div class="col">
-                input
+                <input class="form-control" id="cr9aa_outcomesunsuccessfulexitsduetorelocation" type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_outcomesunsuccessfulexitsduetorelocation}} {% endif %}">
               </div>
             </div>
 
@@ -877,123 +886,3 @@
 </div>
 <div class="empty-space">
 </div>
-
-<script>
-  $(document).on('click', '#save', function() {
-    var cr9aa_averagenumbermenteesmentor = $("cr9aa_averagenumbermenteesmentor").val();
-    var cr9aa_goalswomennumcomptransitionplanwhincarc = $("cr9aa_goalswomennumcomptransitionplanwhincarc").val();
-    var cr9aa_goalswomennumcompletedatleast1goal = $("cr9aa_goalswomennumcompletedatleast1goal").val();
-    var cr9aa_goalswomennumcompletedatleast2goals = $("cr9aa_goalswomennumcompletedatleast2goals").val();
-    var cr9aa_goalswomennumcompletedatleast3goals = $("cr9aa_goalswomennumcompletedatleast3goals").val();
-    var cr9aa_goalswomennumcompletedtransitionplan = $("cr9aa_goalswomennumcompletedtransitionplan").val();
-    var cr9aa_goalswomennummatchedamentornavigator = $("cr9aa_goalswomennummatchedamentornavigator").val();
-    var cr9aa_goalswomennumreccasemgmtonrelease = $("cr9aa_goalswomennumreccasemgmtonrelease").val();
-    var cr9aa_newpartsregioncentral = $("cr9aa_newpartsregioncentral").val();
-    var cr9aa_newpartsregioneast = $("cr9aa_newpartsregioneast").val();
-    var cr9aa_newpartsregionwest = $("cr9aa_newpartsregionwest").val();
-    var cr9aa_newpartstierab109prob = $("cr9aa_newpartstierab109prob").val();
-    var cr9aa_newpartstiercurrawaitingtrial = $("cr9aa_newpartstiercurrawaitingtrial").val();
-    var cr9aa_newpartstiercurrincust = $("cr9aa_newpartstiercurrincust").val();
-    var cr9aa_newpartstiercurronctprob = $("cr9aa_newpartstiercurronctprob").val();
-    var cr9aa_newpartstiercurronparole = $("cr9aa_newpartstiercurronparole").val();
-    var cr9aa_newpartstierfelonyprob = $("cr9aa_newpartstierfelonyprob").val();
-    var cr9aa_newpartstierlt30daysincustreleasedwinl = $("cr9aa_newpartstierlt30daysincustreleasedwinl").val();
-    var cr9aa_newpartstiernonetheabove = $("cr9aa_newpartstiernonetheabove").val();
-    var cr9aa_newpartstieroutjurisdiction = $("cr9aa_newpartstieroutjurisdiction").val();
-    var cr9aa_newpartstierspecctprobbehavioraldvdrug = $("cr9aa_newpartstierspecctprobbehavioraldvdrug").val();
-    var cr9aa_newpartsageunknown = $("cr9aa_newpartsageunknown").val();
-    var cr9aa_newpartsasian = $("cr9aa_newpartsasian").val();
-    var cr9aa_newpartsblack = $("cr9aa_newpartsblack").val();
-    var cr9aa_newpartshispanic = $("cr9aa_newpartshispanic").val();
-    var cr9aa_newpartsmen = $("cr9aa_newpartsmen").val();
-    var cr9aa_newpartsnativeamerican = $("cr9aa_newpartsnativeamerican").val();
-    var cr9aa_newpartsnumaged55 = $("cr9aa_newpartsnumaged55").val();
-    var cr9aa_newpartsnumaged2635 = $("cr9aa_newpartsnumaged2635").val();
-    var cr9aa_newpartsnumaged3645 = $("cr9aa_newpartsnumaged3645").val();
-    var cr9aa_newpartsnumaged4655 = $("cr9aa_newpartsnumaged4655").val();
-    var cr9aa_newpartsnumagedgt25 = $("cr9aa_newpartsnumagedgt25").val();
-    var cr9aa_newpartsraceethnicityother = $("cr9aa_newpartsraceethnicityother").val();
-    var cr9aa_newpartswhite = $("cr9aa_newpartswhite").val();
-    var cr9aa_newpartswomen = $("cr9aa_newpartswomen").val();
-    var cr9aa_numab109refs = $("cr9aa_numab109refs").val();
-    var cr9aa_nummentornavigatorstrained = $("cr9aa_nummentornavigatorstrained").val();
-    var cr9aa_numnonab109refs = $("cr9aa_numnonab109refs").val();
-    var cr9aa_numrefsfromcccoe = $("cr9aa_numrefsfromcccoe").val();
-    var cr9aa_numrefsfromprob = $("cr9aa_numrefsfromprob").val();
-    var cr9aa_numrefstotal = $("cr9aa_numrefstotal").val();
-    var cr9aa_outcomesnumnewslettersproduced = $("cr9aa_outcomesnumnewslettersproduced").val();
-    var cr9aa_outcomesnumsuccessfullycompletedprog = $("cr9aa_outcomesnumsuccessfullycompletedprog").val();
-    var cr9aa_outcomesnumunsucccompletedprog = $("cr9aa_outcomesnumunsucccompletedprog").val();
-    var cr9aa_refsnumcompletedisps = $("cr9aa_refsnumcompletedisps").val();
-    var cr9aa_svcsmennummatchedmentornavigator = $("cr9aa_svcsmennummatchedmentornavigator").val();
-    var cr9aa_svcsmennumrecneedsscreeningwhileincarc = $("cr9aa_svcsmennumrecneedsscreeningwhileincarc").val();
-    var cr9aa_svcsmennumrecreentryplanwhileincarc = $("cr9aa_svcsmennumrecreentryplanwhileincarc").val();
-    webapi.safeAjax({
-      type: "POST",
-      url: "/_api/cr9aa_hr360s",
-      contentType: "application/json",
-      data: JSON.stringify({
-        "cr9aa_startyear": "{{request.params['startyear']}}",
-        "cr9aa_endyear": "{{request.params['endyear']}}",
-        "cr9aa_startmonth": "{{request.params['startmonth']}}",
-        "cr9aa_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_averagenumbermenteesmentor": Number(cr9aa_averagenumbermenteesmentor)
-        "cr9aa_goalswomennumcomptransitionplanwhincarc": Number(cr9aa_goalswomennumcomptransitionplanwhincarc)
-        "cr9aa_goalswomennumcompletedatleast1goal": Number(cr9aa_goalswomennumcompletedatleast1goal)
-        "cr9aa_goalswomennumcompletedatleast2goals": Number(cr9aa_goalswomennumcompletedatleast2goals)
-        "cr9aa_goalswomennumcompletedatleast3goals": Number(cr9aa_goalswomennumcompletedatleast3goals)
-        "cr9aa_goalswomennumcompletedtransitionplan": Number(cr9aa_goalswomennumcompletedtransitionplan)
-        "cr9aa_goalswomennummatchedamentornavigator": Number(cr9aa_goalswomennummatchedamentornavigator)
-        "cr9aa_goalswomennumreccasemgmtonrelease": Number(cr9aa_goalswomennumreccasemgmtonrelease)
-        "cr9aa_newpartsregioncentral": Number(cr9aa_newpartsregioncentral)
-        "cr9aa_newpartsregioneast": Number(cr9aa_newpartsregioneast)
-        "cr9aa_newpartsregionwest": Number(cr9aa_newpartsregionwest)
-        "cr9aa_newpartstierab109prob": Number(cr9aa_newpartstierab109prob)
-        "cr9aa_newpartstiercurrawaitingtrial": Number(cr9aa_newpartstiercurrawaitingtrial)
-        "cr9aa_newpartstiercurrincust": Number(cr9aa_newpartstiercurrincust)
-        "cr9aa_newpartstiercurronctprob": Number(cr9aa_newpartstiercurronctprob)
-        "cr9aa_newpartstiercurronparole": Number(cr9aa_newpartstiercurronparole)
-        "cr9aa_newpartstierfelonyprob": Number(cr9aa_newpartstierfelonyprob)
-        "cr9aa_newpartstierlt30daysincustreleasedwinl": Number(cr9aa_newpartstierlt30daysincustreleasedwinl)
-        "cr9aa_newpartstiernonetheabove": Number(cr9aa_newpartstiernonetheabove)
-        "cr9aa_newpartstieroutjurisdiction": Number(cr9aa_newpartstieroutjurisdiction)
-        "cr9aa_newpartstierspecctprobbehavioraldvdrug": Number(cr9aa_newpartstierspecctprobbehavioraldvdrug)
-        "cr9aa_newpartsageunknown": Number(cr9aa_newpartsageunknown)
-        "cr9aa_newpartsasian": Number(cr9aa_newpartsasian)
-        "cr9aa_newpartsblack": Number(cr9aa_newpartsblack)
-        "cr9aa_newpartshispanic": Number(cr9aa_newpartshispanic)
-        "cr9aa_newpartsmen": Number(cr9aa_newpartsmen)
-        "cr9aa_newpartsnativeamerican": Number(cr9aa_newpartsnativeamerican)
-        "cr9aa_newpartsnumaged55": Number(cr9aa_newpartsnumaged55)
-        "cr9aa_newpartsnumaged2635": Number(cr9aa_newpartsnumaged2635)
-        "cr9aa_newpartsnumaged3645": Number(cr9aa_newpartsnumaged3645)
-        "cr9aa_newpartsnumaged4655": Number(cr9aa_newpartsnumaged4655)
-        "cr9aa_newpartsnumagedgt25": Number(cr9aa_newpartsnumagedgt25)
-        "cr9aa_newpartsraceethnicityother": Number(cr9aa_newpartsraceethnicityother)
-        "cr9aa_newpartswhite": Number(cr9aa_newpartswhite)
-        "cr9aa_newpartswomen": Number(cr9aa_newpartswomen)
-        "cr9aa_numab109refs": Number(cr9aa_numab109refs)
-        "cr9aa_nummentornavigatorstrained": Number(cr9aa_nummentornavigatorstrained)
-        "cr9aa_numnonab109refs": Number(cr9aa_numnonab109refs)
-        "cr9aa_numrefsfromcccoe": Number(cr9aa_numrefsfromcccoe)
-        "cr9aa_numrefsfromprob": Number(cr9aa_numrefsfromprob)
-        "cr9aa_numrefstotal": Number(cr9aa_numrefstotal)
-        "cr9aa_outcomesnumnewslettersproduced": Number(cr9aa_outcomesnumnewslettersproduced)
-        "cr9aa_outcomesnumsuccessfullycompletedprog": Number(cr9aa_outcomesnumsuccessfullycompletedprog)
-        "cr9aa_outcomesnumunsucccompletedprog": Number(cr9aa_outcomesnumunsucccompletedprog)
-        "cr9aa_refsnumcompletedisps": Number(cr9aa_refsnumcompletedisps)
-        "cr9aa_svcsmennummatchedmentornavigator": Number(cr9aa_svcsmennummatchedmentornavigator)
-        "cr9aa_svcsmennumrecneedsscreeningwhileincarc": Number(cr9aa_svcsmennumrecneedsscreeningwhileincarc)
-        "cr9aa_svcsmennumrecreentryplanwhileincarc": Number(cr9aa_svcsmennumrecreentryplanwhileincarc)
-
-      }),
-      success: function(res, status, xhr) {
-        //print id of newly created entity record
-        console.log("entityID: " + xhr.getResponseHeader("entityid"))
-      }
-    });
-
-
-
-  });
-</script>
