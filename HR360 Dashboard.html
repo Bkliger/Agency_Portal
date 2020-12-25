@@ -16,6 +16,10 @@
   <fetch mapping="logical">
     <entity name="cr9aa_hr360">
       <all-attributes />
+      <filter type="and" >
+      <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
+      <condition attribute='modifiedon' operator='neq' value='{{ now | date: 'O' }}Z' />
+      </filter>
     </entity>
   </fetch>
 {% endfetchxml %}
@@ -35,9 +39,9 @@
         <tbody>
         {% for item in hr360.results.entities %}
           <tr>
-            <td>{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</td>
+            <td><a href="/hr360-statistics?startyear={{item.cr9aa_startyear}}&endyear={{item.cr9aa_endyear}}&startmonth={{item.cr9aa_startmonth}}&endmonth={{item.cr9aa_endmonth}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</a></td>
             <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>
-            <td>{{item.cr9aa_submittedstatus.label}}</td>
+            <td>{{item.cr9aa_submittedstatus}}</td>
             <td>{{item.createdon}}</td>
           </tr>
         {% endfor %}
