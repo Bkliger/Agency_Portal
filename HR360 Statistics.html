@@ -17,7 +17,38 @@
     <h3 class="my-0 mr-md-auto">{{user.fullname}}</h3>
     <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
   </div>
+  <!-- Popup with a button -->
+  <div class="col-xs-12 text-right margin">
+    <!-- Button trigger modal -->
+    {% if recordCount > 0  %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+        <button type="button" class="btn btn-primary" id="save">
+          Save </button>
+      {% endif %}
+    {% endif %}
 
+    {% if recordCount == 0  %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+    {% endif %}
+
+    {% if recordCount > 0 %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      <button type="button" class="btn btn-primary" id="submit">
+        Submit </button>
+      {% endif %}
+    {% endif %}
+
+    {% if recordCount == 0  %}
+        <button type="button" class="btn btn-primary" id="submit">
+          Submit </button>
+    {% endif %}
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Print </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Close </button>
+  </div>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
@@ -41,22 +72,6 @@
 
           <div class="col text-left">
             <h2>Quarterly Data Entry (Statistics)</h2>
-
-          </div>
-
-
-          <!-- Popup with a button -->
-          <div class="col-xs-12 text-right margin">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" id="save">
-              Save </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Close </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Submit </button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Print </button>
-
 
           </div>
         </div>
@@ -627,43 +642,13 @@
 
       <div class="container">
         <div class="row">
-
           <div class="col text-left">
             <h2>Quarterly Data Entry (Narrative)</h2>
           </div>
-
-
-          <div class="col text-right">
-            <button type="button" class="btn btn-primary">Save</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-
         </div>
       </div>
 
-      <form>
         <div class="container">
-
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Fiscal Year</p>
-            </div>
-            <div class="col">
-              <p class="popup-txt">2020-21</p>
-            </div>
-
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Quarter</p>
-            </div>
-            <div class="col">
-              <p class="popup-txt">Jan-Mar</p>
-            </div>
-
-          </div>
 
           <div class="row">
             <div class="col">
@@ -707,11 +692,10 @@
               <p class="popup-txt">Section Five: Next Steps</p>
             </div>
             <div class="col form-group">
-<textarea class="form-control" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}} {% endif %}</textarea>
+              <textarea class="form-control" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}} {% endif %}</textarea>
             </div>
           </div>
         </div>
-      </form>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">tab3</div>
   </div>
@@ -721,6 +705,18 @@
 
 <script>
   $(document).on('click', '#save', function() {
+    submitOrSave("save");
+  });
+  $(document).on('click', '#submit', function() {
+    submitOrSave("submit");
+  });
+  function submitOrSave(flag) {
+    var submitStatus="";
+    if(flag=="save"){
+      submitStatus="In Progress";
+    }else{
+      submitStatus="Submitted";
+    }
 
     $(".loading").show();
 
@@ -775,10 +771,11 @@
     var cr9aa_svcsmennumrecneedsscreeningwhileincarc = $("#cr9aa_svcsmennumrecneedsscreeningwhileincarc").val();
     var cr9aa_svcsmennumrecreentryplanwhileincarc = $("#cr9aa_svcsmennumrecreentryplanwhileincarc").val();
     var cr9aa_sectionone = $("#cr9aa_sectionone").val();
-  var cr9aa_sectiontwo = $("#cr9aa_sectiontwo").val();
-  var cr9aa_sectionthree = $("#cr9aa_sectionthree").val();
-  var cr9aa_sectionfour = $("#cr9aa_sectionfour").val();
-  var cr9aa_sectionfive = $("#cr9aa_sectionfive").val();
+    var cr9aa_sectiontwo = $("#cr9aa_sectiontwo").val();
+    var cr9aa_sectionthree = $("#cr9aa_sectionthree").val();
+    var cr9aa_sectionfour = $("#cr9aa_sectionfour").val();
+    var cr9aa_sectionfive = $("#cr9aa_sectionfive").val();
+
   {% if recordCount == 0 %}
     webapi.safeAjax({
       type: "POST",
@@ -839,10 +836,11 @@
         "cr9aa_svcsmennumrecneedsscreeningwhileincarc": Number(cr9aa_svcsmennumrecneedsscreeningwhileincarc),
         "cr9aa_svcsmennumrecreentryplanwhileincarc": Number(cr9aa_svcsmennumrecreentryplanwhileincarc),
         "cr9aa_sectionone": cr9aa_sectionone,
-  "cr9aa_sectiontwo": cr9aa_sectiontwo,
-  "cr9aa_sectionthree": cr9aa_sectionthree,
-  "cr9aa_sectionfour": cr9aa_sectionfour,
-  "cr9aa_sectionfive": cr9aa_sectionfive,
+        "cr9aa_sectiontwo": cr9aa_sectiontwo,
+        "cr9aa_sectionthree": cr9aa_sectionthree,
+        "cr9aa_sectionfour": cr9aa_sectionfour,
+        "cr9aa_sectionfive": cr9aa_sectionfive,
+        "cr9aa_submittedstatus": submitStatus
       }),
       success: function(res, status, xhr) {
         $(".loading").hide();
@@ -920,6 +918,7 @@
 "cr9aa_sectionthree": cr9aa_sectionthree,
 "cr9aa_sectionfour": cr9aa_sectionfour,
 "cr9aa_sectionfive": cr9aa_sectionfive,
+"cr9aa_submittedstatus": submitStatus
       }),
       success: function(res, status, xhr) {
         $(".loading").hide();
@@ -939,5 +938,5 @@
     }); {% endif %}
 
 
-  });
+  }
 </script>

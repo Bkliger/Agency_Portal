@@ -3,8 +3,8 @@
 {% assign role = user.roles[0] %}
     {% if role == "HR360" %}
         {% include "HR360 Dashboard" %}
-    {% else if role == "CenterForce Role" %}
-        Center Force
+     {% else if role == "Centerforce" %}
+        {% include "CenterForce Dashboard" %}
     {% endif %}
 {% else %}
 
