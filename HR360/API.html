@@ -1,0 +1,18 @@
+{% if request.params['endyear'] and request.params['startyear'] and request.params['startmonth'] and request.params['endmonth'] %}
+{% fetchxml myquery %}
+<fetch mapping="logical">
+  <entity name="cr9aa_hr360">
+    <all-attributes />​
+    <filter type='and'>
+      <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
+      <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
+      <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+      <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+    </filter>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{
+  "count": "{{myquery.results.entities.size}}"
+}
+{% endif %}
