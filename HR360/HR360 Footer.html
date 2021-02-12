@@ -10,7 +10,7 @@
     $("#form").validator().on("submit", function(e) {
      $("#toast-container").html(""); 
                if (e.isDefaultPrevented()) {
-                $('#submit').attr("data-original-title","Please fill required fields"); 
+                $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
                 toastr.error(
                     '',
                     'Please fill required fields', {
