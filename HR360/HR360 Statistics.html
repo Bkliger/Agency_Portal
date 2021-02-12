@@ -39,13 +39,13 @@
   
       {% if recordCount > 0 %}
       {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button class="btn btn-primary" type="submit" id="submit">
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
       {% endif %}
   
       {% if recordCount == 0  %}
-      <button class="btn btn-primary" type="submit" id="submit">
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
   
@@ -834,7 +834,11 @@
                 <th scope="row" style="font-weight:400;">Data system & equipment includes SAFE Licenses</th>
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensesbudget | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensescurr" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensescurr | round: 2}} {% endif %}"></td>
+<<<<<<< HEAD
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensestot | round: 2}} {% endif %}"></td>                
+=======
+                <td> <input class="form-control" id="crdae_datasystemequipincsafelicensestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensestot | round: }} {% endif %}"></td>                
+>>>>>>> c5d170826611283d7b64a390437ab89573ab4994
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensesfur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensesfur}} {% endif %}"></td>
               </tr>
               <tr>
@@ -967,6 +971,5 @@
   <div class="empty-space">
   </div>
   </form>
-  <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script>
+  <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
   {% include "HR360 Footer" %}
-  
