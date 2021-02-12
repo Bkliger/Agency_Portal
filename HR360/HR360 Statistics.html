@@ -813,8 +813,8 @@
                 <th scope="row" style="font-weight:400;">Cell phones</th>
                 <td> <input class="form-control" id="crdae_cellphonesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesbudget | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_cellphonescurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonescurrent | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_cellphonesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesfurther | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_cellphonestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonestotal}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_cellphonestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonestotal | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_cellphonesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesfurther}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Office Operating costs (Copier Lease, PCs, printers)</th>
@@ -834,7 +834,11 @@
                 <th scope="row" style="font-weight:400;">Data system & equipment includes SAFE Licenses</th>
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensesbudget | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensescurr" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensescurr | round: 2}} {% endif %}"></td>
+<<<<<<< HEAD
+                <td> <input class="form-control" id="crdae_datasystemequipincsafelicensestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensestot | round: 2}} {% endif %}"></td>                
+=======
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensestot | round: }} {% endif %}"></td>                
+>>>>>>> c5d170826611283d7b64a390437ab89573ab4994
                 <td> <input class="form-control" id="crdae_datasystemequipincsafelicensesfur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_datasystemequipincsafelicensesfur}} {% endif %}"></td>
               </tr>
               <tr>
@@ -869,8 +873,8 @@
                 <th scope="row" style="font-weight:400;">Community Outreach & events</th>
                 <td> <input class="form-control" id="crdae_communityoutreacheventsbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventsbudget | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_communityoutreacheventscurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventscurrent | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_communityoutreacheventsfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventsfurther | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_communityoutreacheventstotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventstotal}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_communityoutreacheventstotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventstotal | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_communityoutreacheventsfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_communityoutreacheventsfurther}} {% endif %}"></td> 
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Travel</th>
