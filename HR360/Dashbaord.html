@@ -1,4 +1,23 @@
 
+{% assign currmonth =  "now" | date: "%M" %}
+{% assign curryear= "now" | date: "yyyy" %}
+{% assign prevyear= now | date_add_years: -1 | date: "yyyy"  %}
+{% assign nextyear= now | date_add_years: 1  | date: "yyyy" %}
+{% if currmonth >= 1 and  currmonth <= 3 %}
+{% assign quarterSelected= "Jan-Mar" %}
+{% elseif currmonth >= 4 and currmonth <= 6 %}
+{% assign quarterSelected= "Apr-Jun" %}
+{% elseif currmonth >= 7 and currmonth <= 9 %}
+{% assign quarterSelected= "Jul-Sep" %}
+{% elseif currmonth >= 10 and currmonth <= 12 %}
+{% assign quarterSelected= "Oct-Dec" %}
+{% endif %}
+{% if currmonth > 6 %}
+ {% assign fyearSelected = curryear  | append: "-" | append: nextyear %}
+{% else %}
+ {% assign fyearSelected =  prevyear | append: "-" | append:  curryear %}
+{% endif %}
+
 {% fetchxml fiscalyears %}
 <fetch mapping="logical">
   <entity name="crdae_fiscalyears">
@@ -69,7 +88,8 @@
         <p>
             <select class="fiscalyears form-control">
                 {% for item in fiscalyears.results.entities %}
-                  <option startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
+                  {% assign year = item.crdae_startyear | append: "-" | append: item.crdae_endyear}} %}
+                  <option {% if fyearSelected == year %} selected="selected" {% endif %}  startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
                 {% endfor %}
             </select>
         </P>
@@ -77,7 +97,8 @@
         <p>
             <select class="quarters form-control">
                 {% for item in quarters.results.entities %}
-                  <option startmonth="{{item.cr9aa_startmonth}}" endmonth="{{item.cr9aa_endmonth}}" value="{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}">{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</option>
+                  {% assign quarter = item.cr9aa_startmonth | append: "-" | append: item.cr9aa_endmonth %}
+                  <option {% if quarterSelected == quarter %} selected="selected" {% endif %} startmonth="{{item.cr9aa_startmonth}}" endmonth="{{item.cr9aa_endmonth}}" value="{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}">{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</option>
                 {% endfor %}
             </select>
         </P>
