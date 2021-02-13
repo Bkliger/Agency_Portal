@@ -5,9 +5,15 @@
   $(document).on('click', '#save', function() {
     submitOrSave("save");
   });
-  $(document).on('click', '#submit', function() {
+  $(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+  });
+  $(document).on('click', '#submit', function(e) {
      $("#toast-container").html(""); 
-    $("#form").validator().on("submit", function(e) {
+     $("#form").validator().on("submit", function(e) {      
      $("#toast-container").html(""); 
                if (e.isDefaultPrevented()) {
                 $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
