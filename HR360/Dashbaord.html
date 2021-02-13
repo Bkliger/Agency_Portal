@@ -88,7 +88,7 @@
         <p>
             <select class="fiscalyears form-control">
                 {% for item in fiscalyears.results.entities %}
-                  {% assign year = item.crdae_startyear | append: "-" | append: item.crdae_endyear}} %}
+                  {% assign year = item.crdae_startyear | append: "-" | append: item.crdae_endyear %}
                   <option {% if fyearSelected == year %} selected="selected" {% endif %}  startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
                 {% endfor %}
             </select>
