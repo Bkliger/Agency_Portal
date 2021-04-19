@@ -1,126 +1,187 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="generator" content="">
-  <title>Agency Portal</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="pricing.css" rel="stylesheet">
-
-</head>
-
-<body>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal"><img class="fit-picture" src="assets/CCCLogo.png" alt="My test image"></h5>
-    <h3 class="my-0 mr-md-auto">Richmond Police Department</h3>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="#">Log Out</a>
-
-    </nav>
-    <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
-  </div>
-
+<form id="form" role="form">
+  {% fetchxml myquery %}
+  <fetch mapping="logical">
+    <entity name="cr9aa_richmondpd">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+  {% assign recordCount = myquery.results.entities.size %}
   <div class="container">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#">Statistics</a></li>
-      <li><a href="Narrative.html">Narrative</a></li>
-      <li><a href="#">Budget</a></li>
-      <li><a href="#">Attachments</a></li>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <div class="fiscal-year-month"> 
+        <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
+        <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
+      </div>
+      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
+    </div>
+    <!-- Popup with a button -->
+    <div class="col-xs-12 text-right margin">
+      <!-- Button trigger modal -->
+      {% if recordCount > 0  %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+      {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+      {% endif %}
+  
+      {% if recordCount > 0 %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+        Submit </button>
+      {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+        Submit </button>
+      {% endif %}
+  
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Print </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Close </button>
+    </div>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item active">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
+      </li>
     </ul>
-    <br>
-    <div class="container">
-      <div class="row">
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <br>
 
-        <div class="col text-left">
-          <h2>Quarterly Data Entry (Statistics)</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col text-left">
+              <h2>Quarterly Data Entry (Statistics)</h2>
+            </div>
+          </div>
         </div>
 
+        <!-- MHET  Activities -->
 
-        <!-- Popup with a button -->
-        <div class="col text-right">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Save </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Close </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Submit </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Print </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MHET  Activities -->
-
-    <div class="container">
-      <div class="row">
-        <div class="col">
-
-          <div class="row">
-            <div class="col heading-border">
-              <h4>MHET Activities</MHET>
-              </h4>
-            </div>
-          </div>
-
+        <div class="container">
           <div class="row">
             <div class="col">
-              <p class="popup-txt"># of new calls</p>
-            </div>
-            <div class="col">
-           <input class="form-control" id="cr9aa_numnewcalls"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numnewcalls}} {% endif %}">
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt"># of follow-up calls</p>
-            </div>
-            <div class="col">
-           <input class="form-control" id="cr9aa_numfollowupcalls"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numfollowupcalls}} {% endif %}">
-            </div>
-          </div>
+              <div class="row">
+                <div class="col heading-border">
+                  <h4>MHET Activities</MHET>
+                  </h4>
+                </div>
+              </div>
 
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt"># of 5150s</p>
-            </div>
-            <div class="col">
-             <input class="form-control" id="cr9aa_num5150s"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_num5150s}} {% endif %}">
+              <div class="row">
+                <div class="col">
+                  <p class="popup-txt"># of new calls</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_numnewcalls" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numnewcalls = myquery.results.entities[0].cr9aa_numnewcalls | round: 0 %}{% if cr9aa_numnewcalls == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numnewcalls | round: 0}}{% endif %}{% endif %}">            
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p class="popup-txt"># of follow-up calls</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_numfollowupcalls" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numfollowupcalls = myquery.results.entities[0].cr9aa_numfollowupcalls | round: 0 %}{% if cr9aa_numfollowupcalls == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numfollowupcalls | round: 0}}{% endif %}{% endif %}">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p class="popup-txt"># of 5150s</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_num5150s" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_num5150s = myquery.results.entities[0].cr9aa_num5150s | round: 0 %}{% if cr9aa_num5150s == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_num5150s | round: 0}}{% endif %}{% endif %}">
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+        <div class="container">
+          <div class="row">
+            <div class="col text-left">
+              <h2>Quarterly Data Entry (Narrative)</h2>
+            </div>
+          </div>
+        </div>
+  
+        <div class="container">
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section One: Performance and
+                Demographic Data Measures</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section two: Budget Expenditures</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Five: Next Steps</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}}{% endif %}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>
+  </div>
+  <div class="empty-space">
+  </div>
+  </form>
+  <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
+  {% include "HR360 Footer" %}

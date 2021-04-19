@@ -1,0 +1,80 @@
+<div class="tab-pane fade" id="budget-tab" role="tabpanel" aria-labelledby="budget-tab">
+    <div class="container">
+      <p></br></p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Total budget allocation under current contract</th>
+            <th scope="col">Expenditures this reporting period</th>
+            <th scope="col">Total expenditures to date</th>
+            <th scope="col">Further information justification or comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight:400;"></th>
+            <td> <input class="form-control" id="crdae_programdirectorbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorbudget | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_programdirectorcurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorcurrent | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_programdirectortotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectortotal | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_programdirectorfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorfurther}} {% endif %}"></td>
+          </tr>
+          
+
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight:400;"></th>
+            <td> <input class="form-control" id="crdae_cellphonesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesbudget | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonescurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonescurrent | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesfurther | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonestotal | round: 2}} {% endif %}"></td>
+          </tr>
+          
+          
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight:400;"></th>
+            <td> <input class="form-control" id="crdae_cellphonesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesbudget | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonescurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonescurrent | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesfurther | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonestotal | round: 2}} {% endif %}"></td>
+          </tr>
+          
+          <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row" style="font-weight:400;"></th>
+            <td> <input class="form-control" id="crdae_cellphonesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesbudget | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonescurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonescurrent | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonesfurther | round: 2}} {% endif %}"></td>
+            <td> <input class="form-control" id="crdae_cellphonestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cellphonestotal | round: 2}} {% endif %}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> 
