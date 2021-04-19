@@ -1,342 +1,419 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="generator" content="">
-  <title>Agency Portal</title>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/pricing/">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="pricing.css" rel="stylesheet">
-
-</head>
-
-<body>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal"><img class="fit-picture" src="assets/CCCLogo.png" alt="My test image"></h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="#">Log Out</a>
-
-    </nav>
-    <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
-  </div>
-
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
+<form id="form" role="form">
+  {% fetchxml myquery %}
+  <fetch mapping="logical">
+    <entity name="cr9aa_hr360">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+  {% assign recordCount = myquery.results.entities.size %}
   <div class="container">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#">Statistics</a></li>
-      <li><a href="Narrative.html">Narrative</a></li>
-      <li><a href="#">Budget</a></li>
-      <li><a href="#">Attachments</a></li>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <div class="fiscal-year-month"> 
+        <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
+        <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
+      </div>
+      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
+    </div>
+    <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
+    <div class="col-xs-12 text-right margin">
+      <!-- Button trigger modal -->
+      {% if recordCount > 0  %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+      {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+      {% endif %}
+  
+      {% if recordCount > 0 %}
+      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+        Submit </button>
+      {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+        Submit </button>
+      {% endif %}
+  
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Print </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Close </button>
+    </div>
+    {% endif %}
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item active">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
+      </li>
     </ul>
-    <br>
-    <div class="container">
-      <div class="row">
 
-        <div class="col text-left">
-          <h2>Quarterly Data Entry (Statistics)</h2>
-        </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <br>
 
+        <div class="container">
+          <div class="row">
 
-        <!-- Popup with a button -->
-        <div class="col text-right">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Save </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Close </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Submit </button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Print </button>
-
-
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h3>Detention Health Services</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <p class="popup-txt">Report compiled by</p>
-          </div>
-          <div class="col">
-            <p class="popup-txt">Robert Linskey</p>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <p class="popup-txt">Status</p>
-          </div>
-          <div class="col">
-            <p class="popup-txt">In Process</p>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <p class="popup-txt">Fiscal Year</p>
-          </div>
-          <div class="col">
-            <p class="popup-txt">2020-21</p>
-          </div>
-
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <p class="popup-txt">Quarter</p>
-          </div>
-          <div class="col">
-            <p class="popup-txt">Jan-Mar</p>
-          </div>
-
-        </div>
-        <hr />
-        <div class="col text-left">
-          <h4>AB 109 Patient Contacts by Facility</h4>
-        </div>
-        <hr />
-        <form>
-          <table class="table">
-            <colgroup>
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-            </colgroup>
-            <thead class="table-head">
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">MDF</th>
-                <th scope="col">WCDF</th>
-                <th scope="col">MCDF</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"># of nursing sick calls</th>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_numnursingsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numnursingsickcallsmdf}} {% endif %}">
+            <div class="col text-left">
+              <h2>Quarterly Data Entry (Statistics)</h2>
             </div>
-                </td>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_numnursingsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numnursingsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-             <input class="form-control" id="cr9aa_numnursingsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numnursingsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># MD sick calls</th>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_nummdsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummdsickcallsmdf}} {% endif %}">
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <h3>Detention Health Services</h3>
+              </div>
             </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummdsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummdsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_nummdsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummdsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># dental sick calls</th>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_numdentalsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numdentalsickcallsmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-              <input class="form-control" id="cr9aa_numdentalsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numdentalsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numdentalsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numdentalsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># psychiatrist sick calls</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numpsychiatristsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numpsychiatristsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numpsychiatristsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># mental health sick calls</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># mental health RN sick calls</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthrnsickcallsmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthrnsickcallswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_nummentalhealthrnsickcallsmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Report compiled by</p>
+              </div>
+              <div class="col">
+                <p class="popup-txt">Robert Linskey</p>
+              </div>
 
-              <tr>
-                <th scope="row"># of intake screenings for AB 109 inmates</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numintakescreeningsforab109inmatesmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numintakescreeningsforab109inmateswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmateswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numintakescreeningsforab109inmatesmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># of needs assessments for AB 109 inmates</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numneedsassessmentsforab109inmatesmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numneedsassessmentsforab109inmateswcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmateswcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numneedsassessmentsforab109inmatesmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-        <hr>
-        <div class="col text-left">
-          <h4>AB 109 MAT services</h4>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Status</p>
+              </div>
+              <div class="col">
+                <p class="popup-txt">In Process</p>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Fiscal Year</p>
+              </div>
+              <div class="col">
+                <p class="popup-txt">2020-21</p>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Quarter</p>
+              </div>
+              <div class="col">
+                <p class="popup-txt">Jan-Mar</p>
+              </div>
+
+            </div>
+            <hr />
+            <div class="col text-left">
+              <h4>AB 109 Patient Contacts by Facility</h4>
+            </div>
+            <hr />
+            <form>
+              <table class="table">
+                <colgroup>
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                </colgroup>
+                <thead class="table-head">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">MDF</th>
+                    <th scope="col">WCDF</th>
+                    <th scope="col">MCDF</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"># of nursing sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numnursingsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numnursingsickcallsmdf = myquery.results.entities[0].cr9aa_numnursingsickcallsmdf | round: 0 %}{% if cr9aa_numnursingsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numnursingsickcallsmdf | round: 0}}{% endif %}{% endif %}">            
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numnursingsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numnursingsickcallswcdf = myquery.results.entities[0].cr9aa_numnursingsickcallswcdf | round: 0 %}{% if cr9aa_numnursingsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numnursingsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numnursingsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numnursingsickcallsmcdf = myquery.results.entities[0].cr9aa_numnursingsickcallsmcdf | round: 0 %}{% if cr9aa_numnursingsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numnursingsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># MD sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummdsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummdsickcallsmdf = myquery.results.entities[0].cr9aa_nummdsickcallsmdf | round: 0 %}{% if cr9aa_nummdsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummdsickcallsmdf | round: 0}}{% endif %}{% endif %}">            
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummdsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummdsickcallswcdf = myquery.results.entities[0].cr9aa_nummdsickcallswcdf | round: 0 %}{% if cr9aa_nummdsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummdsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummdsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummdsickcallsmcdf = myquery.results.entities[0].cr9aa_nummdsickcallsmcdf | round: 0 %}{% if cr9aa_nummdsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummdsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># dental sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numdentalsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numdentalsickcallsmdf = myquery.results.entities[0].cr9aa_numdentalsickcallsmdf | round: 0 %}{% if cr9aa_numdentalsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numdentalsickcallsmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numdentalsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numdentalsickcallswcdf = myquery.results.entities[0].cr9aa_numdentalsickcallswcdf | round: 0 %}{% if cr9aa_numdentalsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numdentalsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numdentalsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numdentalsickcallsmcdf = myquery.results.entities[0].cr9aa_numdentalsickcallsmcdf | round: 0 %}{% if cr9aa_numdentalsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numdentalsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># psychiatrist sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpsychiatristsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpsychiatristsickcallsmdf = myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmdf | round: 0 %}{% if cr9aa_numpsychiatristsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpsychiatristsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpsychiatristsickcallswcdf = myquery.results.entities[0].cr9aa_numpsychiatristsickcallswcdf | round: 0 %}{% if cr9aa_numpsychiatristsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpsychiatristsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpsychiatristsickcallsmcdf = myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmcdf | round: 0 %}{% if cr9aa_numpsychiatristsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpsychiatristsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># mental health sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthsickcallsmdf = myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmdf | round: 0 %}{% if cr9aa_nummentalhealthsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthsickcallswcdf = myquery.results.entities[0].cr9aa_nummentalhealthsickcallswcdf | round: 0 %}{% if cr9aa_nummentalhealthsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthsickcallsmcdf = myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmcdf | round: 0 %}{% if cr9aa_nummentalhealthsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># mental health RN sick calls</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthrnsickcallsmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthrnsickcallsmdf = myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmdf | round: 0 %}{% if cr9aa_nummentalhealthrnsickcallsmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthrnsickcallswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthrnsickcallswcdf = myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallswcdf | round: 0 %}{% if cr9aa_nummentalhealthrnsickcallswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_nummentalhealthrnsickcallsmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_nummentalhealthrnsickcallsmcdf = myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmcdf | round: 0 %}{% if cr9aa_nummentalhealthrnsickcallsmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_nummentalhealthrnsickcallsmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th scope="row"># of intake screenings for AB 109 inmates</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numintakescreeningsforab109inmatesmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numintakescreeningsforab109inmatesmdf = myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmdf | round: 0 %}{% if cr9aa_numintakescreeningsforab109inmatesmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numintakescreeningsforab109inmateswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numintakescreeningsforab109inmateswcdf = myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmateswcdf | round: 0 %}{% if cr9aa_numintakescreeningsforab109inmateswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmateswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numintakescreeningsforab109inmatesmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numintakescreeningsforab109inmatesmcdf = myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmcdf | round: 0 %}{% if cr9aa_numintakescreeningsforab109inmatesmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numintakescreeningsforab109inmatesmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row"># of needs assessments for AB 109 inmates</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numneedsassessmentsforab109inmatesmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numneedsassessmentsforab109inmatesmdf = myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmdf | round: 0 %}{% if cr9aa_numneedsassessmentsforab109inmatesmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numneedsassessmentsforab109inmateswcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numneedsassessmentsforab109inmateswcdf = myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmateswcdf | round: 0 %}{% if cr9aa_numneedsassessmentsforab109inmateswcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmateswcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numneedsassessmentsforab109inmatesmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numneedsassessmentsforab109inmatesmcdf = myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmcdf | round: 0 %}{% if cr9aa_numneedsassessmentsforab109inmatesmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numneedsassessmentsforab109inmatesmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+            <hr>
+            <div class="col text-left">
+              <h4>AB 109 MAT services</h4>
+            </div>
+            <hr>
+
+            <form>
+              <table class="table">
+                <colgroup>
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                  <col span="1" class="table-width">
+                </colgroup>
+                <thead class="table-head">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">MDF</th>
+                    <th scope="col">WCDF</th>
+                    <th scope="col">MCDF</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"># of patients receiving MAT</th>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpatientsreceivingmatmdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpatientsreceivingmatmdf = myquery.results.entities[0].cr9aa_numpatientsreceivingmatmdf | round: 0 %}{% if cr9aa_numpatientsreceivingmatmdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatmdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpatientsreceivingmatwcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpatientsreceivingmatwcdf = myquery.results.entities[0].cr9aa_numpatientsreceivingmatwcdf | round: 0 %}{% if cr9aa_numpatientsreceivingmatwcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatwcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group">
+                        <input class="form-control" required data-required-error="This field is required" id="cr9aa_numpatientsreceivingmatmcdf" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numpatientsreceivingmatmcdf = myquery.results.entities[0].cr9aa_numpatientsreceivingmatmcdf | round: 0 %}{% if cr9aa_numpatientsreceivingmatmcdf == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatmcdf | round: 0}}{% endif %}{% endif %}">                  
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
         </div>
-        <hr>
-
-        <form>
-          <table class="table">
-            <colgroup>
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-              <col span="1" class="table-width">
-            </colgroup>
-            <thead class="table-head">
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">MDF</th>
-                <th scope="col">WCDF</th>
-                <th scope="col">MCDF</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"># of patients receiving MAT</th>
-                <td>
-                  <div class="form-group">
-               <input class="form-control" id="cr9aa_numpatientsreceivingmatmdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatmdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numpatientsreceivingmatwcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatwcdf}} {% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                <input class="form-control" id="cr9aa_numpatientsreceivingmatmcdf"  type="number" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_numpatientsreceivingmatmcdf}} {% endif %}">
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
+        <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+  
+  
+  
+  
+  
+          <div class="container">
+            <div class="row">
+              <div class="col text-left">
+                <h2>Quarterly Data Entry (Narrative)</h2>
+              </div>
+            </div>
+          </div>
+    
+          <div class="container">
+    
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section One: Performance and
+                  Demographic Data Measures</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}}{% endif %}</textarea>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section two: Budget Expenditures</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}}{% endif %}</textarea>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}}{% endif %}</textarea>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}}{% endif %}</textarea>
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Five: Next Steps</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}}{% endif %}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
-
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>
+  <div class="empty-space">
+  </div>
+  </form>
+  <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
+  {% include "HR360 Footer" %}
