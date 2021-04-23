@@ -1,7 +1,27 @@
+{% assign currmonth =  "now" | date: "%M" %}
+{% assign curryear= "now" | date: "yyyy" %}
+{% assign prevyear= now | date_add_years: -1 | date: "yyyy"  %}
+{% assign nextyear= now | date_add_years: 1  | date: "yyyy" %}
+{% if currmonth >= 1 and  currmonth <= 3 %}
+{% assign quarterSelected= "Jan-Mar" %}
+{% elseif currmonth >= 4 and currmonth <= 6 %}
+{% assign quarterSelected= "Apr-Jun" %}
+{% elseif currmonth >= 7 and currmonth <= 9 %}
+{% assign quarterSelected= "Jul-Sep" %}
+{% elseif currmonth >= 10 and currmonth <= 12 %}
+{% assign quarterSelected= "Oct-Dec" %}
+{% endif %}
+{% if currmonth > 6 %}
+ {% assign fyearSelected = curryear  | append: "-" | append: nextyear %}
+{% else %}
+ {% assign fyearSelected =  prevyear | append: "-" | append:  curryear %}
+{% endif %}
+
 {% fetchxml fiscalyears %}
   <fetch mapping="logical">
-    <entity name="cr9aa_fiscalyears">
+    <entity name="crdae_fiscalyears">
       <all-attributes />
+      <order attribute='crdae_startyear' descending='false' />
     </entity>
   </fetch>
 {% endfetchxml %}
@@ -14,7 +34,7 @@
 {% endfetchxml %}
 {% fetchxml Centerforce %}
   <fetch mapping="logical">
-    <entity name="cr9aa_centerforce">
+    <entity name="cr9aa_Centerforce">
       <all-attributes />
       <filter type="and" >
       <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
@@ -24,7 +44,7 @@
   </fetch>
 {% endfetchxml %}
     <div class="col-xs-12 margin">
-      <h2>{{user.roles[0]}} <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
+      <h2>{{user.fullname}} ({{role}}) <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
       <p>Submissions</p>
       <hr>
       <table class="dashboard-table table-striped">
@@ -39,9 +59,9 @@
         <tbody>
         {% for item in Centerforce.results.entities %}
           <tr>
-            <td><a href="/centerforce-statistics?startyear={{item.cr9aa_startyear}}&endyear={{item.cr9aa_endyear}}&startmonth={{item.cr9aa_startmonth}}&endmonth={{item.cr9aa_endmonth}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</a></td>
-            <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>
-            <td>{{item.cr9aa_submittedstatus}}</td>
+            <td><a href="/centerforce-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+            <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
+            <td>{{item.crdae_submittedstatus}}</td>
             <td>{{item.createdon}}</td>
           </tr>
         {% endfor %}
@@ -68,7 +88,7 @@
           <p>
               <select class="fiscalyears form-control">
                   {% for item in fiscalyears.results.entities %}
-                    <option startyear="{{item.cr9aa_startyear}}" endyear="{{item.cr9aa_endyear}}" value="{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</option>
+                    <option startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
                   {% endfor %}
               </select>
           </P>

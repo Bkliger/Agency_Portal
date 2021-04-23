@@ -1,0 +1,312 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+  
+      var cr9aa_numnewrefsrcvd= $("#cr9aa_numnewrefsrcvd").val().trim();
+        var cr9aa_numnewenrollments= $("#cr9aa_numnewenrollments").val().trim();
+        var cr9aa_newenrollnumfemale= $("#cr9aa_newenrollnumfemale").val().trim();
+        var cr9aa_newenrollnummale= $("#cr9aa_newenrollnummale").val().trim();
+        var cr9aa_newenrollnumblack= $("#cr9aa_newenrollnumblack").val().trim();
+        var cr9aa_newenrollnumlatinohispanic= $("#cr9aa_newenrollnumlatinohispanic").val().trim();
+        var cr9aa_newenrollnumasian= $("#cr9aa_newenrollnumasian").val().trim();
+        var cr9aa_newenrollnumwhite= $("#cr9aa_newenrollnumwhite").val().trim();
+        var cr9aa_newenrollnumotherunknownmixed= $("#cr9aa_newenrollnumotherunknownmixed").val().trim();
+        var cr9aa_newenrollnumagedgt25= $("#cr9aa_newenrollnumagedgt25").val().trim();
+        var cr9aa_newenrollnumaged2635= $("#cr9aa_newenrollnumaged2635").val().trim();
+        var cr9aa_newenrollnumaged3645= $("#cr9aa_newenrollnumaged3645").val().trim();
+        var cr9aa_newenrollnumaged4655= $("#cr9aa_newenrollnumaged4655").val().trim();
+        var cr9aa_newenrollnumaged55= $("#cr9aa_newenrollnumaged55").val().trim();
+        var cr9aa_newenrollageunknown= $("#cr9aa_newenrollageunknown").val().trim();
+        var cr9aa_newenrollregionwest= $("#cr9aa_newenrollregionwest").val().trim();
+        var cr9aa_newenrollregioncentral= $("#cr9aa_newenrollregioncentral").val().trim();
+        var cr9aa_newenrollregioneast= $("#cr9aa_newenrollregioneast").val().trim();
+        var cr9aa_newenrolltierab109prob= $("#cr9aa_newenrolltierab109prob").val().trim();
+        var cr9aa_newenrolltierfelonyprob= $("#cr9aa_newenrolltierfelonyprob").val().trim();
+        var cr9aa_newenrolltierlt30daysincustrelwinlast= $("#cr9aa_newenrolltierlt30daysincustrelwinlast").val().trim();
+        var cr9aa_newenrolltiercurrawaitingtrial= $("#cr9aa_newenrolltiercurrawaitingtrial").val().trim();
+        var cr9aa_newenrolltiercurronctprob= $("#cr9aa_newenrolltiercurronctprob").val().trim();
+        var cr9aa_newenrolltierspecctprobbehavioraldvdrug= $("#cr9aa_newenrolltierspecctprobbehavioraldvdrug").val().trim();
+        var cr9aa_newenrolltiercurronparole= $("#cr9aa_newenrolltiercurronparole").val().trim();
+        var cr9aa_newenrolltiercurrincust= $("#cr9aa_newenrolltiercurrincust").val().trim();
+        var cr9aa_newenrolltieroutjurisdiction= $("#cr9aa_newenrolltieroutjurisdiction").val().trim();
+        var cr9aa_newenrolltiernonetheabove= $("#cr9aa_newenrolltiernonetheabove").val().trim();
+        var cr9aa_newenrollnumseekingreunwparents= $("#cr9aa_newenrollnumseekingreunwparents").val().trim();
+        var cr9aa_newenrollnumseekingreunwpartner= $("#cr9aa_newenrollnumseekingreunwpartner").val().trim();
+        var cr9aa_newenrollnumseekingreunwchildren= $("#cr9aa_newenrollnumseekingreunwchildren").val().trim();
+        var cr9aa_allenrollnumenrolledinfamskillsprog= $("#cr9aa_allenrollnumenrolledinfamskillsprog").val().trim();
+        var cr9aa_allenrollnumreceivingreunsvcs= $("#cr9aa_allenrollnumreceivingreunsvcs").val().trim();
+        var cr9aa_allenrollnumdevelopedreunplan= $("#cr9aa_allenrollnumdevelopedreunplan").val().trim();
+        var cr9aa_allenrollnumdevelopedfollowupplan= $("#cr9aa_allenrollnumdevelopedfollowupplan").val().trim();
+        var cr9aa_allenrollnumsuccessfullycompletedprog= $("#cr9aa_allenrollnumsuccessfullycompletedprog").val().trim();
+        var cr9aa_allenrollunsucexitsnumlackengage= $("#cr9aa_allenrollunsucexitsnumlackengage").val().trim();
+        var cr9aa_allenrollunsucexitsnumfailmeetprogreqs= $("#cr9aa_allenrollunsucexitsnumfailmeetprogreqs").val().trim();
+        var cr9aa_allenrollunsucexitsnumrearrested= $("#cr9aa_allenrollunsucexitsnumrearrested").val().trim();
+        var cr9aa_allenrollunsucexitsnumneedscouldnotbemet= $("#cr9aa_allenrollunsucexitsnumneedscouldnotbemet").val().trim();
+        var cr9aa_allenrollunsucexitsnumother= $("#cr9aa_allenrollunsucexitsnumother").val().trim();
+        var crdae_sectionone = $("#crdae_sectionone").val().trim();
+        var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+        var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+        var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+        var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_centerforcefrs",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "crdae_startyear": "{{request.params['startyear']}}",
+            "crdae_endyear": "{{request.params['endyear']}}",
+            "crdae_startmonth": "{{request.params['startmonth']}}",
+            "crdae_endmonth": "{{request.params['endmonth']}}",
+            "cr9aa_numnewrefsrcvd": cr9aa_numnewrefsrcvd !="" || cr9aa_numnewrefsrcvd === "0" ? Number(cr9aa_numnewrefsrcvd) : -1,
+            "cr9aa_numnewenrollments": cr9aa_numnewenrollments !="" || cr9aa_numnewenrollments === "0" ? Number(cr9aa_numnewenrollments) : -1,
+            "cr9aa_newenrollnumfemale": cr9aa_newenrollnumfemale !="" || cr9aa_newenrollnumfemale === "0" ? Number(cr9aa_newenrollnumfemale) : -1,
+            "cr9aa_newenrollnummale": cr9aa_newenrollnummale !="" || cr9aa_newenrollnummale === "0" ? Number(cr9aa_newenrollnummale) : -1,
+            "cr9aa_newenrollnumblack": cr9aa_newenrollnumblack !="" || cr9aa_newenrollnumblack === "0" ? Number(cr9aa_newenrollnumblack) : -1,
+            "cr9aa_newenrollnumlatinohispanic": cr9aa_newenrollnumlatinohispanic !="" || cr9aa_newenrollnumlatinohispanic === "0" ? Number(cr9aa_newenrollnumlatinohispanic) : -1,
+            "cr9aa_newenrollnumasian": cr9aa_newenrollnumasian !="" || cr9aa_newenrollnumasian === "0" ? Number(cr9aa_newenrollnumasian) : -1,
+            "cr9aa_newenrollnumwhite": cr9aa_newenrollnumwhite !="" || cr9aa_newenrollnumwhite === "0" ? Number(cr9aa_newenrollnumwhite) : -1,
+            "cr9aa_newenrollnumotherunknownmixed": cr9aa_newenrollnumotherunknownmixed !="" || cr9aa_newenrollnumotherunknownmixed === "0" ? Number(cr9aa_newenrollnumotherunknownmixed) : -1,
+            "cr9aa_newenrollnumagedgt25": cr9aa_newenrollnumagedgt25 !="" || cr9aa_newenrollnumagedgt25 === "0" ? Number(cr9aa_newenrollnumagedgt25) : -1,
+            "cr9aa_newenrollnumaged2635": cr9aa_newenrollnumaged2635 !="" || cr9aa_newenrollnumaged2635 === "0" ? Number(cr9aa_newenrollnumaged2635) : -1,
+            "cr9aa_newenrollnumaged3645": cr9aa_newenrollnumaged3645 !="" || cr9aa_newenrollnumaged3645 === "0" ? Number(cr9aa_newenrollnumaged3645) : -1,
+            "cr9aa_newenrollnumaged4655": cr9aa_newenrollnumaged4655 !="" || cr9aa_newenrollnumaged4655 === "0" ? Number(cr9aa_newenrollnumaged4655) : -1,
+            "cr9aa_newenrollnumaged55": cr9aa_newenrollnumaged55 !="" || cr9aa_newenrollnumaged55 === "0" ? Number(cr9aa_newenrollnumaged55) : -1,
+            "cr9aa_newenrollageunknown": cr9aa_newenrollageunknown !="" || cr9aa_newenrollageunknown === "0" ? Number(cr9aa_newenrollageunknown) : -1,
+            "cr9aa_newenrollregionwest": cr9aa_newenrollregionwest !="" || cr9aa_newenrollregionwest === "0" ? Number(cr9aa_newenrollregionwest) : -1,
+            "cr9aa_newenrollregioncentral": cr9aa_newenrollregioncentral !="" || cr9aa_newenrollregioncentral === "0" ? Number(cr9aa_newenrollregioncentral) : -1,
+            "cr9aa_newenrollregioneast": cr9aa_newenrollregioneast !="" || cr9aa_newenrollregioneast === "0" ? Number(cr9aa_newenrollregioneast) : -1,
+            "cr9aa_newenrolltierab109prob": cr9aa_newenrolltierab109prob !="" || cr9aa_newenrolltierab109prob === "0" ? Number(cr9aa_newenrolltierab109prob) : -1,
+            "cr9aa_newenrolltierfelonyprob": cr9aa_newenrolltierfelonyprob !="" || cr9aa_newenrolltierfelonyprob === "0" ? Number(cr9aa_newenrolltierfelonyprob) : -1,
+            "cr9aa_newenrolltierlt30daysincustrelwinlast": cr9aa_newenrolltierlt30daysincustrelwinlast !="" || cr9aa_newenrolltierlt30daysincustrelwinlast === "0" ? Number(cr9aa_newenrolltierlt30daysincustrelwinlast) : -1,
+            "cr9aa_newenrolltiercurrawaitingtrial": cr9aa_newenrolltiercurrawaitingtrial !="" || cr9aa_newenrolltiercurrawaitingtrial === "0" ? Number(cr9aa_newenrolltiercurrawaitingtrial) : -1,
+            "cr9aa_newenrolltiercurronctprob": cr9aa_newenrolltiercurronctprob !="" || cr9aa_newenrolltiercurronctprob === "0" ? Number(cr9aa_newenrolltiercurronctprob) : -1,
+            "cr9aa_newenrolltierspecctprobbehavioraldvdrug": cr9aa_newenrolltierspecctprobbehavioraldvdrug !="" || cr9aa_newenrolltierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_newenrolltierspecctprobbehavioraldvdrug) : -1,
+            "cr9aa_newenrolltiercurronparole": cr9aa_newenrolltiercurronparole !="" || cr9aa_newenrolltiercurronparole === "0" ? Number(cr9aa_newenrolltiercurronparole) : -1,
+            "cr9aa_newenrolltiercurrincust": cr9aa_newenrolltiercurrincust !="" || cr9aa_newenrolltiercurrincust === "0" ? Number(cr9aa_newenrolltiercurrincust) : -1,
+            "cr9aa_newenrolltieroutjurisdiction": cr9aa_newenrolltieroutjurisdiction !="" || cr9aa_newenrolltieroutjurisdiction === "0" ? Number(cr9aa_newenrolltieroutjurisdiction) : -1,
+            "cr9aa_newenrolltiernonetheabove": cr9aa_newenrolltiernonetheabove !="" || cr9aa_newenrolltiernonetheabove === "0" ? Number(cr9aa_newenrolltiernonetheabove) : -1,
+            "cr9aa_newenrollnumseekingreunwparents": cr9aa_newenrollnumseekingreunwparents !="" || cr9aa_newenrollnumseekingreunwparents === "0" ? Number(cr9aa_newenrollnumseekingreunwparents) : -1,
+            "cr9aa_newenrollnumseekingreunwpartner": cr9aa_newenrollnumseekingreunwpartner !="" || cr9aa_newenrollnumseekingreunwpartner === "0" ? Number(cr9aa_newenrollnumseekingreunwpartner) : -1,
+            "cr9aa_newenrollnumseekingreunwchildren": cr9aa_newenrollnumseekingreunwchildren !="" || cr9aa_newenrollnumseekingreunwchildren === "0" ? Number(cr9aa_newenrollnumseekingreunwchildren) : -1,
+            "cr9aa_allenrollnumenrolledinfamskillsprog": cr9aa_allenrollnumenrolledinfamskillsprog !="" || cr9aa_allenrollnumenrolledinfamskillsprog === "0" ? Number(cr9aa_allenrollnumenrolledinfamskillsprog) : -1,
+            "cr9aa_allenrollnumreceivingreunsvcs": cr9aa_allenrollnumreceivingreunsvcs !="" || cr9aa_allenrollnumreceivingreunsvcs === "0" ? Number(cr9aa_allenrollnumreceivingreunsvcs) : -1,
+            "cr9aa_allenrollnumdevelopedreunplan": cr9aa_allenrollnumdevelopedreunplan !="" || cr9aa_allenrollnumdevelopedreunplan === "0" ? Number(cr9aa_allenrollnumdevelopedreunplan) : -1,
+            "cr9aa_allenrollnumdevelopedfollowupplan": cr9aa_allenrollnumdevelopedfollowupplan !="" || cr9aa_allenrollnumdevelopedfollowupplan === "0" ? Number(cr9aa_allenrollnumdevelopedfollowupplan) : -1,
+            "cr9aa_allenrollnumsuccessfullycompletedprog": cr9aa_allenrollnumsuccessfullycompletedprog !="" || cr9aa_allenrollnumsuccessfullycompletedprog === "0" ? Number(cr9aa_allenrollnumsuccessfullycompletedprog) : -1,
+            "cr9aa_allenrollunsucexitsnumlackengage": cr9aa_allenrollunsucexitsnumlackengage !="" || cr9aa_allenrollunsucexitsnumlackengage === "0" ? Number(cr9aa_allenrollunsucexitsnumlackengage) : -1,
+            "cr9aa_allenrollunsucexitsnumfailmeetprogreqs": cr9aa_allenrollunsucexitsnumfailmeetprogreqs !="" || cr9aa_allenrollunsucexitsnumfailmeetprogreqs === "0" ? Number(cr9aa_allenrollunsucexitsnumfailmeetprogreqs) : -1,
+            "cr9aa_allenrollunsucexitsnumrearrested": cr9aa_allenrollunsucexitsnumrearrested !="" || cr9aa_allenrollunsucexitsnumrearrested === "0" ? Number(cr9aa_allenrollunsucexitsnumrearrested) : -1,
+            "cr9aa_allenrollunsucexitsnumneedscouldnotbemet": cr9aa_allenrollunsucexitsnumneedscouldnotbemet !="" || cr9aa_allenrollunsucexitsnumneedscouldnotbemet === "0" ? Number(cr9aa_allenrollunsucexitsnumneedscouldnotbemet) : -1,
+            "cr9aa_allenrollunsucexitsnumother": cr9aa_allenrollunsucexitsnumother !="" || cr9aa_allenrollunsucexitsnumother === "0" ? Number(cr9aa_allenrollunsucexitsnumother) : -1,
+            "crdae_sectionone": crdae_sectionone,
+            "crdae_sectiontwo": crdae_sectiontwo,
+            "crdae_sectionthree": crdae_sectionthree,
+            "crdae_sectionfour": crdae_sectionfour,
+            "crdae_sectionfive": crdae_sectionfive,
+            
+          
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_CenterforceFRs({{myquery.results.entities[0].cr9aa_CenterforceFRid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "crdae_startyear": "{{request.params['startyear']}}",
+            "crdae_endyear": "{{request.params['endyear']}}",
+            "crdae_startmonth": "{{request.params['startmonth']}}",
+            "crdae_endmonth": "{{request.params['endmonth']}}",
+            "cr9aa_numnewrefsrcvd": cr9aa_numnewrefsrcvd !="" || cr9aa_numnewrefsrcvd === "0" ? Number(cr9aa_numnewrefsrcvd) : -1,
+            "cr9aa_numnewenrollments": cr9aa_numnewenrollments !="" || cr9aa_numnewenrollments === "0" ? Number(cr9aa_numnewenrollments) : -1,
+            "cr9aa_newenrollnumfemale": cr9aa_newenrollnumfemale !="" || cr9aa_newenrollnumfemale === "0" ? Number(cr9aa_newenrollnumfemale) : -1,
+            "cr9aa_newenrollnummale": cr9aa_newenrollnummale !="" || cr9aa_newenrollnummale === "0" ? Number(cr9aa_newenrollnummale) : -1,
+            "cr9aa_newenrollnumblack": cr9aa_newenrollnumblack !="" || cr9aa_newenrollnumblack === "0" ? Number(cr9aa_newenrollnumblack) : -1,
+            "cr9aa_newenrollnumlatinohispanic": cr9aa_newenrollnumlatinohispanic !="" || cr9aa_newenrollnumlatinohispanic === "0" ? Number(cr9aa_newenrollnumlatinohispanic) : -1,
+            "cr9aa_newenrollnumasian": cr9aa_newenrollnumasian !="" || cr9aa_newenrollnumasian === "0" ? Number(cr9aa_newenrollnumasian) : -1,
+            "cr9aa_newenrollnumwhite": cr9aa_newenrollnumwhite !="" || cr9aa_newenrollnumwhite === "0" ? Number(cr9aa_newenrollnumwhite) : -1,
+            "cr9aa_newenrollnumotherunknownmixed": cr9aa_newenrollnumotherunknownmixed !="" || cr9aa_newenrollnumotherunknownmixed === "0" ? Number(cr9aa_newenrollnumotherunknownmixed) : -1,
+            "cr9aa_newenrollnumagedgt25": cr9aa_newenrollnumagedgt25 !="" || cr9aa_newenrollnumagedgt25 === "0" ? Number(cr9aa_newenrollnumagedgt25) : -1,
+            "cr9aa_newenrollnumaged2635": cr9aa_newenrollnumaged2635 !="" || cr9aa_newenrollnumaged2635 === "0" ? Number(cr9aa_newenrollnumaged2635) : -1,
+            "cr9aa_newenrollnumaged3645": cr9aa_newenrollnumaged3645 !="" || cr9aa_newenrollnumaged3645 === "0" ? Number(cr9aa_newenrollnumaged3645) : -1,
+            "cr9aa_newenrollnumaged4655": cr9aa_newenrollnumaged4655 !="" || cr9aa_newenrollnumaged4655 === "0" ? Number(cr9aa_newenrollnumaged4655) : -1,
+            "cr9aa_newenrollnumaged55": cr9aa_newenrollnumaged55 !="" || cr9aa_newenrollnumaged55 === "0" ? Number(cr9aa_newenrollnumaged55) : -1,
+            "cr9aa_newenrollageunknown": cr9aa_newenrollageunknown !="" || cr9aa_newenrollageunknown === "0" ? Number(cr9aa_newenrollageunknown) : -1,
+            "cr9aa_newenrollregionwest": cr9aa_newenrollregionwest !="" || cr9aa_newenrollregionwest === "0" ? Number(cr9aa_newenrollregionwest) : -1,
+            "cr9aa_newenrollregioncentral": cr9aa_newenrollregioncentral !="" || cr9aa_newenrollregioncentral === "0" ? Number(cr9aa_newenrollregioncentral) : -1,
+            "cr9aa_newenrollregioneast": cr9aa_newenrollregioneast !="" || cr9aa_newenrollregioneast === "0" ? Number(cr9aa_newenrollregioneast) : -1,
+            "cr9aa_newenrolltierab109prob": cr9aa_newenrolltierab109prob !="" || cr9aa_newenrolltierab109prob === "0" ? Number(cr9aa_newenrolltierab109prob) : -1,
+            "cr9aa_newenrolltierfelonyprob": cr9aa_newenrolltierfelonyprob !="" || cr9aa_newenrolltierfelonyprob === "0" ? Number(cr9aa_newenrolltierfelonyprob) : -1,
+            "cr9aa_newenrolltierlt30daysincustrelwinlast": cr9aa_newenrolltierlt30daysincustrelwinlast !="" || cr9aa_newenrolltierlt30daysincustrelwinlast === "0" ? Number(cr9aa_newenrolltierlt30daysincustrelwinlast) : -1,
+            "cr9aa_newenrolltiercurrawaitingtrial": cr9aa_newenrolltiercurrawaitingtrial !="" || cr9aa_newenrolltiercurrawaitingtrial === "0" ? Number(cr9aa_newenrolltiercurrawaitingtrial) : -1,
+            "cr9aa_newenrolltiercurronctprob": cr9aa_newenrolltiercurronctprob !="" || cr9aa_newenrolltiercurronctprob === "0" ? Number(cr9aa_newenrolltiercurronctprob) : -1,
+            "cr9aa_newenrolltierspecctprobbehavioraldvdrug": cr9aa_newenrolltierspecctprobbehavioraldvdrug !="" || cr9aa_newenrolltierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_newenrolltierspecctprobbehavioraldvdrug) : -1,
+            "cr9aa_newenrolltiercurronparole": cr9aa_newenrolltiercurronparole !="" || cr9aa_newenrolltiercurronparole === "0" ? Number(cr9aa_newenrolltiercurronparole) : -1,
+            "cr9aa_newenrolltiercurrincust": cr9aa_newenrolltiercurrincust !="" || cr9aa_newenrolltiercurrincust === "0" ? Number(cr9aa_newenrolltiercurrincust) : -1,
+            "cr9aa_newenrolltieroutjurisdiction": cr9aa_newenrolltieroutjurisdiction !="" || cr9aa_newenrolltieroutjurisdiction === "0" ? Number(cr9aa_newenrolltieroutjurisdiction) : -1,
+            "cr9aa_newenrolltiernonetheabove": cr9aa_newenrolltiernonetheabove !="" || cr9aa_newenrolltiernonetheabove === "0" ? Number(cr9aa_newenrolltiernonetheabove) : -1,
+            "cr9aa_newenrollnumseekingreunwparents": cr9aa_newenrollnumseekingreunwparents !="" || cr9aa_newenrollnumseekingreunwparents === "0" ? Number(cr9aa_newenrollnumseekingreunwparents) : -1,
+            "cr9aa_newenrollnumseekingreunwpartner": cr9aa_newenrollnumseekingreunwpartner !="" || cr9aa_newenrollnumseekingreunwpartner === "0" ? Number(cr9aa_newenrollnumseekingreunwpartner) : -1,
+            "cr9aa_newenrollnumseekingreunwchildren": cr9aa_newenrollnumseekingreunwchildren !="" || cr9aa_newenrollnumseekingreunwchildren === "0" ? Number(cr9aa_newenrollnumseekingreunwchildren) : -1,
+            "cr9aa_allenrollnumenrolledinfamskillsprog": cr9aa_allenrollnumenrolledinfamskillsprog !="" || cr9aa_allenrollnumenrolledinfamskillsprog === "0" ? Number(cr9aa_allenrollnumenrolledinfamskillsprog) : -1,
+            "cr9aa_allenrollnumreceivingreunsvcs": cr9aa_allenrollnumreceivingreunsvcs !="" || cr9aa_allenrollnumreceivingreunsvcs === "0" ? Number(cr9aa_allenrollnumreceivingreunsvcs) : -1,
+            "cr9aa_allenrollnumdevelopedreunplan": cr9aa_allenrollnumdevelopedreunplan !="" || cr9aa_allenrollnumdevelopedreunplan === "0" ? Number(cr9aa_allenrollnumdevelopedreunplan) : -1,
+            "cr9aa_allenrollnumdevelopedfollowupplan": cr9aa_allenrollnumdevelopedfollowupplan !="" || cr9aa_allenrollnumdevelopedfollowupplan === "0" ? Number(cr9aa_allenrollnumdevelopedfollowupplan) : -1,
+            "cr9aa_allenrollnumsuccessfullycompletedprog": cr9aa_allenrollnumsuccessfullycompletedprog !="" || cr9aa_allenrollnumsuccessfullycompletedprog === "0" ? Number(cr9aa_allenrollnumsuccessfullycompletedprog) : -1,
+            "cr9aa_allenrollunsucexitsnumlackengage": cr9aa_allenrollunsucexitsnumlackengage !="" || cr9aa_allenrollunsucexitsnumlackengage === "0" ? Number(cr9aa_allenrollunsucexitsnumlackengage) : -1,
+            "cr9aa_allenrollunsucexitsnumfailmeetprogreqs": cr9aa_allenrollunsucexitsnumfailmeetprogreqs !="" || cr9aa_allenrollunsucexitsnumfailmeetprogreqs === "0" ? Number(cr9aa_allenrollunsucexitsnumfailmeetprogreqs) : -1,
+            "cr9aa_allenrollunsucexitsnumrearrested": cr9aa_allenrollunsucexitsnumrearrested !="" || cr9aa_allenrollunsucexitsnumrearrested === "0" ? Number(cr9aa_allenrollunsucexitsnumrearrested) : -1,
+            "cr9aa_allenrollunsucexitsnumneedscouldnotbemet": cr9aa_allenrollunsucexitsnumneedscouldnotbemet !="" || cr9aa_allenrollunsucexitsnumneedscouldnotbemet === "0" ? Number(cr9aa_allenrollunsucexitsnumneedscouldnotbemet) : -1,
+            "cr9aa_allenrollunsucexitsnumother": cr9aa_allenrollunsucexitsnumother !="" || cr9aa_allenrollunsucexitsnumother === "0" ? Number(cr9aa_allenrollunsucexitsnumother) : -1,
+            "crdae_sectionone": crdae_sectionone,
+            "crdae_sectiontwo": crdae_sectiontwo,
+            "crdae_sectionthree": crdae_sectionthree,
+            "crdae_sectionfour": crdae_sectionfour,
+            "crdae_sectionfive": crdae_sectionfive,
+            "crdae_submittedstatus": submitStatus,
+            "crdae_executivedircur": Number(crdae_executivedircur),
+            "crdae_programmgrcur": Number(crdae_programmgrcur),
+            "crdae_parentingcoachcur": Number(crdae_parentingcoachcur),
+            "crdae_totalsalscur": Number(crdae_totalsalscur),
+            "crdae_fringebenefitscur": Number(crdae_fringebenefitscur),
+            "crdae_totalsalsbenefitscur": Number(crdae_totalsalsbenefitscur),
+            "crdae_fringeratechargedcur": Number(crdae_fringeratechargedcur),
+            "crdae_travelmileagecur": Number(crdae_travelmileagecur),
+            "crdae_equipcellphonescur": Number(crdae_equipcellphonescur),
+            "crdae_incentivescur": Number(crdae_incentivescur),
+            "crdae_copiescur": Number(crdae_copiescur),
+            "crdae_rentconcordcur": Number(crdae_rentconcordcur),
+            "crdae_rentrichmondcur": Number(crdae_rentrichmondcur),
+            "crdae_rentantiochcur": Number(crdae_rentantiochcur),
+            "crdae_totaloperationscur": Number(crdae_totaloperationscur),
+            "crdae_totaldirectcostscur": Number(crdae_totaldirectcostscur),
+            "crdae_indirectcostscur": Number(crdae_indirectcostscur),
+            "crdae_totalexpensescur": Number(crdae_totalexpensescur),
+            "crdae_executivedirbudget": Number(crdae_executivedirbudget),
+            "crdae_programmgrbudget": Number(crdae_programmgrbudget),
+            "crdae_parentingcoachbudget": Number(crdae_parentingcoachbudget),
+            "crdae_totalsalsbudget": Number(crdae_totalsalsbudget),
+            "crdae_fringebenefitsbudget": Number(crdae_fringebenefitsbudget),
+            "crdae_totalsalsbenefitsbudget": Number(crdae_totalsalsbenefitsbudget),
+            "crdae_fringeratechargedbudget": Number(crdae_fringeratechargedbudget),
+            "crdae_travelmileagebudget": Number(crdae_travelmileagebudget),
+            "crdae_equipcellphonesbudget": Number(crdae_equipcellphonesbudget),
+            "crdae_incentivesbudget": Number(crdae_incentivesbudget),
+            "crdae_copiesbudget": Number(crdae_copiesbudget),
+            "crdae_rentconcordbudget": Number(crdae_rentconcordbudget),
+            "crdae_rentrichmondbudget": Number(crdae_rentrichmondbudget),
+            "crdae_rentantiochbudget": Number(crdae_rentantiochbudget),
+            "crdae_totaloperationsbudget": Number(crdae_totaloperationsbudget),
+            "crdae_totaldirectcostsbudget": Number(crdae_totaldirectcostsbudget),
+            "crdae_indirectcostsbudget": Number(crdae_indirectcostsbudget),
+            "crdae_totalexpensesbudget": Number(crdae_totalexpensesbudget),
+            "crdae_executivedirtot": Number(crdae_executivedirtot),
+            "crdae_programmgrtot": Number(crdae_programmgrtot),
+            "crdae_parentingcoachtot": Number(crdae_parentingcoachtot),
+            "crdae_totalsalstot": Number(crdae_totalsalstot),
+            "crdae_fringebenefitstot": Number(crdae_fringebenefitstot),
+            "crdae_totalsalsbenefitstot": Number(crdae_totalsalsbenefitstot),
+            "crdae_fringeratechargedtot": Number(crdae_fringeratechargedtot),
+            "crdae_travelmileagetot": Number(crdae_travelmileagetot),
+            "crdae_equipcellphonestot": Number(crdae_equipcellphonestot),
+            "crdae_incentivestot": Number(crdae_incentivestot),
+            "crdae_copiestot": Number(crdae_copiestot),
+            "crdae_rentconcordtot": Number(crdae_rentconcordtot),
+            "crdae_rentrichmondtot": Number(crdae_rentrichmondtot),
+            "crdae_rentantiochtot": Number(crdae_rentantiochtot),
+            "crdae_totaloperationstot": Number(crdae_totaloperationstot),
+            "crdae_totaldirectcoststot": Number(crdae_totaldirectcoststot),
+            "crdae_indirectcoststot": Number(crdae_indirectcoststot),
+            "crdae_totalexpensestot": Number(crdae_totalexpensestot),
+            "crdae_executivedirfur": crdae_executivedirfur,
+            "crdae_programmgrfur": crdae_programmgrfur,
+            "crdae_parentingcoachfur": crdae_parentingcoachfur,
+            "crdae_totalsalsfur": crdae_totalsalsfur,
+            "crdae_fringebenefitsfur": crdae_fringebenefitsfur,
+            "crdae_totalsalsbenefitsfur": crdae_totalsalsbenefitsfur,
+            "crdae_fringeratechargedfur": crdae_fringeratechargedfur,
+            "crdae_travelmileagefur": crdae_travelmileagefur,
+            "crdae_equipcellphonesfur": crdae_equipcellphonesfur,
+            "crdae_incentivesfur": crdae_incentivesfur,
+            "crdae_copiesfur": crdae_copiesfur,
+            "crdae_rentconcordfur": crdae_rentconcordfur,
+            "crdae_rentrichmondfur": crdae_rentrichmondfur,
+            "crdae_rentantiochfur": crdae_rentantiochfur,
+            "crdae_totaloperationsfur": crdae_totaloperationsfur,
+            "crdae_totaldirectcostsfur": crdae_totaldirectcostsfur,
+            "crdae_indirectcostsfur": crdae_indirectcostsfur,
+            "crdae_totalexpensesfur": crdae_totalexpensesfur
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>

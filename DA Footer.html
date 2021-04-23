@@ -1,0 +1,187 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+        
+      var cr9aa_numab109individualswnewfelonychargesab109= $("#cr9aa_numab109individualswnewfelonychargesab109").val().trim();
+        var cr9aa_numab109individualswnewfelonyconvictionsa= $("#cr9aa_numab109individualswnewfelonyconvictionsa").val().trim();
+        var cr9aa_numallothernonab109felonyconvictionsab109= $("#cr9aa_numallothernonab109felonyconvictionsab109").val().trim();
+        var cr9aa_numindividualssentsplitsentenceab109= $("#cr9aa_numindividualssentsplitsentenceab109").val().trim();
+        var cr9aa_numindividualssentsupervisiononlyab109= $("#cr9aa_numindividualssentsupervisiononlyab109").val().trim();
+        var cr9aa_numsentjailonlyab109= $("#cr9aa_numsentjailonlyab109").val().trim();
+        var cr9aa_numallothernonab109felonysentencesab109= $("#cr9aa_numallothernonab109felonysentencesab109").val().trim();
+        var cr9aa_numsupervisionrevocationsoveralltalab109= $("#cr9aa_numsupervisionrevocationsoveralltalab109").val().trim();
+        var cr9aa_numsupervisionrevocationsprcsab109= $("#cr9aa_numsupervisionrevocationsprcsab109").val().trim();
+        var cr9aa_numsupervisionrevocationsparoleab109= $("#cr9aa_numsupervisionrevocationsparoleab109").val().trim();
+        var cr9aa_numsupervisionrevocations1170sab109= $("#cr9aa_numsupervisionrevocations1170sab109").val().trim();
+        var cr9aa_numfelonyarraignmentsacer= $("#cr9aa_numfelonyarraignmentsacer").val().trim();
+        var cr9aa_numprereleasereportsacer= $("#cr9aa_numprereleasereportsacer").val().trim();
+        var cr9aa_numnewcasesvwadvocates= $("#cr9aa_numnewcasesvwadvocates").val().trim();
+        var cr9aa_numactivecasesvwadvocates= $("#cr9aa_numactivecasesvwadvocates").val().trim();
+        var cr9aa_numclosedcasesvwadvocates= $("#cr9aa_numclosedcasesvwadvocates").val().trim();
+        var cr9aa_numassistedwvictimimpactstatementsvwadvoc= $("#cr9aa_numassistedwvictimimpactstatementsvwadvoc").val().trim();
+        var cr9aa_numrestitutionclaimsvwadvocates= $("#cr9aa_numrestitutionclaimsvwadvocates").val().trim();
+        var cr9aa_numcaseupdatesvwadvocates= $("#cr9aa_numcaseupdatesvwadvocates").val().trim();
+        var cr9aa_numindividualsvcscompletedvwadvocates= $("#cr9aa_numindividualsvcscompletedvwadvocates").val().trim();
+        var cr9aa_numnewcasesdomviolence= $("#cr9aa_numnewcasesdomviolence").val().trim();
+        var cr9aa_numactivecasesdomviolence= $("#cr9aa_numactivecasesdomviolence").val().trim();
+        var cr9aa_numclosedcasesdomviolence= $("#cr9aa_numclosedcasesdomviolence").val().trim();
+        var cr9aa_numcaseswlifeexposuredomviolence= $("#cr9aa_numcaseswlifeexposuredomviolence").val().trim();
+        
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_DAs",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_numab109individualswnewfelonychargesab109": cr9aa_numab109individualswnewfelonychargesab109 !="" || cr9aa_numab109individualswnewfelonychargesab109 === "0" ? Number(cr9aa_numab109individualswnewfelonychargesab109) : -1,
+        "cr9aa_numab109individualswnewfelonyconvictionsa": cr9aa_numab109individualswnewfelonyconvictionsa !="" || cr9aa_numab109individualswnewfelonyconvictionsa === "0" ? Number(cr9aa_numab109individualswnewfelonyconvictionsa) : -1,
+        "cr9aa_numallothernonab109felonyconvictionsab109": cr9aa_numallothernonab109felonyconvictionsab109 !="" || cr9aa_numallothernonab109felonyconvictionsab109 === "0" ? Number(cr9aa_numallothernonab109felonyconvictionsab109) : -1,
+        "cr9aa_numindividualssentsplitsentenceab109": cr9aa_numindividualssentsplitsentenceab109 !="" || cr9aa_numindividualssentsplitsentenceab109 === "0" ? Number(cr9aa_numindividualssentsplitsentenceab109) : -1,
+        "cr9aa_numindividualssentsupervisiononlyab109": cr9aa_numindividualssentsupervisiononlyab109 !="" || cr9aa_numindividualssentsupervisiononlyab109 === "0" ? Number(cr9aa_numindividualssentsupervisiononlyab109) : -1,
+        "cr9aa_numsentjailonlyab109": cr9aa_numsentjailonlyab109 !="" || cr9aa_numsentjailonlyab109 === "0" ? Number(cr9aa_numsentjailonlyab109) : -1,
+        "cr9aa_numallothernonab109felonysentencesab109": cr9aa_numallothernonab109felonysentencesab109 !="" || cr9aa_numallothernonab109felonysentencesab109 === "0" ? Number(cr9aa_numallothernonab109felonysentencesab109) : -1,
+        "cr9aa_numsupervisionrevocationsoveralltalab109": cr9aa_numsupervisionrevocationsoveralltalab109 !="" || cr9aa_numsupervisionrevocationsoveralltalab109 === "0" ? Number(cr9aa_numsupervisionrevocationsoveralltalab109) : -1,
+        "cr9aa_numsupervisionrevocationsprcsab109": cr9aa_numsupervisionrevocationsprcsab109 !="" || cr9aa_numsupervisionrevocationsprcsab109 === "0" ? Number(cr9aa_numsupervisionrevocationsprcsab109) : -1,
+        "cr9aa_numsupervisionrevocationsparoleab109": cr9aa_numsupervisionrevocationsparoleab109 !="" || cr9aa_numsupervisionrevocationsparoleab109 === "0" ? Number(cr9aa_numsupervisionrevocationsparoleab109) : -1,
+        "cr9aa_numsupervisionrevocations1170sab109": cr9aa_numsupervisionrevocations1170sab109 !="" || cr9aa_numsupervisionrevocations1170sab109 === "0" ? Number(cr9aa_numsupervisionrevocations1170sab109) : -1,
+        "cr9aa_numfelonyarraignmentsacer": cr9aa_numfelonyarraignmentsacer !="" || cr9aa_numfelonyarraignmentsacer === "0" ? Number(cr9aa_numfelonyarraignmentsacer) : -1,
+        "cr9aa_numprereleasereportsacer": cr9aa_numprereleasereportsacer !="" || cr9aa_numprereleasereportsacer === "0" ? Number(cr9aa_numprereleasereportsacer) : -1,
+        "cr9aa_numnewcasesvwadvocates": cr9aa_numnewcasesvwadvocates !="" || cr9aa_numnewcasesvwadvocates === "0" ? Number(cr9aa_numnewcasesvwadvocates) : -1,
+        "cr9aa_numactivecasesvwadvocates": cr9aa_numactivecasesvwadvocates !="" || cr9aa_numactivecasesvwadvocates === "0" ? Number(cr9aa_numactivecasesvwadvocates) : -1,
+        "cr9aa_numclosedcasesvwadvocates": cr9aa_numclosedcasesvwadvocates !="" || cr9aa_numclosedcasesvwadvocates === "0" ? Number(cr9aa_numclosedcasesvwadvocates) : -1,
+        "cr9aa_numassistedwvictimimpactstatementsvwadvoc": cr9aa_numassistedwvictimimpactstatementsvwadvoc !="" || cr9aa_numassistedwvictimimpactstatementsvwadvoc === "0" ? Number(cr9aa_numassistedwvictimimpactstatementsvwadvoc) : -1,
+        "cr9aa_numrestitutionclaimsvwadvocates": cr9aa_numrestitutionclaimsvwadvocates !="" || cr9aa_numrestitutionclaimsvwadvocates === "0" ? Number(cr9aa_numrestitutionclaimsvwadvocates) : -1,
+        "cr9aa_numcaseupdatesvwadvocates": cr9aa_numcaseupdatesvwadvocates !="" || cr9aa_numcaseupdatesvwadvocates === "0" ? Number(cr9aa_numcaseupdatesvwadvocates) : -1,
+        "cr9aa_numindividualsvcscompletedvwadvocates": cr9aa_numindividualsvcscompletedvwadvocates !="" || cr9aa_numindividualsvcscompletedvwadvocates === "0" ? Number(cr9aa_numindividualsvcscompletedvwadvocates) : -1,
+        "cr9aa_numnewcasesdomviolence": cr9aa_numnewcasesdomviolence !="" || cr9aa_numnewcasesdomviolence === "0" ? Number(cr9aa_numnewcasesdomviolence) : -1,
+        "cr9aa_numactivecasesdomviolence": cr9aa_numactivecasesdomviolence !="" || cr9aa_numactivecasesdomviolence === "0" ? Number(cr9aa_numactivecasesdomviolence) : -1,
+        "cr9aa_numclosedcasesdomviolence": cr9aa_numclosedcasesdomviolence !="" || cr9aa_numclosedcasesdomviolence === "0" ? Number(cr9aa_numclosedcasesdomviolence) : -1,
+        "cr9aa_numcaseswlifeexposuredomviolence": cr9aa_numcaseswlifeexposuredomviolence !="" || cr9aa_numcaseswlifeexposuredomviolence === "0" ? Number(cr9aa_numcaseswlifeexposuredomviolence) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+        
+          
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_DAs({{myquery.results.entities[0].cr9aa_daid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_numab109individualswnewfelonychargesab109": cr9aa_numab109individualswnewfelonychargesab109 !="" || cr9aa_numab109individualswnewfelonychargesab109 === "0" ? Number(cr9aa_numab109individualswnewfelonychargesab109) : -1,
+        "cr9aa_numab109individualswnewfelonyconvictionsa": cr9aa_numab109individualswnewfelonyconvictionsa !="" || cr9aa_numab109individualswnewfelonyconvictionsa === "0" ? Number(cr9aa_numab109individualswnewfelonyconvictionsa) : -1,
+        "cr9aa_numallothernonab109felonyconvictionsab109": cr9aa_numallothernonab109felonyconvictionsab109 !="" || cr9aa_numallothernonab109felonyconvictionsab109 === "0" ? Number(cr9aa_numallothernonab109felonyconvictionsab109) : -1,
+        "cr9aa_numindividualssentsplitsentenceab109": cr9aa_numindividualssentsplitsentenceab109 !="" || cr9aa_numindividualssentsplitsentenceab109 === "0" ? Number(cr9aa_numindividualssentsplitsentenceab109) : -1,
+        "cr9aa_numindividualssentsupervisiononlyab109": cr9aa_numindividualssentsupervisiononlyab109 !="" || cr9aa_numindividualssentsupervisiononlyab109 === "0" ? Number(cr9aa_numindividualssentsupervisiononlyab109) : -1,
+        "cr9aa_numsentjailonlyab109": cr9aa_numsentjailonlyab109 !="" || cr9aa_numsentjailonlyab109 === "0" ? Number(cr9aa_numsentjailonlyab109) : -1,
+        "cr9aa_numallothernonab109felonysentencesab109": cr9aa_numallothernonab109felonysentencesab109 !="" || cr9aa_numallothernonab109felonysentencesab109 === "0" ? Number(cr9aa_numallothernonab109felonysentencesab109) : -1,
+        "cr9aa_numsupervisionrevocationsoveralltalab109": cr9aa_numsupervisionrevocationsoveralltalab109 !="" || cr9aa_numsupervisionrevocationsoveralltalab109 === "0" ? Number(cr9aa_numsupervisionrevocationsoveralltalab109) : -1,
+        "cr9aa_numsupervisionrevocationsprcsab109": cr9aa_numsupervisionrevocationsprcsab109 !="" || cr9aa_numsupervisionrevocationsprcsab109 === "0" ? Number(cr9aa_numsupervisionrevocationsprcsab109) : -1,
+        "cr9aa_numsupervisionrevocationsparoleab109": cr9aa_numsupervisionrevocationsparoleab109 !="" || cr9aa_numsupervisionrevocationsparoleab109 === "0" ? Number(cr9aa_numsupervisionrevocationsparoleab109) : -1,
+        "cr9aa_numsupervisionrevocations1170sab109": cr9aa_numsupervisionrevocations1170sab109 !="" || cr9aa_numsupervisionrevocations1170sab109 === "0" ? Number(cr9aa_numsupervisionrevocations1170sab109) : -1,
+        "cr9aa_numfelonyarraignmentsacer": cr9aa_numfelonyarraignmentsacer !="" || cr9aa_numfelonyarraignmentsacer === "0" ? Number(cr9aa_numfelonyarraignmentsacer) : -1,
+        "cr9aa_numprereleasereportsacer": cr9aa_numprereleasereportsacer !="" || cr9aa_numprereleasereportsacer === "0" ? Number(cr9aa_numprereleasereportsacer) : -1,
+        "cr9aa_numnewcasesvwadvocates": cr9aa_numnewcasesvwadvocates !="" || cr9aa_numnewcasesvwadvocates === "0" ? Number(cr9aa_numnewcasesvwadvocates) : -1,
+        "cr9aa_numactivecasesvwadvocates": cr9aa_numactivecasesvwadvocates !="" || cr9aa_numactivecasesvwadvocates === "0" ? Number(cr9aa_numactivecasesvwadvocates) : -1,
+        "cr9aa_numclosedcasesvwadvocates": cr9aa_numclosedcasesvwadvocates !="" || cr9aa_numclosedcasesvwadvocates === "0" ? Number(cr9aa_numclosedcasesvwadvocates) : -1,
+        "cr9aa_numassistedwvictimimpactstatementsvwadvoc": cr9aa_numassistedwvictimimpactstatementsvwadvoc !="" || cr9aa_numassistedwvictimimpactstatementsvwadvoc === "0" ? Number(cr9aa_numassistedwvictimimpactstatementsvwadvoc) : -1,
+        "cr9aa_numrestitutionclaimsvwadvocates": cr9aa_numrestitutionclaimsvwadvocates !="" || cr9aa_numrestitutionclaimsvwadvocates === "0" ? Number(cr9aa_numrestitutionclaimsvwadvocates) : -1,
+        "cr9aa_numcaseupdatesvwadvocates": cr9aa_numcaseupdatesvwadvocates !="" || cr9aa_numcaseupdatesvwadvocates === "0" ? Number(cr9aa_numcaseupdatesvwadvocates) : -1,
+        "cr9aa_numindividualsvcscompletedvwadvocates": cr9aa_numindividualsvcscompletedvwadvocates !="" || cr9aa_numindividualsvcscompletedvwadvocates === "0" ? Number(cr9aa_numindividualsvcscompletedvwadvocates) : -1,
+        "cr9aa_numnewcasesdomviolence": cr9aa_numnewcasesdomviolence !="" || cr9aa_numnewcasesdomviolence === "0" ? Number(cr9aa_numnewcasesdomviolence) : -1,
+        "cr9aa_numactivecasesdomviolence": cr9aa_numactivecasesdomviolence !="" || cr9aa_numactivecasesdomviolence === "0" ? Number(cr9aa_numactivecasesdomviolence) : -1,
+        "cr9aa_numclosedcasesdomviolence": cr9aa_numclosedcasesdomviolence !="" || cr9aa_numclosedcasesdomviolence === "0" ? Number(cr9aa_numclosedcasesdomviolence) : -1,
+        "cr9aa_numcaseswlifeexposuredomviolence": cr9aa_numcaseswlifeexposuredomviolence !="" || cr9aa_numcaseswlifeexposuredomviolence === "0" ? Number(cr9aa_numcaseswlifeexposuredomviolence) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+        
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>

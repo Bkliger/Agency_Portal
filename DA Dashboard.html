@@ -33,9 +33,9 @@
   </entity>
 </fetch>
 {% endfetchxml %}
-{% fetchxml hr360 %}
+{% fetchxml DA %}
 <fetch mapping="logical">
-  <entity name="cr9aa_hr360">
+  <entity name="cr9aa_da">
     <all-attributes />
     <filter type="and" >
     <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
@@ -45,7 +45,7 @@
 </fetch>
 {% endfetchxml %}
   <div class="col-xs-12 margin">
-    <h2>{{user.fullname}} ({{user.roles[0]}}) <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
+    <h2>{{user.fullname}} ({{role}}) <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
     <p>Submissions</p>
     <hr>
     <table class="dashboard-table table-striped">
@@ -58,11 +58,11 @@
         </tr>
       </thead>
       <tbody>
-      {% for item in hr360.results.entities %}
+      {% for item in DA.results.entities %}
         <tr>
-          <td><a href="/hr360-statistics?startyear={{item.cr9aa_startyear}}&endyear={{item.cr9aa_endyear}}&startmonth={{item.cr9aa_startmonth}}&endmonth={{item.cr9aa_endmonth}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</a></td>
-          <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>
-          <td>{{item.cr9aa_submittedstatus}}</td>
+          <td><a href="/da-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+          <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
+          <td>{{item.crdae_submittedstatus}}</td>
           <td>{{item.createdon}}</td>
         </tr>
       {% endfor %}
@@ -149,7 +149,7 @@ function checkRecordExistance(startyear,endyear,startmonth,endmonth){
               }
             });
       }else{
-        window.location="/hr360-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+        window.location="/da-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
       }
   });    
   
