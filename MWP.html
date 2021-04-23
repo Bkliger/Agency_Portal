@@ -1,13 +1,19 @@
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
 <form id="form" role="form">
   {% fetchxml myquery %}
   <fetch mapping="logical">
-    <entity name="cr9aa_hr360">
+    <entity name="cr9aa_mwp">
       <all-attributes />​
       <filter type='and'>
-        <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
-        <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
-        <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
-        <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
       </filter>
     </entity>
   </fetch>
@@ -23,10 +29,11 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
     <div class="col-xs-12 text-right margin">
       <!-- Button trigger modal -->
       {% if recordCount > 0  %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button type="button" class="btn btn-primary" id="save">
         Save </button>
       {% endif %}
@@ -38,7 +45,7 @@
       {% endif %}
   
       {% if recordCount > 0 %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
@@ -48,6 +55,7 @@
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
+  {% endif %}
   
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Print </button>
@@ -990,7 +998,7 @@
                 Demographic Data Measures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -999,7 +1007,7 @@
               <p class="popup-txt">Section two: Budget Expenditures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1008,7 +1016,7 @@
               <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1017,7 +1025,7 @@
               <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1026,7 +1034,7 @@
               <p class="popup-txt">Section Five: Next Steps</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
             </div>
           </div>
         </div>
@@ -1055,87 +1063,85 @@
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">CEO</th>
-                <td> <input class="form-control" id="crdae_programdirectorbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorbudget | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorcurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorcurrent | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectortotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectortotal | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorfurther}} {% endif %}"></td>
-              </tr>
+                <td> <input class="form-control" id="crdae_ceobud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_ceobud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_ceocur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_ceocur | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_ceotot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_ceotot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_ceofur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_ceofur}} {% endif %}"></td>              </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">CFO</th>
-                <td> <input class="form-control" id="crdae_programdirectorbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorbudget | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorcurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorcurrent | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectortotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectortotal | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorfurther}} {% endif %}"></td>
-              </tr>
+                <td> <input class="form-control" id="crdae_cfobud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cfobud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_cfocur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cfocur | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_cfotot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cfotot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_cfofur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_cfofur}} {% endif %}"></td>              </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Peer mentor 1</th>
                 <td> <input class="form-control" id="crdae_peermentor1bud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor1bud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor1cur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor1cur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor1tot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor1tot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_peermentor1fur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor1fur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_peermentor1fur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor1fur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Peer mentor 2</th>
                 <td> <input class="form-control" id="crdae_peermentor2bud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor2bud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor2cur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor2cur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor2tot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor2tot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_peermentor2fur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor2fur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_peermentor2fur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor2fur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Peer mentor 3</th>
                 <td> <input class="form-control" id="crdae_peermentor3bud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor3bud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor3cur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor3cur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_peermentor3tot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor3tot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_peermentor3fur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor3fur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_peermentor3fur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_peermentor3fur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Admin. Asst.</th>
                 <td> <input class="form-control" id="crdae_adminasstbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminasstbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_adminasstcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminasstcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_adminassttot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminassttot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_adminasstfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminasstfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminasstfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminasstfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Mentor Manager</th>
                 <td> <input class="form-control" id="crdae_mentormgrbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_mentormgrbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_mentormgrcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_mentormgrcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_mentormgrtot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_mentormgrtot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_mentormgrfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_mentormgrfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_mentormgrfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_mentormgrfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Data Clerk</th>
                 <td> <input class="form-control" id="crdae_dataclerkbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_dataclerkbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_dataclerkcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_dataclerkcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_dataclerktot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_dataclerktot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_dataclerkfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_dataclerkfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_dataclerkfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_dataclerkfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Addiction Specialist</th>
                 <td> <input class="form-control" id="crdae_addictionspecialistbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_addictionspecialistbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_addictionspecialistcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_addictionspecialistcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_addictionspecialisttot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_addictionspecialisttot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_addictionspecialistfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_addictionspecialistfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_addictionspecialistfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_addictionspecialistfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Total Salaries</th>
                 <td> <input class="form-control" id="crdae_totalsalariesbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariesbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totalsalariescur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariescur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totalsalariestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariestot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_totalsalariesfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariesfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalsalariesfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariesfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Payroll Taxes</th>
                 <td> <input class="form-control" id="crdae_payrolltaxesbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_payrolltaxesbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_payrolltaxescur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_payrolltaxescur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_payrolltaxestot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_payrolltaxestot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_payrolltaxesfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_payrolltaxesfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_payrolltaxesfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_payrolltaxesfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Total Personnell & Benefits</th>
                 <td> <input class="form-control" id="crdae_totalpersonnellbenefitsbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalpersonnellbenefitsbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totalpersonnellbenefitscur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalpersonnellbenefitscur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totalpersonnellbenefitstot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalpersonnellbenefitstot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_totalpersonnellbenefitsfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalpersonnellbenefitsfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalpersonnellbenefitsfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalpersonnellbenefitsfur}} {% endif %}"></td>
               </tr>
               
 
@@ -1151,63 +1157,63 @@
                 <td> <input class="form-control" id="crdae_occupancyandutilbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_occupancyandutilbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_occupancyandutilcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_occupancyandutilcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_occupancyandutiltot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_occupancyandutiltot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_occupancyandutilfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_occupancyandutilfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_occupancyandutilfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_occupancyandutilfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Telephone, Postage, Insurance, Equipment</th>
                 <td> <input class="form-control" id="crdae_telpostinsequipbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_telpostinsequipbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_telpostinsequipcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_telpostinsequipcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_telpostinsequiptot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_telpostinsequiptot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_telpostinsequipfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_telpostinsequipfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_telpostinsequipfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_telpostinsequipfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Printing Photocopying</th>
                 <td> <input class="form-control" id="crdae_printingphotocopyingbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_printingphotocopyingbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_printingphotocopyingcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_printingphotocopyingcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_printingphotocopyingtot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_printingphotocopyingtot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_printingphotocopyingfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_printingphotocopyingfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_printingphotocopyingfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_printingphotocopyingfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Materials</th>
                 <td> <input class="form-control" id="crdae_materialsbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_materialsbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_materialscur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_materialscur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_materialstot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_materialstot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_materialsfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_materialsfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_materialsfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_materialsfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Travel </th>
                 <td> <input class="form-control" id="crdae_travelbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_travelbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_travelcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_travelcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_traveltot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_traveltot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_travelfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_travelfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_travelfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_travelfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Misc (Translation, Trainers, Events, Volunteer Costs)</th>
                 <td> <input class="form-control" id="crdae_miscbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_miscbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_misccur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_misccur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_misctot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_misctot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_miscfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_miscfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_miscfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_miscfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Administrative Overhead</th>
                 <td> <input class="form-control" id="crdae_adminoverheadbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminoverheadbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_adminoverheadcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminoverheadcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_adminoverheadtot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminoverheadtot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_adminoverheadfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminoverheadfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminoverheadfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_adminoverheadfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Total Operations & Overhead</th>
                 <td> <input class="form-control" id="crdae_totaloperationsoverheadbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totaloperationsoverheadbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totaloperationsoverheadcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totaloperationsoverheadcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_totaloperationsoverheadtot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totaloperationsoverheadtot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_totaloperationsoverheadfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totaloperationsoverheadfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totaloperationsoverheadfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totaloperationsoverheadfur}} {% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Program Total</th>
                 <td> <input class="form-control" id="crdae_programtotalbud" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programtotalbud | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_programtotalcur" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programtotalcur | round: 2}} {% endif %}"></td>
                 <td> <input class="form-control" id="crdae_programtotaltot" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programtotaltot | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programtotalfur type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programtotalfur}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programtotalfur" type=text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programtotalfur}} {% endif %}"></td>
               </tr>
             </tbody>
           </table>
@@ -1219,4 +1225,4 @@
   </div>
   </form>
   <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
-  {% include "HR360 Footer" %}
+  {% include "MWP Footer" %}
