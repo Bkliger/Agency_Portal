@@ -1,13 +1,19 @@
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
 <form id="form" role="form">
   {% fetchxml myquery %}
   <fetch mapping="logical">
-    <entity name="cr9aa_hr360">
+    <entity name="cr9aa_probation">
       <all-attributes />​
       <filter type='and'>
-        <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
-        <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
-        <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
-        <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
       </filter>
     </entity>
   </fetch>
@@ -23,10 +29,11 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
     <div class="col-xs-12 text-right margin">
       <!-- Button trigger modal -->
       {% if recordCount > 0  %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button type="button" class="btn btn-primary" id="save">
         Save </button>
       {% endif %}
@@ -38,7 +45,7 @@
       {% endif %}
   
       {% if recordCount > 0 %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
@@ -48,6 +55,7 @@
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
+  {% endif %}
   
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Print </button>
@@ -318,6 +326,16 @@
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_supervisioncontactlevelnumbelowaverage" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_supervisioncontactlevelnumbelowaverage = myquery.results.entities[0].cr9aa_supervisioncontactlevelnumbelowaverage | round: 0 %}{% if cr9aa_supervisioncontactlevelnumbelowaverage == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumbelowaverage | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col">
+                  <p class="popup-txt">Low</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_supervisioncontactlevelnumlow" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_supervisioncontactlevelnumlow = myquery.results.entities[0].cr9aa_supervisioncontactlevelnumlow | round: 0 %}{% if cr9aa_supervisioncontactlevelnumlow == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_supervisioncontactlevelnumlow | round: 0}}{% endif %}{% endif %}">
+                </div>
+              </div>
+
 
               <div class="row">
                 <div class="col">
@@ -659,6 +677,21 @@
 
               <div>
                 <div class="col">
+                  <p class="popup-txt sub-headings"><b>Current Housing</b></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <p class="popup-txt"># homeless or transient</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_pcrscurrenthousingnumhomelessortransient" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_pcrscurrenthousingnumhomelessortransient = myquery.results.entities[0].cr9aa_pcrscurrenthousingnumhomelessortransient | round: 0 %}{% if cr9aa_pcrscurrenthousingnumhomelessortransient == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_pcrscurrenthousingnumhomelessortransient | round: 0}}{% endif %}{% endif %}">
+                </div>
+              </div>
+
+              <div>
+                <div class="col">
                   <p class="popup-txt sub-headings"><b>Completions/discharges</b></p>
                 </div>
               </div>
@@ -898,6 +931,15 @@
 
               <div class="row">
                 <div class="col">
+                  <p class="popup-txt">Medical tx.</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_z1170refsformedicaltx" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_z1170refsformedicaltx = myquery.results.entities[0].cr9aa_z1170refsformedicaltx | round: 0 %}{% if cr9aa_z1170refsformedicaltx == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_z1170refsformedicaltx | round: 0}}{% endif %}{% endif %}">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
                   <p class="popup-txt">Housing Services</p>
                 </div>
                 <div class="col">
@@ -1067,7 +1109,7 @@
                 Demographic Data Measures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1076,7 +1118,7 @@
               <p class="popup-txt">Section two: Budget Expenditures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1085,7 +1127,7 @@
               <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1094,7 +1136,7 @@
               <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -1103,7 +1145,7 @@
               <p class="popup-txt">Section Five: Next Steps</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
             </div>
           </div>
         </div>
@@ -1114,5 +1156,5 @@
   </div>
   </form>
   <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
-  {% include "HR360 Footer" %}
+  {% include "Probation Footer" %}
 

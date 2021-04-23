@@ -1,0 +1,331 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+        
+      var cr9aa_numactiveclientsatstartreportingperiodexc= $("#cr9aa_numactiveclientsatstartreportingperiodexc").val().trim();
+        var cr9aa_newrefsnumrefs= $("#cr9aa_newrefsnumrefs").val().trim();
+        var cr9aa_newrefsnumfromprobparole= $("#cr9aa_newrefsnumfromprobparole").val().trim();
+        var cr9aa_newrefsnumfrompartneragencies= $("#cr9aa_newrefsnumfrompartneragencies").val().trim();
+        var cr9aa_newrefsnumfrompublicdefendersoffice= $("#cr9aa_newrefsnumfrompublicdefendersoffice").val().trim();
+        var cr9aa_newrefsnumfromoeducation= $("#cr9aa_newrefsnumfromoeducation").val().trim();
+        var cr9aa_newrefsnumselfref= $("#cr9aa_newrefsnumselfref").val().trim();
+        var cr9aa_newrefsnumothersource= $("#cr9aa_newrefsnumothersource").val().trim();
+        var cr9aa_newrefsasian= $("#cr9aa_newrefsasian").val().trim();
+        var cr9aa_newrefsblack= $("#cr9aa_newrefsblack").val().trim();
+        var cr9aa_newrefshispanic= $("#cr9aa_newrefshispanic").val().trim();
+        var cr9aa_newrefsnativeamerican= $("#cr9aa_newrefsnativeamerican").val().trim();
+        var cr9aa_newrefswhite= $("#cr9aa_newrefswhite").val().trim();
+        var cr9aa_newrefsethnicityother= $("#cr9aa_newrefsethnicityother").val().trim();
+        var cr9aa_newrefsnumagedgt25= $("#cr9aa_newrefsnumagedgt25").val().trim();
+        var cr9aa_newrefsnumaged2635= $("#cr9aa_newrefsnumaged2635").val().trim();
+        var cr9aa_newrefsnumaged3645= $("#cr9aa_newrefsnumaged3645").val().trim();
+        var cr9aa_newrefsnumaged4655= $("#cr9aa_newrefsnumaged4655").val().trim();
+        var cr9aa_newrefsnumaged55= $("#cr9aa_newrefsnumaged55").val().trim();
+        var cr9aa_newrefsageunknown= $("#cr9aa_newrefsageunknown").val().trim();
+        var cr9aa_refsfemale= $("#cr9aa_refsfemale").val().trim();
+        var cr9aa_refsmale= $("#cr9aa_refsmale").val().trim();
+        var cr9aa_refstierab109prob= $("#cr9aa_refstierab109prob").val().trim();
+        var cr9aa_refstierfelonyprob= $("#cr9aa_refstierfelonyprob").val().trim();
+        var cr9aa_refstierlt30daysincustreleasedwinlast3= $("#cr9aa_refstierlt30daysincustreleasedwinlast3").val().trim();
+        var cr9aa_refstiercurrawaitingtrial= $("#cr9aa_refstiercurrawaitingtrial").val().trim();
+        var cr9aa_refstiercurronctprob= $("#cr9aa_refstiercurronctprob").val().trim();
+        var cr9aa_refstierspecctprobbehavioraldvdrug= $("#cr9aa_refstierspecctprobbehavioraldvdrug").val().trim();
+        var cr9aa_refstiercurronparole= $("#cr9aa_refstiercurronparole").val().trim();
+        var cr9aa_refstiercurrincust= $("#cr9aa_refstiercurrincust").val().trim();
+        var cr9aa_refstieroutjurisdiction= $("#cr9aa_refstieroutjurisdiction").val().trim();
+        var cr9aa_refstiernonetheabove= $("#cr9aa_refstiernonetheabove").val().trim();
+        var cr9aa_newrefsregionwest= $("#cr9aa_newrefsregionwest").val().trim();
+        var cr9aa_newrefsregioncentral= $("#cr9aa_newrefsregioncentral").val().trim();
+        var cr9aa_newrefsregioneast= $("#cr9aa_newrefsregioneast").val().trim();
+        var cr9aa_outcomesnumaccepted= $("#cr9aa_outcomesnumaccepted").val().trim();
+        var cr9aa_outcomesnumenrolled= $("#cr9aa_outcomesnumenrolled").val().trim();
+        var cr9aa_outcomesnumfailedcallshow= $("#cr9aa_outcomesnumfailedcallshow").val().trim();
+        var cr9aa_outcomesnumnotinterested= $("#cr9aa_outcomesnumnotinterested").val().trim();
+        var cr9aa_outcomesnumpending= $("#cr9aa_outcomesnumpending").val().trim();
+        var cr9aa_outcomesnumunablebecontacted= $("#cr9aa_outcomesnumunablebecontacted").val().trim();
+        var cr9aa_outcomesnumineligible= $("#cr9aa_outcomesnumineligible").val().trim();
+        var cr9aa_outcomesnumremainsincust= $("#cr9aa_outcomesnumremainsincust").val().trim();
+        var cr9aa_occoutcomesnumnewlyplacedinslehousing= $("#cr9aa_occoutcomesnumnewlyplacedinslehousing").val().trim();
+        var cr9aa_occoutcomesnumongoingslepartsexcludingtho= $("#cr9aa_occoutcomesnumongoingslepartsexcludingtho").val().trim();
+        var cr9aa_occoutcomesnumprovidedtransitionplanning= $("#cr9aa_occoutcomesnumprovidedtransitionplanning").val().trim();
+        var cr9aa_occoutcomesnumexitedpermanenthousing= $("#cr9aa_occoutcomesnumexitedpermanenthousing").val().trim();
+        var cr9aa_occoutcomesnumselfterminatedexits= $("#cr9aa_occoutcomesnumselfterminatedexits").val().trim();
+        var cr9aa_occoutcomesnumnolongerinprogduefailmeetr= $("#cr9aa_occoutcomesnumnolongerinprogduefailmeetr").val().trim();
+        var cr9aa_occoutcomesnumnolongerinprogduectorcrimi= $("#cr9aa_occoutcomesnumnolongerinprogduectorcrimi").val().trim();
+        var cr9aa_occoutcomesnumnotengagednoshowsornonrespo= $("#cr9aa_occoutcomesnumnotengagednoshowsornonrespo").val().trim();
+        var cr9aa_occoutcomesnummovedrelocated= $("#cr9aa_occoutcomesnummovedrelocated").val().trim();
+        var cr9aa_occoutcomesnumabsconding= $("#cr9aa_occoutcomesnumabsconding").val().trim();
+        var cr9aa_inhousesupportsvcsclothing= $("#cr9aa_inhousesupportsvcsclothing").val().trim();
+        var cr9aa_inhousesupportsvcsctsupport= $("#cr9aa_inhousesupportsvcsctsupport").val().trim();
+        var cr9aa_inhousesupportsvcshousing= $("#cr9aa_inhousesupportsvcshousing").val().trim();
+        var cr9aa_inhousesupportsvcshousingref= $("#cr9aa_inhousesupportsvcshousingref").val().trim();
+        var cr9aa_inhousesupportsvcsrecoverymeetings= $("#cr9aa_inhousesupportsvcsrecoverymeetings").val().trim();
+        var cr9aa_inhousesupportsvcstransportation= $("#cr9aa_inhousesupportsvcstransportation").val().trim();
+        var cr9aa_inhousesupsvcsaveragenumsupportivesvcs= $("#cr9aa_inhousesupsvcsaveragenumsupportivesvcs").val().trim();
+        var cr9aa_referredforothersvcsmentoring= $("#cr9aa_referredforothersvcsmentoring").val().trim();
+        var cr9aa_referredforothersvcspubbenefitassistance= $("#cr9aa_referredforothersvcspubbenefitassistance").val().trim();
+        var cr9aa_referredforothersvcsmentalhealthsupport= $("#cr9aa_referredforothersvcsmentalhealthsupport").val().trim();
+        var cr9aa_referredforothersvcsoutpatientsubstabuse= $("#cr9aa_referredforothersvcsoutpatientsubstabuse").val().trim();
+        var cr9aa_referredforothersvcsempvocationaltraining= $("#cr9aa_referredforothersvcsempvocationaltraining").val().trim();
+        var cr9aa_referredforothersvcscreditasstfinancia= $("#cr9aa_referredforothersvcscreditasstfinancia").val().trim();
+        var cr9aa_referredforothersvcsstableaftercarehouse= $("#cr9aa_referredforothersvcsstableaftercarehouse").val().trim();
+        var cr9aa_referredforothersvcscollegecourses= $("#cr9aa_referredforothersvcscollegecourses").val().trim();
+        var cr9aa_referredforothersvcscogbehaviouraltrea= $("#cr9aa_referredforothersvcscogbehaviouraltrea").val().trim();
+        var cr9aa_referredforothersvcsneedsassessment= $("#cr9aa_referredforothersvcsneedsassessment").val().trim();
+        var cr9aa_referredforothersvcsoutsidehousingasst= $("#cr9aa_referredforothersvcsoutsidehousingasst").val().trim();
+      var crdae_sectionone = $("#crdae_sectionone").val().trim();
+      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_mzshirlizs",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_numactiveclientsatstartreportingperiodexc": cr9aa_numactiveclientsatstartreportingperiodexc !="" || cr9aa_numactiveclientsatstartreportingperiodexc === "0" ? Number(cr9aa_numactiveclientsatstartreportingperiodexc) : -1,
+        "cr9aa_newrefsnumrefs": cr9aa_newrefsnumrefs !="" || cr9aa_newrefsnumrefs === "0" ? Number(cr9aa_newrefsnumrefs) : -1,
+        "cr9aa_newrefsnumfromprobparole": cr9aa_newrefsnumfromprobparole !="" || cr9aa_newrefsnumfromprobparole === "0" ? Number(cr9aa_newrefsnumfromprobparole) : -1,
+        "cr9aa_newrefsnumfrompartneragencies": cr9aa_newrefsnumfrompartneragencies !="" || cr9aa_newrefsnumfrompartneragencies === "0" ? Number(cr9aa_newrefsnumfrompartneragencies) : -1,
+        "cr9aa_newrefsnumfrompublicdefendersoffice": cr9aa_newrefsnumfrompublicdefendersoffice !="" || cr9aa_newrefsnumfrompublicdefendersoffice === "0" ? Number(cr9aa_newrefsnumfrompublicdefendersoffice) : -1,
+        "cr9aa_newrefsnumfromoeducation": cr9aa_newrefsnumfromoeducation !="" || cr9aa_newrefsnumfromoeducation === "0" ? Number(cr9aa_newrefsnumfromoeducation) : -1,
+        "cr9aa_newrefsnumselfref": cr9aa_newrefsnumselfref !="" || cr9aa_newrefsnumselfref === "0" ? Number(cr9aa_newrefsnumselfref) : -1,
+        "cr9aa_newrefsnumothersource": cr9aa_newrefsnumothersource !="" || cr9aa_newrefsnumothersource === "0" ? Number(cr9aa_newrefsnumothersource) : -1,
+        "cr9aa_newrefsasian": cr9aa_newrefsasian !="" || cr9aa_newrefsasian === "0" ? Number(cr9aa_newrefsasian) : -1,
+        "cr9aa_newrefsblack": cr9aa_newrefsblack !="" || cr9aa_newrefsblack === "0" ? Number(cr9aa_newrefsblack) : -1,
+        "cr9aa_newrefshispanic": cr9aa_newrefshispanic !="" || cr9aa_newrefshispanic === "0" ? Number(cr9aa_newrefshispanic) : -1,
+        "cr9aa_newrefsnativeamerican": cr9aa_newrefsnativeamerican !="" || cr9aa_newrefsnativeamerican === "0" ? Number(cr9aa_newrefsnativeamerican) : -1,
+        "cr9aa_newrefswhite": cr9aa_newrefswhite !="" || cr9aa_newrefswhite === "0" ? Number(cr9aa_newrefswhite) : -1,
+        "cr9aa_newrefsethnicityother": cr9aa_newrefsethnicityother !="" || cr9aa_newrefsethnicityother === "0" ? Number(cr9aa_newrefsethnicityother) : -1,
+        "cr9aa_newrefsnumagedgt25": cr9aa_newrefsnumagedgt25 !="" || cr9aa_newrefsnumagedgt25 === "0" ? Number(cr9aa_newrefsnumagedgt25) : -1,
+        "cr9aa_newrefsnumaged2635": cr9aa_newrefsnumaged2635 !="" || cr9aa_newrefsnumaged2635 === "0" ? Number(cr9aa_newrefsnumaged2635) : -1,
+        "cr9aa_newrefsnumaged3645": cr9aa_newrefsnumaged3645 !="" || cr9aa_newrefsnumaged3645 === "0" ? Number(cr9aa_newrefsnumaged3645) : -1,
+        "cr9aa_newrefsnumaged4655": cr9aa_newrefsnumaged4655 !="" || cr9aa_newrefsnumaged4655 === "0" ? Number(cr9aa_newrefsnumaged4655) : -1,
+        "cr9aa_newrefsnumaged55": cr9aa_newrefsnumaged55 !="" || cr9aa_newrefsnumaged55 === "0" ? Number(cr9aa_newrefsnumaged55) : -1,
+        "cr9aa_newrefsageunknown": cr9aa_newrefsageunknown !="" || cr9aa_newrefsageunknown === "0" ? Number(cr9aa_newrefsageunknown) : -1,
+        "cr9aa_refsfemale": cr9aa_refsfemale !="" || cr9aa_refsfemale === "0" ? Number(cr9aa_refsfemale) : -1,
+        "cr9aa_refsmale": cr9aa_refsmale !="" || cr9aa_refsmale === "0" ? Number(cr9aa_refsmale) : -1,
+        "cr9aa_refstierab109prob": cr9aa_refstierab109prob !="" || cr9aa_refstierab109prob === "0" ? Number(cr9aa_refstierab109prob) : -1,
+        "cr9aa_refstierfelonyprob": cr9aa_refstierfelonyprob !="" || cr9aa_refstierfelonyprob === "0" ? Number(cr9aa_refstierfelonyprob) : -1,
+        "cr9aa_refstierlt30daysincustreleasedwinlast3": cr9aa_refstierlt30daysincustreleasedwinlast3 !="" || cr9aa_refstierlt30daysincustreleasedwinlast3 === "0" ? Number(cr9aa_refstierlt30daysincustreleasedwinlast3) : -1,
+        "cr9aa_refstiercurrawaitingtrial": cr9aa_refstiercurrawaitingtrial !="" || cr9aa_refstiercurrawaitingtrial === "0" ? Number(cr9aa_refstiercurrawaitingtrial) : -1,
+        "cr9aa_refstiercurronctprob": cr9aa_refstiercurronctprob !="" || cr9aa_refstiercurronctprob === "0" ? Number(cr9aa_refstiercurronctprob) : -1,
+        "cr9aa_refstierspecctprobbehavioraldvdrug": cr9aa_refstierspecctprobbehavioraldvdrug !="" || cr9aa_refstierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_refstierspecctprobbehavioraldvdrug) : -1,
+        "cr9aa_refstiercurronparole": cr9aa_refstiercurronparole !="" || cr9aa_refstiercurronparole === "0" ? Number(cr9aa_refstiercurronparole) : -1,
+        "cr9aa_refstiercurrincust": cr9aa_refstiercurrincust !="" || cr9aa_refstiercurrincust === "0" ? Number(cr9aa_refstiercurrincust) : -1,
+        "cr9aa_refstieroutjurisdiction": cr9aa_refstieroutjurisdiction !="" || cr9aa_refstieroutjurisdiction === "0" ? Number(cr9aa_refstieroutjurisdiction) : -1,
+        "cr9aa_refstiernonetheabove": cr9aa_refstiernonetheabove !="" || cr9aa_refstiernonetheabove === "0" ? Number(cr9aa_refstiernonetheabove) : -1,
+        "cr9aa_newrefsregionwest": cr9aa_newrefsregionwest !="" || cr9aa_newrefsregionwest === "0" ? Number(cr9aa_newrefsregionwest) : -1,
+        "cr9aa_newrefsregioncentral": cr9aa_newrefsregioncentral !="" || cr9aa_newrefsregioncentral === "0" ? Number(cr9aa_newrefsregioncentral) : -1,
+        "cr9aa_newrefsregioneast": cr9aa_newrefsregioneast !="" || cr9aa_newrefsregioneast === "0" ? Number(cr9aa_newrefsregioneast) : -1,
+        "cr9aa_outcomesnumaccepted": cr9aa_outcomesnumaccepted !="" || cr9aa_outcomesnumaccepted === "0" ? Number(cr9aa_outcomesnumaccepted) : -1,
+        "cr9aa_outcomesnumenrolled": cr9aa_outcomesnumenrolled !="" || cr9aa_outcomesnumenrolled === "0" ? Number(cr9aa_outcomesnumenrolled) : -1,
+        "cr9aa_outcomesnumfailedcallshow": cr9aa_outcomesnumfailedcallshow !="" || cr9aa_outcomesnumfailedcallshow === "0" ? Number(cr9aa_outcomesnumfailedcallshow) : -1,
+        "cr9aa_outcomesnumnotinterested": cr9aa_outcomesnumnotinterested !="" || cr9aa_outcomesnumnotinterested === "0" ? Number(cr9aa_outcomesnumnotinterested) : -1,
+        "cr9aa_outcomesnumpending": cr9aa_outcomesnumpending !="" || cr9aa_outcomesnumpending === "0" ? Number(cr9aa_outcomesnumpending) : -1,
+        "cr9aa_outcomesnumunablebecontacted": cr9aa_outcomesnumunablebecontacted !="" || cr9aa_outcomesnumunablebecontacted === "0" ? Number(cr9aa_outcomesnumunablebecontacted) : -1,
+        "cr9aa_outcomesnumineligible": cr9aa_outcomesnumineligible !="" || cr9aa_outcomesnumineligible === "0" ? Number(cr9aa_outcomesnumineligible) : -1,
+        "cr9aa_outcomesnumremainsincust": cr9aa_outcomesnumremainsincust !="" || cr9aa_outcomesnumremainsincust === "0" ? Number(cr9aa_outcomesnumremainsincust) : -1,
+        "cr9aa_occoutcomesnumnewlyplacedinslehousing": cr9aa_occoutcomesnumnewlyplacedinslehousing !="" || cr9aa_occoutcomesnumnewlyplacedinslehousing === "0" ? Number(cr9aa_occoutcomesnumnewlyplacedinslehousing) : -1,
+        "cr9aa_occoutcomesnumongoingslepartsexcludingtho": cr9aa_occoutcomesnumongoingslepartsexcludingtho !="" || cr9aa_occoutcomesnumongoingslepartsexcludingtho === "0" ? Number(cr9aa_occoutcomesnumongoingslepartsexcludingtho) : -1,
+        "cr9aa_occoutcomesnumprovidedtransitionplanning": cr9aa_occoutcomesnumprovidedtransitionplanning !="" || cr9aa_occoutcomesnumprovidedtransitionplanning === "0" ? Number(cr9aa_occoutcomesnumprovidedtransitionplanning) : -1,
+        "cr9aa_occoutcomesnumexitedpermanenthousing": cr9aa_occoutcomesnumexitedpermanenthousing !="" || cr9aa_occoutcomesnumexitedpermanenthousing === "0" ? Number(cr9aa_occoutcomesnumexitedpermanenthousing) : -1,
+        "cr9aa_occoutcomesnumselfterminatedexits": cr9aa_occoutcomesnumselfterminatedexits !="" || cr9aa_occoutcomesnumselfterminatedexits === "0" ? Number(cr9aa_occoutcomesnumselfterminatedexits) : -1,
+        "cr9aa_occoutcomesnumnolongerinprogduefailmeetr": cr9aa_occoutcomesnumnolongerinprogduefailmeetr !="" || cr9aa_occoutcomesnumnolongerinprogduefailmeetr === "0" ? Number(cr9aa_occoutcomesnumnolongerinprogduefailmeetr) : -1,
+        "cr9aa_occoutcomesnumnolongerinprogduectorcrimi": cr9aa_occoutcomesnumnolongerinprogduectorcrimi !="" || cr9aa_occoutcomesnumnolongerinprogduectorcrimi === "0" ? Number(cr9aa_occoutcomesnumnolongerinprogduectorcrimi) : -1,
+        "cr9aa_occoutcomesnumnotengagednoshowsornonrespo": cr9aa_occoutcomesnumnotengagednoshowsornonrespo !="" || cr9aa_occoutcomesnumnotengagednoshowsornonrespo === "0" ? Number(cr9aa_occoutcomesnumnotengagednoshowsornonrespo) : -1,
+        "cr9aa_occoutcomesnummovedrelocated": cr9aa_occoutcomesnummovedrelocated !="" || cr9aa_occoutcomesnummovedrelocated === "0" ? Number(cr9aa_occoutcomesnummovedrelocated) : -1,
+        "cr9aa_occoutcomesnumabsconding": cr9aa_occoutcomesnumabsconding !="" || cr9aa_occoutcomesnumabsconding === "0" ? Number(cr9aa_occoutcomesnumabsconding) : -1,
+        "cr9aa_inhousesupportsvcsclothing": cr9aa_inhousesupportsvcsclothing !="" || cr9aa_inhousesupportsvcsclothing === "0" ? Number(cr9aa_inhousesupportsvcsclothing) : -1,
+        "cr9aa_inhousesupportsvcsctsupport": cr9aa_inhousesupportsvcsctsupport !="" || cr9aa_inhousesupportsvcsctsupport === "0" ? Number(cr9aa_inhousesupportsvcsctsupport) : -1,
+        "cr9aa_inhousesupportsvcshousing": cr9aa_inhousesupportsvcshousing !="" || cr9aa_inhousesupportsvcshousing === "0" ? Number(cr9aa_inhousesupportsvcshousing) : -1,
+        "cr9aa_inhousesupportsvcshousingref": cr9aa_inhousesupportsvcshousingref !="" || cr9aa_inhousesupportsvcshousingref === "0" ? Number(cr9aa_inhousesupportsvcshousingref) : -1,
+        "cr9aa_inhousesupportsvcsrecoverymeetings": cr9aa_inhousesupportsvcsrecoverymeetings !="" || cr9aa_inhousesupportsvcsrecoverymeetings === "0" ? Number(cr9aa_inhousesupportsvcsrecoverymeetings) : -1,
+        "cr9aa_inhousesupportsvcstransportation": cr9aa_inhousesupportsvcstransportation !="" || cr9aa_inhousesupportsvcstransportation === "0" ? Number(cr9aa_inhousesupportsvcstransportation) : -1,
+        "cr9aa_inhousesupsvcsaveragenumsupportivesvcs": cr9aa_inhousesupsvcsaveragenumsupportivesvcs !="" || cr9aa_inhousesupsvcsaveragenumsupportivesvcs === "0" ? Number(cr9aa_inhousesupsvcsaveragenumsupportivesvcs) : -1,
+        "cr9aa_referredforothersvcsmentoring": cr9aa_referredforothersvcsmentoring !="" || cr9aa_referredforothersvcsmentoring === "0" ? Number(cr9aa_referredforothersvcsmentoring) : -1,
+        "cr9aa_referredforothersvcspubbenefitassistance": cr9aa_referredforothersvcspubbenefitassistance !="" || cr9aa_referredforothersvcspubbenefitassistance === "0" ? Number(cr9aa_referredforothersvcspubbenefitassistance) : -1,
+        "cr9aa_referredforothersvcsmentalhealthsupport": cr9aa_referredforothersvcsmentalhealthsupport !="" || cr9aa_referredforothersvcsmentalhealthsupport === "0" ? Number(cr9aa_referredforothersvcsmentalhealthsupport) : -1,
+        "cr9aa_referredforothersvcsoutpatientsubstabuse": cr9aa_referredforothersvcsoutpatientsubstabuse !="" || cr9aa_referredforothersvcsoutpatientsubstabuse === "0" ? Number(cr9aa_referredforothersvcsoutpatientsubstabuse) : -1,
+        "cr9aa_referredforothersvcsempvocationaltraining": cr9aa_referredforothersvcsempvocationaltraining !="" || cr9aa_referredforothersvcsempvocationaltraining === "0" ? Number(cr9aa_referredforothersvcsempvocationaltraining) : -1,
+        "cr9aa_referredforothersvcscreditasstfinancia": cr9aa_referredforothersvcscreditasstfinancia !="" || cr9aa_referredforothersvcscreditasstfinancia === "0" ? Number(cr9aa_referredforothersvcscreditasstfinancia) : -1,
+        "cr9aa_referredforothersvcsstableaftercarehouse": cr9aa_referredforothersvcsstableaftercarehouse !="" || cr9aa_referredforothersvcsstableaftercarehouse === "0" ? Number(cr9aa_referredforothersvcsstableaftercarehouse) : -1,
+        "cr9aa_referredforothersvcscollegecourses": cr9aa_referredforothersvcscollegecourses !="" || cr9aa_referredforothersvcscollegecourses === "0" ? Number(cr9aa_referredforothersvcscollegecourses) : -1,
+        "cr9aa_referredforothersvcscogbehaviouraltrea": cr9aa_referredforothersvcscogbehaviouraltrea !="" || cr9aa_referredforothersvcscogbehaviouraltrea === "0" ? Number(cr9aa_referredforothersvcscogbehaviouraltrea) : -1,
+        "cr9aa_referredforothersvcsneedsassessment": cr9aa_referredforothersvcsneedsassessment !="" || cr9aa_referredforothersvcsneedsassessment === "0" ? Number(cr9aa_referredforothersvcsneedsassessment) : -1,
+        "cr9aa_referredforothersvcsoutsidehousingasst": cr9aa_referredforothersvcsoutsidehousingasst !="" || cr9aa_referredforothersvcsoutsidehousingasst === "0" ? Number(cr9aa_referredforothersvcsoutsidehousingasst) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_mzshirlizs({{myquery.results.entities[0].cr9aa_mzshirlizid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_numactiveclientsatstartreportingperiodexc": cr9aa_numactiveclientsatstartreportingperiodexc !="" || cr9aa_numactiveclientsatstartreportingperiodexc === "0" ? Number(cr9aa_numactiveclientsatstartreportingperiodexc) : -1,
+        "cr9aa_newrefsnumrefs": cr9aa_newrefsnumrefs !="" || cr9aa_newrefsnumrefs === "0" ? Number(cr9aa_newrefsnumrefs) : -1,
+        "cr9aa_newrefsnumfromprobparole": cr9aa_newrefsnumfromprobparole !="" || cr9aa_newrefsnumfromprobparole === "0" ? Number(cr9aa_newrefsnumfromprobparole) : -1,
+        "cr9aa_newrefsnumfrompartneragencies": cr9aa_newrefsnumfrompartneragencies !="" || cr9aa_newrefsnumfrompartneragencies === "0" ? Number(cr9aa_newrefsnumfrompartneragencies) : -1,
+        "cr9aa_newrefsnumfrompublicdefendersoffice": cr9aa_newrefsnumfrompublicdefendersoffice !="" || cr9aa_newrefsnumfrompublicdefendersoffice === "0" ? Number(cr9aa_newrefsnumfrompublicdefendersoffice) : -1,
+        "cr9aa_newrefsnumfromoeducation": cr9aa_newrefsnumfromoeducation !="" || cr9aa_newrefsnumfromoeducation === "0" ? Number(cr9aa_newrefsnumfromoeducation) : -1,
+        "cr9aa_newrefsnumselfref": cr9aa_newrefsnumselfref !="" || cr9aa_newrefsnumselfref === "0" ? Number(cr9aa_newrefsnumselfref) : -1,
+        "cr9aa_newrefsnumothersource": cr9aa_newrefsnumothersource !="" || cr9aa_newrefsnumothersource === "0" ? Number(cr9aa_newrefsnumothersource) : -1,
+        "cr9aa_newrefsasian": cr9aa_newrefsasian !="" || cr9aa_newrefsasian === "0" ? Number(cr9aa_newrefsasian) : -1,
+        "cr9aa_newrefsblack": cr9aa_newrefsblack !="" || cr9aa_newrefsblack === "0" ? Number(cr9aa_newrefsblack) : -1,
+        "cr9aa_newrefshispanic": cr9aa_newrefshispanic !="" || cr9aa_newrefshispanic === "0" ? Number(cr9aa_newrefshispanic) : -1,
+        "cr9aa_newrefsnativeamerican": cr9aa_newrefsnativeamerican !="" || cr9aa_newrefsnativeamerican === "0" ? Number(cr9aa_newrefsnativeamerican) : -1,
+        "cr9aa_newrefswhite": cr9aa_newrefswhite !="" || cr9aa_newrefswhite === "0" ? Number(cr9aa_newrefswhite) : -1,
+        "cr9aa_newrefsethnicityother": cr9aa_newrefsethnicityother !="" || cr9aa_newrefsethnicityother === "0" ? Number(cr9aa_newrefsethnicityother) : -1,
+        "cr9aa_newrefsnumagedgt25": cr9aa_newrefsnumagedgt25 !="" || cr9aa_newrefsnumagedgt25 === "0" ? Number(cr9aa_newrefsnumagedgt25) : -1,
+        "cr9aa_newrefsnumaged2635": cr9aa_newrefsnumaged2635 !="" || cr9aa_newrefsnumaged2635 === "0" ? Number(cr9aa_newrefsnumaged2635) : -1,
+        "cr9aa_newrefsnumaged3645": cr9aa_newrefsnumaged3645 !="" || cr9aa_newrefsnumaged3645 === "0" ? Number(cr9aa_newrefsnumaged3645) : -1,
+        "cr9aa_newrefsnumaged4655": cr9aa_newrefsnumaged4655 !="" || cr9aa_newrefsnumaged4655 === "0" ? Number(cr9aa_newrefsnumaged4655) : -1,
+        "cr9aa_newrefsnumaged55": cr9aa_newrefsnumaged55 !="" || cr9aa_newrefsnumaged55 === "0" ? Number(cr9aa_newrefsnumaged55) : -1,
+        "cr9aa_newrefsageunknown": cr9aa_newrefsageunknown !="" || cr9aa_newrefsageunknown === "0" ? Number(cr9aa_newrefsageunknown) : -1,
+        "cr9aa_refsfemale": cr9aa_refsfemale !="" || cr9aa_refsfemale === "0" ? Number(cr9aa_refsfemale) : -1,
+        "cr9aa_refsmale": cr9aa_refsmale !="" || cr9aa_refsmale === "0" ? Number(cr9aa_refsmale) : -1,
+        "cr9aa_refstierab109prob": cr9aa_refstierab109prob !="" || cr9aa_refstierab109prob === "0" ? Number(cr9aa_refstierab109prob) : -1,
+        "cr9aa_refstierfelonyprob": cr9aa_refstierfelonyprob !="" || cr9aa_refstierfelonyprob === "0" ? Number(cr9aa_refstierfelonyprob) : -1,
+        "cr9aa_refstierlt30daysincustreleasedwinlast3": cr9aa_refstierlt30daysincustreleasedwinlast3 !="" || cr9aa_refstierlt30daysincustreleasedwinlast3 === "0" ? Number(cr9aa_refstierlt30daysincustreleasedwinlast3) : -1,
+        "cr9aa_refstiercurrawaitingtrial": cr9aa_refstiercurrawaitingtrial !="" || cr9aa_refstiercurrawaitingtrial === "0" ? Number(cr9aa_refstiercurrawaitingtrial) : -1,
+        "cr9aa_refstiercurronctprob": cr9aa_refstiercurronctprob !="" || cr9aa_refstiercurronctprob === "0" ? Number(cr9aa_refstiercurronctprob) : -1,
+        "cr9aa_refstierspecctprobbehavioraldvdrug": cr9aa_refstierspecctprobbehavioraldvdrug !="" || cr9aa_refstierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_refstierspecctprobbehavioraldvdrug) : -1,
+        "cr9aa_refstiercurronparole": cr9aa_refstiercurronparole !="" || cr9aa_refstiercurronparole === "0" ? Number(cr9aa_refstiercurronparole) : -1,
+        "cr9aa_refstiercurrincust": cr9aa_refstiercurrincust !="" || cr9aa_refstiercurrincust === "0" ? Number(cr9aa_refstiercurrincust) : -1,
+        "cr9aa_refstieroutjurisdiction": cr9aa_refstieroutjurisdiction !="" || cr9aa_refstieroutjurisdiction === "0" ? Number(cr9aa_refstieroutjurisdiction) : -1,
+        "cr9aa_refstiernonetheabove": cr9aa_refstiernonetheabove !="" || cr9aa_refstiernonetheabove === "0" ? Number(cr9aa_refstiernonetheabove) : -1,
+        "cr9aa_newrefsregionwest": cr9aa_newrefsregionwest !="" || cr9aa_newrefsregionwest === "0" ? Number(cr9aa_newrefsregionwest) : -1,
+        "cr9aa_newrefsregioncentral": cr9aa_newrefsregioncentral !="" || cr9aa_newrefsregioncentral === "0" ? Number(cr9aa_newrefsregioncentral) : -1,
+        "cr9aa_newrefsregioneast": cr9aa_newrefsregioneast !="" || cr9aa_newrefsregioneast === "0" ? Number(cr9aa_newrefsregioneast) : -1,
+        "cr9aa_outcomesnumaccepted": cr9aa_outcomesnumaccepted !="" || cr9aa_outcomesnumaccepted === "0" ? Number(cr9aa_outcomesnumaccepted) : -1,
+        "cr9aa_outcomesnumenrolled": cr9aa_outcomesnumenrolled !="" || cr9aa_outcomesnumenrolled === "0" ? Number(cr9aa_outcomesnumenrolled) : -1,
+        "cr9aa_outcomesnumfailedcallshow": cr9aa_outcomesnumfailedcallshow !="" || cr9aa_outcomesnumfailedcallshow === "0" ? Number(cr9aa_outcomesnumfailedcallshow) : -1,
+        "cr9aa_outcomesnumnotinterested": cr9aa_outcomesnumnotinterested !="" || cr9aa_outcomesnumnotinterested === "0" ? Number(cr9aa_outcomesnumnotinterested) : -1,
+        "cr9aa_outcomesnumpending": cr9aa_outcomesnumpending !="" || cr9aa_outcomesnumpending === "0" ? Number(cr9aa_outcomesnumpending) : -1,
+        "cr9aa_outcomesnumunablebecontacted": cr9aa_outcomesnumunablebecontacted !="" || cr9aa_outcomesnumunablebecontacted === "0" ? Number(cr9aa_outcomesnumunablebecontacted) : -1,
+        "cr9aa_outcomesnumineligible": cr9aa_outcomesnumineligible !="" || cr9aa_outcomesnumineligible === "0" ? Number(cr9aa_outcomesnumineligible) : -1,
+        "cr9aa_outcomesnumremainsincust": cr9aa_outcomesnumremainsincust !="" || cr9aa_outcomesnumremainsincust === "0" ? Number(cr9aa_outcomesnumremainsincust) : -1,
+        "cr9aa_occoutcomesnumnewlyplacedinslehousing": cr9aa_occoutcomesnumnewlyplacedinslehousing !="" || cr9aa_occoutcomesnumnewlyplacedinslehousing === "0" ? Number(cr9aa_occoutcomesnumnewlyplacedinslehousing) : -1,
+        "cr9aa_occoutcomesnumongoingslepartsexcludingtho": cr9aa_occoutcomesnumongoingslepartsexcludingtho !="" || cr9aa_occoutcomesnumongoingslepartsexcludingtho === "0" ? Number(cr9aa_occoutcomesnumongoingslepartsexcludingtho) : -1,
+        "cr9aa_occoutcomesnumprovidedtransitionplanning": cr9aa_occoutcomesnumprovidedtransitionplanning !="" || cr9aa_occoutcomesnumprovidedtransitionplanning === "0" ? Number(cr9aa_occoutcomesnumprovidedtransitionplanning) : -1,
+        "cr9aa_occoutcomesnumexitedpermanenthousing": cr9aa_occoutcomesnumexitedpermanenthousing !="" || cr9aa_occoutcomesnumexitedpermanenthousing === "0" ? Number(cr9aa_occoutcomesnumexitedpermanenthousing) : -1,
+        "cr9aa_occoutcomesnumselfterminatedexits": cr9aa_occoutcomesnumselfterminatedexits !="" || cr9aa_occoutcomesnumselfterminatedexits === "0" ? Number(cr9aa_occoutcomesnumselfterminatedexits) : -1,
+        "cr9aa_occoutcomesnumnolongerinprogduefailmeetr": cr9aa_occoutcomesnumnolongerinprogduefailmeetr !="" || cr9aa_occoutcomesnumnolongerinprogduefailmeetr === "0" ? Number(cr9aa_occoutcomesnumnolongerinprogduefailmeetr) : -1,
+        "cr9aa_occoutcomesnumnolongerinprogduectorcrimi": cr9aa_occoutcomesnumnolongerinprogduectorcrimi !="" || cr9aa_occoutcomesnumnolongerinprogduectorcrimi === "0" ? Number(cr9aa_occoutcomesnumnolongerinprogduectorcrimi) : -1,
+        "cr9aa_occoutcomesnumnotengagednoshowsornonrespo": cr9aa_occoutcomesnumnotengagednoshowsornonrespo !="" || cr9aa_occoutcomesnumnotengagednoshowsornonrespo === "0" ? Number(cr9aa_occoutcomesnumnotengagednoshowsornonrespo) : -1,
+        "cr9aa_occoutcomesnummovedrelocated": cr9aa_occoutcomesnummovedrelocated !="" || cr9aa_occoutcomesnummovedrelocated === "0" ? Number(cr9aa_occoutcomesnummovedrelocated) : -1,
+        "cr9aa_occoutcomesnumabsconding": cr9aa_occoutcomesnumabsconding !="" || cr9aa_occoutcomesnumabsconding === "0" ? Number(cr9aa_occoutcomesnumabsconding) : -1,
+        "cr9aa_inhousesupportsvcsclothing": cr9aa_inhousesupportsvcsclothing !="" || cr9aa_inhousesupportsvcsclothing === "0" ? Number(cr9aa_inhousesupportsvcsclothing) : -1,
+        "cr9aa_inhousesupportsvcsctsupport": cr9aa_inhousesupportsvcsctsupport !="" || cr9aa_inhousesupportsvcsctsupport === "0" ? Number(cr9aa_inhousesupportsvcsctsupport) : -1,
+        "cr9aa_inhousesupportsvcshousing": cr9aa_inhousesupportsvcshousing !="" || cr9aa_inhousesupportsvcshousing === "0" ? Number(cr9aa_inhousesupportsvcshousing) : -1,
+        "cr9aa_inhousesupportsvcshousingref": cr9aa_inhousesupportsvcshousingref !="" || cr9aa_inhousesupportsvcshousingref === "0" ? Number(cr9aa_inhousesupportsvcshousingref) : -1,
+        "cr9aa_inhousesupportsvcsrecoverymeetings": cr9aa_inhousesupportsvcsrecoverymeetings !="" || cr9aa_inhousesupportsvcsrecoverymeetings === "0" ? Number(cr9aa_inhousesupportsvcsrecoverymeetings) : -1,
+        "cr9aa_inhousesupportsvcstransportation": cr9aa_inhousesupportsvcstransportation !="" || cr9aa_inhousesupportsvcstransportation === "0" ? Number(cr9aa_inhousesupportsvcstransportation) : -1,
+        "cr9aa_inhousesupsvcsaveragenumsupportivesvcs": cr9aa_inhousesupsvcsaveragenumsupportivesvcs !="" || cr9aa_inhousesupsvcsaveragenumsupportivesvcs === "0" ? Number(cr9aa_inhousesupsvcsaveragenumsupportivesvcs) : -1,
+        "cr9aa_referredforothersvcsmentoring": cr9aa_referredforothersvcsmentoring !="" || cr9aa_referredforothersvcsmentoring === "0" ? Number(cr9aa_referredforothersvcsmentoring) : -1,
+        "cr9aa_referredforothersvcspubbenefitassistance": cr9aa_referredforothersvcspubbenefitassistance !="" || cr9aa_referredforothersvcspubbenefitassistance === "0" ? Number(cr9aa_referredforothersvcspubbenefitassistance) : -1,
+        "cr9aa_referredforothersvcsmentalhealthsupport": cr9aa_referredforothersvcsmentalhealthsupport !="" || cr9aa_referredforothersvcsmentalhealthsupport === "0" ? Number(cr9aa_referredforothersvcsmentalhealthsupport) : -1,
+        "cr9aa_referredforothersvcsoutpatientsubstabuse": cr9aa_referredforothersvcsoutpatientsubstabuse !="" || cr9aa_referredforothersvcsoutpatientsubstabuse === "0" ? Number(cr9aa_referredforothersvcsoutpatientsubstabuse) : -1,
+        "cr9aa_referredforothersvcsempvocationaltraining": cr9aa_referredforothersvcsempvocationaltraining !="" || cr9aa_referredforothersvcsempvocationaltraining === "0" ? Number(cr9aa_referredforothersvcsempvocationaltraining) : -1,
+        "cr9aa_referredforothersvcscreditasstfinancia": cr9aa_referredforothersvcscreditasstfinancia !="" || cr9aa_referredforothersvcscreditasstfinancia === "0" ? Number(cr9aa_referredforothersvcscreditasstfinancia) : -1,
+        "cr9aa_referredforothersvcsstableaftercarehouse": cr9aa_referredforothersvcsstableaftercarehouse !="" || cr9aa_referredforothersvcsstableaftercarehouse === "0" ? Number(cr9aa_referredforothersvcsstableaftercarehouse) : -1,
+        "cr9aa_referredforothersvcscollegecourses": cr9aa_referredforothersvcscollegecourses !="" || cr9aa_referredforothersvcscollegecourses === "0" ? Number(cr9aa_referredforothersvcscollegecourses) : -1,
+        "cr9aa_referredforothersvcscogbehaviouraltrea": cr9aa_referredforothersvcscogbehaviouraltrea !="" || cr9aa_referredforothersvcscogbehaviouraltrea === "0" ? Number(cr9aa_referredforothersvcscogbehaviouraltrea) : -1,
+        "cr9aa_referredforothersvcsneedsassessment": cr9aa_referredforothersvcsneedsassessment !="" || cr9aa_referredforothersvcsneedsassessment === "0" ? Number(cr9aa_referredforothersvcsneedsassessment) : -1,
+        "cr9aa_referredforothersvcsoutsidehousingasst": cr9aa_referredforothersvcsoutsidehousingasst !="" || cr9aa_referredforothersvcsoutsidehousingasst === "0" ? Number(cr9aa_referredforothersvcsoutsidehousingasst) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+                
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>
