@@ -1,3 +1,9 @@
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
 <form id="form" role="form">
   {% fetchxml myquery %}
   <fetch mapping="logical">
@@ -23,6 +29,7 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
     <div class="col-xs-12 text-right margin">
       <!-- Button trigger modal -->
       {% if recordCount > 0  %}
@@ -54,6 +61,7 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Close </button>
     </div>
+    {% endif %}
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item active">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
@@ -96,7 +104,7 @@
                   <p class="popup-txt"># referrals, total</p>
                 </div>
                 <div class="col form-group">
-                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_numrefstotal" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numrefstotal = myquery.results.entities[0].cr9aa_numrefstotal | round: 0  %}{% if cr9aa_numrefstotal == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numrefstotal | round: 0}}{% endif %}{% endif %}">
+                  <input class="form-control" {{viewMode}} required data-required-error="This field is required" id="cr9aa_numrefstotal" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numrefstotal = myquery.results.entities[0].cr9aa_numrefstotal | round: 0  %}{% if cr9aa_numrefstotal == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numrefstotal | round: 0}}{% endif %}{% endif %}">
                 </div>
               </div>
   
@@ -198,7 +206,7 @@
                   <p class="popup-txt">Native American</p>
                 </div>
                 <div class="col form-group">
-                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_newpartsnativeamerican" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_newpartsnativeamerican = myquery.results.entities[0].cr9aa_newpartsnativeamerican | round: 0 %}{% if cr9aa_newpartsnativeamerican == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_newpartsnativeamerican | round: 0}}{% endif %}{% endif %}">                 <input class="form-control" required data-required-error="This field is required" id="cr9aa_newpartsnativeamerican" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_newpartsnativeamerican | round: 0}}{% endif %}">
+                  <input class="form-control" required data-required-error="This field is required" id="cr9aa_newpartsnativeamerican" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_newpartsnativeamerican = myquery.results.entities[0].cr9aa_newpartsnativeamerican | round: 0 %}{% if cr9aa_newpartsnativeamerican == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_newpartsnativeamerican | round: 0}}{% endif %}{% endif %}">                
                 </div>
               </div>
   
@@ -638,8 +646,12 @@
           </div>
         </div>
       </div>
-      
       <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+  
+  
+  
+  
+  
         <div class="container">
           <div class="row">
             <div class="col text-left">
@@ -722,10 +734,10 @@
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Program Director</th>
-                <td> <input class="form-control" id="crdae_programdirectorbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorbudget | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorcurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorcurrent | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectortotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectortotal | round: 2}} {% endif %}"></td>
-                <td> <input class="form-control" id="crdae_programdirectorfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorfurther}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programdirectorbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorbudget | round: 2}}{% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programdirectorcurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorcurrent | round: 2}}{% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programdirectortotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectortotal | round: 2}}{% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programdirectorfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_programdirectorfurther}}{% endif %}"></td>
               </tr>
               <tr>
                 <th scope="row" style="font-weight:400;">Network Manager</th>

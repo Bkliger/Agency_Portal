@@ -1,69 +1,78 @@
-{% fetchxml myquery %}
-<fetch mapping="logical">
-  <entity name="cr9aa_hr360">
-    <all-attributes />​
-    <filter type='and'>
-      <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
-      <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
-      <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
-      <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
-    </filter>
-  </entity>
-</fetch>
-{% endfetchxml %}
-{% assign recordCount = myquery.results.entities.size %}
-<div class="container">
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h3 class="my-0 mr-md-auto">{{user.fullname}}</h3>
-    <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
-  </div>
-  <!-- Popup with a button -->
-  <div class="col-xs-12 text-right margin">
-    <!-- Button trigger modal -->
-    {% if recordCount > 0  %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-        <button type="button" class="btn btn-primary" id="save">
-          Save </button>
-      {% endif %}
-    {% endif %}
-
-    {% if recordCount == 0  %}
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
+<form id="form" role="form">
+  {% fetchxml myquery %}
+  <fetch mapping="logical">
+    <entity name="cr9aa_CenterforceFR">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+  {% assign recordCount = myquery.results.entities.size %}
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <div class="fiscal-year-month"> 
+        <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
+        <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
+      </div>
+      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
+    </div>
+    <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
+    <div class="col-xs-12 text-right margin">
+      <!-- Button trigger modal -->
+      {% if recordCount > 0  %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button type="button" class="btn btn-primary" id="save">
         Save </button>
-    {% endif %}
-
-    {% if recordCount > 0 %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button type="button" class="btn btn-primary" id="submit">
+      {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button type="button" class="btn btn-primary" id="save">
+        Save </button>
+      {% endif %}
+  
+      {% if recordCount > 0 %}
+      {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
+      {% endif %}
+  
+      {% if recordCount == 0  %}
+      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+        Submit </button>
+      {% endif %}
+  
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Print </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Close </button>
+    </div>
     {% endif %}
-
-    {% if recordCount == 0  %}
-        <button type="button" class="btn btn-primary" id="submit">
-          Submit </button>
-    {% endif %}
-           
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Print </button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Close </button>
-  </div>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
-
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Budget</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Attachments</a>
-    </li>
-  </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item active">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
+      </li>
+    </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <br>
@@ -437,11 +446,10 @@
                 <input class="form-control" required data-required-error="This field is required" id="cr9aa_newenrollnumseekingreunwchildren" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_newenrollnumseekingreunwchildren = myquery.results.entities[0].cr9aa_newenrollnumseekingreunwchildren | round: 0 %}{% if cr9aa_newenrollnumseekingreunwchildren == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_newenrollnumseekingreunwchildren | round: 0}}{% endif %}{% endif %}">
               </div>
             </div>
+          </div>
 
             
-
           <div class="col">
-
             <div class="row">
               <div class="col heading-border">
                 <h4>Among ALL Enrollees: Program participation</h4>
@@ -548,11 +556,11 @@
       </div>
     </div>
     <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
-
-
-
-
-
+  
+  
+  
+  
+  
       <div class="container">
         <div class="row">
           <div class="col text-left">
@@ -561,295 +569,58 @@
         </div>
       </div>
 
-        <div class="container">
+      <div class="container">
 
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section One: Performance and
-                Demographic Data Measures</p>
-            </div>
-            <div class="col form-group">
-  <textarea class="form-control" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}} {% endif %}</textarea>
-            </div>
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section One: Performance and
+              Demographic Data Measures</p>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section two: Budget Expenditures</p>
-            </div>
-            <div class="col form-group">
-  <textarea class="form-control" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}} {% endif %}</textarea>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
-            </div>
-            <div class="col form-group">
-<textarea class="form-control" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}} {% endif %}</textarea>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
-            </div>
-            <div class="col form-group">
-<textarea class="form-control" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}} {% endif %}</textarea>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Five: Next Steps</p>
-            </div>
-            <div class="col form-group">
-              <textarea class="form-control" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}} {% endif %}</textarea>
-            </div>
+          <div class="col form-group">
+            <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section two: Budget Expenditures</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <p class="popup-txt">Section Five: Next Steps</p>
+          </div>
+          <div class="col form-group">
+            <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">tab3</div>
   </div>
 </div>
 <div class="empty-space">
 </div>
-
-<script>
-  $(document).on('click', '#save', function() {
-    submitOrSave("save");
-  });
-  $(document).on('click', '#submit', function() {
-    submitOrSave("submit");
-  });
-  function submitOrSave(flag) {
-    var submitStatus="";
-    if(flag=="save"){
-      submitStatus="In Progress";
-    }else{
-      submitStatus="Submitted";
-    }
-
-    $(".loading").show();
-
-
-    var cr9aa_averagenumbermenteesmentor = $("#cr9aa_averagenumbermenteesmentor").val();
-    var cr9aa_goalswomennumcompletedatleast1goal = $("#cr9aa_goalswomennumcompletedatleast1goal").val();
-    var cr9aa_goalswomennumcompletedatleast2goals = $("#cr9aa_goalswomennumcompletedatleast2goals").val();
-    var cr9aa_goalswomennumcompletedatleast3goals = $("#cr9aa_goalswomennumcompletedatleast3goals").val();
-    var cr9aa_goalswomennumcompletedtransitionplan = $("#cr9aa_goalswomennumcompletedtransitionplan").val();
-    var cr9aa_goalswomennumcomptransitionplanwhincarc = $("#cr9aa_goalswomennumcomptransitionplanwhincarc").val();
-    var cr9aa_goalswomennummatchedamentornavigator = $("#cr9aa_goalswomennummatchedamentornavigator").val();
-    var cr9aa_goalswomennumreccasemgmtonrelease = $("#cr9aa_goalswomennumreccasemgmtonrelease").val();
-    var cr9aa_newpartsageunknown = $("#cr9aa_newpartsageunknown").val();
-    var cr9aa_newpartsasian = $("#cr9aa_newpartsasian").val();
-    var cr9aa_newpartsblack = $("#cr9aa_newpartsblack").val();
-    var cr9aa_newpartshispanic = $("#cr9aa_newpartshispanic").val();
-    var cr9aa_newpartsmen = $("#cr9aa_newpartsmen").val();
-    var cr9aa_newpartsnativeamerican = $("#cr9aa_newpartsnativeamerican").val();
-    var cr9aa_newpartsnumaged2635 = $("#cr9aa_newpartsnumaged2635").val();
-    var cr9aa_newpartsnumaged3645 = $("#cr9aa_newpartsnumaged3645").val();
-    var cr9aa_newpartsnumaged4655 = $("#cr9aa_newpartsnumaged4655").val();
-    var cr9aa_newpartsnumaged55 = $("#cr9aa_newpartsnumaged55").val();
-    var cr9aa_newpartsnumagedgt25 = $("#cr9aa_newpartsnumagedgt25").val();
-    var cr9aa_newpartsraceethnicityother = $("#cr9aa_newpartsraceethnicityother").val();
-    var cr9aa_newpartsregioncentral = $("#cr9aa_newpartsregioncentral").val();
-    var cr9aa_newpartsregioneast = $("#cr9aa_newpartsregioneast").val();
-    var cr9aa_newpartsregionwest = $("#cr9aa_newpartsregionwest").val();
-    var cr9aa_newpartstierab109prob = $("#cr9aa_newpartstierab109prob").val();
-    var cr9aa_newpartstiercurrawaitingtrial = $("#cr9aa_newpartstiercurrawaitingtrial").val();
-    var cr9aa_newpartstiercurrincust = $("#cr9aa_newpartstiercurrincust").val();
-    var cr9aa_newpartstiercurronctprob = $("#cr9aa_newpartstiercurronctprob").val();
-    var cr9aa_newpartstiercurronparole = $("#cr9aa_newpartstiercurronparole").val();
-    var cr9aa_newpartstierfelonyprob = $("#cr9aa_newpartstierfelonyprob").val();
-    var cr9aa_newpartstierlt30daysincustreleasedwinl = $("#cr9aa_newpartstierlt30daysincustreleasedwinl").val();
-    var cr9aa_newpartstiernonetheabove = $("#cr9aa_newpartstiernonetheabove").val();
-    var cr9aa_newpartstieroutjurisdiction = $("#cr9aa_newpartstieroutjurisdiction").val();
-    var cr9aa_newpartstierspecctprobbehavioraldvdrug = $("#cr9aa_newpartstierspecctprobbehavioraldvdrug").val();
-    var cr9aa_newpartswhite = $("#cr9aa_newpartswhite").val();
-    var cr9aa_newpartswomen = $("#cr9aa_newpartswomen").val();
-    var cr9aa_numab109referrals = $("#cr9aa_numab109referrals").val();
-    var cr9aa_nummentornavigatorstrained = $("#cr9aa_nummentornavigatorstrained").val();
-    var cr9aa_numnonab109refs = $("#cr9aa_numnonab109refs").val();
-    var cr9aa_numrefsfromcccoe = $("#cr9aa_numrefsfromcccoe").val();
-    var cr9aa_numrefsfromprob = $("#cr9aa_numrefsfromprob").val();
-    var cr9aa_numrefstotal = $("#cr9aa_numrefstotal").val();
-    var cr9aa_outcomescompleteatleast1goal = $("#cr9aa_outcomescompleteatleast1goal").val();
-    var cr9aa_outcomesnumnewslettersproduced = $("#cr9aa_outcomesnumnewslettersproduced").val();
-    var cr9aa_outcomesnumsuccessfullycompletedprog = $("#cr9aa_outcomesnumsuccessfullycompletedprog").val();
-    var cr9aa_outcomesnumunsucccompletedprog = $("#cr9aa_outcomesnumunsucccompletedprog").val();
-    var cr9aa_refsnumcompletedisps = $("#cr9aa_refsnumcompletedisps").val();
-    var cr9aa_svcsmennummatchedmentornavigator = $("#cr9aa_svcsmennummatchedmentornavigator").val();
-    var cr9aa_svcsmennumrecneedsscreeningwhileincarc = $("#cr9aa_svcsmennumrecneedsscreeningwhileincarc").val();
-    var cr9aa_svcsmennumrecreentryplanwhileincarc = $("#cr9aa_svcsmennumrecreentryplanwhileincarc").val();
-    var cr9aa_sectionone = $("#cr9aa_sectionone").val();
-    var cr9aa_sectiontwo = $("#cr9aa_sectiontwo").val();
-    var cr9aa_sectionthree = $("#cr9aa_sectionthree").val();
-    var cr9aa_sectionfour = $("#cr9aa_sectionfour").val();
-    var cr9aa_sectionfive = $("#cr9aa_sectionfive").val();
-
-  {% if recordCount == 0 %}
-    webapi.safeAjax({
-      type: "POST",
-      url: "/_api/cr9aa_hr360s",
-      contentType: "application/json",
-      data: JSON.stringify({
-        "cr9aa_startyear": "{{request.params['startyear']}}",
-        "cr9aa_endyear": "{{request.params['endyear']}}",
-        "cr9aa_startmonth": "{{request.params['startmonth']}}",
-        "cr9aa_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_averagenumbermenteesmentor": Number(cr9aa_averagenumbermenteesmentor),
-        "cr9aa_goalswomennumcompletedatleast1goal": Number(cr9aa_goalswomennumcompletedatleast1goal),
-        "cr9aa_goalswomennumcompletedatleast2goals": Number(cr9aa_goalswomennumcompletedatleast2goals),
-        "cr9aa_goalswomennumcompletedatleast3goals": Number(cr9aa_goalswomennumcompletedatleast3goals),
-        "cr9aa_goalswomennumcompletedtransitionplan": Number(cr9aa_goalswomennumcompletedtransitionplan),
-        "cr9aa_goalswomennumcomptransitionplanwhincarc": Number(cr9aa_goalswomennumcomptransitionplanwhincarc),
-        "cr9aa_goalswomennummatchedamentornavigator": Number(cr9aa_goalswomennummatchedamentornavigator),
-        "cr9aa_goalswomennumreccasemgmtonrelease": Number(cr9aa_goalswomennumreccasemgmtonrelease),
-        "cr9aa_newpartsageunknown": Number(cr9aa_newpartsageunknown),
-        "cr9aa_newpartsasian": Number(cr9aa_newpartsasian),
-        "cr9aa_newpartsblack": Number(cr9aa_newpartsblack),
-        "cr9aa_newpartshispanic": Number(cr9aa_newpartshispanic),
-        "cr9aa_newpartsmen": Number(cr9aa_newpartsmen),
-        "cr9aa_newpartsnativeamerican": Number(cr9aa_newpartsnativeamerican),
-        "cr9aa_newpartsnumaged2635": Number(cr9aa_newpartsnumaged2635),
-        "cr9aa_newpartsnumaged3645": Number(cr9aa_newpartsnumaged3645),
-        "cr9aa_newpartsnumaged4655": Number(cr9aa_newpartsnumaged4655),
-        "cr9aa_newpartsnumaged55": Number(cr9aa_newpartsnumaged55),
-        "cr9aa_newpartsnumagedgt25": Number(cr9aa_newpartsnumagedgt25),
-        "cr9aa_newpartsraceethnicityother": Number(cr9aa_newpartsraceethnicityother),
-        "cr9aa_newpartsregioncentral": Number(cr9aa_newpartsregioncentral),
-        "cr9aa_newpartsregioneast": Number(cr9aa_newpartsregioneast),
-        "cr9aa_newpartsregionwest": Number(cr9aa_newpartsregionwest),
-        "cr9aa_newpartstierab109prob": Number(cr9aa_newpartstierab109prob),
-        "cr9aa_newpartstiercurrawaitingtrial": Number(cr9aa_newpartstiercurrawaitingtrial),
-        "cr9aa_newpartstiercurrincust": Number(cr9aa_newpartstiercurrincust),
-        "cr9aa_newpartstiercurronctprob": Number(cr9aa_newpartstiercurronctprob),
-        "cr9aa_newpartstiercurronparole": Number(cr9aa_newpartstiercurronparole),
-        "cr9aa_newpartstierfelonyprob": Number(cr9aa_newpartstierfelonyprob),
-        "cr9aa_newpartstierlt30daysincustreleasedwinl": Number(cr9aa_newpartstierlt30daysincustreleasedwinl),
-        "cr9aa_newpartstiernonetheabove": Number(cr9aa_newpartstiernonetheabove),
-        "cr9aa_newpartstieroutjurisdiction": Number(cr9aa_newpartstieroutjurisdiction),
-        "cr9aa_newpartstierspecctprobbehavioraldvdrug": Number(cr9aa_newpartstierspecctprobbehavioraldvdrug),
-        "cr9aa_newpartswhite": Number(cr9aa_newpartswhite),
-        "cr9aa_newpartswomen": Number(cr9aa_newpartswomen),
-        "cr9aa_numab109referrals": Number(cr9aa_numab109referrals),
-        "cr9aa_nummentornavigatorstrained": Number(cr9aa_nummentornavigatorstrained),
-        "cr9aa_numnonab109refs": Number(cr9aa_numnonab109refs),
-        "cr9aa_numrefsfromcccoe": Number(cr9aa_numrefsfromcccoe),
-        "cr9aa_numrefsfromprob": Number(cr9aa_numrefsfromprob),
-        "cr9aa_numrefstotal": Number(cr9aa_numrefstotal),
-        "cr9aa_outcomescompleteatleast1goal": Number(cr9aa_outcomescompleteatleast1goal),
-        "cr9aa_outcomesnumnewslettersproduced": Number(cr9aa_outcomesnumnewslettersproduced),
-        "cr9aa_outcomesnumsuccessfullycompletedprog": Number(cr9aa_outcomesnumsuccessfullycompletedprog),
-        "cr9aa_outcomesnumunsucccompletedprog": Number(cr9aa_outcomesnumunsucccompletedprog),
-        "cr9aa_refsnumcompletedisps": Number(cr9aa_refsnumcompletedisps),
-        "cr9aa_svcsmennummatchedmentornavigator": Number(cr9aa_svcsmennummatchedmentornavigator),
-        "cr9aa_svcsmennumrecneedsscreeningwhileincarc": Number(cr9aa_svcsmennumrecneedsscreeningwhileincarc),
-        "cr9aa_svcsmennumrecreentryplanwhileincarc": Number(cr9aa_svcsmennumrecreentryplanwhileincarc),
-        "cr9aa_sectionone": cr9aa_sectionone,
-        "cr9aa_sectiontwo": cr9aa_sectiontwo,
-        "cr9aa_sectionthree": cr9aa_sectionthree,
-        "cr9aa_sectionfour": cr9aa_sectionfour,
-        "cr9aa_sectionfive": cr9aa_sectionfive,
-        "cr9aa_submittedstatus": submitStatus
-      }),
-      success: function(res, status, xhr) {
-        $(".loading").hide();
-        toastr.success(
-          '',
-          'Data Inserted Successfully', {
-            timeOut: 2000,
-            fadeOut: 3000,
-            "positionClass": "toast-bottom-center",
-            onHidden: function() {
-              window.location.reload();
-            }
-          });
-      }
-    });
-
-    {% else %}
-    webapi.safeAjax({
-      type: "PATCH",
-      url: "/_api/cr9aa_hr360s({{myquery.results.entities[0].cr9aa_hr360id}})",
-      contentType: "application/json",
-      data: JSON.stringify({
-
-        "cr9aa_averagenumbermenteesmentor": Number(cr9aa_averagenumbermenteesmentor),
-"cr9aa_goalswomennumcompletedatleast1goal": Number(cr9aa_goalswomennumcompletedatleast1goal),
-"cr9aa_goalswomennumcompletedatleast2goals": Number(cr9aa_goalswomennumcompletedatleast2goals),
-"cr9aa_goalswomennumcompletedatleast3goals": Number(cr9aa_goalswomennumcompletedatleast3goals),
-"cr9aa_goalswomennumcompletedtransitionplan": Number(cr9aa_goalswomennumcompletedtransitionplan),
-"cr9aa_goalswomennumcomptransitionplanwhincarc": Number(cr9aa_goalswomennumcomptransitionplanwhincarc),
-"cr9aa_goalswomennummatchedamentornavigator": Number(cr9aa_goalswomennummatchedamentornavigator),
-"cr9aa_goalswomennumreccasemgmtonrelease": Number(cr9aa_goalswomennumreccasemgmtonrelease),
-"cr9aa_newpartsageunknown": Number(cr9aa_newpartsageunknown),
-"cr9aa_newpartsasian": Number(cr9aa_newpartsasian),
-"cr9aa_newpartsblack": Number(cr9aa_newpartsblack),
-"cr9aa_newpartshispanic": Number(cr9aa_newpartshispanic),
-"cr9aa_newpartsmen": Number(cr9aa_newpartsmen),
-"cr9aa_newpartsnativeamerican": Number(cr9aa_newpartsnativeamerican),
-"cr9aa_newpartsnumaged2635": Number(cr9aa_newpartsnumaged2635),
-"cr9aa_newpartsnumaged3645": Number(cr9aa_newpartsnumaged3645),
-"cr9aa_newpartsnumaged4655": Number(cr9aa_newpartsnumaged4655),
-"cr9aa_newpartsnumaged55": Number(cr9aa_newpartsnumaged55),
-"cr9aa_newpartsnumagedgt25": Number(cr9aa_newpartsnumagedgt25),
-"cr9aa_newpartsraceethnicityother": Number(cr9aa_newpartsraceethnicityother),
-"cr9aa_newpartsregioncentral": Number(cr9aa_newpartsregioncentral),
-"cr9aa_newpartsregioneast": Number(cr9aa_newpartsregioneast),
-"cr9aa_newpartsregionwest": Number(cr9aa_newpartsregionwest),
-"cr9aa_newpartstierab109prob": Number(cr9aa_newpartstierab109prob),
-"cr9aa_newpartstiercurrawaitingtrial": Number(cr9aa_newpartstiercurrawaitingtrial),
-"cr9aa_newpartstiercurrincust": Number(cr9aa_newpartstiercurrincust),
-"cr9aa_newpartstiercurronctprob": Number(cr9aa_newpartstiercurronctprob),
-"cr9aa_newpartstiercurronparole": Number(cr9aa_newpartstiercurronparole),
-"cr9aa_newpartstierfelonyprob": Number(cr9aa_newpartstierfelonyprob),
-"cr9aa_newpartstierlt30daysincustreleasedwinl": Number(cr9aa_newpartstierlt30daysincustreleasedwinl),
-"cr9aa_newpartstiernonetheabove": Number(cr9aa_newpartstiernonetheabove),
-"cr9aa_newpartstieroutjurisdiction": Number(cr9aa_newpartstieroutjurisdiction),
-"cr9aa_newpartstierspecctprobbehavioraldvdrug": Number(cr9aa_newpartstierspecctprobbehavioraldvdrug),
-"cr9aa_newpartswhite": Number(cr9aa_newpartswhite),
-"cr9aa_newpartswomen": Number(cr9aa_newpartswomen),
-"cr9aa_numab109referrals": Number(cr9aa_numab109referrals),
-"cr9aa_nummentornavigatorstrained": Number(cr9aa_nummentornavigatorstrained),
-"cr9aa_numnonab109refs": Number(cr9aa_numnonab109refs),
-"cr9aa_numrefsfromcccoe": Number(cr9aa_numrefsfromcccoe),
-"cr9aa_numrefsfromprob": Number(cr9aa_numrefsfromprob),
-"cr9aa_numrefstotal": Number(cr9aa_numrefstotal),
-"cr9aa_outcomescompleteatleast1goal": Number(cr9aa_outcomescompleteatleast1goal),
-"cr9aa_outcomesnumnewslettersproduced": Number(cr9aa_outcomesnumnewslettersproduced),
-"cr9aa_outcomesnumsuccessfullycompletedprog": Number(cr9aa_outcomesnumsuccessfullycompletedprog),
-"cr9aa_outcomesnumunsucccompletedprog": Number(cr9aa_outcomesnumunsucccompletedprog),
-"cr9aa_refsnumcompletedisps": Number(cr9aa_refsnumcompletedisps),
-"cr9aa_svcsmennummatchedmentornavigator": Number(cr9aa_svcsmennummatchedmentornavigator),
-"cr9aa_svcsmennumrecneedsscreeningwhileincarc": Number(cr9aa_svcsmennumrecneedsscreeningwhileincarc),
-"cr9aa_svcsmennumrecreentryplanwhileincarc": Number(cr9aa_svcsmennumrecreentryplanwhileincarc),
-"cr9aa_sectionone": cr9aa_sectionone,
-"cr9aa_sectiontwo": cr9aa_sectiontwo,
-"cr9aa_sectionthree": cr9aa_sectionthree,
-"cr9aa_sectionfour": cr9aa_sectionfour,
-"cr9aa_sectionfive": cr9aa_sectionfive,
-"cr9aa_submittedstatus": submitStatus
-      }),
-      success: function(res, status, xhr) {
-        $(".loading").hide();
-
-        toastr.success(
-          '',
-          'Data Updated Successfully', {
-            timeOut: 2000,
-            fadeOut: 3000,
-            "positionClass": "toast-bottom-center",
-            onHidden: function() {
-              window.location.reload();
-            }
-          });
-
-      }
-    }); {% endif %}
-
-
-  }
-</script>
+<script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
+{% include "CenterforceFR-Footer" %}

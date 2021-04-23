@@ -1,0 +1,452 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+  
+      var cr9aa_refsnumreferred= $("#cr9aa_refsnumreferred").val().trim();
+        var cr9aa_refsnumenrolled= $("#cr9aa_refsnumenrolled").val().trim();
+        var cr9aa_refsnumexited= $("#cr9aa_refsnumexited").val().trim();
+        var cr9aa_refsblack= $("#cr9aa_refsblack").val().trim();
+        var cr9aa_refslatinoa= $("#cr9aa_refslatinoa").val().trim();
+        var cr9aa_refsasianpacificislander= $("#cr9aa_refsasianpacificislander").val().trim();
+        var cr9aa_refswhite= $("#cr9aa_refswhite").val().trim();
+        var cr9aa_refsethnicityother= $("#cr9aa_refsethnicityother").val().trim();
+        var cr9aa_refsregioncentral= $("#cr9aa_refsregioncentral").val().trim();
+        var cr9aa_refsregioneast= $("#cr9aa_refsregioneast").val().trim();
+        var cr9aa_refsnumagedgt25= $("#cr9aa_refsnumagedgt25").val().trim();
+        var cr9aa_refsnumaged2635= $("#cr9aa_refsnumaged2635").val().trim();
+        var cr9aa_refsnumaged3645= $("#cr9aa_refsnumaged3645").val().trim();
+        var cr9aa_refsnumaged4655= $("#cr9aa_refsnumaged4655").val().trim();
+        var cr9aa_refsnumaged55= $("#cr9aa_refsnumaged55").val().trim();
+        var cr9aa_refsageunknown= $("#cr9aa_refsageunknown").val().trim();
+        var cr9aa_refstierab109prob= $("#cr9aa_refstierab109prob").val().trim();
+        var cr9aa_refstierfelonyprob= $("#cr9aa_refstierfelonyprob").val().trim();
+        var cr9aa_refstierlt30daysincustreleasedwinlast3= $("#cr9aa_refstierlt30daysincustreleasedwinlast3").val().trim();
+        var cr9aa_refstiercurrawaitingtrial= $("#cr9aa_refstiercurrawaitingtrial").val().trim();
+        var cr9aa_refstiercurronctprob= $("#cr9aa_refstiercurronctprob").val().trim();
+        var cr9aa_refstierspecctprobbehavioraldvdrug= $("#cr9aa_refstierspecctprobbehavioraldvdrug").val().trim();
+        var cr9aa_refstiercurronparole= $("#cr9aa_refstiercurronparole").val().trim();
+        var cr9aa_refstiercurrincust= $("#cr9aa_refstiercurrincust").val().trim();
+        var cr9aa_refstieroutjurisdiction= $("#cr9aa_refstieroutjurisdiction").val().trim();
+        var cr9aa_refstiernonetheabove= $("#cr9aa_refstiernonetheabove").val().trim();
+        var cr9aa_outcomesnumactiveparts= $("#cr9aa_outcomesnumactiveparts").val().trim();
+        var cr9aa_outcomesnumcontactedincust= $("#cr9aa_outcomesnumcontactedincust").val().trim();
+        var cr9aa_outcomesnumenrolledinwestprog= $("#cr9aa_outcomesnumenrolledinwestprog").val().trim();
+        var cr9aa_outcomesnumwisppriorrelease= $("#cr9aa_outcomesnumwisppriorrelease").val().trim();
+        var cr9aa_outcomesnumenrolledinatleast1svc= $("#cr9aa_outcomesnumenrolledinatleast1svc").val().trim();
+        var cr9aa_outcomesnumenrolledinatleast2svcs= $("#cr9aa_outcomesnumenrolledinatleast2svcs").val().trim();
+        var cr9aa_outcomesnumenrolledinatleast3svcs= $("#cr9aa_outcomesnumenrolledinatleast3svcs").val().trim();
+        var cr9aa_outcomesnumsuccessfullycompletedprog= $("#cr9aa_outcomesnumsuccessfullycompletedprog").val().trim();
+        var cr9aa_outcomesnumdidnotcompleteprog= $("#cr9aa_outcomesnumdidnotcompleteprog").val().trim();
+        var cr9aa_reasonsforincompletefailmeetprogreqs= $("#cr9aa_reasonsforincompletefailmeetprogreqs").val().trim();
+        var cr9aa_reasonsforincompleteduectcriminvolvement= $("#cr9aa_reasonsforincompleteduectcriminvolvement").val().trim();
+        var cr9aa_reasonsforincompletelackengage= $("#cr9aa_reasonsforincompletelackengage").val().trim();
+        var cr9aa_reasonsforincompleteabsconding= $("#cr9aa_reasonsforincompleteabsconding").val().trim();
+        var cr9aa_reasonsforincompleterelocationcasexfer= $("#cr9aa_reasonsforincompleterelocationcasexfer").val().trim();
+      var crdae_sectionone = $("#crdae_sectionone").val().trim();
+      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+        var crdae_programmgrcur = $("#crdae_programmgrcur").val().trim();
+        var crdae_parentingcoachcur = $("#crdae_parentingcoachcur").val().trim();
+        var crdae_totalsalscur = $("#crdae_totalsalscur").val().trim();
+        var crdae_fringebenefitscur = $("#crdae_fringebenefitscur").val().trim();
+        var crdae_totalsalsbenefitscur = $("#crdae_totalsalsbenefitscur").val().trim();
+        var crdae_fringeratechargedcur = $("#crdae_fringeratechargedcur").val().trim();
+        var crdae_travelmileagecur = $("#crdae_travelmileagecur").val().trim();
+        var crdae_equipcellphonescur = $("#crdae_equipcellphonescur").val().trim();
+        var crdae_incentivescur = $("#crdae_incentivescur").val().trim();
+        var crdae_copiescur = $("#crdae_copiescur").val().trim();
+        var crdae_rentconcordcur = $("#crdae_rentconcordcur").val().trim();
+        var crdae_rentrichmondcur = $("#crdae_rentrichmondcur").val().trim();
+        var crdae_rentantiochcur = $("#crdae_rentantiochcur").val().trim();
+        var crdae_totaloperationscur = $("#crdae_totaloperationscur").val().trim();
+        var crdae_totaldirectcostscur = $("#crdae_totaldirectcostscur").val().trim();
+        var crdae_indirectcostscur = $("#crdae_indirectcostscur").val().trim();
+        var crdae_totalexpensescur = $("#crdae_totalexpensescur").val().trim();
+        var crdae_executivedirbudget = $("#crdae_executivedirbudget").val().trim();
+        var crdae_programmgrbudget = $("#crdae_programmgrbudget").val().trim();
+        var crdae_parentingcoachbudget = $("#crdae_parentingcoachbudget").val().trim();
+        var crdae_totalsalsbudget = $("#crdae_totalsalsbudget").val().trim();
+        var crdae_fringebenefitsbudget = $("#crdae_fringebenefitsbudget").val().trim();
+        var crdae_totalsalsbenefitsbudget = $("#crdae_totalsalsbenefitsbudget").val().trim();
+        var crdae_fringeratechargedbudget = $("#crdae_fringeratechargedbudget").val().trim();
+        var crdae_travelmileagebudget = $("#crdae_travelmileagebudget").val().trim();
+        var crdae_equipcellphonesbudget = $("#crdae_equipcellphonesbudget").val().trim();
+        var crdae_incentivesbudget = $("#crdae_incentivesbudget").val().trim();
+        var crdae_copiesbudget = $("#crdae_copiesbudget").val().trim();
+        var crdae_rentconcordbudget = $("#crdae_rentconcordbudget").val().trim();
+        var crdae_rentrichmondbudget = $("#crdae_rentrichmondbudget").val().trim();
+        var crdae_rentantiochbudget = $("#crdae_rentantiochbudget").val().trim();
+        var crdae_totaloperationsbudget = $("#crdae_totaloperationsbudget").val().trim();
+        var crdae_totaldirectcostsbudget = $("#crdae_totaldirectcostsbudget").val().trim();
+        var crdae_indirectcostsbudget = $("#crdae_indirectcostsbudget").val().trim();
+        var crdae_totalexpensesbudget = $("#crdae_totalexpensesbudget").val().trim();
+        var crdae_executivedirtot = $("#crdae_executivedirtot").val().trim();
+        var crdae_programmgrtot = $("#crdae_programmgrtot").val().trim();
+        var crdae_parentingcoachtot = $("#crdae_parentingcoachtot").val().trim();
+        var crdae_totalsalstot = $("#crdae_totalsalstot").val().trim();
+        var crdae_fringebenefitstot = $("#crdae_fringebenefitstot").val().trim();
+        var crdae_totalsalsbenefitstot = $("#crdae_totalsalsbenefitstot").val().trim();
+        var crdae_fringeratechargedtot = $("#crdae_fringeratechargedtot").val().trim();
+        var crdae_travelmileagetot = $("#crdae_travelmileagetot").val().trim();
+        var crdae_equipcellphonestot = $("#crdae_equipcellphonestot").val().trim();
+        var crdae_incentivestot = $("#crdae_incentivestot").val().trim();
+        var crdae_copiestot = $("#crdae_copiestot").val().trim();
+        var crdae_rentconcordtot = $("#crdae_rentconcordtot").val().trim();
+        var crdae_rentrichmondtot = $("#crdae_rentrichmondtot").val().trim();
+        var crdae_rentantiochtot = $("#crdae_rentantiochtot").val().trim();
+        var crdae_totaloperationstot = $("#crdae_totaloperationstot").val().trim();
+        var crdae_totaldirectcoststot = $("#crdae_totaldirectcoststot").val().trim();
+        var crdae_indirectcoststot = $("#crdae_indirectcoststot").val().trim();
+        var crdae_totalexpensestot = $("#crdae_totalexpensestot").val().trim();
+        var crdae_executivedirfur = $("#crdae_executivedirfur").val().trim();
+        var crdae_programmgrfur = $("#crdae_programmgrfur").val().trim();
+        var crdae_parentingcoachfur = $("#crdae_parentingcoachfur").val().trim();
+        var crdae_totalsalsfur = $("#crdae_totalsalsfur").val().trim();
+        var crdae_fringebenefitsfur = $("#crdae_fringebenefitsfur").val().trim();
+        var crdae_totalsalsbenefitsfur = $("#crdae_totalsalsbenefitsfur").val().trim();
+        var crdae_fringeratechargedfur = $("#crdae_fringeratechargedfur").val().trim();
+        var crdae_travelmileagefur = $("#crdae_travelmileagefur").val().trim();
+        var crdae_equipcellphonesfur = $("#crdae_equipcellphonesfur").val().trim();
+        var crdae_incentivesfur = $("#crdae_incentivesfur").val().trim();
+        var crdae_copiesfur = $("#crdae_copiesfur").val().trim();
+        var crdae_rentconcordfur = $("#crdae_rentconcordfur").val().trim();
+        var crdae_rentrichmondfur = $("#crdae_rentrichmondfur").val().trim();
+        var crdae_rentantiochfur = $("#crdae_rentantiochfur").val().trim();
+        var crdae_totaloperationsfur = $("#crdae_totaloperationsfur").val().trim();
+        var crdae_totaldirectcostsfur = $("#crdae_totaldirectcostsfur").val().trim();
+        var crdae_indirectcostsfur = $("#crdae_indirectcostsfur").val().trim();
+        var crdae_totalexpensesfur = $("#crdae_totalexpensesfur").val().trim();
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_centerforces",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_refsnumreferred": cr9aa_refsnumreferred !="" || cr9aa_refsnumreferred === "0" ? Number(cr9aa_refsnumreferred) : -1,
+        "cr9aa_refsnumenrolled": cr9aa_refsnumenrolled !="" || cr9aa_refsnumenrolled === "0" ? Number(cr9aa_refsnumenrolled) : -1,
+        "cr9aa_refsnumexited": cr9aa_refsnumexited !="" || cr9aa_refsnumexited === "0" ? Number(cr9aa_refsnumexited) : -1,
+        "cr9aa_refsblack": cr9aa_refsblack !="" || cr9aa_refsblack === "0" ? Number(cr9aa_refsblack) : -1,
+        "cr9aa_refslatinoa": cr9aa_refslatinoa !="" || cr9aa_refslatinoa === "0" ? Number(cr9aa_refslatinoa) : -1,
+        "cr9aa_refsasianpacificislander": cr9aa_refsasianpacificislander !="" || cr9aa_refsasianpacificislander === "0" ? Number(cr9aa_refsasianpacificislander) : -1,
+        "cr9aa_refswhite": cr9aa_refswhite !="" || cr9aa_refswhite === "0" ? Number(cr9aa_refswhite) : -1,
+        "cr9aa_refsethnicityother": cr9aa_refsethnicityother !="" || cr9aa_refsethnicityother === "0" ? Number(cr9aa_refsethnicityother) : -1,
+        "cr9aa_refsregioncentral": cr9aa_refsregioncentral !="" || cr9aa_refsregioncentral === "0" ? Number(cr9aa_refsregioncentral) : -1,
+        "cr9aa_refsregioneast": cr9aa_refsregioneast !="" || cr9aa_refsregioneast === "0" ? Number(cr9aa_refsregioneast) : -1,
+        "cr9aa_refsnumagedgt25": cr9aa_refsnumagedgt25 !="" || cr9aa_refsnumagedgt25 === "0" ? Number(cr9aa_refsnumagedgt25) : -1,
+        "cr9aa_refsnumaged2635": cr9aa_refsnumaged2635 !="" || cr9aa_refsnumaged2635 === "0" ? Number(cr9aa_refsnumaged2635) : -1,
+        "cr9aa_refsnumaged3645": cr9aa_refsnumaged3645 !="" || cr9aa_refsnumaged3645 === "0" ? Number(cr9aa_refsnumaged3645) : -1,
+        "cr9aa_refsnumaged4655": cr9aa_refsnumaged4655 !="" || cr9aa_refsnumaged4655 === "0" ? Number(cr9aa_refsnumaged4655) : -1,
+        "cr9aa_refsnumaged55": cr9aa_refsnumaged55 !="" || cr9aa_refsnumaged55 === "0" ? Number(cr9aa_refsnumaged55) : -1,
+        "cr9aa_refsageunknown": cr9aa_refsageunknown !="" || cr9aa_refsageunknown === "0" ? Number(cr9aa_refsageunknown) : -1,
+        "cr9aa_refstierab109prob": cr9aa_refstierab109prob !="" || cr9aa_refstierab109prob === "0" ? Number(cr9aa_refstierab109prob) : -1,
+        "cr9aa_refstierfelonyprob": cr9aa_refstierfelonyprob !="" || cr9aa_refstierfelonyprob === "0" ? Number(cr9aa_refstierfelonyprob) : -1,
+        "cr9aa_refstierlt30daysincustreleasedwinlast3": cr9aa_refstierlt30daysincustreleasedwinlast3 !="" || cr9aa_refstierlt30daysincustreleasedwinlast3 === "0" ? Number(cr9aa_refstierlt30daysincustreleasedwinlast3) : -1,
+        "cr9aa_refstiercurrawaitingtrial": cr9aa_refstiercurrawaitingtrial !="" || cr9aa_refstiercurrawaitingtrial === "0" ? Number(cr9aa_refstiercurrawaitingtrial) : -1,
+        "cr9aa_refstiercurronctprob": cr9aa_refstiercurronctprob !="" || cr9aa_refstiercurronctprob === "0" ? Number(cr9aa_refstiercurronctprob) : -1,
+        "cr9aa_refstierspecctprobbehavioraldvdrug": cr9aa_refstierspecctprobbehavioraldvdrug !="" || cr9aa_refstierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_refstierspecctprobbehavioraldvdrug) : -1,
+        "cr9aa_refstiercurronparole": cr9aa_refstiercurronparole !="" || cr9aa_refstiercurronparole === "0" ? Number(cr9aa_refstiercurronparole) : -1,
+        "cr9aa_refstiercurrincust": cr9aa_refstiercurrincust !="" || cr9aa_refstiercurrincust === "0" ? Number(cr9aa_refstiercurrincust) : -1,
+        "cr9aa_refstieroutjurisdiction": cr9aa_refstieroutjurisdiction !="" || cr9aa_refstieroutjurisdiction === "0" ? Number(cr9aa_refstieroutjurisdiction) : -1,
+        "cr9aa_refstiernonetheabove": cr9aa_refstiernonetheabove !="" || cr9aa_refstiernonetheabove === "0" ? Number(cr9aa_refstiernonetheabove) : -1,
+        "cr9aa_outcomesnumactiveparts": cr9aa_outcomesnumactiveparts !="" || cr9aa_outcomesnumactiveparts === "0" ? Number(cr9aa_outcomesnumactiveparts) : -1,
+        "cr9aa_outcomesnumcontactedincust": cr9aa_outcomesnumcontactedincust !="" || cr9aa_outcomesnumcontactedincust === "0" ? Number(cr9aa_outcomesnumcontactedincust) : -1,
+        "cr9aa_outcomesnumenrolledinwestprog": cr9aa_outcomesnumenrolledinwestprog !="" || cr9aa_outcomesnumenrolledinwestprog === "0" ? Number(cr9aa_outcomesnumenrolledinwestprog) : -1,
+        "cr9aa_outcomesnumwisppriorrelease": cr9aa_outcomesnumwisppriorrelease !="" || cr9aa_outcomesnumwisppriorrelease === "0" ? Number(cr9aa_outcomesnumwisppriorrelease) : -1,
+        "cr9aa_outcomesnumenrolledinatleast1svc": cr9aa_outcomesnumenrolledinatleast1svc !="" || cr9aa_outcomesnumenrolledinatleast1svc === "0" ? Number(cr9aa_outcomesnumenrolledinatleast1svc) : -1,
+        "cr9aa_outcomesnumenrolledinatleast2svcs": cr9aa_outcomesnumenrolledinatleast2svcs !="" || cr9aa_outcomesnumenrolledinatleast2svcs === "0" ? Number(cr9aa_outcomesnumenrolledinatleast2svcs) : -1,
+        "cr9aa_outcomesnumenrolledinatleast3svcs": cr9aa_outcomesnumenrolledinatleast3svcs !="" || cr9aa_outcomesnumenrolledinatleast3svcs === "0" ? Number(cr9aa_outcomesnumenrolledinatleast3svcs) : -1,
+        "cr9aa_outcomesnumsuccessfullycompletedprog": cr9aa_outcomesnumsuccessfullycompletedprog !="" || cr9aa_outcomesnumsuccessfullycompletedprog === "0" ? Number(cr9aa_outcomesnumsuccessfullycompletedprog) : -1,
+        "cr9aa_outcomesnumdidnotcompleteprog": cr9aa_outcomesnumdidnotcompleteprog !="" || cr9aa_outcomesnumdidnotcompleteprog === "0" ? Number(cr9aa_outcomesnumdidnotcompleteprog) : -1,
+        "cr9aa_reasonsforincompletefailmeetprogreqs": cr9aa_reasonsforincompletefailmeetprogreqs !="" || cr9aa_reasonsforincompletefailmeetprogreqs === "0" ? Number(cr9aa_reasonsforincompletefailmeetprogreqs) : -1,
+        "cr9aa_reasonsforincompleteduectcriminvolvement": cr9aa_reasonsforincompleteduectcriminvolvement !="" || cr9aa_reasonsforincompleteduectcriminvolvement === "0" ? Number(cr9aa_reasonsforincompleteduectcriminvolvement) : -1,
+        "cr9aa_reasonsforincompletelackengage": cr9aa_reasonsforincompletelackengage !="" || cr9aa_reasonsforincompletelackengage === "0" ? Number(cr9aa_reasonsforincompletelackengage) : -1,
+        "cr9aa_reasonsforincompleteabsconding": cr9aa_reasonsforincompleteabsconding !="" || cr9aa_reasonsforincompleteabsconding === "0" ? Number(cr9aa_reasonsforincompleteabsconding) : -1,
+        "cr9aa_reasonsforincompleterelocationcasexfer": cr9aa_reasonsforincompleterelocationcasexfer !="" || cr9aa_reasonsforincompleterelocationcasexfer === "0" ? Number(cr9aa_reasonsforincompleterelocationcasexfer) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus,
+        "crdae_executivedircur": Number(crdae_executivedircur),
+        "crdae_programmgrcur": Number(crdae_programmgrcur),
+        "crdae_parentingcoachcur": Number(crdae_parentingcoachcur),
+        "crdae_totalsalscur": Number(crdae_totalsalscur),
+        "crdae_fringebenefitscur": Number(crdae_fringebenefitscur),
+        "crdae_totalsalsbenefitscur": Number(crdae_totalsalsbenefitscur),
+        "crdae_fringeratechargedcur": Number(crdae_fringeratechargedcur),
+        "crdae_travelmileagecur": Number(crdae_travelmileagecur),
+        "crdae_equipcellphonescur": Number(crdae_equipcellphonescur),
+        "crdae_incentivescur": Number(crdae_incentivescur),
+        "crdae_copiescur": Number(crdae_copiescur),
+        "crdae_rentconcordcur": Number(crdae_rentconcordcur),
+        "crdae_rentrichmondcur": Number(crdae_rentrichmondcur),
+        "crdae_rentantiochcur": Number(crdae_rentantiochcur),
+        "crdae_totaloperationscur": Number(crdae_totaloperationscur),
+        "crdae_totaldirectcostscur": Number(crdae_totaldirectcostscur),
+        "crdae_indirectcostscur": Number(crdae_indirectcostscur),
+        "crdae_totalexpensescur": Number(crdae_totalexpensescur),
+        "crdae_executivedirbudget": Number(crdae_executivedirbudget),
+        "crdae_programmgrbudget": Number(crdae_programmgrbudget),
+        "crdae_parentingcoachbudget": Number(crdae_parentingcoachbudget),
+        "crdae_totalsalsbudget": Number(crdae_totalsalsbudget),
+        "crdae_fringebenefitsbudget": Number(crdae_fringebenefitsbudget),
+        "crdae_totalsalsbenefitsbudget": Number(crdae_totalsalsbenefitsbudget),
+        "crdae_fringeratechargedbudget": Number(crdae_fringeratechargedbudget),
+        "crdae_travelmileagebudget": Number(crdae_travelmileagebudget),
+        "crdae_equipcellphonesbudget": Number(crdae_equipcellphonesbudget),
+        "crdae_incentivesbudget": Number(crdae_incentivesbudget),
+        "crdae_copiesbudget": Number(crdae_copiesbudget),
+        "crdae_rentconcordbudget": Number(crdae_rentconcordbudget),
+        "crdae_rentrichmondbudget": Number(crdae_rentrichmondbudget),
+        "crdae_rentantiochbudget": Number(crdae_rentantiochbudget),
+        "crdae_totaloperationsbudget": Number(crdae_totaloperationsbudget),
+        "crdae_totaldirectcostsbudget": Number(crdae_totaldirectcostsbudget),
+        "crdae_indirectcostsbudget": Number(crdae_indirectcostsbudget),
+        "crdae_totalexpensesbudget": Number(crdae_totalexpensesbudget),
+        "crdae_executivedirtot": Number(crdae_executivedirtot),
+        "crdae_programmgrtot": Number(crdae_programmgrtot),
+        "crdae_parentingcoachtot": Number(crdae_parentingcoachtot),
+        "crdae_totalsalstot": Number(crdae_totalsalstot),
+        "crdae_fringebenefitstot": Number(crdae_fringebenefitstot),
+        "crdae_totalsalsbenefitstot": Number(crdae_totalsalsbenefitstot),
+        "crdae_fringeratechargedtot": Number(crdae_fringeratechargedtot),
+        "crdae_travelmileagetot": Number(crdae_travelmileagetot),
+        "crdae_equipcellphonestot": Number(crdae_equipcellphonestot),
+        "crdae_incentivestot": Number(crdae_incentivestot),
+        "crdae_copiestot": Number(crdae_copiestot),
+        "crdae_rentconcordtot": Number(crdae_rentconcordtot),
+        "crdae_rentrichmondtot": Number(crdae_rentrichmondtot),
+        "crdae_rentantiochtot": Number(crdae_rentantiochtot),
+        "crdae_totaloperationstot": Number(crdae_totaloperationstot),
+        "crdae_totaldirectcoststot": Number(crdae_totaldirectcoststot),
+        "crdae_indirectcoststot": Number(crdae_indirectcoststot),
+        "crdae_totalexpensestot": Number(crdae_totalexpensestot),
+        "crdae_executivedirfur": crdae_executivedirfur,
+        "crdae_programmgrfur": crdae_programmgrfur,
+        "crdae_parentingcoachfur": crdae_parentingcoachfur,
+        "crdae_totalsalsfur": crdae_totalsalsfur,
+        "crdae_fringebenefitsfur": crdae_fringebenefitsfur,
+        "crdae_totalsalsbenefitsfur": crdae_totalsalsbenefitsfur,
+        "crdae_fringeratechargedfur": crdae_fringeratechargedfur,
+        "crdae_travelmileagefur": crdae_travelmileagefur,
+        "crdae_equipcellphonesfur": crdae_equipcellphonesfur,
+        "crdae_incentivesfur": crdae_incentivesfur,
+        "crdae_copiesfur": crdae_copiesfur,
+        "crdae_rentconcordfur": crdae_rentconcordfur,
+        "crdae_rentrichmondfur": crdae_rentrichmondfur,
+        "crdae_rentantiochfur": crdae_rentantiochfur,
+        "crdae_totaloperationsfur": crdae_totaloperationsfur,
+        "crdae_totaldirectcostsfur": crdae_totaldirectcostsfur,
+        "crdae_indirectcostsfur": crdae_indirectcostsfur,
+        "crdae_totalexpensesfur": crdae_totalexpensesfur
+          
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_cr9aa_centerforces({{myquery.results.entities[0].cr9aa_centerforceid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "crdae_startyear": "{{request.params['startyear']}}",
+            "crdae_endyear": "{{request.params['endyear']}}",
+            "crdae_startmonth": "{{request.params['startmonth']}}",
+            "crdae_endmonth": "{{request.params['endmonth']}}",
+            "cr9aa_refsnumreferred": cr9aa_refsnumreferred !="" || cr9aa_refsnumreferred === "0" ? Number(cr9aa_refsnumreferred) : -1,
+            "cr9aa_refsnumenrolled": cr9aa_refsnumenrolled !="" || cr9aa_refsnumenrolled === "0" ? Number(cr9aa_refsnumenrolled) : -1,
+            "cr9aa_refsnumexited": cr9aa_refsnumexited !="" || cr9aa_refsnumexited === "0" ? Number(cr9aa_refsnumexited) : -1,
+            "cr9aa_refsblack": cr9aa_refsblack !="" || cr9aa_refsblack === "0" ? Number(cr9aa_refsblack) : -1,
+            "cr9aa_refslatinoa": cr9aa_refslatinoa !="" || cr9aa_refslatinoa === "0" ? Number(cr9aa_refslatinoa) : -1,
+            "cr9aa_refsasianpacificislander": cr9aa_refsasianpacificislander !="" || cr9aa_refsasianpacificislander === "0" ? Number(cr9aa_refsasianpacificislander) : -1,
+            "cr9aa_refswhite": cr9aa_refswhite !="" || cr9aa_refswhite === "0" ? Number(cr9aa_refswhite) : -1,
+            "cr9aa_refsethnicityother": cr9aa_refsethnicityother !="" || cr9aa_refsethnicityother === "0" ? Number(cr9aa_refsethnicityother) : -1,
+            "cr9aa_refsregioncentral": cr9aa_refsregioncentral !="" || cr9aa_refsregioncentral === "0" ? Number(cr9aa_refsregioncentral) : -1,
+            "cr9aa_refsregioneast": cr9aa_refsregioneast !="" || cr9aa_refsregioneast === "0" ? Number(cr9aa_refsregioneast) : -1,
+            "cr9aa_refsnumagedgt25": cr9aa_refsnumagedgt25 !="" || cr9aa_refsnumagedgt25 === "0" ? Number(cr9aa_refsnumagedgt25) : -1,
+            "cr9aa_refsnumaged2635": cr9aa_refsnumaged2635 !="" || cr9aa_refsnumaged2635 === "0" ? Number(cr9aa_refsnumaged2635) : -1,
+            "cr9aa_refsnumaged3645": cr9aa_refsnumaged3645 !="" || cr9aa_refsnumaged3645 === "0" ? Number(cr9aa_refsnumaged3645) : -1,
+            "cr9aa_refsnumaged4655": cr9aa_refsnumaged4655 !="" || cr9aa_refsnumaged4655 === "0" ? Number(cr9aa_refsnumaged4655) : -1,
+            "cr9aa_refsnumaged55": cr9aa_refsnumaged55 !="" || cr9aa_refsnumaged55 === "0" ? Number(cr9aa_refsnumaged55) : -1,
+            "cr9aa_refsageunknown": cr9aa_refsageunknown !="" || cr9aa_refsageunknown === "0" ? Number(cr9aa_refsageunknown) : -1,
+            "cr9aa_refstierab109prob": cr9aa_refstierab109prob !="" || cr9aa_refstierab109prob === "0" ? Number(cr9aa_refstierab109prob) : -1,
+            "cr9aa_refstierfelonyprob": cr9aa_refstierfelonyprob !="" || cr9aa_refstierfelonyprob === "0" ? Number(cr9aa_refstierfelonyprob) : -1,
+            "cr9aa_refstierlt30daysincustreleasedwinlast3": cr9aa_refstierlt30daysincustreleasedwinlast3 !="" || cr9aa_refstierlt30daysincustreleasedwinlast3 === "0" ? Number(cr9aa_refstierlt30daysincustreleasedwinlast3) : -1,
+            "cr9aa_refstiercurrawaitingtrial": cr9aa_refstiercurrawaitingtrial !="" || cr9aa_refstiercurrawaitingtrial === "0" ? Number(cr9aa_refstiercurrawaitingtrial) : -1,
+            "cr9aa_refstiercurronctprob": cr9aa_refstiercurronctprob !="" || cr9aa_refstiercurronctprob === "0" ? Number(cr9aa_refstiercurronctprob) : -1,
+            "cr9aa_refstierspecctprobbehavioraldvdrug": cr9aa_refstierspecctprobbehavioraldvdrug !="" || cr9aa_refstierspecctprobbehavioraldvdrug === "0" ? Number(cr9aa_refstierspecctprobbehavioraldvdrug) : -1,
+            "cr9aa_refstiercurronparole": cr9aa_refstiercurronparole !="" || cr9aa_refstiercurronparole === "0" ? Number(cr9aa_refstiercurronparole) : -1,
+            "cr9aa_refstiercurrincust": cr9aa_refstiercurrincust !="" || cr9aa_refstiercurrincust === "0" ? Number(cr9aa_refstiercurrincust) : -1,
+            "cr9aa_refstieroutjurisdiction": cr9aa_refstieroutjurisdiction !="" || cr9aa_refstieroutjurisdiction === "0" ? Number(cr9aa_refstieroutjurisdiction) : -1,
+            "cr9aa_refstiernonetheabove": cr9aa_refstiernonetheabove !="" || cr9aa_refstiernonetheabove === "0" ? Number(cr9aa_refstiernonetheabove) : -1,
+            "cr9aa_outcomesnumactiveparts": cr9aa_outcomesnumactiveparts !="" || cr9aa_outcomesnumactiveparts === "0" ? Number(cr9aa_outcomesnumactiveparts) : -1,
+            "cr9aa_outcomesnumcontactedincust": cr9aa_outcomesnumcontactedincust !="" || cr9aa_outcomesnumcontactedincust === "0" ? Number(cr9aa_outcomesnumcontactedincust) : -1,
+            "cr9aa_outcomesnumenrolledinwestprog": cr9aa_outcomesnumenrolledinwestprog !="" || cr9aa_outcomesnumenrolledinwestprog === "0" ? Number(cr9aa_outcomesnumenrolledinwestprog) : -1,
+            "cr9aa_outcomesnumwisppriorrelease": cr9aa_outcomesnumwisppriorrelease !="" || cr9aa_outcomesnumwisppriorrelease === "0" ? Number(cr9aa_outcomesnumwisppriorrelease) : -1,
+            "cr9aa_outcomesnumenrolledinatleast1svc": cr9aa_outcomesnumenrolledinatleast1svc !="" || cr9aa_outcomesnumenrolledinatleast1svc === "0" ? Number(cr9aa_outcomesnumenrolledinatleast1svc) : -1,
+            "cr9aa_outcomesnumenrolledinatleast2svcs": cr9aa_outcomesnumenrolledinatleast2svcs !="" || cr9aa_outcomesnumenrolledinatleast2svcs === "0" ? Number(cr9aa_outcomesnumenrolledinatleast2svcs) : -1,
+            "cr9aa_outcomesnumenrolledinatleast3svcs": cr9aa_outcomesnumenrolledinatleast3svcs !="" || cr9aa_outcomesnumenrolledinatleast3svcs === "0" ? Number(cr9aa_outcomesnumenrolledinatleast3svcs) : -1,
+            "cr9aa_outcomesnumsuccessfullycompletedprog": cr9aa_outcomesnumsuccessfullycompletedprog !="" || cr9aa_outcomesnumsuccessfullycompletedprog === "0" ? Number(cr9aa_outcomesnumsuccessfullycompletedprog) : -1,
+            "cr9aa_outcomesnumdidnotcompleteprog": cr9aa_outcomesnumdidnotcompleteprog !="" || cr9aa_outcomesnumdidnotcompleteprog === "0" ? Number(cr9aa_outcomesnumdidnotcompleteprog) : -1,
+            "cr9aa_reasonsforincompletefailmeetprogreqs": cr9aa_reasonsforincompletefailmeetprogreqs !="" || cr9aa_reasonsforincompletefailmeetprogreqs === "0" ? Number(cr9aa_reasonsforincompletefailmeetprogreqs) : -1,
+            "cr9aa_reasonsforincompleteduectcriminvolvement": cr9aa_reasonsforincompleteduectcriminvolvement !="" || cr9aa_reasonsforincompleteduectcriminvolvement === "0" ? Number(cr9aa_reasonsforincompleteduectcriminvolvement) : -1,
+            "cr9aa_reasonsforincompletelackengage": cr9aa_reasonsforincompletelackengage !="" || cr9aa_reasonsforincompletelackengage === "0" ? Number(cr9aa_reasonsforincompletelackengage) : -1,
+            "cr9aa_reasonsforincompleteabsconding": cr9aa_reasonsforincompleteabsconding !="" || cr9aa_reasonsforincompleteabsconding === "0" ? Number(cr9aa_reasonsforincompleteabsconding) : -1,
+            "cr9aa_reasonsforincompleterelocationcasexfer": cr9aa_reasonsforincompleterelocationcasexfer !="" || cr9aa_reasonsforincompleterelocationcasexfer === "0" ? Number(cr9aa_reasonsforincompleterelocationcasexfer) : -1,
+            "crdae_sectionone": crdae_sectionone,
+            "crdae_sectiontwo": crdae_sectiontwo,
+            "crdae_sectionthree": crdae_sectionthree,
+            "crdae_sectionfour": crdae_sectionfour,
+            "crdae_sectionfive": crdae_sectionfive,
+            "crdae_submittedstatus": submitStatus,
+            "crdae_executivedircur": Number(crdae_executivedircur),
+            "crdae_programmgrcur": Number(crdae_programmgrcur),
+            "crdae_parentingcoachcur": Number(crdae_parentingcoachcur),
+            "crdae_totalsalscur": Number(crdae_totalsalscur),
+            "crdae_fringebenefitscur": Number(crdae_fringebenefitscur),
+            "crdae_totalsalsbenefitscur": Number(crdae_totalsalsbenefitscur),
+            "crdae_fringeratechargedcur": Number(crdae_fringeratechargedcur),
+            "crdae_travelmileagecur": Number(crdae_travelmileagecur),
+            "crdae_equipcellphonescur": Number(crdae_equipcellphonescur),
+            "crdae_incentivescur": Number(crdae_incentivescur),
+            "crdae_copiescur": Number(crdae_copiescur),
+            "crdae_rentconcordcur": Number(crdae_rentconcordcur),
+            "crdae_rentrichmondcur": Number(crdae_rentrichmondcur),
+            "crdae_rentantiochcur": Number(crdae_rentantiochcur),
+            "crdae_totaloperationscur": Number(crdae_totaloperationscur),
+            "crdae_totaldirectcostscur": Number(crdae_totaldirectcostscur),
+            "crdae_indirectcostscur": Number(crdae_indirectcostscur),
+            "crdae_totalexpensescur": Number(crdae_totalexpensescur),
+            "crdae_executivedirbudget": Number(crdae_executivedirbudget),
+            "crdae_programmgrbudget": Number(crdae_programmgrbudget),
+            "crdae_parentingcoachbudget": Number(crdae_parentingcoachbudget),
+            "crdae_totalsalsbudget": Number(crdae_totalsalsbudget),
+            "crdae_fringebenefitsbudget": Number(crdae_fringebenefitsbudget),
+            "crdae_totalsalsbenefitsbudget": Number(crdae_totalsalsbenefitsbudget),
+            "crdae_fringeratechargedbudget": Number(crdae_fringeratechargedbudget),
+            "crdae_travelmileagebudget": Number(crdae_travelmileagebudget),
+            "crdae_equipcellphonesbudget": Number(crdae_equipcellphonesbudget),
+            "crdae_incentivesbudget": Number(crdae_incentivesbudget),
+            "crdae_copiesbudget": Number(crdae_copiesbudget),
+            "crdae_rentconcordbudget": Number(crdae_rentconcordbudget),
+            "crdae_rentrichmondbudget": Number(crdae_rentrichmondbudget),
+            "crdae_rentantiochbudget": Number(crdae_rentantiochbudget),
+            "crdae_totaloperationsbudget": Number(crdae_totaloperationsbudget),
+            "crdae_totaldirectcostsbudget": Number(crdae_totaldirectcostsbudget),
+            "crdae_indirectcostsbudget": Number(crdae_indirectcostsbudget),
+            "crdae_totalexpensesbudget": Number(crdae_totalexpensesbudget),
+            "crdae_executivedirtot": Number(crdae_executivedirtot),
+            "crdae_programmgrtot": Number(crdae_programmgrtot),
+            "crdae_parentingcoachtot": Number(crdae_parentingcoachtot),
+            "crdae_totalsalstot": Number(crdae_totalsalstot),
+            "crdae_fringebenefitstot": Number(crdae_fringebenefitstot),
+            "crdae_totalsalsbenefitstot": Number(crdae_totalsalsbenefitstot),
+            "crdae_fringeratechargedtot": Number(crdae_fringeratechargedtot),
+            "crdae_travelmileagetot": Number(crdae_travelmileagetot),
+            "crdae_equipcellphonestot": Number(crdae_equipcellphonestot),
+            "crdae_incentivestot": Number(crdae_incentivestot),
+            "crdae_copiestot": Number(crdae_copiestot),
+            "crdae_rentconcordtot": Number(crdae_rentconcordtot),
+            "crdae_rentrichmondtot": Number(crdae_rentrichmondtot),
+            "crdae_rentantiochtot": Number(crdae_rentantiochtot),
+            "crdae_totaloperationstot": Number(crdae_totaloperationstot),
+            "crdae_totaldirectcoststot": Number(crdae_totaldirectcoststot),
+            "crdae_indirectcoststot": Number(crdae_indirectcoststot),
+            "crdae_totalexpensestot": Number(crdae_totalexpensestot),
+            "crdae_executivedirfur": crdae_executivedirfur,
+            "crdae_programmgrfur": crdae_programmgrfur,
+            "crdae_parentingcoachfur": crdae_parentingcoachfur,
+            "crdae_totalsalsfur": crdae_totalsalsfur,
+            "crdae_fringebenefitsfur": crdae_fringebenefitsfur,
+            "crdae_totalsalsbenefitsfur": crdae_totalsalsbenefitsfur,
+            "crdae_fringeratechargedfur": crdae_fringeratechargedfur,
+            "crdae_travelmileagefur": crdae_travelmileagefur,
+            "crdae_equipcellphonesfur": crdae_equipcellphonesfur,
+            "crdae_incentivesfur": crdae_incentivesfur,
+            "crdae_copiesfur": crdae_copiesfur,
+            "crdae_rentconcordfur": crdae_rentconcordfur,
+            "crdae_rentrichmondfur": crdae_rentrichmondfur,
+            "crdae_rentantiochfur": crdae_rentantiochfur,
+            "crdae_totaloperationsfur": crdae_totaloperationsfur,
+            "crdae_totaldirectcostsfur": crdae_totaldirectcostsfur,
+            "crdae_indirectcostsfur": crdae_indirectcostsfur,
+            "crdae_totalexpensesfur": crdae_totalexpensesfur
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>

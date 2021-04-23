@@ -1,0 +1,183 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+        
+      var crdae_numwnewchargespc1170h= $("#crdae_numwnewchargespc1170h").val().trim();
+      var crdae_numwnewchargesprcs= $("#crdae_numwnewchargesprcs").val().trim();
+      var crdae_numwnewchargesparole= $("#crdae_numwnewchargesparole").val().trim();
+      var crdae_numwnewconvictionspc1170h= $("#crdae_numwnewconvictionspc1170h").val().trim();
+      var crdae_numwnewconvictionsprcs= $("#crdae_numwnewconvictionsprcs").val().trim();
+      var crdae_numwnewconvictionsparole= $("#crdae_numwnewconvictionsparole").val().trim();
+      var crdae_numtalab109sentencesnopc3455pc300008pc1= $("#crdae_numtalab109sentencesnopc3455pc300008pc1").val().trim();
+      var crdae_numtalab109sentencesnopc3455pc300008prcs= $("#crdae_numtalab109sentencesnopc3455pc300008prcs").val().trim();
+      var crdae_numtalab109sentencesnopc3455pc300008paro= $("#crdae_numtalab109sentencesnopc3455pc300008paro").val().trim();
+      var crdae_numab109splitsentencespc1170h= $("#crdae_numab109splitsentencespc1170h").val().trim();
+      var crdae_numab109splitsentencesprcs= $("#crdae_numab109splitsentencesprcs").val().trim();
+      var crdae_numab109splitsentencesparole= $("#crdae_numab109splitsentencesparole").val().trim();
+      var crdae_numab109supervisiononlypc1170h= $("#crdae_numab109supervisiononlypc1170h").val().trim();
+      var crdae_numab109supervisiononlyprcs= $("#crdae_numab109supervisiononlyprcs").val().trim();
+      var crdae_numab109supervisiononlyparole= $("#crdae_numab109supervisiononlyparole").val().trim();
+      var crdae_numab109jailonlypc1170h= $("#crdae_numab109jailonlypc1170h").val().trim();
+      var crdae_numab109jailonlyprcs= $("#crdae_numab109jailonlyprcs").val().trim();
+      var crdae_numab109jailonlyparole= $("#crdae_numab109jailonlyparole").val().trim();
+      var crdae_numallothernonab109feloniespc1170h= $("#crdae_numallothernonab109feloniespc1170h").val().trim();
+      var crdae_numallothernonab109feloniesprcs= $("#crdae_numallothernonab109feloniesprcs").val().trim();
+      var crdae_numallothernonab109feloniesparole= $("#crdae_numallothernonab109feloniesparole").val().trim();
+      var crdae_sectionone = $("#crdae_sectionone").val().trim();
+      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+        
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_courts",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "crdae_numwnewchargespc1170h": crdae_numwnewchargespc1170h !="" || crdae_numwnewchargespc1170h === "0" ? Number(crdae_numwnewchargespc1170h) : -1,
+        "crdae_numwnewchargesprcs": crdae_numwnewchargesprcs !="" || crdae_numwnewchargesprcs === "0" ? Number(crdae_numwnewchargesprcs) : -1,
+        "crdae_numwnewchargesparole": crdae_numwnewchargesparole !="" || crdae_numwnewchargesparole === "0" ? Number(crdae_numwnewchargesparole) : -1,
+        "crdae_numwnewconvictionspc1170h": crdae_numwnewconvictionspc1170h !="" || crdae_numwnewconvictionspc1170h === "0" ? Number(crdae_numwnewconvictionspc1170h) : -1,
+        "crdae_numwnewconvictionsprcs": crdae_numwnewconvictionsprcs !="" || crdae_numwnewconvictionsprcs === "0" ? Number(crdae_numwnewconvictionsprcs) : -1,
+        "crdae_numwnewconvictionsparole": crdae_numwnewconvictionsparole !="" || crdae_numwnewconvictionsparole === "0" ? Number(crdae_numwnewconvictionsparole) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008pc1": crdae_numtalab109sentencesnopc3455pc300008pc1 !="" || crdae_numtalab109sentencesnopc3455pc300008pc1 === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008pc1) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008prcs": crdae_numtalab109sentencesnopc3455pc300008prcs !="" || crdae_numtalab109sentencesnopc3455pc300008prcs === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008prcs) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008paro": crdae_numtalab109sentencesnopc3455pc300008paro !="" || crdae_numtalab109sentencesnopc3455pc300008paro === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008paro) : -1,
+        "crdae_numab109splitsentencespc1170h": crdae_numab109splitsentencespc1170h !="" || crdae_numab109splitsentencespc1170h === "0" ? Number(crdae_numab109splitsentencespc1170h) : -1,
+        "crdae_numab109splitsentencesprcs": crdae_numab109splitsentencesprcs !="" || crdae_numab109splitsentencesprcs === "0" ? Number(crdae_numab109splitsentencesprcs) : -1,
+        "crdae_numab109splitsentencesparole": crdae_numab109splitsentencesparole !="" || crdae_numab109splitsentencesparole === "0" ? Number(crdae_numab109splitsentencesparole) : -1,
+        "crdae_numab109supervisiononlypc1170h": crdae_numab109supervisiononlypc1170h !="" || crdae_numab109supervisiononlypc1170h === "0" ? Number(crdae_numab109supervisiononlypc1170h) : -1,
+        "crdae_numab109supervisiononlyprcs": crdae_numab109supervisiononlyprcs !="" || crdae_numab109supervisiononlyprcs === "0" ? Number(crdae_numab109supervisiononlyprcs) : -1,
+        "crdae_numab109supervisiononlyparole": crdae_numab109supervisiononlyparole !="" || crdae_numab109supervisiononlyparole === "0" ? Number(crdae_numab109supervisiononlyparole) : -1,
+        "crdae_numab109jailonlypc1170h": crdae_numab109jailonlypc1170h !="" || crdae_numab109jailonlypc1170h === "0" ? Number(crdae_numab109jailonlypc1170h) : -1,
+        "crdae_numab109jailonlyprcs": crdae_numab109jailonlyprcs !="" || crdae_numab109jailonlyprcs === "0" ? Number(crdae_numab109jailonlyprcs) : -1,
+        "crdae_numab109jailonlyparole": crdae_numab109jailonlyparole !="" || crdae_numab109jailonlyparole === "0" ? Number(crdae_numab109jailonlyparole) : -1,
+        "crdae_numallothernonab109feloniespc1170h": crdae_numallothernonab109feloniespc1170h !="" || crdae_numallothernonab109feloniespc1170h === "0" ? Number(crdae_numallothernonab109feloniespc1170h) : -1,
+        "crdae_numallothernonab109feloniesprcs": crdae_numallothernonab109feloniesprcs !="" || crdae_numallothernonab109feloniesprcs === "0" ? Number(crdae_numallothernonab109feloniesprcs) : -1,
+        "crdae_numallothernonab109feloniesparole": crdae_numallothernonab109feloniesparole !="" || crdae_numallothernonab109feloniesparole === "0" ? Number(crdae_numallothernonab109feloniesparole) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+        
+          
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_courts({{myquery.results.entities[0].cr9aa_courtid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+          "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "crdae_numwnewchargespc1170h": crdae_numwnewchargespc1170h !="" || crdae_numwnewchargespc1170h === "0" ? Number(crdae_numwnewchargespc1170h) : -1,
+        "crdae_numwnewchargesprcs": crdae_numwnewchargesprcs !="" || crdae_numwnewchargesprcs === "0" ? Number(crdae_numwnewchargesprcs) : -1,
+        "crdae_numwnewchargesparole": crdae_numwnewchargesparole !="" || crdae_numwnewchargesparole === "0" ? Number(crdae_numwnewchargesparole) : -1,
+        "crdae_numwnewconvictionspc1170h": crdae_numwnewconvictionspc1170h !="" || crdae_numwnewconvictionspc1170h === "0" ? Number(crdae_numwnewconvictionspc1170h) : -1,
+        "crdae_numwnewconvictionsprcs": crdae_numwnewconvictionsprcs !="" || crdae_numwnewconvictionsprcs === "0" ? Number(crdae_numwnewconvictionsprcs) : -1,
+        "crdae_numwnewconvictionsparole": crdae_numwnewconvictionsparole !="" || crdae_numwnewconvictionsparole === "0" ? Number(crdae_numwnewconvictionsparole) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008pc1": crdae_numtalab109sentencesnopc3455pc300008pc1 !="" || crdae_numtalab109sentencesnopc3455pc300008pc1 === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008pc1) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008prcs": crdae_numtalab109sentencesnopc3455pc300008prcs !="" || crdae_numtalab109sentencesnopc3455pc300008prcs === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008prcs) : -1,
+        "crdae_numtalab109sentencesnopc3455pc300008paro": crdae_numtalab109sentencesnopc3455pc300008paro !="" || crdae_numtalab109sentencesnopc3455pc300008paro === "0" ? Number(crdae_numtalab109sentencesnopc3455pc300008paro) : -1,
+        "crdae_numab109splitsentencespc1170h": crdae_numab109splitsentencespc1170h !="" || crdae_numab109splitsentencespc1170h === "0" ? Number(crdae_numab109splitsentencespc1170h) : -1,
+        "crdae_numab109splitsentencesprcs": crdae_numab109splitsentencesprcs !="" || crdae_numab109splitsentencesprcs === "0" ? Number(crdae_numab109splitsentencesprcs) : -1,
+        "crdae_numab109splitsentencesparole": crdae_numab109splitsentencesparole !="" || crdae_numab109splitsentencesparole === "0" ? Number(crdae_numab109splitsentencesparole) : -1,
+        "crdae_numab109supervisiononlypc1170h": crdae_numab109supervisiononlypc1170h !="" || crdae_numab109supervisiononlypc1170h === "0" ? Number(crdae_numab109supervisiononlypc1170h) : -1,
+        "crdae_numab109supervisiononlyprcs": crdae_numab109supervisiononlyprcs !="" || crdae_numab109supervisiononlyprcs === "0" ? Number(crdae_numab109supervisiononlyprcs) : -1,
+        "crdae_numab109supervisiononlyparole": crdae_numab109supervisiononlyparole !="" || crdae_numab109supervisiononlyparole === "0" ? Number(crdae_numab109supervisiononlyparole) : -1,
+        "crdae_numab109jailonlypc1170h": crdae_numab109jailonlypc1170h !="" || crdae_numab109jailonlypc1170h === "0" ? Number(crdae_numab109jailonlypc1170h) : -1,
+        "crdae_numab109jailonlyprcs": crdae_numab109jailonlyprcs !="" || crdae_numab109jailonlyprcs === "0" ? Number(crdae_numab109jailonlyprcs) : -1,
+        "crdae_numab109jailonlyparole": crdae_numab109jailonlyparole !="" || crdae_numab109jailonlyparole === "0" ? Number(crdae_numab109jailonlyparole) : -1,
+        "crdae_numallothernonab109feloniespc1170h": crdae_numallothernonab109feloniespc1170h !="" || crdae_numallothernonab109feloniespc1170h === "0" ? Number(crdae_numallothernonab109feloniespc1170h) : -1,
+        "crdae_numallothernonab109feloniesprcs": crdae_numallothernonab109feloniesprcs !="" || crdae_numallothernonab109feloniesprcs === "0" ? Number(crdae_numallothernonab109feloniesprcs) : -1,
+        "crdae_numallothernonab109feloniesparole": crdae_numallothernonab109feloniesparole !="" || crdae_numallothernonab109feloniesparole === "0" ? Number(crdae_numallothernonab109feloniesparole) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus
+        
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>
