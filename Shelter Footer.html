@@ -1,0 +1,618 @@
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    $(document).on('click', '#save', function() {
+      submitOrSave("save");
+    });
+    $(document).on('click', '#submit', function() {
+       $("#toast-container").html(""); 
+      $("#form").validator().on("submit", function(e) {
+       $("#toast-container").html(""); 
+                 if (e.isDefaultPrevented()) {
+                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                  toastr.error(
+                      '',
+                      'Please fill required fields', {
+                          "positionClass": "toast-bottom-center",
+                          onHidden: function() {
+                              
+                          }
+                      }); 
+                      toastr.clear();                      
+                  } else {
+                          submitOrSave("submit");
+                      }
+                  });
+    });
+  
+    function submitOrSave(flag) {
+      var submitStatus = "";
+      if (flag == "save") {
+        submitStatus = "In Progress";
+      } else {
+        submitStatus = "Submitted";
+      }
+  
+      $(".loading").show();
+  
+      var cr9aa_totalrefsrefstotal= $("#cr9aa_totalrefsrefstotal").val().trim();
+        var cr9aa_totalrefsab109refs= $("#cr9aa_totalrefsab109refs").val().trim();
+        var cr9aa_totalrefsnonab109refs= $("#cr9aa_totalrefsnonab109refs").val().trim();
+        var cr9aa_totalrefsscreenedandacceptedforsvcs= $("#cr9aa_totalrefsscreenedandacceptedforsvcs").val().trim();
+        var cr9aa_totalrefsunscreened= $("#cr9aa_totalrefsunscreened").val().trim();
+        var cr9aa_amongnewenrsaged25= $("#cr9aa_amongnewenrsaged25").val().trim();
+        var cr9aa_amongnewenrsaged2635= $("#cr9aa_amongnewenrsaged2635").val().trim();
+        var cr9aa_amongnewenrsaged3645= $("#cr9aa_amongnewenrsaged3645").val().trim();
+        var cr9aa_amongnewenrsaged4655= $("#cr9aa_amongnewenrsaged4655").val().trim();
+        var cr9aa_amongnewenrsaged55= $("#cr9aa_amongnewenrsaged55").val().trim();
+        var cr9aa_amongnewenrsageunknown= $("#cr9aa_amongnewenrsageunknown").val().trim();
+        var cr9aa_amongnewenrsraceethasian= $("#cr9aa_amongnewenrsraceethasian").val().trim();
+        var cr9aa_amongnewenrsraceethblack= $("#cr9aa_amongnewenrsraceethblack").val().trim();
+        var cr9aa_amongnewenrsraceethlatinoa= $("#cr9aa_amongnewenrsraceethlatinoa").val().trim();
+        var cr9aa_amongnewenrsraceethnativeamerican= $("#cr9aa_amongnewenrsraceethnativeamerican").val().trim();
+        var cr9aa_amongnewenrsraceethwhite= $("#cr9aa_amongnewenrsraceethwhite").val().trim();
+        var cr9aa_amongnewenrsraceethother= $("#cr9aa_amongnewenrsraceethother").val().trim();
+        var cr9aa_amongnewenrsgenderfemale= $("#cr9aa_amongnewenrsgenderfemale").val().trim();
+        var cr9aa_amongnewenrsgendermale= $("#cr9aa_amongnewenrsgendermale").val().trim();
+        var cr9aa_amongnewenrsregionwest= $("#cr9aa_amongnewenrsregionwest").val().trim();
+        var cr9aa_amongnewenrsregioncentral= $("#cr9aa_amongnewenrsregioncentral").val().trim();
+        var cr9aa_amongnewenrsregioneast= $("#cr9aa_amongnewenrsregioneast").val().trim();
+        var cr9aa_amongnewenrstierab109probation= $("#cr9aa_amongnewenrstierab109probation").val().trim();
+        var cr9aa_amongnewenrstierfelonyprobation= $("#cr9aa_amongnewenrstierfelonyprobation").val().trim();
+        var cr9aa_amongnewenrstier30daysincustodyreleased= $("#cr9aa_amongnewenrstier30daysincustodyreleased").val().trim();
+        var cr9aa_amongnewenrstiercurrawaitingtrial= $("#cr9aa_amongnewenrstiercurrawaitingtrial").val().trim();
+        var cr9aa_amongnewenrstiercurroncourtprobation= $("#cr9aa_amongnewenrstiercurroncourtprobation").val().trim();
+        var cr9aa_amongnewenrstierspecialcourtprobationbeha= $("#cr9aa_amongnewenrstierspecialcourtprobationbeha").val().trim();
+        var cr9aa_amongnewenrstiercurronparole= $("#cr9aa_amongnewenrstiercurronparole").val().trim();
+        var cr9aa_amongnewenrstiercurrincustody= $("#cr9aa_amongnewenrstiercurrincustody").val().trim();
+        var cr9aa_amongnewenrstieroutofjurisdiction= $("#cr9aa_amongnewenrstieroutofjurisdiction").val().trim();
+        var cr9aa_amongnewenrstiernoneoftheabove= $("#cr9aa_amongnewenrstiernoneoftheabove").val().trim();
+        var cr9aa_newenrsvcshousingreceivinghousingassessme= $("#cr9aa_newenrsvcshousingreceivinghousingassessme").val().trim();
+        var cr9aa_newenrsvcshousingenrolledincasemanagemen= $("#cr9aa_newenrsvcshousingenrolledincasemanagemen").val().trim();
+        var cr9aa_newenrsvcshousingreceivingcasemanagement= $("#cr9aa_newenrsvcshousingreceivingcasemanagement").val().trim();
+        var cr9aa_newenrsvcshousingavgofparticipantsperca= $("#cr9aa_newenrsvcshousingavgofparticipantsperca").val().trim();
+        var cr9aa_newenrsvcshousinglivingwithfamilyfriends= $("#cr9aa_newenrsvcshousinglivingwithfamilyfriends").val().trim();
+        var cr9aa_newenrsvcshousingplacedinsletransitional= $("#cr9aa_newenrsvcshousingplacedinsletransitional").val().trim();
+        var cr9aa_newenrsvcshousingplacedinstablehousing= $("#cr9aa_newenrsvcshousingplacedinstablehousing").val().trim();
+        var cr9aa_newenrsvcshousingreceivedshorttermfinanc= $("#cr9aa_newenrsvcshousingreceivedshorttermfinanc").val().trim();
+        var cr9aa_newenrsvcshousingofwestctyslebedsavail= $("#cr9aa_newenrsvcshousingofwestctyslebedsavail").val().trim();
+        var cr9aa_newenrsvcshousingofwestctyslebedsoccup= $("#cr9aa_newenrsvcshousingofwestctyslebedsoccup").val().trim();
+        var cr9aa_newenrsvcshousingofcentralctyslebedsav= $("#cr9aa_newenrsvcshousingofcentralctyslebedsav").val().trim();
+        var cr9aa_newenrsvcshousingofcentralctyslebedsoc= $("#cr9aa_newenrsvcshousingofcentralctyslebedsoc").val().trim();
+        var cr9aa_newenrsvcshousingofeastctyslebedsavail= $("#cr9aa_newenrsvcshousingofeastctyslebedsavail").val().trim();
+        var cr9aa_newenrsvcshousingofeastctyslebedsoccup= $("#cr9aa_newenrsvcshousingofeastctyslebedsoccup").val().trim();
+        var cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr= $("#cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr").val().trim();
+        var cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia= $("#cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia").val().trim();
+        var cr9aa_newenrsvcslegalsvcsreftolegalsvcs= $("#cr9aa_newenrsvcslegalsvcsreftolegalsvcs").val().trim();
+        var cr9aa_newenrsvcsemploymentrefswhoareunorunde= $("#cr9aa_newenrsvcsemploymentrefswhoareunorunde").val().trim();
+        var cr9aa_newenrsvcsemploymentrefsofununderemploy= $("#cr9aa_newenrsvcsemploymentrefsofununderemploy").val().trim();
+        var cr9aa_newenrsvcsemploymentrefsamongthosereffor= $("#cr9aa_newenrsvcsemploymentrefsamongthosereffor").val().trim();
+        var cr9aa_newenrsvcshousingdurationtransitionsofsl= $("#cr9aa_newenrsvcshousingdurationtransitionsofsl").val().trim();
+        var cr9aa_newenrsvcshousingdurationtransitionsinst= $("#cr9aa_newenrsvcshousingdurationtransitionsinst").val().trim();
+        var cr9aa_newenrsvcshousingdurationtransitionswhoe= $("#cr9aa_newenrsvcshousingdurationtransitionswhoe").val().trim();
+        var cr9aa_newenrsvcshousingdurtranswhoexitedtope= $("#cr9aa_newenrsvcshousingdurtranswhoexitedtope").val().trim();
+        var cr9aa_newenrsvcshousingdurationtransitionstrans= $("#cr9aa_newenrsvcshousingdurationtransitionstrans").val().trim();
+        var cr9aa_newenrsvcshousingdurationtransitionsmoved= $("#cr9aa_newenrsvcshousingdurationtransitionsmoved").val().trim();
+        var cr9aa_newenrsvcshousingdurtranstransitionedby= $("#cr9aa_newenrsvcshousingdurtranstransitionedby").val().trim();
+        var cr9aa_outcomessuccessfullycompletedpgmieexite= $("#cr9aa_outcomessuccessfullycompletedpgmieexite").val().trim();
+        var cr9aa_outcomesab109successfullycompletedpgm= $("#cr9aa_outcomesab109successfullycompletedpgm").val().trim();
+        var cr9aa_outcomesunsuccessfulexitsfailuretomeetr= $("#cr9aa_outcomesunsuccessfulexitsfailuretomeetr").val().trim();
+        var cr9aa_outcomesunsuccessfulexitsduetocourtcrim= $("#cr9aa_outcomesunsuccessfulexitsduetocourtcrim").val().trim();
+        var cr9aa_outcomesunsuccessfulexitsduetolackofen= $("#cr9aa_outcomesunsuccessfulexitsduetolackofen").val().trim();
+        var cr9aa_outcomesunsuccessfulexitsabsconding= $("#cr9aa_outcomesunsuccessfulexitsabsconding").val().trim();
+        var cr9aa_outcomesunsuccessfulexitsduetorelocation= $("#cr9aa_outcomesunsuccessfulexitsduetorelocation").val().trim();
+        var crdae_outcomesnumAB109unsuccessexits= $("#crdae_outcomesnumAB109unsuccessexits").val().trim();
+      var crdae_sectionone = $("#crdae_sectionone").val().trim();
+      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+      var crdae_benefits42budget = $("#crdae_benefits42budget").val().trim();
+        var crdae_benefits42total = $("#crdae_benefits42total").val().trim();
+        var crdae_indirecttotal = $("#crdae_indirecttotal").val().trim();
+        var crdae_seniormgmtwagescurrent = $("#crdae_seniormgmtwagescurrent").val().trim();
+        var crdae_supervisorsmanagerscurrent = $("#crdae_supervisorsmanagerscurrent").val().trim();
+        var crdae_casemanagerscurrent = $("#crdae_casemanagerscurrent").val().trim();
+        var crdae_housingresourcespecialistcurrent = $("#crdae_housingresourcespecialistcurrent").val().trim();
+        var crdae_adminsupportcurrent = $("#crdae_adminsupportcurrent").val().trim();
+        var crdae_totalsalariescurrent = $("#crdae_totalsalariescurrent").val().trim();
+        var crdae_totalbenefitscurrent = $("#crdae_totalbenefitscurrent").val().trim();
+        var crdae_totalsalariesbenefitscurrent = $("#crdae_totalsalariesbenefitscurrent").val().trim();
+        var crdae_clientutilitiesothercurrent = $("#crdae_clientutilitiesothercurrent").val().trim();
+        var crdae_clientrentsecdepositpaidcurrent = $("#crdae_clientrentsecdepositpaidcurrent").val().trim();
+        var crdae_clientrentsubsidiescurrent = $("#crdae_clientrentsubsidiescurrent").val().trim();
+        var crdae_clientothersupportcurrent = $("#crdae_clientothersupportcurrent").val().trim();
+        var crdae_totalexpensescurrent = $("#crdae_totalexpensescurrent").val().trim();
+        var crdae_seminarsandeducationcurrent = $("#crdae_seminarsandeducationcurrent").val().trim();
+        var crdae_mileageparkingcurrent = $("#crdae_mileageparkingcurrent").val().trim();
+        var crdae_otherprofservicescurrent = $("#crdae_otherprofservicescurrent").val().trim();
+        var crdae_totaloperatingexpensescurrent = $("#crdae_totaloperatingexpensescurrent").val().trim();
+        var crdae_supervisordmanagerswagescurrent = $("#crdae_supervisordmanagerswagescurrent").val().trim();
+        var crdae_hmiswagescurrent = $("#crdae_hmiswagescurrent").val().trim();
+        var crdae_totaldatamanagementcurrent = $("#crdae_totaldatamanagementcurrent").val().trim();
+        var crdae_benefits42current = $("#crdae_benefits42current").val().trim();
+        var crdae_duessubscriptionscurrent = $("#crdae_duessubscriptionscurrent").val().trim();
+        var crdae_totalhmisservicescurrent = $("#crdae_totalhmisservicescurrent").val().trim();
+        var crdae_indirectcurrent = $("#crdae_indirectcurrent").val().trim();
+        var crdae_totalprogrambudcurrent = $("#crdae_totalprogrambudcurrent").val().trim();
+        var crdae_clientrentsecdepositpaidbudget = $("#crdae_clientrentsecdepositpaidbudget").val().trim();
+        var crdae_totalprogrambudbudget = $("#crdae_totalprogrambudbudget").val().trim();
+        var crdae_clientutilitiesothertotal = $("#crdae_clientutilitiesothertotal").val().trim();
+        var crdae_seniormgmtwagestotal = $("#crdae_seniormgmtwagestotal").val().trim();
+        var crdae_totalsalariestotal = $("#crdae_totalsalariestotal").val().trim();
+        var crdae_clientrentsubsidiestotal = $("#crdae_clientrentsubsidiestotal").val().trim();
+        var crdae_totalexpensestotal = $("#crdae_totalexpensestotal").val().trim();
+        var crdae_otherprofservicestotal = $("#crdae_otherprofservicestotal").val().trim();
+        var crdae_totaloperatingexpensestotal = $("#crdae_totaloperatingexpensestotal").val().trim();
+        var crdae_supervisordmanagerswagestotal = $("#crdae_supervisordmanagerswagestotal").val().trim();
+        var crdae_hmiswagestotal = $("#crdae_hmiswagestotal").val().trim();
+        var crdae_totalhmisservicestotal = $("#crdae_totalhmisservicestotal").val().trim();
+        var crdae_mileageparkingbudget = $("#crdae_mileageparkingbudget").val().trim();
+        var crdae_clientrentsecdepositpaidtotal = $("#crdae_clientrentsecdepositpaidtotal").val().trim();
+        var crdae_seminarsandeducationbudget = $("#crdae_seminarsandeducationbudget").val().trim();
+        var crdae_mileageparkingtotal = $("#crdae_mileageparkingtotal").val().trim();
+        var crdae_duessubscriptionstotal = $("#crdae_duessubscriptionstotal").val().trim();
+        var crdae_totaldatamanagementtotal = $("#crdae_totaldatamanagementtotal").val().trim();
+        var crdae_seminarsandeducationtotal = $("#crdae_seminarsandeducationtotal").val().trim();
+        var crdae_clientutilitiesotherbudget = $("#crdae_clientutilitiesotherbudget").val().trim();
+        var crdae_supervisorsmanagerstotal = $("#crdae_supervisorsmanagerstotal").val().trim();
+        var crdae_casemanagerstotal = $("#crdae_casemanagerstotal").val().trim();
+        var crdae_adminsupporttotal = $("#crdae_adminsupporttotal").val().trim();
+        var crdae_clientothersupporttotal = $("#crdae_clientothersupporttotal").val().trim();
+        var crdae_seniormgmtwagesbudget = $("#crdae_seniormgmtwagesbudget").val().trim();
+        var crdae_supervisorsmanagersbudget = $("#crdae_supervisorsmanagersbudget").val().trim();
+        var crdae_casemanagersbudget = $("#crdae_casemanagersbudget").val().trim();
+        var crdae_totalsalariesbudget = $("#crdae_totalsalariesbudget").val().trim();
+        var crdae_totalbenefitsbudget = $("#crdae_totalbenefitsbudget").val().trim();
+        var crdae_totalsalariesbenefitsbudget = $("#crdae_totalsalariesbenefitsbudget").val().trim();
+        var crdae_clientrentsubsidiesbudget = $("#crdae_clientrentsubsidiesbudget").val().trim();
+        var crdae_totalexpensesbudget = $("#crdae_totalexpensesbudget").val().trim();
+        var crdae_otherprofservicesbudget = $("#crdae_otherprofservicesbudget").val().trim();
+        var crdae_totaloperatingexpensesbudget = $("#crdae_totaloperatingexpensesbudget").val().trim();
+        var crdae_supervisordmanagerswagesbudget = $("#crdae_supervisordmanagerswagesbudget").val().trim();
+        var crdae_hmiswagesbudget = $("#crdae_hmiswagesbudget").val().trim();
+        var crdae_duessubscriptionsbudget = $("#crdae_duessubscriptionsbudget").val().trim();
+        var crdae_totalhmisservicesbudget = $("#crdae_totalhmisservicesbudget").val().trim();
+        var crdae_housingresourcespecialisttotal = $("#crdae_housingresourcespecialisttotal").val().trim();
+        var crdae_housingresourcespecialistbudget = $("#crdae_housingresourcespecialistbudget").val().trim();
+        var crdae_adminsupportbudget = $("#crdae_adminsupportbudget").val().trim();
+        var crdae_clientothersupportbudget = $("#crdae_clientothersupportbudget").val().trim();
+        var crdae_totaldatamanagementbudget = $("#crdae_totaldatamanagementbudget").val().trim();
+        var crdae_indirectbudget = $("#crdae_indirectbudget").val().trim();
+        var crdae_totalbenefitstotal = $("#crdae_totalbenefitstotal").val().trim();
+        var crdae_totalsalariesbenefitstotal = $("#crdae_totalsalariesbenefitstotal").val().trim();
+        var crdae_totalprogrambudtotal = $("#crdae_totalprogrambudtotal").val().trim();
+        var crdae_seniormgmtwagesfurther = $("#crdae_seniormgmtwagesfurther").val().trim();
+        var crdae_supervisorsmanagersfurther = $("#crdae_supervisorsmanagersfurther").val().trim();
+        var crdae_casemanagersfurther = $("#crdae_casemanagersfurther").val().trim();
+        var crdae_housingresourcespecialistfurther = $("#crdae_housingresourcespecialistfurther").val().trim();
+        var crdae_administrativesupportfurther = $("#crdae_administrativesupportfurther").val().trim();
+        var crdae_totalsalariesfurther = $("#crdae_totalsalariesfurther").val().trim();
+        var crdae_totalbenefitsfurther = $("#crdae_totalbenefitsfurther").val().trim();
+        var crdae_totalsalariesbenefitsfurther = $("#crdae_totalsalariesbenefitsfurther").val().trim();
+        var crdae_clientutilitiesotherfurther = $("#crdae_clientutilitiesotherfurther").val().trim();
+        var crdae_clientrentsecuritydepositpaidfurther = $("#crdae_clientrentsecuritydepositpaidfurther").val().trim();
+        var crdae_clientrentsubsidiesfurther = $("#crdae_clientrentsubsidiesfurther").val().trim();
+        var crdae_clientothersupportfurther = $("#crdae_clientothersupportfurther").val().trim();
+        var crdae_totalexpensesfurther = $("#crdae_totalexpensesfurther").val().trim();
+        var crdae_seminarsandeducationfurther = $("#crdae_seminarsandeducationfurther").val().trim();
+        var crdae_mileageparkingfurther = $("#crdae_mileageparkingfurther").val().trim();
+        var crdae_otherprofessionalservicesfurther = $("#crdae_otherprofessionalservicesfurther").val().trim();
+        var crdae_totaloperatingexpensesfurther = $("#crdae_totaloperatingexpensesfurther").val().trim();
+        var crdae_supervisordmanagerswagesfurther = $("#crdae_supervisordmanagerswagesfurther").val().trim();
+        var crdae_hmiswagesfurther = $("#crdae_hmiswagesfurther").val().trim();
+        var crdae_totaldatamanagementfurther = $("#crdae_totaldatamanagementfurther").val().trim();
+        var crdae_benefits42further = $("#crdae_benefits42further").val().trim();
+        var crdae_duessubscriptionsfurther = $("#crdae_duessubscriptionsfurther").val().trim();
+        var crdae_totalhmisservicesfurther = $("#crdae_totalhmisservicesfurther").val().trim();
+        var crdae_indirectfurther = $("#crdae_indirectfurther").val().trim();
+        var crdae_totalprogrambudfurther = $("#crdae_totalprogrambudfurther").val().trim();
+  
+      {% if recordCount == 0 %}
+      webapi.safeAjax({
+        type: "POST",
+        url: "/_api/cr9aa_shelters",
+        contentType: "application/json",
+        data: JSON.stringify({
+        "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_totalrefsrefstotal": cr9aa_totalrefsrefstotal !="" || cr9aa_totalrefsrefstotal === "0" ? Number(cr9aa_totalrefsrefstotal) : -1,
+        "cr9aa_totalrefsab109refs": cr9aa_totalrefsab109refs !="" || cr9aa_totalrefsab109refs === "0" ? Number(cr9aa_totalrefsab109refs) : -1,
+        "cr9aa_totalrefsnonab109refs": cr9aa_totalrefsnonab109refs !="" || cr9aa_totalrefsnonab109refs === "0" ? Number(cr9aa_totalrefsnonab109refs) : -1,
+        "cr9aa_totalrefsscreenedandacceptedforsvcs": cr9aa_totalrefsscreenedandacceptedforsvcs !="" || cr9aa_totalrefsscreenedandacceptedforsvcs === "0" ? Number(cr9aa_totalrefsscreenedandacceptedforsvcs) : -1,
+        "cr9aa_totalrefsunscreened": cr9aa_totalrefsunscreened !="" || cr9aa_totalrefsunscreened === "0" ? Number(cr9aa_totalrefsunscreened) : -1,
+        "cr9aa_amongnewenrsaged25": cr9aa_amongnewenrsaged25 !="" || cr9aa_amongnewenrsaged25 === "0" ? Number(cr9aa_amongnewenrsaged25) : -1,
+        "cr9aa_amongnewenrsaged2635": cr9aa_amongnewenrsaged2635 !="" || cr9aa_amongnewenrsaged2635 === "0" ? Number(cr9aa_amongnewenrsaged2635) : -1,
+        "cr9aa_amongnewenrsaged3645": cr9aa_amongnewenrsaged3645 !="" || cr9aa_amongnewenrsaged3645 === "0" ? Number(cr9aa_amongnewenrsaged3645) : -1,
+        "cr9aa_amongnewenrsaged4655": cr9aa_amongnewenrsaged4655 !="" || cr9aa_amongnewenrsaged4655 === "0" ? Number(cr9aa_amongnewenrsaged4655) : -1,
+        "cr9aa_amongnewenrsaged55": cr9aa_amongnewenrsaged55 !="" || cr9aa_amongnewenrsaged55 === "0" ? Number(cr9aa_amongnewenrsaged55) : -1,
+        "cr9aa_amongnewenrsageunknown": cr9aa_amongnewenrsageunknown !="" || cr9aa_amongnewenrsageunknown === "0" ? Number(cr9aa_amongnewenrsageunknown) : -1,
+        "cr9aa_amongnewenrsraceethasian": cr9aa_amongnewenrsraceethasian !="" || cr9aa_amongnewenrsraceethasian === "0" ? Number(cr9aa_amongnewenrsraceethasian) : -1,
+        "cr9aa_amongnewenrsraceethblack": cr9aa_amongnewenrsraceethblack !="" || cr9aa_amongnewenrsraceethblack === "0" ? Number(cr9aa_amongnewenrsraceethblack) : -1,
+        "cr9aa_amongnewenrsraceethlatinoa": cr9aa_amongnewenrsraceethlatinoa !="" || cr9aa_amongnewenrsraceethlatinoa === "0" ? Number(cr9aa_amongnewenrsraceethlatinoa) : -1,
+        "cr9aa_amongnewenrsraceethnativeamerican": cr9aa_amongnewenrsraceethnativeamerican !="" || cr9aa_amongnewenrsraceethnativeamerican === "0" ? Number(cr9aa_amongnewenrsraceethnativeamerican) : -1,
+        "cr9aa_amongnewenrsraceethwhite": cr9aa_amongnewenrsraceethwhite !="" || cr9aa_amongnewenrsraceethwhite === "0" ? Number(cr9aa_amongnewenrsraceethwhite) : -1,
+        "cr9aa_amongnewenrsraceethother": cr9aa_amongnewenrsraceethother !="" || cr9aa_amongnewenrsraceethother === "0" ? Number(cr9aa_amongnewenrsraceethother) : -1,
+        "cr9aa_amongnewenrsgenderfemale": cr9aa_amongnewenrsgenderfemale !="" || cr9aa_amongnewenrsgenderfemale === "0" ? Number(cr9aa_amongnewenrsgenderfemale) : -1,
+        "cr9aa_amongnewenrsgendermale": cr9aa_amongnewenrsgendermale !="" || cr9aa_amongnewenrsgendermale === "0" ? Number(cr9aa_amongnewenrsgendermale) : -1,
+        "cr9aa_amongnewenrsregionwest": cr9aa_amongnewenrsregionwest !="" || cr9aa_amongnewenrsregionwest === "0" ? Number(cr9aa_amongnewenrsregionwest) : -1,
+        "cr9aa_amongnewenrsregioncentral": cr9aa_amongnewenrsregioncentral !="" || cr9aa_amongnewenrsregioncentral === "0" ? Number(cr9aa_amongnewenrsregioncentral) : -1,
+        "cr9aa_amongnewenrsregioneast": cr9aa_amongnewenrsregioneast !="" || cr9aa_amongnewenrsregioneast === "0" ? Number(cr9aa_amongnewenrsregioneast) : -1,
+        "cr9aa_amongnewenrstierab109probation": cr9aa_amongnewenrstierab109probation !="" || cr9aa_amongnewenrstierab109probation === "0" ? Number(cr9aa_amongnewenrstierab109probation) : -1,
+        "cr9aa_amongnewenrstierfelonyprobation": cr9aa_amongnewenrstierfelonyprobation !="" || cr9aa_amongnewenrstierfelonyprobation === "0" ? Number(cr9aa_amongnewenrstierfelonyprobation) : -1,
+        "cr9aa_amongnewenrstier30daysincustodyreleased": cr9aa_amongnewenrstier30daysincustodyreleased !="" || cr9aa_amongnewenrstier30daysincustodyreleased === "0" ? Number(cr9aa_amongnewenrstier30daysincustodyreleased) : -1,
+        "cr9aa_amongnewenrstiercurrawaitingtrial": cr9aa_amongnewenrstiercurrawaitingtrial !="" || cr9aa_amongnewenrstiercurrawaitingtrial === "0" ? Number(cr9aa_amongnewenrstiercurrawaitingtrial) : -1,
+        "cr9aa_amongnewenrstiercurroncourtprobation": cr9aa_amongnewenrstiercurroncourtprobation !="" || cr9aa_amongnewenrstiercurroncourtprobation === "0" ? Number(cr9aa_amongnewenrstiercurroncourtprobation) : -1,
+        "cr9aa_amongnewenrstierspecialcourtprobationbeha": cr9aa_amongnewenrstierspecialcourtprobationbeha !="" || cr9aa_amongnewenrstierspecialcourtprobationbeha === "0" ? Number(cr9aa_amongnewenrstierspecialcourtprobationbeha) : -1,
+        "cr9aa_amongnewenrstiercurronparole": cr9aa_amongnewenrstiercurronparole !="" || cr9aa_amongnewenrstiercurronparole === "0" ? Number(cr9aa_amongnewenrstiercurronparole) : -1,
+        "cr9aa_amongnewenrstiercurrincustody": cr9aa_amongnewenrstiercurrincustody !="" || cr9aa_amongnewenrstiercurrincustody === "0" ? Number(cr9aa_amongnewenrstiercurrincustody) : -1,
+        "cr9aa_amongnewenrstieroutofjurisdiction": cr9aa_amongnewenrstieroutofjurisdiction !="" || cr9aa_amongnewenrstieroutofjurisdiction === "0" ? Number(cr9aa_amongnewenrstieroutofjurisdiction) : -1,
+        "cr9aa_amongnewenrstiernoneoftheabove": cr9aa_amongnewenrstiernoneoftheabove !="" || cr9aa_amongnewenrstiernoneoftheabove === "0" ? Number(cr9aa_amongnewenrstiernoneoftheabove) : -1,
+        "cr9aa_newenrsvcshousingreceivinghousingassessme": cr9aa_newenrsvcshousingreceivinghousingassessme !="" || cr9aa_newenrsvcshousingreceivinghousingassessme === "0" ? Number(cr9aa_newenrsvcshousingreceivinghousingassessme) : -1,
+        "cr9aa_newenrsvcshousingenrolledincasemanagemen": cr9aa_newenrsvcshousingenrolledincasemanagemen !="" || cr9aa_newenrsvcshousingenrolledincasemanagemen === "0" ? Number(cr9aa_newenrsvcshousingenrolledincasemanagemen) : -1,
+        "cr9aa_newenrsvcshousingreceivingcasemanagement": cr9aa_newenrsvcshousingreceivingcasemanagement !="" || cr9aa_newenrsvcshousingreceivingcasemanagement === "0" ? Number(cr9aa_newenrsvcshousingreceivingcasemanagement) : -1,
+        "cr9aa_newenrsvcshousingavgofparticipantsperca": cr9aa_newenrsvcshousingavgofparticipantsperca !="" || cr9aa_newenrsvcshousingavgofparticipantsperca === "0" ? Number(cr9aa_newenrsvcshousingavgofparticipantsperca) : -1,
+        "cr9aa_newenrsvcshousinglivingwithfamilyfriends": cr9aa_newenrsvcshousinglivingwithfamilyfriends !="" || cr9aa_newenrsvcshousinglivingwithfamilyfriends === "0" ? Number(cr9aa_newenrsvcshousinglivingwithfamilyfriends) : -1,
+        "cr9aa_newenrsvcshousingplacedinsletransitional": cr9aa_newenrsvcshousingplacedinsletransitional !="" || cr9aa_newenrsvcshousingplacedinsletransitional === "0" ? Number(cr9aa_newenrsvcshousingplacedinsletransitional) : -1,
+        "cr9aa_newenrsvcshousingplacedinstablehousing": cr9aa_newenrsvcshousingplacedinstablehousing !="" || cr9aa_newenrsvcshousingplacedinstablehousing === "0" ? Number(cr9aa_newenrsvcshousingplacedinstablehousing) : -1,
+        "cr9aa_newenrsvcshousingreceivedshorttermfinanc": cr9aa_newenrsvcshousingreceivedshorttermfinanc !="" || cr9aa_newenrsvcshousingreceivedshorttermfinanc === "0" ? Number(cr9aa_newenrsvcshousingreceivedshorttermfinanc) : -1,
+        "cr9aa_newenrsvcshousingofwestctyslebedsavail": cr9aa_newenrsvcshousingofwestctyslebedsavail !="" || cr9aa_newenrsvcshousingofwestctyslebedsavail === "0" ? Number(cr9aa_newenrsvcshousingofwestctyslebedsavail) : -1,
+        "cr9aa_newenrsvcshousingofwestctyslebedsoccup": cr9aa_newenrsvcshousingofwestctyslebedsoccup !="" || cr9aa_newenrsvcshousingofwestctyslebedsoccup === "0" ? Number(cr9aa_newenrsvcshousingofwestctyslebedsoccup) : -1,
+        "cr9aa_newenrsvcshousingofcentralctyslebedsav": cr9aa_newenrsvcshousingofcentralctyslebedsav !="" || cr9aa_newenrsvcshousingofcentralctyslebedsav === "0" ? Number(cr9aa_newenrsvcshousingofcentralctyslebedsav) : -1,
+        "cr9aa_newenrsvcshousingofcentralctyslebedsoc": cr9aa_newenrsvcshousingofcentralctyslebedsoc !="" || cr9aa_newenrsvcshousingofcentralctyslebedsoc === "0" ? Number(cr9aa_newenrsvcshousingofcentralctyslebedsoc) : -1,
+        "cr9aa_newenrsvcshousingofeastctyslebedsavail": cr9aa_newenrsvcshousingofeastctyslebedsavail !="" || cr9aa_newenrsvcshousingofeastctyslebedsavail === "0" ? Number(cr9aa_newenrsvcshousingofeastctyslebedsavail) : -1,
+        "cr9aa_newenrsvcshousingofeastctyslebedsoccup": cr9aa_newenrsvcshousingofeastctyslebedsoccup !="" || cr9aa_newenrsvcshousingofeastctyslebedsoccup === "0" ? Number(cr9aa_newenrsvcshousingofeastctyslebedsoccup) : -1,
+        "cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr": cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr !="" || cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr === "0" ? Number(cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr) : -1,
+        "cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia": cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia !="" || cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia === "0" ? Number(cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia) : -1,
+        "cr9aa_newenrsvcslegalsvcsreftolegalsvcs": cr9aa_newenrsvcslegalsvcsreftolegalsvcs !="" || cr9aa_newenrsvcslegalsvcsreftolegalsvcs === "0" ? Number(cr9aa_newenrsvcslegalsvcsreftolegalsvcs) : -1,
+        "cr9aa_newenrsvcsemploymentrefswhoareunorunde": cr9aa_newenrsvcsemploymentrefswhoareunorunde !="" || cr9aa_newenrsvcsemploymentrefswhoareunorunde === "0" ? Number(cr9aa_newenrsvcsemploymentrefswhoareunorunde) : -1,
+        "cr9aa_newenrsvcsemploymentrefsofununderemploy": cr9aa_newenrsvcsemploymentrefsofununderemploy !="" || cr9aa_newenrsvcsemploymentrefsofununderemploy === "0" ? Number(cr9aa_newenrsvcsemploymentrefsofununderemploy) : -1,
+        "cr9aa_newenrsvcsemploymentrefsamongthosereffor": cr9aa_newenrsvcsemploymentrefsamongthosereffor !="" || cr9aa_newenrsvcsemploymentrefsamongthosereffor === "0" ? Number(cr9aa_newenrsvcsemploymentrefsamongthosereffor) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsofsl": cr9aa_newenrsvcshousingdurationtransitionsofsl !="" || cr9aa_newenrsvcshousingdurationtransitionsofsl === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsofsl) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsinst": cr9aa_newenrsvcshousingdurationtransitionsinst !="" || cr9aa_newenrsvcshousingdurationtransitionsinst === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsinst) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionswhoe": cr9aa_newenrsvcshousingdurationtransitionswhoe !="" || cr9aa_newenrsvcshousingdurationtransitionswhoe === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionswhoe) : -1,
+        "cr9aa_newenrsvcshousingdurtranswhoexitedtope": cr9aa_newenrsvcshousingdurtranswhoexitedtope !="" || cr9aa_newenrsvcshousingdurtranswhoexitedtope === "0" ? Number(cr9aa_newenrsvcshousingdurtranswhoexitedtope) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionstrans": cr9aa_newenrsvcshousingdurationtransitionstrans !="" || cr9aa_newenrsvcshousingdurationtransitionstrans === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionstrans) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsmoved": cr9aa_newenrsvcshousingdurationtransitionsmoved !="" || cr9aa_newenrsvcshousingdurationtransitionsmoved === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsmoved) : -1,
+        "cr9aa_newenrsvcshousingdurtranstransitionedby": cr9aa_newenrsvcshousingdurtranstransitionedby !="" || cr9aa_newenrsvcshousingdurtranstransitionedby === "0" ? Number(cr9aa_newenrsvcshousingdurtranstransitionedby) : -1,
+        "cr9aa_outcomessuccessfullycompletedpgmieexite": cr9aa_outcomessuccessfullycompletedpgmieexite !="" || cr9aa_outcomessuccessfullycompletedpgmieexite === "0" ? Number(cr9aa_outcomessuccessfullycompletedpgmieexite) : -1,
+        "cr9aa_outcomesab109successfullycompletedpgm": cr9aa_outcomesab109successfullycompletedpgm !="" || cr9aa_outcomesab109successfullycompletedpgm === "0" ? Number(cr9aa_outcomesab109successfullycompletedpgm) : -1,
+        "cr9aa_outcomesunsuccessfulexitsfailuretomeetr": cr9aa_outcomesunsuccessfulexitsfailuretomeetr !="" || cr9aa_outcomesunsuccessfulexitsfailuretomeetr === "0" ? Number(cr9aa_outcomesunsuccessfulexitsfailuretomeetr) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetocourtcrim": cr9aa_outcomesunsuccessfulexitsduetocourtcrim !="" || cr9aa_outcomesunsuccessfulexitsduetocourtcrim === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetocourtcrim) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetolackofen": cr9aa_outcomesunsuccessfulexitsduetolackofen !="" || cr9aa_outcomesunsuccessfulexitsduetolackofen === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetolackofen) : -1,
+        "cr9aa_outcomesunsuccessfulexitsabsconding": cr9aa_outcomesunsuccessfulexitsabsconding !="" || cr9aa_outcomesunsuccessfulexitsabsconding === "0" ? Number(cr9aa_outcomesunsuccessfulexitsabsconding) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetorelocation": cr9aa_outcomesunsuccessfulexitsduetorelocation !="" || cr9aa_outcomesunsuccessfulexitsduetorelocation === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetorelocation) : -1,
+        "crdae_outcomesnumAB109unsuccessexits": crdae_outcomesnumAB109unsuccessexits !="" || crdae_outcomesnumAB109unsuccessexits === "0" ? Number(crdae_outcomesnumAB109unsuccessexits) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus,
+        "crdae_benefits42budget": Number(crdae_benefits42budget),
+        "crdae_benefits42total": Number(crdae_benefits42total),
+        "crdae_indirecttotal": Number(crdae_indirecttotal),
+        "crdae_seniormgmtwagescurrent": Number(crdae_seniormgmtwagescurrent),
+        "crdae_supervisorsmanagerscurrent": Number(crdae_supervisorsmanagerscurrent),
+        "crdae_casemanagerscurrent": Number(crdae_casemanagerscurrent),
+        "crdae_housingresourcespecialistcurrent": Number(crdae_housingresourcespecialistcurrent),
+        "crdae_adminsupportcurrent": Number(crdae_adminsupportcurrent),
+        "crdae_totalsalariescurrent": Number(crdae_totalsalariescurrent),
+        "crdae_totalbenefitscurrent": Number(crdae_totalbenefitscurrent),
+        "crdae_totalsalariesbenefitscurrent": Number(crdae_totalsalariesbenefitscurrent),
+        "crdae_clientutilitiesothercurrent": Number(crdae_clientutilitiesothercurrent),
+        "crdae_clientrentsecdepositpaidcurrent": Number(crdae_clientrentsecdepositpaidcurrent),
+        "crdae_clientrentsubsidiescurrent": Number(crdae_clientrentsubsidiescurrent),
+        "crdae_clientothersupportcurrent": Number(crdae_clientothersupportcurrent),
+        "crdae_totalexpensescurrent": Number(crdae_totalexpensescurrent),
+        "crdae_seminarsandeducationcurrent": Number(crdae_seminarsandeducationcurrent),
+        "crdae_mileageparkingcurrent": Number(crdae_mileageparkingcurrent),
+        "crdae_otherprofservicescurrent": Number(crdae_otherprofservicescurrent),
+        "crdae_totaloperatingexpensescurrent": Number(crdae_totaloperatingexpensescurrent),
+        "crdae_supervisordmanagerswagescurrent": Number(crdae_supervisordmanagerswagescurrent),
+        "crdae_hmiswagescurrent": Number(crdae_hmiswagescurrent),
+        "crdae_totaldatamanagementcurrent": Number(crdae_totaldatamanagementcurrent),
+        "crdae_benefits42current": Number(crdae_benefits42current),
+        "crdae_duessubscriptionscurrent": Number(crdae_duessubscriptionscurrent),
+        "crdae_totalhmisservicescurrent": Number(crdae_totalhmisservicescurrent),
+        "crdae_indirectcurrent": Number(crdae_indirectcurrent),
+        "crdae_totalprogrambudcurrent": Number(crdae_totalprogrambudcurrent),
+        "crdae_clientrentsecdepositpaidbudget": Number(crdae_clientrentsecdepositpaidbudget),
+        "crdae_totalprogrambudbudget": Number(crdae_totalprogrambudbudget),
+        "crdae_clientutilitiesothertotal": Number(crdae_clientutilitiesothertotal),
+        "crdae_seniormgmtwagestotal": Number(crdae_seniormgmtwagestotal),
+        "crdae_totalsalariestotal": Number(crdae_totalsalariestotal),
+        "crdae_clientrentsubsidiestotal": Number(crdae_clientrentsubsidiestotal),
+        "crdae_totalexpensestotal": Number(crdae_totalexpensestotal),
+        "crdae_otherprofservicestotal": Number(crdae_otherprofservicestotal),
+        "crdae_totaloperatingexpensestotal": Number(crdae_totaloperatingexpensestotal),
+        "crdae_supervisordmanagerswagestotal": Number(crdae_supervisordmanagerswagestotal),
+        "crdae_hmiswagestotal": Number(crdae_hmiswagestotal),
+        "crdae_totalhmisservicestotal": Number(crdae_totalhmisservicestotal),
+        "crdae_mileageparkingbudget": Number(crdae_mileageparkingbudget),
+        "crdae_clientrentsecdepositpaidtotal": Number(crdae_clientrentsecdepositpaidtotal),
+        "crdae_seminarsandeducationbudget": Number(crdae_seminarsandeducationbudget),
+        "crdae_mileageparkingtotal": Number(crdae_mileageparkingtotal),
+        "crdae_duessubscriptionstotal": Number(crdae_duessubscriptionstotal),
+        "crdae_totaldatamanagementtotal": Number(crdae_totaldatamanagementtotal),
+        "crdae_seminarsandeducationtotal": Number(crdae_seminarsandeducationtotal),
+        "crdae_clientutilitiesotherbudget": Number(crdae_clientutilitiesotherbudget),
+        "crdae_supervisorsmanagerstotal": Number(crdae_supervisorsmanagerstotal),
+        "crdae_casemanagerstotal": Number(crdae_casemanagerstotal),
+        "crdae_adminsupporttotal": Number(crdae_adminsupporttotal),
+        "crdae_clientothersupporttotal": Number(crdae_clientothersupporttotal),
+        "crdae_seniormgmtwagesbudget": Number(crdae_seniormgmtwagesbudget),
+        "crdae_supervisorsmanagersbudget": Number(crdae_supervisorsmanagersbudget),
+        "crdae_casemanagersbudget": Number(crdae_casemanagersbudget),
+        "crdae_totalsalariesbudget": Number(crdae_totalsalariesbudget),
+        "crdae_totalbenefitsbudget": Number(crdae_totalbenefitsbudget),
+        "crdae_totalsalariesbenefitsbudget": Number(crdae_totalsalariesbenefitsbudget),
+        "crdae_clientrentsubsidiesbudget": Number(crdae_clientrentsubsidiesbudget),
+        "crdae_totalexpensesbudget": Number(crdae_totalexpensesbudget),
+        "crdae_otherprofservicesbudget": Number(crdae_otherprofservicesbudget),
+        "crdae_totaloperatingexpensesbudget": Number(crdae_totaloperatingexpensesbudget),
+        "crdae_supervisordmanagerswagesbudget": Number(crdae_supervisordmanagerswagesbudget),
+        "crdae_hmiswagesbudget": Number(crdae_hmiswagesbudget),
+        "crdae_duessubscriptionsbudget": Number(crdae_duessubscriptionsbudget),
+        "crdae_totalhmisservicesbudget": Number(crdae_totalhmisservicesbudget),
+        "crdae_housingresourcespecialisttotal": Number(crdae_housingresourcespecialisttotal),
+        "crdae_housingresourcespecialistbudget": Number(crdae_housingresourcespecialistbudget),
+        "crdae_adminsupportbudget": Number(crdae_adminsupportbudget),
+        "crdae_clientothersupportbudget": Number(crdae_clientothersupportbudget),
+        "crdae_totaldatamanagementbudget": Number(crdae_totaldatamanagementbudget),
+        "crdae_indirectbudget": Number(crdae_indirectbudget),
+        "crdae_totalbenefitstotal": Number(crdae_totalbenefitstotal),
+        "crdae_totalsalariesbenefitstotal": Number(crdae_totalsalariesbenefitstotal),
+        "crdae_totalprogrambudtotal": Number(crdae_totalprogrambudtotal),
+        "crdae_seniormgmtwagesfurther": crdae_seniormgmtwagesfurther,
+        "crdae_supervisorsmanagersfurther": crdae_supervisorsmanagersfurther,
+        "crdae_casemanagersfurther": crdae_casemanagersfurther,
+        "crdae_housingresourcespecialistfurther": crdae_housingresourcespecialistfurther,
+        "crdae_administrativesupportfurther": crdae_administrativesupportfurther,
+        "crdae_totalsalariesfurther": crdae_totalsalariesfurther,
+        "crdae_totalbenefitsfurther": crdae_totalbenefitsfurther,
+        "crdae_totalsalariesbenefitsfurther": crdae_totalsalariesbenefitsfurther,
+        "crdae_clientutilitiesotherfurther": crdae_clientutilitiesotherfurther,
+        "crdae_clientrentsecuritydepositpaidfurther": crdae_clientrentsecuritydepositpaidfurther,
+        "crdae_clientrentsubsidiesfurther": crdae_clientrentsubsidiesfurther,
+        "crdae_clientothersupportfurther": crdae_clientothersupportfurther,
+        "crdae_totalexpensesfurther": crdae_totalexpensesfurther,
+        "crdae_seminarsandeducationfurther": crdae_seminarsandeducationfurther,
+        "crdae_mileageparkingfurther": crdae_mileageparkingfurther,
+        "crdae_otherprofessionalservicesfurther": crdae_otherprofessionalservicesfurther,
+        "crdae_totaloperatingexpensesfurther": crdae_totaloperatingexpensesfurther,
+        "crdae_supervisordmanagerswagesfurther": crdae_supervisordmanagerswagesfurther,
+        "crdae_hmiswagesfurther": crdae_hmiswagesfurther,
+        "crdae_totaldatamanagementfurther": crdae_totaldatamanagementfurther,
+        "crdae_benefits42further": crdae_benefits42further,
+        "crdae_duessubscriptionsfurther": crdae_duessubscriptionsfurther,
+        "crdae_totalhmisservicesfurther": crdae_totalhmisservicesfurther,
+        "crdae_indirectfurther": crdae_indirectfurther,
+        "crdae_totalprogrambudfurther": crdae_totalprogrambudfurther
+          
+  
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+          toastr.success(
+            '',
+            'Data Inserted Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+        }
+      });
+  
+      {% else %}
+  
+      webapi.safeAjax({
+        type: "PATCH",
+        url: "/_api/cr9aa_shelters({{myquery.results.entities[0].cr9aa_shelterid}})",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_endyear": "{{request.params['endyear']}}",
+        "crdae_startmonth": "{{request.params['startmonth']}}",
+        "crdae_endmonth": "{{request.params['endmonth']}}",
+        "cr9aa_totalrefsrefstotal": cr9aa_totalrefsrefstotal !="" || cr9aa_totalrefsrefstotal === "0" ? Number(cr9aa_totalrefsrefstotal) : -1,
+        "cr9aa_totalrefsab109refs": cr9aa_totalrefsab109refs !="" || cr9aa_totalrefsab109refs === "0" ? Number(cr9aa_totalrefsab109refs) : -1,
+        "cr9aa_totalrefsnonab109refs": cr9aa_totalrefsnonab109refs !="" || cr9aa_totalrefsnonab109refs === "0" ? Number(cr9aa_totalrefsnonab109refs) : -1,
+        "cr9aa_totalrefsscreenedandacceptedforsvcs": cr9aa_totalrefsscreenedandacceptedforsvcs !="" || cr9aa_totalrefsscreenedandacceptedforsvcs === "0" ? Number(cr9aa_totalrefsscreenedandacceptedforsvcs) : -1,
+        "cr9aa_totalrefsunscreened": cr9aa_totalrefsunscreened !="" || cr9aa_totalrefsunscreened === "0" ? Number(cr9aa_totalrefsunscreened) : -1,
+        "cr9aa_amongnewenrsaged25": cr9aa_amongnewenrsaged25 !="" || cr9aa_amongnewenrsaged25 === "0" ? Number(cr9aa_amongnewenrsaged25) : -1,
+        "cr9aa_amongnewenrsaged2635": cr9aa_amongnewenrsaged2635 !="" || cr9aa_amongnewenrsaged2635 === "0" ? Number(cr9aa_amongnewenrsaged2635) : -1,
+        "cr9aa_amongnewenrsaged3645": cr9aa_amongnewenrsaged3645 !="" || cr9aa_amongnewenrsaged3645 === "0" ? Number(cr9aa_amongnewenrsaged3645) : -1,
+        "cr9aa_amongnewenrsaged4655": cr9aa_amongnewenrsaged4655 !="" || cr9aa_amongnewenrsaged4655 === "0" ? Number(cr9aa_amongnewenrsaged4655) : -1,
+        "cr9aa_amongnewenrsaged55": cr9aa_amongnewenrsaged55 !="" || cr9aa_amongnewenrsaged55 === "0" ? Number(cr9aa_amongnewenrsaged55) : -1,
+        "cr9aa_amongnewenrsageunknown": cr9aa_amongnewenrsageunknown !="" || cr9aa_amongnewenrsageunknown === "0" ? Number(cr9aa_amongnewenrsageunknown) : -1,
+        "cr9aa_amongnewenrsraceethasian": cr9aa_amongnewenrsraceethasian !="" || cr9aa_amongnewenrsraceethasian === "0" ? Number(cr9aa_amongnewenrsraceethasian) : -1,
+        "cr9aa_amongnewenrsraceethblack": cr9aa_amongnewenrsraceethblack !="" || cr9aa_amongnewenrsraceethblack === "0" ? Number(cr9aa_amongnewenrsraceethblack) : -1,
+        "cr9aa_amongnewenrsraceethlatinoa": cr9aa_amongnewenrsraceethlatinoa !="" || cr9aa_amongnewenrsraceethlatinoa === "0" ? Number(cr9aa_amongnewenrsraceethlatinoa) : -1,
+        "cr9aa_amongnewenrsraceethnativeamerican": cr9aa_amongnewenrsraceethnativeamerican !="" || cr9aa_amongnewenrsraceethnativeamerican === "0" ? Number(cr9aa_amongnewenrsraceethnativeamerican) : -1,
+        "cr9aa_amongnewenrsraceethwhite": cr9aa_amongnewenrsraceethwhite !="" || cr9aa_amongnewenrsraceethwhite === "0" ? Number(cr9aa_amongnewenrsraceethwhite) : -1,
+        "cr9aa_amongnewenrsraceethother": cr9aa_amongnewenrsraceethother !="" || cr9aa_amongnewenrsraceethother === "0" ? Number(cr9aa_amongnewenrsraceethother) : -1,
+        "cr9aa_amongnewenrsgenderfemale": cr9aa_amongnewenrsgenderfemale !="" || cr9aa_amongnewenrsgenderfemale === "0" ? Number(cr9aa_amongnewenrsgenderfemale) : -1,
+        "cr9aa_amongnewenrsgendermale": cr9aa_amongnewenrsgendermale !="" || cr9aa_amongnewenrsgendermale === "0" ? Number(cr9aa_amongnewenrsgendermale) : -1,
+        "cr9aa_amongnewenrsregionwest": cr9aa_amongnewenrsregionwest !="" || cr9aa_amongnewenrsregionwest === "0" ? Number(cr9aa_amongnewenrsregionwest) : -1,
+        "cr9aa_amongnewenrsregioncentral": cr9aa_amongnewenrsregioncentral !="" || cr9aa_amongnewenrsregioncentral === "0" ? Number(cr9aa_amongnewenrsregioncentral) : -1,
+        "cr9aa_amongnewenrsregioneast": cr9aa_amongnewenrsregioneast !="" || cr9aa_amongnewenrsregioneast === "0" ? Number(cr9aa_amongnewenrsregioneast) : -1,
+        "cr9aa_amongnewenrstierab109probation": cr9aa_amongnewenrstierab109probation !="" || cr9aa_amongnewenrstierab109probation === "0" ? Number(cr9aa_amongnewenrstierab109probation) : -1,
+        "cr9aa_amongnewenrstierfelonyprobation": cr9aa_amongnewenrstierfelonyprobation !="" || cr9aa_amongnewenrstierfelonyprobation === "0" ? Number(cr9aa_amongnewenrstierfelonyprobation) : -1,
+        "cr9aa_amongnewenrstier30daysincustodyreleased": cr9aa_amongnewenrstier30daysincustodyreleased !="" || cr9aa_amongnewenrstier30daysincustodyreleased === "0" ? Number(cr9aa_amongnewenrstier30daysincustodyreleased) : -1,
+        "cr9aa_amongnewenrstiercurrawaitingtrial": cr9aa_amongnewenrstiercurrawaitingtrial !="" || cr9aa_amongnewenrstiercurrawaitingtrial === "0" ? Number(cr9aa_amongnewenrstiercurrawaitingtrial) : -1,
+        "cr9aa_amongnewenrstiercurroncourtprobation": cr9aa_amongnewenrstiercurroncourtprobation !="" || cr9aa_amongnewenrstiercurroncourtprobation === "0" ? Number(cr9aa_amongnewenrstiercurroncourtprobation) : -1,
+        "cr9aa_amongnewenrstierspecialcourtprobationbeha": cr9aa_amongnewenrstierspecialcourtprobationbeha !="" || cr9aa_amongnewenrstierspecialcourtprobationbeha === "0" ? Number(cr9aa_amongnewenrstierspecialcourtprobationbeha) : -1,
+        "cr9aa_amongnewenrstiercurronparole": cr9aa_amongnewenrstiercurronparole !="" || cr9aa_amongnewenrstiercurronparole === "0" ? Number(cr9aa_amongnewenrstiercurronparole) : -1,
+        "cr9aa_amongnewenrstiercurrincustody": cr9aa_amongnewenrstiercurrincustody !="" || cr9aa_amongnewenrstiercurrincustody === "0" ? Number(cr9aa_amongnewenrstiercurrincustody) : -1,
+        "cr9aa_amongnewenrstieroutofjurisdiction": cr9aa_amongnewenrstieroutofjurisdiction !="" || cr9aa_amongnewenrstieroutofjurisdiction === "0" ? Number(cr9aa_amongnewenrstieroutofjurisdiction) : -1,
+        "cr9aa_amongnewenrstiernoneoftheabove": cr9aa_amongnewenrstiernoneoftheabove !="" || cr9aa_amongnewenrstiernoneoftheabove === "0" ? Number(cr9aa_amongnewenrstiernoneoftheabove) : -1,
+        "cr9aa_newenrsvcshousingreceivinghousingassessme": cr9aa_newenrsvcshousingreceivinghousingassessme !="" || cr9aa_newenrsvcshousingreceivinghousingassessme === "0" ? Number(cr9aa_newenrsvcshousingreceivinghousingassessme) : -1,
+        "cr9aa_newenrsvcshousingenrolledincasemanagemen": cr9aa_newenrsvcshousingenrolledincasemanagemen !="" || cr9aa_newenrsvcshousingenrolledincasemanagemen === "0" ? Number(cr9aa_newenrsvcshousingenrolledincasemanagemen) : -1,
+        "cr9aa_newenrsvcshousingreceivingcasemanagement": cr9aa_newenrsvcshousingreceivingcasemanagement !="" || cr9aa_newenrsvcshousingreceivingcasemanagement === "0" ? Number(cr9aa_newenrsvcshousingreceivingcasemanagement) : -1,
+        "cr9aa_newenrsvcshousingavgofparticipantsperca": cr9aa_newenrsvcshousingavgofparticipantsperca !="" || cr9aa_newenrsvcshousingavgofparticipantsperca === "0" ? Number(cr9aa_newenrsvcshousingavgofparticipantsperca) : -1,
+        "cr9aa_newenrsvcshousinglivingwithfamilyfriends": cr9aa_newenrsvcshousinglivingwithfamilyfriends !="" || cr9aa_newenrsvcshousinglivingwithfamilyfriends === "0" ? Number(cr9aa_newenrsvcshousinglivingwithfamilyfriends) : -1,
+        "cr9aa_newenrsvcshousingplacedinsletransitional": cr9aa_newenrsvcshousingplacedinsletransitional !="" || cr9aa_newenrsvcshousingplacedinsletransitional === "0" ? Number(cr9aa_newenrsvcshousingplacedinsletransitional) : -1,
+        "cr9aa_newenrsvcshousingplacedinstablehousing": cr9aa_newenrsvcshousingplacedinstablehousing !="" || cr9aa_newenrsvcshousingplacedinstablehousing === "0" ? Number(cr9aa_newenrsvcshousingplacedinstablehousing) : -1,
+        "cr9aa_newenrsvcshousingreceivedshorttermfinanc": cr9aa_newenrsvcshousingreceivedshorttermfinanc !="" || cr9aa_newenrsvcshousingreceivedshorttermfinanc === "0" ? Number(cr9aa_newenrsvcshousingreceivedshorttermfinanc) : -1,
+        "cr9aa_newenrsvcshousingofwestctyslebedsavail": cr9aa_newenrsvcshousingofwestctyslebedsavail !="" || cr9aa_newenrsvcshousingofwestctyslebedsavail === "0" ? Number(cr9aa_newenrsvcshousingofwestctyslebedsavail) : -1,
+        "cr9aa_newenrsvcshousingofwestctyslebedsoccup": cr9aa_newenrsvcshousingofwestctyslebedsoccup !="" || cr9aa_newenrsvcshousingofwestctyslebedsoccup === "0" ? Number(cr9aa_newenrsvcshousingofwestctyslebedsoccup) : -1,
+        "cr9aa_newenrsvcshousingofcentralctyslebedsav": cr9aa_newenrsvcshousingofcentralctyslebedsav !="" || cr9aa_newenrsvcshousingofcentralctyslebedsav === "0" ? Number(cr9aa_newenrsvcshousingofcentralctyslebedsav) : -1,
+        "cr9aa_newenrsvcshousingofcentralctyslebedsoc": cr9aa_newenrsvcshousingofcentralctyslebedsoc !="" || cr9aa_newenrsvcshousingofcentralctyslebedsoc === "0" ? Number(cr9aa_newenrsvcshousingofcentralctyslebedsoc) : -1,
+        "cr9aa_newenrsvcshousingofeastctyslebedsavail": cr9aa_newenrsvcshousingofeastctyslebedsavail !="" || cr9aa_newenrsvcshousingofeastctyslebedsavail === "0" ? Number(cr9aa_newenrsvcshousingofeastctyslebedsavail) : -1,
+        "cr9aa_newenrsvcshousingofeastctyslebedsoccup": cr9aa_newenrsvcshousingofeastctyslebedsoccup !="" || cr9aa_newenrsvcshousingofeastctyslebedsoccup === "0" ? Number(cr9aa_newenrsvcshousingofeastctyslebedsoccup) : -1,
+        "cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr": cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr !="" || cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr === "0" ? Number(cr9aa_newenrsvcsfamilytherapeuticcrisissvcsenr) : -1,
+        "cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia": cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia !="" || cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia === "0" ? Number(cr9aa_newenrsvcsfinancialsvcsenrolledinfinancia) : -1,
+        "cr9aa_newenrsvcslegalsvcsreftolegalsvcs": cr9aa_newenrsvcslegalsvcsreftolegalsvcs !="" || cr9aa_newenrsvcslegalsvcsreftolegalsvcs === "0" ? Number(cr9aa_newenrsvcslegalsvcsreftolegalsvcs) : -1,
+        "cr9aa_newenrsvcsemploymentrefswhoareunorunde": cr9aa_newenrsvcsemploymentrefswhoareunorunde !="" || cr9aa_newenrsvcsemploymentrefswhoareunorunde === "0" ? Number(cr9aa_newenrsvcsemploymentrefswhoareunorunde) : -1,
+        "cr9aa_newenrsvcsemploymentrefsofununderemploy": cr9aa_newenrsvcsemploymentrefsofununderemploy !="" || cr9aa_newenrsvcsemploymentrefsofununderemploy === "0" ? Number(cr9aa_newenrsvcsemploymentrefsofununderemploy) : -1,
+        "cr9aa_newenrsvcsemploymentrefsamongthosereffor": cr9aa_newenrsvcsemploymentrefsamongthosereffor !="" || cr9aa_newenrsvcsemploymentrefsamongthosereffor === "0" ? Number(cr9aa_newenrsvcsemploymentrefsamongthosereffor) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsofsl": cr9aa_newenrsvcshousingdurationtransitionsofsl !="" || cr9aa_newenrsvcshousingdurationtransitionsofsl === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsofsl) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsinst": cr9aa_newenrsvcshousingdurationtransitionsinst !="" || cr9aa_newenrsvcshousingdurationtransitionsinst === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsinst) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionswhoe": cr9aa_newenrsvcshousingdurationtransitionswhoe !="" || cr9aa_newenrsvcshousingdurationtransitionswhoe === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionswhoe) : -1,
+        "cr9aa_newenrsvcshousingdurtranswhoexitedtope": cr9aa_newenrsvcshousingdurtranswhoexitedtope !="" || cr9aa_newenrsvcshousingdurtranswhoexitedtope === "0" ? Number(cr9aa_newenrsvcshousingdurtranswhoexitedtope) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionstrans": cr9aa_newenrsvcshousingdurationtransitionstrans !="" || cr9aa_newenrsvcshousingdurationtransitionstrans === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionstrans) : -1,
+        "cr9aa_newenrsvcshousingdurationtransitionsmoved": cr9aa_newenrsvcshousingdurationtransitionsmoved !="" || cr9aa_newenrsvcshousingdurationtransitionsmoved === "0" ? Number(cr9aa_newenrsvcshousingdurationtransitionsmoved) : -1,
+        "cr9aa_newenrsvcshousingdurtranstransitionedby": cr9aa_newenrsvcshousingdurtranstransitionedby !="" || cr9aa_newenrsvcshousingdurtranstransitionedby === "0" ? Number(cr9aa_newenrsvcshousingdurtranstransitionedby) : -1,
+        "cr9aa_outcomessuccessfullycompletedpgmieexite": cr9aa_outcomessuccessfullycompletedpgmieexite !="" || cr9aa_outcomessuccessfullycompletedpgmieexite === "0" ? Number(cr9aa_outcomessuccessfullycompletedpgmieexite) : -1,
+        "cr9aa_outcomesab109successfullycompletedpgm": cr9aa_outcomesab109successfullycompletedpgm !="" || cr9aa_outcomesab109successfullycompletedpgm === "0" ? Number(cr9aa_outcomesab109successfullycompletedpgm) : -1,
+        "cr9aa_outcomesunsuccessfulexitsfailuretomeetr": cr9aa_outcomesunsuccessfulexitsfailuretomeetr !="" || cr9aa_outcomesunsuccessfulexitsfailuretomeetr === "0" ? Number(cr9aa_outcomesunsuccessfulexitsfailuretomeetr) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetocourtcrim": cr9aa_outcomesunsuccessfulexitsduetocourtcrim !="" || cr9aa_outcomesunsuccessfulexitsduetocourtcrim === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetocourtcrim) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetolackofen": cr9aa_outcomesunsuccessfulexitsduetolackofen !="" || cr9aa_outcomesunsuccessfulexitsduetolackofen === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetolackofen) : -1,
+        "cr9aa_outcomesunsuccessfulexitsabsconding": cr9aa_outcomesunsuccessfulexitsabsconding !="" || cr9aa_outcomesunsuccessfulexitsabsconding === "0" ? Number(cr9aa_outcomesunsuccessfulexitsabsconding) : -1,
+        "cr9aa_outcomesunsuccessfulexitsduetorelocation": cr9aa_outcomesunsuccessfulexitsduetorelocation !="" || cr9aa_outcomesunsuccessfulexitsduetorelocation === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetorelocation) : -1,
+        "crdae_outcomesnumAB109unsuccessexits": crdae_outcomesnumAB109unsuccessexits !="" || crdae_outcomesnumAB109unsuccessexits === "0" ? Number(crdae_outcomesnumAB109unsuccessexits) : -1,
+        "crdae_sectionone": crdae_sectionone,
+        "crdae_sectiontwo": crdae_sectiontwo,
+        "crdae_sectionthree": crdae_sectionthree,
+        "crdae_sectionfour": crdae_sectionfour,
+        "crdae_sectionfive": crdae_sectionfive,
+        "crdae_submittedstatus": submitStatus,
+        "crdae_benefits42budget": Number(crdae_benefits42budget),
+        "crdae_benefits42total": Number(crdae_benefits42total),
+        "crdae_indirecttotal": Number(crdae_indirecttotal),
+        "crdae_seniormgmtwagescurrent": Number(crdae_seniormgmtwagescurrent),
+        "crdae_supervisorsmanagerscurrent": Number(crdae_supervisorsmanagerscurrent),
+        "crdae_casemanagerscurrent": Number(crdae_casemanagerscurrent),
+        "crdae_housingresourcespecialistcurrent": Number(crdae_housingresourcespecialistcurrent),
+        "crdae_adminsupportcurrent": Number(crdae_adminsupportcurrent),
+        "crdae_totalsalariescurrent": Number(crdae_totalsalariescurrent),
+        "crdae_totalbenefitscurrent": Number(crdae_totalbenefitscurrent),
+        "crdae_totalsalariesbenefitscurrent": Number(crdae_totalsalariesbenefitscurrent),
+        "crdae_clientutilitiesothercurrent": Number(crdae_clientutilitiesothercurrent),
+        "crdae_clientrentsecdepositpaidcurrent": Number(crdae_clientrentsecdepositpaidcurrent),
+        "crdae_clientrentsubsidiescurrent": Number(crdae_clientrentsubsidiescurrent),
+        "crdae_clientothersupportcurrent": Number(crdae_clientothersupportcurrent),
+        "crdae_totalexpensescurrent": Number(crdae_totalexpensescurrent),
+        "crdae_seminarsandeducationcurrent": Number(crdae_seminarsandeducationcurrent),
+        "crdae_mileageparkingcurrent": Number(crdae_mileageparkingcurrent),
+        "crdae_otherprofservicescurrent": Number(crdae_otherprofservicescurrent),
+        "crdae_totaloperatingexpensescurrent": Number(crdae_totaloperatingexpensescurrent),
+        "crdae_supervisordmanagerswagescurrent": Number(crdae_supervisordmanagerswagescurrent),
+        "crdae_hmiswagescurrent": Number(crdae_hmiswagescurrent),
+        "crdae_totaldatamanagementcurrent": Number(crdae_totaldatamanagementcurrent),
+        "crdae_benefits42current": Number(crdae_benefits42current),
+        "crdae_duessubscriptionscurrent": Number(crdae_duessubscriptionscurrent),
+        "crdae_totalhmisservicescurrent": Number(crdae_totalhmisservicescurrent),
+        "crdae_indirectcurrent": Number(crdae_indirectcurrent),
+        "crdae_totalprogrambudcurrent": Number(crdae_totalprogrambudcurrent),
+        "crdae_clientrentsecdepositpaidbudget": Number(crdae_clientrentsecdepositpaidbudget),
+        "crdae_totalprogrambudbudget": Number(crdae_totalprogrambudbudget),
+        "crdae_clientutilitiesothertotal": Number(crdae_clientutilitiesothertotal),
+        "crdae_seniormgmtwagestotal": Number(crdae_seniormgmtwagestotal),
+        "crdae_totalsalariestotal": Number(crdae_totalsalariestotal),
+        "crdae_clientrentsubsidiestotal": Number(crdae_clientrentsubsidiestotal),
+        "crdae_totalexpensestotal": Number(crdae_totalexpensestotal),
+        "crdae_otherprofservicestotal": Number(crdae_otherprofservicestotal),
+        "crdae_totaloperatingexpensestotal": Number(crdae_totaloperatingexpensestotal),
+        "crdae_supervisordmanagerswagestotal": Number(crdae_supervisordmanagerswagestotal),
+        "crdae_hmiswagestotal": Number(crdae_hmiswagestotal),
+        "crdae_totalhmisservicestotal": Number(crdae_totalhmisservicestotal),
+        "crdae_mileageparkingbudget": Number(crdae_mileageparkingbudget),
+        "crdae_clientrentsecdepositpaidtotal": Number(crdae_clientrentsecdepositpaidtotal),
+        "crdae_seminarsandeducationbudget": Number(crdae_seminarsandeducationbudget),
+        "crdae_mileageparkingtotal": Number(crdae_mileageparkingtotal),
+        "crdae_duessubscriptionstotal": Number(crdae_duessubscriptionstotal),
+        "crdae_totaldatamanagementtotal": Number(crdae_totaldatamanagementtotal),
+        "crdae_seminarsandeducationtotal": Number(crdae_seminarsandeducationtotal),
+        "crdae_clientutilitiesotherbudget": Number(crdae_clientutilitiesotherbudget),
+        "crdae_supervisorsmanagerstotal": Number(crdae_supervisorsmanagerstotal),
+        "crdae_casemanagerstotal": Number(crdae_casemanagerstotal),
+        "crdae_adminsupporttotal": Number(crdae_adminsupporttotal),
+        "crdae_clientothersupporttotal": Number(crdae_clientothersupporttotal),
+        "crdae_seniormgmtwagesbudget": Number(crdae_seniormgmtwagesbudget),
+        "crdae_supervisorsmanagersbudget": Number(crdae_supervisorsmanagersbudget),
+        "crdae_casemanagersbudget": Number(crdae_casemanagersbudget),
+        "crdae_totalsalariesbudget": Number(crdae_totalsalariesbudget),
+        "crdae_totalbenefitsbudget": Number(crdae_totalbenefitsbudget),
+        "crdae_totalsalariesbenefitsbudget": Number(crdae_totalsalariesbenefitsbudget),
+        "crdae_clientrentsubsidiesbudget": Number(crdae_clientrentsubsidiesbudget),
+        "crdae_totalexpensesbudget": Number(crdae_totalexpensesbudget),
+        "crdae_otherprofservicesbudget": Number(crdae_otherprofservicesbudget),
+        "crdae_totaloperatingexpensesbudget": Number(crdae_totaloperatingexpensesbudget),
+        "crdae_supervisordmanagerswagesbudget": Number(crdae_supervisordmanagerswagesbudget),
+        "crdae_hmiswagesbudget": Number(crdae_hmiswagesbudget),
+        "crdae_duessubscriptionsbudget": Number(crdae_duessubscriptionsbudget),
+        "crdae_totalhmisservicesbudget": Number(crdae_totalhmisservicesbudget),
+        "crdae_housingresourcespecialisttotal": Number(crdae_housingresourcespecialisttotal),
+        "crdae_housingresourcespecialistbudget": Number(crdae_housingresourcespecialistbudget),
+        "crdae_adminsupportbudget": Number(crdae_adminsupportbudget),
+        "crdae_clientothersupportbudget": Number(crdae_clientothersupportbudget),
+        "crdae_totaldatamanagementbudget": Number(crdae_totaldatamanagementbudget),
+        "crdae_indirectbudget": Number(crdae_indirectbudget),
+        "crdae_totalbenefitstotal": Number(crdae_totalbenefitstotal),
+        "crdae_totalsalariesbenefitstotal": Number(crdae_totalsalariesbenefitstotal),
+        "crdae_totalprogrambudtotal": Number(crdae_totalprogrambudtotal),
+        "crdae_seniormgmtwagesfurther": crdae_seniormgmtwagesfurther,
+        "crdae_supervisorsmanagersfurther": crdae_supervisorsmanagersfurther,
+        "crdae_casemanagersfurther": crdae_casemanagersfurther,
+        "crdae_housingresourcespecialistfurther": crdae_housingresourcespecialistfurther,
+        "crdae_administrativesupportfurther": crdae_administrativesupportfurther,
+        "crdae_totalsalariesfurther": crdae_totalsalariesfurther,
+        "crdae_totalbenefitsfurther": crdae_totalbenefitsfurther,
+        "crdae_totalsalariesbenefitsfurther": crdae_totalsalariesbenefitsfurther,
+        "crdae_clientutilitiesotherfurther": crdae_clientutilitiesotherfurther,
+        "crdae_clientrentsecuritydepositpaidfurther": crdae_clientrentsecuritydepositpaidfurther,
+        "crdae_clientrentsubsidiesfurther": crdae_clientrentsubsidiesfurther,
+        "crdae_clientothersupportfurther": crdae_clientothersupportfurther,
+        "crdae_totalexpensesfurther": crdae_totalexpensesfurther,
+        "crdae_seminarsandeducationfurther": crdae_seminarsandeducationfurther,
+        "crdae_mileageparkingfurther": crdae_mileageparkingfurther,
+        "crdae_otherprofessionalservicesfurther": crdae_otherprofessionalservicesfurther,
+        "crdae_totaloperatingexpensesfurther": crdae_totaloperatingexpensesfurther,
+        "crdae_supervisordmanagerswagesfurther": crdae_supervisordmanagerswagesfurther,
+        "crdae_hmiswagesfurther": crdae_hmiswagesfurther,
+        "crdae_totaldatamanagementfurther": crdae_totaldatamanagementfurther,
+        "crdae_benefits42further": crdae_benefits42further,
+        "crdae_duessubscriptionsfurther": crdae_duessubscriptionsfurther,
+        "crdae_totalhmisservicesfurther": crdae_totalhmisservicesfurther,
+        "crdae_indirectfurther": crdae_indirectfurther,
+        "crdae_totalprogrambudfurther": crdae_totalprogrambudfurther
+
+        }),
+        success: function(res, status, xhr) {
+          $(".loading").hide();
+  
+          toastr.success(
+            '',
+            'Data Updated Successfully', {
+              timeOut: 2000,
+              fadeOut: 3000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                window.location.reload();
+              }
+            });
+  
+        }
+      }); {%endif %}
+  
+  
+    }
+  </script>
