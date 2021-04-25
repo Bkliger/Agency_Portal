@@ -1,3 +1,9 @@
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
 <form id="form" role="form">
   {% fetchxml myquery %}
   <fetch mapping="logical">
@@ -23,6 +29,7 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
+  {% if role != 'ORJ' %}
     <div class="col-xs-12 text-right margin">
       <!-- Button trigger modal -->
       {% if recordCount > 0  %}
@@ -48,6 +55,7 @@
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
+  {% endif %}
   
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Print </button>
