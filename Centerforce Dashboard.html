@@ -18,107 +18,139 @@
 {% endif %}
 
 {% fetchxml fiscalyears %}
-  <fetch mapping="logical">
-    <entity name="crdae_fiscalyears">
-      <all-attributes />
-      <order attribute='crdae_startyear' descending='false' />
-    </entity>
-  </fetch>
+<fetch mapping="logical">
+  <entity name="crdae_fiscalyears">
+    <all-attributes />
+    <order attribute='crdae_startyear' descending='false' />
+  </entity>
+</fetch>
 {% endfetchxml %}
 {% fetchxml quarters %}
-  <fetch mapping="logical">
-    <entity name="cr9aa_quarters">
-      <all-attributes />
-    </entity>
-  </fetch>
+<fetch mapping="logical">
+  <entity name="cr9aa_quarters">
+    <all-attributes />
+  </entity>
+</fetch>
 {% endfetchxml %}
 {% fetchxml Centerforce %}
-  <fetch mapping="logical">
-    <entity name="cr9aa_Centerforce">
-      <all-attributes />
-      <filter type="and" >
-      <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
-      <condition attribute='modifiedon' operator='neq' value='{{ now | date: 'O' }}Z' />
-	    </filter>
-    </entity>
-  </fetch>
+<fetch mapping="logical">
+  <entity name="cr9aa_centerforce">
+    <all-attributes />
+    <filter type="and" >
+    <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
+    <condition attribute='modifiedon' operator='neq' value='{{ now | date: 'O' }}Z' />
+    </filter>
+  </entity>
+</fetch>
 {% endfetchxml %}
-    <div class="col-xs-12 margin">
-      <h2>{{user.fullname}} ({{role}}) <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
-      <p>Submissions</p>
-      <hr>
-      <table class="dashboard-table table-striped">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Quarter</th>
-            <th>Status</th>
-            <th>Submitted Date</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for item in Centerforce.results.entities %}
-          <tr>
-            <td><a href="/centerforce-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
-            <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
-            <td>{{item.crdae_submittedstatus}}</td>
-            <td>{{item.createdon}}</td>
-          </tr>
-        {% endfor %}
+  <div class="col-xs-12 margin">
+    <h2>{{user.fullname}} ({{role}}) <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">New Quarterly Submission</button></h2>
+    <p>Submissions</p>
+    <hr>
+    <table class="dashboard-table table-striped">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Quarter</th>
+          <th>Status</th>
+          <th>Submitted Date</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in Centerforce.results.entities %}
+        <tr>
+          <td><a href="/centerforce-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+          <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
+          <td>{{item.crdae_submittedstatus}}</td>
+          <td>{{item.createdon}}</td>
+        </tr>
+      {% endfor %}
 
-        </tbody>
-      </table>
-    </div>
-
-
-
-
-      <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Select Fiscal Year & Quarter</h4>
-        </div>
-        <div class="modal-body">
-          <p>Fiscal Year:</p>
-          <p>
-              <select class="fiscalyears form-control">
-                  {% for item in fiscalyears.results.entities %}
-                    <option startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
-                  {% endfor %}
-              </select>
-          </P>
-          <p>Quarters:</p>
-          <p>
-              <select class="quarters form-control">
-                  {% for item in quarters.results.entities %}
-                    <option startmonth="{{item.cr9aa_startmonth}}" endmonth="{{item.cr9aa_endmonth}}" value="{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}">{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</option>
-                  {% endfor %}
-              </select>
-          </P>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary pull-left next-button">Next</button>
-          <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
+      </tbody>
+    </table>
   </div>
-  <script>
 
-  $(document).on('click','.next-button',function(){
-     var startyear=$(".fiscalyears").find('option:selected').attr('startyear');
-     var endyear=$(".fiscalyears").find('option:selected').attr('endyear');
-     var startmonth=$(".quarters").find('option:selected').attr('startmonth');
-     var endmonth=$(".quarters").find('option:selected').attr('endmonth');
-     console.log(startyear+"-"+endyear);
-     console.log(startmonth+"-"+endmonth);
-	 window.location="/centerforce-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
-  });
 
-  </script>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select Fiscal Year & Quarter</h4>
+      </div>
+      <div class="modal-body">
+        <p>Fiscal Year:</p>
+        <p>
+            <select class="fiscalyears form-control">
+                {% for item in fiscalyears.results.entities %}
+                  {% assign year = item.crdae_startyear | append: "-" | append: item.crdae_endyear %}
+                  <option {% if fyearSelected == year %} selected="selected" {% endif %}  startyear="{{item.crdae_startyear}}" endyear="{{item.crdae_endyear}}" value="{{item.crdae_startyear}}-{{item.crdae_endyear}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</option>
+                {% endfor %}
+            </select>
+        </P>
+        <p>Quarters:</p>
+        <p>
+            <select class="quarters form-control">
+                {% for item in quarters.results.entities %}
+                  {% assign quarter = item.cr9aa_startmonth | append: "-" | append: item.cr9aa_endmonth %}
+                  <option {% if quarterSelected == quarter %} selected="selected" {% endif %} startmonth="{{item.cr9aa_startmonth}}" endmonth="{{item.cr9aa_endmonth}}" value="{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}">{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</option>
+                {% endfor %}
+            </select>
+        </P>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary pull-left next-button">Next</button>
+        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+
+$(document).on('click','.next-button',function(){
+  $(".loading").show();
+   var startyear=$(".fiscalyears").find('option:selected').attr('startyear');
+   var endyear=$(".fiscalyears").find('option:selected').attr('endyear');
+   var startmonth=$(".quarters").find('option:selected').attr('startmonth');
+   var endmonth=$(".quarters").find('option:selected').attr('endmonth');
+   checkRecordExistance(startyear,endyear,startmonth,endmonth);
+     
+});
+function checkRecordExistance(startyear,endyear,startmonth,endmonth){
+  var settings = {
+  "async": false,
+  "crossDomain": true,
+  "url": "/api/?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth+"&entity=cr9aa_centerforce&prefix=crdae",
+  "method": "GET",
+  "headers": {
+      "content-type": "application/json",
+      "cache-control": "no-cache"
+  }
+  }
+
+  $.ajax(settings).done(function (response) {
+      if(response.count>0){
+          $(".loading").hide();
+          toastr.error(
+            '',
+            'Record Already Exist!', {
+              timeOut: 2000,
+              fadeOut: 2000,
+              "positionClass": "toast-bottom-center",
+              onHidden: function() {
+                //$(".close").click();
+              }
+            });
+      }else{
+        window.location="/centerforce-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+      }
+  });    
+  
+}
+</script>
