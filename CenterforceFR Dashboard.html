@@ -59,7 +59,7 @@
       <tbody>
       {% for item in Centerforcefr.results.entities %}
         <tr>
-          <td><a href="/centerforcefr-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+          <td><a href="/centerforce-fr-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
           <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
           <td>{{item.crdae_submittedstatus}}</td>
           <td>{{item.createdon}}</td>
@@ -148,7 +148,7 @@ function checkRecordExistance(startyear,endyear,startmonth,endmonth){
               }
             });
       }else{
-        window.location="/centerforcefr-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+        window.location="/centerforce-fr-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
       }
   });    
   

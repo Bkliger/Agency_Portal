@@ -33,9 +33,9 @@
   </entity>
 </fetch>
 {% endfetchxml %}
-{% fetchxml mzhirliz %}
+{% fetchxml mzshirliz %}
 <fetch mapping="logical">
-  <entity name="cr9aa_mzhirliz">
+  <entity name="cr9aa_mzshirliz">
     <all-attributes />
     <filter type="and" >
     <condition attribute='createdon' operator='neq' value='{{ now | date: 'O' }}Z' />
@@ -58,9 +58,9 @@
         </tr>
       </thead>
       <tbody>
-      {% for item in mzhirliz.results.entities %}
+      {% for item in mzshirliz.results.entities %}
         <tr>
-          <td><a href="/mzhirliz-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+          <td><a href="/mzshirliz-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
           <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
           <td>{{item.crdae_submittedstatus}}</td>
           <td>{{item.createdon}}</td>
@@ -149,7 +149,7 @@ function checkRecordExistance(startyear,endyear,startmonth,endmonth){
               }
             });
       }else{
-        window.location="/mzhirliz-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+        window.location="/mzshirliz-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
       }
   });    
   

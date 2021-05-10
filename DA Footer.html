@@ -65,7 +65,7 @@
       {% if recordCount == 0 %}
       webapi.safeAjax({
         type: "POST",
-        url: "/_api/cr9aa_DAs",
+        url: "/_api/cr9aa_das",
         contentType: "application/json",
         data: JSON.stringify({
         "crdae_startyear": "{{request.params['startyear']}}",
@@ -125,7 +125,7 @@
   
       webapi.safeAjax({
         type: "PATCH",
-        url: "/_api/cr9aa_DAs({{myquery.results.entities[0].cr9aa_daid}})",
+        url: "/_api/cr9aa_das({{myquery.results.entities[0].cr9aa_daid}})",
         contentType: "application/json",
         data: JSON.stringify({
         "crdae_startyear": "{{request.params['startyear']}}",
