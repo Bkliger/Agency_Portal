@@ -1,127 +1,127 @@
 <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    $(document).on('click', '#save', function() {
-      submitOrSave("save");
-    });
-    $(document).on('click', '#submit', function() {
-       $("#toast-container").html(""); 
-      $("#form").validator().on("submit", function(e) {
-       $("#toast-container").html(""); 
-                 if (e.isDefaultPrevented()) {
-                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
-                  toastr.error(
-                      '',
-                      'Please fill required fields', {
-                          "positionClass": "toast-bottom-center",
-                          onHidden: function() {
-                              
-                          }
-                      }); 
-                      toastr.clear();                      
-                  } else {
-                          submitOrSave("submit");
-                      }
-                  });
-    });
-  
-    function submitOrSave(flag) {
-      var submitStatus = "";
-      if (flag == "save") {
-        submitStatus = "In Progress";
-      } else {
-        submitStatus = "Submitted";
-      }
-  
-      $(".loading").show();
-  
-      var cr9aa_numnewcalls= $("#cr9aa_numnewcalls").val().trim();
-        var cr9aa_numfollowupcalls= $("#cr9aa_numfollowupcalls").val().trim();
-        var cr9aa_num5150s= $("#cr9aa_num5150s").val().trim();
-      var crdae_sectionone = $("#crdae_sectionone").val().trim();
-      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
-      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
-      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
-      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
-      
-  
-      {% if recordCount == 0 %}
-      webapi.safeAjax({
-        type: "POST",
-        url: "/_api/cr9aa_richmondpds",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numnewcalls": cr9aa_numnewcalls !="" || cr9aa_numnewcalls === "0" ? Number(cr9aa_numnewcalls) : -1,
-        "cr9aa_numfollowupcalls": cr9aa_numfollowupcalls !="" || cr9aa_numfollowupcalls === "0" ? Number(cr9aa_numfollowupcalls) : -1,
-        "cr9aa_num5150s": cr9aa_num5150s !="" || cr9aa_num5150s === "0" ? Number(cr9aa_num5150s) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
-        
-          
-  
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-          toastr.success(
-            '',
-            'Data Inserted Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-        }
-      });
-  
-      {% else %}
-  
-      webapi.safeAjax({
-        type: "PATCH",
-        url: "/_api/cr9aa_richmondpds({{myquery.results.entities[0].cr9aa_richmondpdid}})",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numnewcalls": cr9aa_numnewcalls !="" || cr9aa_numnewcalls === "0" ? Number(cr9aa_numnewcalls) : -1,
-        "cr9aa_numfollowupcalls": cr9aa_numfollowupcalls !="" || cr9aa_numfollowupcalls === "0" ? Number(cr9aa_numfollowupcalls) : -1,
-        "cr9aa_num5150s": cr9aa_num5150s !="" || cr9aa_num5150s === "0" ? Number(cr9aa_num5150s) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-  
-          toastr.success(
-            '',
-            'Data Updated Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-  
-        }
-      }); {%endif %}
-  
-  
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(document).on('click', '#save', function() {
+    submitOrSave("save");
+  });
+  $(document).on('click', '#submit', function() {
+     $("#toast-container").html(""); 
+    $("#form").validator().on("submit", function(e) {
+     $("#toast-container").html(""); 
+               if (e.isDefaultPrevented()) {
+                $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                toastr.error(
+                    '',
+                    'Please fill required fields', {
+                        "positionClass": "toast-bottom-center",
+                        onHidden: function() {
+                            
+                        }
+                    }); 
+                    toastr.clear();                      
+                } else {
+                        submitOrSave("submit");
+                    }
+                });
+  });
+
+  function submitOrSave(flag) {
+    var submitStatus = "";
+    if (flag == "save") {
+      submitStatus = "In Progress";
+    } else {
+      submitStatus = "Submitted";
     }
-  </script>
+
+    $(".loading").show();
+
+    var cr9aa_numnewcalls= $("#cr9aa_numnewcalls").val().trim();
+      var cr9aa_numfollowupcalls= $("#cr9aa_numfollowupcalls").val().trim();
+      var cr9aa_num5150s= $("#cr9aa_num5150s").val().trim();
+    var crdae_sectionone = $("#crdae_sectionone").val().trim();
+    var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+    var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+    var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+    var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+    
+
+    {% if recordCount == 0 %}
+    webapi.safeAjax({
+      type: "POST",
+      url: "/_api/cr9aa_richmondpds",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numnewcalls": cr9aa_numnewcalls !="" || cr9aa_numnewcalls === "0" ? Number(cr9aa_numnewcalls) : -1,
+      "cr9aa_numfollowupcalls": cr9aa_numfollowupcalls !="" || cr9aa_numfollowupcalls === "0" ? Number(cr9aa_numfollowupcalls) : -1,
+      "cr9aa_num5150s": cr9aa_num5150s !="" || cr9aa_num5150s === "0" ? Number(cr9aa_num5150s) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      
+        
+
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+        toastr.success(
+          '',
+          'Data Inserted Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+      }
+    });
+
+    {% else %}
+
+    webapi.safeAjax({
+      type: "PATCH",
+      url: "/_api/cr9aa_richmondpds({{myquery.results.entities[0].cr9aa_richmondpdid}})",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numnewcalls": cr9aa_numnewcalls !="" || cr9aa_numnewcalls === "0" ? Number(cr9aa_numnewcalls) : -1,
+      "cr9aa_numfollowupcalls": cr9aa_numfollowupcalls !="" || cr9aa_numfollowupcalls === "0" ? Number(cr9aa_numfollowupcalls) : -1,
+      "cr9aa_num5150s": cr9aa_num5150s !="" || cr9aa_num5150s === "0" ? Number(cr9aa_num5150s) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+
+        toastr.success(
+          '',
+          'Data Updated Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+
+      }
+    }); {%endif %}
+
+
+  }
+</script>

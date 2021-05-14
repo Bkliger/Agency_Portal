@@ -1,382 +1,386 @@
 <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    $(document).on('click', '#save', function() {
-      submitOrSave("save");
-    });
-    $(document).on('click', '#submit', function() {
-       $("#toast-container").html(""); 
-      $("#form").validator().on("submit", function(e) {
-       $("#toast-container").html(""); 
-                 if (e.isDefaultPrevented()) {
-                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
-                  toastr.error(
-                      '',
-                      'Please fill required fields', {
-                          "positionClass": "toast-bottom-center",
-                          onHidden: function() {
-                              
-                          }
-                      }); 
-                      toastr.clear();                      
-                  } else {
-                          submitOrSave("submit");
-                      }
-                  });
-    });
-  
-    function submitOrSave(flag) {
-      var submitStatus = "";
-      if (flag == "save") {
-        submitStatus = "In Progress";
-      } else {
-        submitStatus = "Submitted";
-      }
-  
-      $(".loading").show();
-        
-      var cr9aa_numcontinuingcasespretrial= $("#cr9aa_numcontinuingcasespretrial").val().trim();
-        var cr9aa_numnewclientsassessedpretrial= $("#cr9aa_numnewclientsassessedpretrial").val().trim();
-        var cr9aa_numstartingpretrialsupervisionnewcases= $("#cr9aa_numstartingpretrialsupervisionnewcases").val().trim();
-        var cr9aa_averagedpocaseloadpretrial= $("#cr9aa_averagedpocaseloadpretrial").val().trim();
-        var cr9aa_nummennewcases= $("#cr9aa_nummennewcases").val().trim();
-        var cr9aa_numwomennewcases= $("#cr9aa_numwomennewcases").val().trim();
-        var cr9aa_numagedgt25= $("#cr9aa_numagedgt25").val().trim();
-        var cr9aa_numaged2635= $("#cr9aa_numaged2635").val().trim();
-        var cr9aa_numaged3645= $("#cr9aa_numaged3645").val().trim();
-        var cr9aa_numaged4655= $("#cr9aa_numaged4655").val().trim();
-        var cr9aa_numaged55= $("#cr9aa_numaged55").val().trim();
-        var cr9aa_numagedunknown= $("#cr9aa_numagedunknown").val().trim();
-        var cr9aa_regionwest= $("#cr9aa_regionwest").val().trim();
-        var cr9aa_regioncentral= $("#cr9aa_regioncentral").val().trim();
-        var cr9aa_regioneast= $("#cr9aa_regioneast").val().trim();
-        var cr9aa_regionoutcounty= $("#cr9aa_regionoutcounty").val().trim();
-        var cr9aa_regionunknown= $("#cr9aa_regionunknown").val().trim();
-        var cr9aa_supervisioncontactlevelnumhigh= $("#cr9aa_supervisioncontactlevelnumhigh").val().trim();
-        var cr9aa_supervisioncontactlevelnumaboveaverage= $("#cr9aa_supervisioncontactlevelnumaboveaverage").val().trim();
-        var cr9aa_supervisioncontactlevelnumaverage= $("#cr9aa_supervisioncontactlevelnumaverage").val().trim();
-        var cr9aa_supervisioncontactlevelnumbelowaverage= $("#cr9aa_supervisioncontactlevelnumbelowaverage").val().trim();
-        var cr9aa_supervisioncontactlevelnumlow= $("#cr9aa_supervisioncontactlevelnumlow").val().trim();
-        var cr9aa_supervisioncontactlevelnumnoscore= $("#cr9aa_supervisioncontactlevelnumnoscore").val().trim();
-        var cr9aa_numpermanentlyhoused= $("#cr9aa_numpermanentlyhoused").val().trim();
-        var cr9aa_numhomeless= $("#cr9aa_numhomeless").val().trim();
-        var cr9aa_numcurremployed= $("#cr9aa_numcurremployed").val().trim();
-        var cr9aa_numunemployed= $("#cr9aa_numunemployed").val().trim();
-        var cr9aa_compsviolationsnumsuccessfullydischarged= $("#cr9aa_compsviolationsnumsuccessfullydischarged").val().trim();
-        var cr9aa_compsviolationsnumfailappear= $("#cr9aa_compsviolationsnumfailappear").val().trim();
-        var cr9aa_compsviolationsnumnewoffenses= $("#cr9aa_compsviolationsnumnewoffenses").val().trim();
-        var cr9aa_compsviolationsnumtechnicalviolations= $("#cr9aa_compsviolationsnumtechnicalviolations").val().trim();
-        var cr9aa_compsviolationsnumcafrejection= $("#cr9aa_compsviolationsnumcafrejection").val().trim();
-        var cr9aa_prcsnumcontinuingcases= $("#cr9aa_prcsnumcontinuingcases").val().trim();
-        var cr9aa_prcsnumnewcases= $("#cr9aa_prcsnumnewcases").val().trim();
-        var cr9aa_prcsaveragedpocaseload= $("#cr9aa_prcsaveragedpocaseload").val().trim();
-        var cr9aa_prcsnummales= $("#cr9aa_prcsnummales").val().trim();
-        var cr9aa_prcsnumfemales= $("#cr9aa_prcsnumfemales").val().trim();
-        var cr9aa_prcsnumwest= $("#cr9aa_prcsnumwest").val().trim();
-        var cr9aa_prcsnumcentral= $("#cr9aa_prcsnumcentral").val().trim();
-        var cr9aa_prcsnumeast= $("#cr9aa_prcsnumeast").val().trim();
-        var cr9aa_pcrssupervisioncontactlevelnumhigh= $("#cr9aa_pcrssupervisioncontactlevelnumhigh").val().trim();
-        var cr9aa_pcrssupervisioncontactlevelnumaverage= $("#cr9aa_pcrssupervisioncontactlevelnumaverage").val().trim();
-        var cr9aa_pcrssupervisioncontactlevelnumlow= $("#cr9aa_pcrssupervisioncontactlevelnumlow").val().trim();
-        var cr9aa_pcrsrefsforaodstx= $("#cr9aa_pcrsrefsforaodstx").val().trim();
-        var cr9aa_pcrsrefsformentalhealthtx= $("#cr9aa_pcrsrefsformentalhealthtx").val().trim();
-        var cr9aa_pcrsrefsforhousingsvcs= $("#cr9aa_pcrsrefsforhousingsvcs").val().trim();
-        var cr9aa_pcrsrefsforempsvcs= $("#cr9aa_pcrsrefsforempsvcs").val().trim();
-        var cr9aa_pcrsrefsforlegalsvcs= $("#cr9aa_pcrsrefsforlegalsvcs").val().trim();
-        var cr9aa_pcrsrefsformentoring= $("#cr9aa_pcrsrefsformentoring").val().trim();
-        var cr9aa_pcrsrefsforresourceservicecenterwcounty= $("#cr9aa_pcrsrefsforresourceservicecenterwcounty").val().trim();
-        var cr9aa_pcrsrefsforhr360eastcentralcounty= $("#cr9aa_pcrsrefsforhr360eastcentralcounty").val().trim();
-        var cr9aa_pcrsrefsforreunification= $("#cr9aa_pcrsrefsforreunification").val().trim();
-        var cr9aa_pcrsrefsfort4c= $("#cr9aa_pcrsrefsfort4c").val().trim();
-        var cr9aa_pcrscurrenthousingnumhomelessortransient= $("#cr9aa_pcrscurrenthousingnumhomelessortransient").val().trim();
-        var cr9aa_pcrscompsdischargesnumsuccessful= $("#cr9aa_pcrscompsdischargesnumsuccessful").val().trim();
-        var cr9aa_pcrscompsdischargesnumunsuc= $("#cr9aa_pcrscompsdischargesnumunsuc").val().trim();
-        var cr9aa_pcrsviolationsnumnewoffensesarrests= $("#cr9aa_pcrsviolationsnumnewoffensesarrests").val().trim();
-        var cr9aa_pcrsviolationsnumnewconvictions= $("#cr9aa_pcrsviolationsnumnewconvictions").val().trim();
-        var cr9aa_pcrsviolationsnumrevocationfortechvio= $("#cr9aa_pcrsviolationsnumrevocationfortechvio").val().trim();
-        var cr9aa_pcrsviolationsnumrevocationfornewarrest= $("#cr9aa_pcrsviolationsnumrevocationfornewarrest").val().trim();
-        var cr9aa_z1170numcontinuingcases= $("#cr9aa_z1170numcontinuingcases").val().trim();
-        var cr9aa_z1170numnewcases= $("#cr9aa_z1170numnewcases").val().trim();
-        var cr9aa_z1170averagedpocaseload= $("#cr9aa_z1170averagedpocaseload").val().trim();
-        var cr9aa_z1170males= $("#cr9aa_z1170males").val().trim();
-        var cr9aa_z1170females= $("#cr9aa_z1170females").val().trim();
-        var cr9aa_z1170regionwest= $("#cr9aa_z1170regionwest").val().trim();
-        var cr9aa_z1170regioncentral= $("#cr9aa_z1170regioncentral").val().trim();
-        var cr9aa_z1170regioneast= $("#cr9aa_z1170regioneast").val().trim();
-        var cr9aa_z1170regionothercounties= $("#cr9aa_z1170regionothercounties").val().trim();
-        var cr9aa_z1170supervisioncontactlevelnumhigh= $("#cr9aa_z1170supervisioncontactlevelnumhigh").val().trim();
-        var cr9aa_z1170supervisioncontactlevelnumaverage= $("#cr9aa_z1170supervisioncontactlevelnumaverage").val().trim();
-        var cr9aa_z1170supervisioncontactlevelnumlow= $("#cr9aa_z1170supervisioncontactlevelnumlow").val().trim();
-        var cr9aa_z1170refsforaodstx= $("#cr9aa_z1170refsforaodstx").val().trim();
-        var cr9aa_z1170refsformentalhealthtx= $("#cr9aa_z1170refsformentalhealthtx").val().trim();
-        var cr9aa_z1170refsformedicaltx= $("#cr9aa_z1170refsformedicaltx").val().trim();
-        var cr9aa_z1170refsforhousingsvcs= $("#cr9aa_z1170refsforhousingsvcs").val().trim();
-        var cr9aa_z1170refsforempsvcs= $("#cr9aa_z1170refsforempsvcs").val().trim();
-        var cr9aa_z1170refsforlegalsvcs= $("#cr9aa_z1170refsforlegalsvcs").val().trim();
-        var cr9aa_z1170refsformentoring= $("#cr9aa_z1170refsformentoring").val().trim();
-        var cr9aa_z1170refsforresourceservicecenterwestcty= $("#cr9aa_z1170refsforresourceservicecenterwestcty").val().trim();
-        var cr9aa_z1170refsforhr360eastcentralcounty= $("#cr9aa_z1170refsforhr360eastcentralcounty").val().trim();
-        var cr9aa_z1170refsforreunification= $("#cr9aa_z1170refsforreunification").val().trim();
-        var cr9aa_z1170refsfort4c= $("#cr9aa_z1170refsfort4c").val().trim();
-        var cr9aa_z1170currenthousingnumhomelessortransient= $("#cr9aa_z1170currenthousingnumhomelessortransient").val().trim();
-        var cr9aa_z1170compsdischargesnumsuccessful= $("#cr9aa_z1170compsdischargesnumsuccessful").val().trim();
-        var cr9aa_z1170compsdischargesnumunsuc= $("#cr9aa_z1170compsdischargesnumunsuc").val().trim();
-        var cr9aa_z1170violationsnumnewoffensesarrests= $("#cr9aa_z1170violationsnumnewoffensesarrests").val().trim();
-        var cr9aa_z1170violationsnumnewconvictions= $("#cr9aa_z1170violationsnumnewconvictions").val().trim();
-        var cr9aa_z1170violationsnumrevocationfortechnicalv= $("#cr9aa_z1170violationsnumrevocationfortechnicalv").val().trim();
-        
-  
-      {% if recordCount == 0 %}
-      webapi.safeAjax({
-        type: "POST",
-        url: "/_api/cr9aa_probations",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numcontinuingcasespretrial": cr9aa_numcontinuingcasespretrial !="" || cr9aa_numcontinuingcasespretrial === "0" ? Number(cr9aa_numcontinuingcasespretrial) : -1,
-        "cr9aa_numnewclientsassessedpretrial": cr9aa_numnewclientsassessedpretrial !="" || cr9aa_numnewclientsassessedpretrial === "0" ? Number(cr9aa_numnewclientsassessedpretrial) : -1,
-        "cr9aa_numstartingpretrialsupervisionnewcases": cr9aa_numstartingpretrialsupervisionnewcases !="" || cr9aa_numstartingpretrialsupervisionnewcases === "0" ? Number(cr9aa_numstartingpretrialsupervisionnewcases) : -1,
-        "cr9aa_averagedpocaseloadpretrial": cr9aa_averagedpocaseloadpretrial !="" || cr9aa_averagedpocaseloadpretrial === "0" ? Number(cr9aa_averagedpocaseloadpretrial) : -1,
-        "cr9aa_nummennewcases": cr9aa_nummennewcases !="" || cr9aa_nummennewcases === "0" ? Number(cr9aa_nummennewcases) : -1,
-        "cr9aa_numwomennewcases": cr9aa_numwomennewcases !="" || cr9aa_numwomennewcases === "0" ? Number(cr9aa_numwomennewcases) : -1,
-        "cr9aa_numagedgt25": cr9aa_numagedgt25 !="" || cr9aa_numagedgt25 === "0" ? Number(cr9aa_numagedgt25) : -1,
-        "cr9aa_numaged2635": cr9aa_numaged2635 !="" || cr9aa_numaged2635 === "0" ? Number(cr9aa_numaged2635) : -1,
-        "cr9aa_numaged3645": cr9aa_numaged3645 !="" || cr9aa_numaged3645 === "0" ? Number(cr9aa_numaged3645) : -1,
-        "cr9aa_numaged4655": cr9aa_numaged4655 !="" || cr9aa_numaged4655 === "0" ? Number(cr9aa_numaged4655) : -1,
-        "cr9aa_numaged55": cr9aa_numaged55 !="" || cr9aa_numaged55 === "0" ? Number(cr9aa_numaged55) : -1,
-        "cr9aa_numagedunknown": cr9aa_numagedunknown !="" || cr9aa_numagedunknown === "0" ? Number(cr9aa_numagedunknown) : -1,
-        "cr9aa_regionwest": cr9aa_regionwest !="" || cr9aa_regionwest === "0" ? Number(cr9aa_regionwest) : -1,
-        "cr9aa_regioncentral": cr9aa_regioncentral !="" || cr9aa_regioncentral === "0" ? Number(cr9aa_regioncentral) : -1,
-        "cr9aa_regioneast": cr9aa_regioneast !="" || cr9aa_regioneast === "0" ? Number(cr9aa_regioneast) : -1,
-        "cr9aa_regionoutcounty": cr9aa_regionoutcounty !="" || cr9aa_regionoutcounty === "0" ? Number(cr9aa_regionoutcounty) : -1,
-        "cr9aa_regionunknown": cr9aa_regionunknown !="" || cr9aa_regionunknown === "0" ? Number(cr9aa_regionunknown) : -1,
-        "cr9aa_supervisioncontactlevelnumhigh": cr9aa_supervisioncontactlevelnumhigh !="" || cr9aa_supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_supervisioncontactlevelnumhigh) : -1,
-        "cr9aa_supervisioncontactlevelnumaboveaverage": cr9aa_supervisioncontactlevelnumaboveaverage !="" || cr9aa_supervisioncontactlevelnumaboveaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaboveaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumaverage": cr9aa_supervisioncontactlevelnumaverage !="" || cr9aa_supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumbelowaverage": cr9aa_supervisioncontactlevelnumbelowaverage !="" || cr9aa_supervisioncontactlevelnumbelowaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumbelowaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumlow": cr9aa_supervisioncontactlevelnumlow !="" || cr9aa_supervisioncontactlevelnumlow === "0" ? Number(cr9aa_supervisioncontactlevelnumlow) : -1,
-        "cr9aa_supervisioncontactlevelnumnoscore": cr9aa_supervisioncontactlevelnumnoscore !="" || cr9aa_supervisioncontactlevelnumnoscore === "0" ? Number(cr9aa_supervisioncontactlevelnumnoscore) : -1,
-        "cr9aa_numpermanentlyhoused": cr9aa_numpermanentlyhoused !="" || cr9aa_numpermanentlyhoused === "0" ? Number(cr9aa_numpermanentlyhoused) : -1,
-        "cr9aa_numhomeless": cr9aa_numhomeless !="" || cr9aa_numhomeless === "0" ? Number(cr9aa_numhomeless) : -1,
-        "cr9aa_numcurremployed": cr9aa_numcurremployed !="" || cr9aa_numcurremployed === "0" ? Number(cr9aa_numcurremployed) : -1,
-        "cr9aa_numunemployed": cr9aa_numunemployed !="" || cr9aa_numunemployed === "0" ? Number(cr9aa_numunemployed) : -1,
-        "cr9aa_compsviolationsnumsuccessfullydischarged": cr9aa_compsviolationsnumsuccessfullydischarged !="" || cr9aa_compsviolationsnumsuccessfullydischarged === "0" ? Number(cr9aa_compsviolationsnumsuccessfullydischarged) : -1,
-        "cr9aa_compsviolationsnumfailappear": cr9aa_compsviolationsnumfailappear !="" || cr9aa_compsviolationsnumfailappear === "0" ? Number(cr9aa_compsviolationsnumfailappear) : -1,
-        "cr9aa_compsviolationsnumnewoffenses": cr9aa_compsviolationsnumnewoffenses !="" || cr9aa_compsviolationsnumnewoffenses === "0" ? Number(cr9aa_compsviolationsnumnewoffenses) : -1,
-        "cr9aa_compsviolationsnumtechnicalviolations": cr9aa_compsviolationsnumtechnicalviolations !="" || cr9aa_compsviolationsnumtechnicalviolations === "0" ? Number(cr9aa_compsviolationsnumtechnicalviolations) : -1,
-        "cr9aa_compsviolationsnumcafrejection": cr9aa_compsviolationsnumcafrejection !="" || cr9aa_compsviolationsnumcafrejection === "0" ? Number(cr9aa_compsviolationsnumcafrejection) : -1,
-        "cr9aa_prcsnumcontinuingcases": cr9aa_prcsnumcontinuingcases !="" || cr9aa_prcsnumcontinuingcases === "0" ? Number(cr9aa_prcsnumcontinuingcases) : -1,
-        "cr9aa_prcsnumnewcases": cr9aa_prcsnumnewcases !="" || cr9aa_prcsnumnewcases === "0" ? Number(cr9aa_prcsnumnewcases) : -1,
-        "cr9aa_prcsaveragedpocaseload": cr9aa_prcsaveragedpocaseload !="" || cr9aa_prcsaveragedpocaseload === "0" ? Number(cr9aa_prcsaveragedpocaseload) : -1,
-        "cr9aa_prcsnummales": cr9aa_prcsnummales !="" || cr9aa_prcsnummales === "0" ? Number(cr9aa_prcsnummales) : -1,
-        "cr9aa_prcsnumfemales": cr9aa_prcsnumfemales !="" || cr9aa_prcsnumfemales === "0" ? Number(cr9aa_prcsnumfemales) : -1,
-        "cr9aa_prcsnumwest": cr9aa_prcsnumwest !="" || cr9aa_prcsnumwest === "0" ? Number(cr9aa_prcsnumwest) : -1,
-        "cr9aa_prcsnumcentral": cr9aa_prcsnumcentral !="" || cr9aa_prcsnumcentral === "0" ? Number(cr9aa_prcsnumcentral) : -1,
-        "cr9aa_prcsnumeast": cr9aa_prcsnumeast !="" || cr9aa_prcsnumeast === "0" ? Number(cr9aa_prcsnumeast) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumhigh": cr9aa_pcrssupervisioncontactlevelnumhigh !="" || cr9aa_pcrssupervisioncontactlevelnumhigh === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumhigh) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumaverage": cr9aa_pcrssupervisioncontactlevelnumaverage !="" || cr9aa_pcrssupervisioncontactlevelnumaverage === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumaverage) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumlow": cr9aa_pcrssupervisioncontactlevelnumlow !="" || cr9aa_pcrssupervisioncontactlevelnumlow === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumlow) : -1,
-        "cr9aa_pcrsrefsforaodstx": cr9aa_pcrsrefsforaodstx !="" || cr9aa_pcrsrefsforaodstx === "0" ? Number(cr9aa_pcrsrefsforaodstx) : -1,
-        "cr9aa_pcrsrefsformentalhealthtx": cr9aa_pcrsrefsformentalhealthtx !="" || cr9aa_pcrsrefsformentalhealthtx === "0" ? Number(cr9aa_pcrsrefsformentalhealthtx) : -1,
-        "cr9aa_pcrsrefsforhousingsvcs": cr9aa_pcrsrefsforhousingsvcs !="" || cr9aa_pcrsrefsforhousingsvcs === "0" ? Number(cr9aa_pcrsrefsforhousingsvcs) : -1,
-        "cr9aa_pcrsrefsforempsvcs": cr9aa_pcrsrefsforempsvcs !="" || cr9aa_pcrsrefsforempsvcs === "0" ? Number(cr9aa_pcrsrefsforempsvcs) : -1,
-        "cr9aa_pcrsrefsforlegalsvcs": cr9aa_pcrsrefsforlegalsvcs !="" || cr9aa_pcrsrefsforlegalsvcs === "0" ? Number(cr9aa_pcrsrefsforlegalsvcs) : -1,
-        "cr9aa_pcrsrefsformentoring": cr9aa_pcrsrefsformentoring !="" || cr9aa_pcrsrefsformentoring === "0" ? Number(cr9aa_pcrsrefsformentoring) : -1,
-        "cr9aa_pcrsrefsforresourceservicecenterwcounty": cr9aa_pcrsrefsforresourceservicecenterwcounty !="" || cr9aa_pcrsrefsforresourceservicecenterwcounty === "0" ? Number(cr9aa_pcrsrefsforresourceservicecenterwcounty) : -1,
-        "cr9aa_pcrsrefsforhr360eastcentralcounty": cr9aa_pcrsrefsforhr360eastcentralcounty !="" || cr9aa_pcrsrefsforhr360eastcentralcounty === "0" ? Number(cr9aa_pcrsrefsforhr360eastcentralcounty) : -1,
-        "cr9aa_pcrsrefsforreunification": cr9aa_pcrsrefsforreunification !="" || cr9aa_pcrsrefsforreunification === "0" ? Number(cr9aa_pcrsrefsforreunification) : -1,
-        "cr9aa_pcrsrefsfort4c": cr9aa_pcrsrefsfort4c !="" || cr9aa_pcrsrefsfort4c === "0" ? Number(cr9aa_pcrsrefsfort4c) : -1,
-        "cr9aa_pcrscurrenthousingnumhomelessortransient": cr9aa_pcrscurrenthousingnumhomelessortransient !="" || cr9aa_pcrscurrenthousingnumhomelessortransient === "0" ? Number(cr9aa_pcrscurrenthousingnumhomelessortransient) : -1,
-        "cr9aa_pcrscompsdischargesnumsuccessful": cr9aa_pcrscompsdischargesnumsuccessful !="" || cr9aa_pcrscompsdischargesnumsuccessful === "0" ? Number(cr9aa_pcrscompsdischargesnumsuccessful) : -1,
-        "cr9aa_pcrscompsdischargesnumunsuc": cr9aa_pcrscompsdischargesnumunsuc !="" || cr9aa_pcrscompsdischargesnumunsuc === "0" ? Number(cr9aa_pcrscompsdischargesnumunsuc) : -1,
-        "cr9aa_pcrsviolationsnumnewoffensesarrests": cr9aa_pcrsviolationsnumnewoffensesarrests !="" || cr9aa_pcrsviolationsnumnewoffensesarrests === "0" ? Number(cr9aa_pcrsviolationsnumnewoffensesarrests) : -1,
-        "cr9aa_pcrsviolationsnumnewconvictions": cr9aa_pcrsviolationsnumnewconvictions !="" || cr9aa_pcrsviolationsnumnewconvictions === "0" ? Number(cr9aa_pcrsviolationsnumnewconvictions) : -1,
-        "cr9aa_pcrsviolationsnumrevocationfortechvio": cr9aa_pcrsviolationsnumrevocationfortechvio !="" || cr9aa_pcrsviolationsnumrevocationfortechvio === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfortechvio) : -1,
-        "cr9aa_pcrsviolationsnumrevocationfornewarrest": cr9aa_pcrsviolationsnumrevocationfornewarrest !="" || cr9aa_pcrsviolationsnumrevocationfornewarrest === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfornewarrest) : -1,
-        "cr9aa_z1170numcontinuingcases": cr9aa_z1170numcontinuingcases !="" || cr9aa_z1170numcontinuingcases === "0" ? Number(cr9aa_z1170numcontinuingcases) : -1,
-        "cr9aa_z1170numnewcases": cr9aa_z1170numnewcases !="" || cr9aa_z1170numnewcases === "0" ? Number(cr9aa_z1170numnewcases) : -1,
-        "cr9aa_z1170averagedpocaseload": cr9aa_z1170averagedpocaseload !="" || cr9aa_z1170averagedpocaseload === "0" ? Number(cr9aa_z1170averagedpocaseload) : -1,
-        "cr9aa_z1170males": cr9aa_z1170males !="" || cr9aa_z1170males === "0" ? Number(cr9aa_z1170males) : -1,
-        "cr9aa_z1170females": cr9aa_z1170females !="" || cr9aa_z1170females === "0" ? Number(cr9aa_z1170females) : -1,
-        "cr9aa_z1170regionwest": cr9aa_z1170regionwest !="" || cr9aa_z1170regionwest === "0" ? Number(cr9aa_z1170regionwest) : -1,
-        "cr9aa_z1170regioncentral": cr9aa_z1170regioncentral !="" || cr9aa_z1170regioncentral === "0" ? Number(cr9aa_z1170regioncentral) : -1,
-        "cr9aa_z1170regioneast": cr9aa_z1170regioneast !="" || cr9aa_z1170regioneast === "0" ? Number(cr9aa_z1170regioneast) : -1,
-        "cr9aa_z1170regionothercounties": cr9aa_z1170regionothercounties !="" || cr9aa_z1170regionothercounties === "0" ? Number(cr9aa_z1170regionothercounties) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumhigh": cr9aa_z1170supervisioncontactlevelnumhigh !="" || cr9aa_z1170supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumhigh) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumaverage": cr9aa_z1170supervisioncontactlevelnumaverage !="" || cr9aa_z1170supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumaverage) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumlow": cr9aa_z1170supervisioncontactlevelnumlow !="" || cr9aa_z1170supervisioncontactlevelnumlow === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumlow) : -1,
-        "cr9aa_z1170refsforaodstx": cr9aa_z1170refsforaodstx !="" || cr9aa_z1170refsforaodstx === "0" ? Number(cr9aa_z1170refsforaodstx) : -1,
-        "cr9aa_z1170refsformentalhealthtx": cr9aa_z1170refsformentalhealthtx !="" || cr9aa_z1170refsformentalhealthtx === "0" ? Number(cr9aa_z1170refsformentalhealthtx) : -1,
-        "cr9aa_z1170refsformedicaltx": cr9aa_z1170refsformedicaltx !="" || cr9aa_z1170refsformedicaltx === "0" ? Number(cr9aa_z1170refsformedicaltx) : -1,
-        "cr9aa_z1170refsforhousingsvcs": cr9aa_z1170refsforhousingsvcs !="" || cr9aa_z1170refsforhousingsvcs === "0" ? Number(cr9aa_z1170refsforhousingsvcs) : -1,
-        "cr9aa_z1170refsforempsvcs": cr9aa_z1170refsforempsvcs !="" || cr9aa_z1170refsforempsvcs === "0" ? Number(cr9aa_z1170refsforempsvcs) : -1,
-        "cr9aa_z1170refsforlegalsvcs": cr9aa_z1170refsforlegalsvcs !="" || cr9aa_z1170refsforlegalsvcs === "0" ? Number(cr9aa_z1170refsforlegalsvcs) : -1,
-        "cr9aa_z1170refsformentoring": cr9aa_z1170refsformentoring !="" || cr9aa_z1170refsformentoring === "0" ? Number(cr9aa_z1170refsformentoring) : -1,
-        "cr9aa_z1170refsforresourceservicecenterwestcty": cr9aa_z1170refsforresourceservicecenterwestcty !="" || cr9aa_z1170refsforresourceservicecenterwestcty === "0" ? Number(cr9aa_z1170refsforresourceservicecenterwestcty) : -1,
-        "cr9aa_z1170refsforhr360eastcentralcounty": cr9aa_z1170refsforhr360eastcentralcounty !="" || cr9aa_z1170refsforhr360eastcentralcounty === "0" ? Number(cr9aa_z1170refsforhr360eastcentralcounty) : -1,
-        "cr9aa_z1170refsforreunification": cr9aa_z1170refsforreunification !="" || cr9aa_z1170refsforreunification === "0" ? Number(cr9aa_z1170refsforreunification) : -1,
-        "cr9aa_z1170refsfort4c": cr9aa_z1170refsfort4c !="" || cr9aa_z1170refsfort4c === "0" ? Number(cr9aa_z1170refsfort4c) : -1,
-        "cr9aa_z1170currenthousingnumhomelessortransient": cr9aa_z1170currenthousingnumhomelessortransient !="" || cr9aa_z1170currenthousingnumhomelessortransient === "0" ? Number(cr9aa_z1170currenthousingnumhomelessortransient) : -1,
-        "cr9aa_z1170compsdischargesnumsuccessful": cr9aa_z1170compsdischargesnumsuccessful !="" || cr9aa_z1170compsdischargesnumsuccessful === "0" ? Number(cr9aa_z1170compsdischargesnumsuccessful) : -1,
-        "cr9aa_z1170compsdischargesnumunsuc": cr9aa_z1170compsdischargesnumunsuc !="" || cr9aa_z1170compsdischargesnumunsuc === "0" ? Number(cr9aa_z1170compsdischargesnumunsuc) : -1,
-        "cr9aa_z1170violationsnumnewoffensesarrests": cr9aa_z1170violationsnumnewoffensesarrests !="" || cr9aa_z1170violationsnumnewoffensesarrests === "0" ? Number(cr9aa_z1170violationsnumnewoffensesarrests) : -1,
-        "cr9aa_z1170violationsnumnewconvictions": cr9aa_z1170violationsnumnewconvictions !="" || cr9aa_z1170violationsnumnewconvictions === "0" ? Number(cr9aa_z1170violationsnumnewconvictions) : -1,
-        "cr9aa_z1170violationsnumrevocationfortechnicalv": cr9aa_z1170violationsnumrevocationfortechnicalv !="" || cr9aa_z1170violationsnumrevocationfortechnicalv === "0" ? Number(cr9aa_z1170violationsnumrevocationfortechnicalv) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
-        
-          
-  
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-          toastr.success(
-            '',
-            'Data Inserted Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-        }
-      });
-  
-      {% else %}
-  
-      webapi.safeAjax({
-        type: "PATCH",
-        url: "/_api/cr9aa_probations({{myquery.results.entities[0].cr9aa_probationid}})",
-        contentType: "application/json",
-        data: JSON.stringify({
-            "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numcontinuingcasespretrial": cr9aa_numcontinuingcasespretrial !="" || cr9aa_numcontinuingcasespretrial === "0" ? Number(cr9aa_numcontinuingcasespretrial) : -1,
-        "cr9aa_numnewclientsassessedpretrial": cr9aa_numnewclientsassessedpretrial !="" || cr9aa_numnewclientsassessedpretrial === "0" ? Number(cr9aa_numnewclientsassessedpretrial) : -1,
-        "cr9aa_numstartingpretrialsupervisionnewcases": cr9aa_numstartingpretrialsupervisionnewcases !="" || cr9aa_numstartingpretrialsupervisionnewcases === "0" ? Number(cr9aa_numstartingpretrialsupervisionnewcases) : -1,
-        "cr9aa_averagedpocaseloadpretrial": cr9aa_averagedpocaseloadpretrial !="" || cr9aa_averagedpocaseloadpretrial === "0" ? Number(cr9aa_averagedpocaseloadpretrial) : -1,
-        "cr9aa_nummennewcases": cr9aa_nummennewcases !="" || cr9aa_nummennewcases === "0" ? Number(cr9aa_nummennewcases) : -1,
-        "cr9aa_numwomennewcases": cr9aa_numwomennewcases !="" || cr9aa_numwomennewcases === "0" ? Number(cr9aa_numwomennewcases) : -1,
-        "cr9aa_numagedgt25": cr9aa_numagedgt25 !="" || cr9aa_numagedgt25 === "0" ? Number(cr9aa_numagedgt25) : -1,
-        "cr9aa_numaged2635": cr9aa_numaged2635 !="" || cr9aa_numaged2635 === "0" ? Number(cr9aa_numaged2635) : -1,
-        "cr9aa_numaged3645": cr9aa_numaged3645 !="" || cr9aa_numaged3645 === "0" ? Number(cr9aa_numaged3645) : -1,
-        "cr9aa_numaged4655": cr9aa_numaged4655 !="" || cr9aa_numaged4655 === "0" ? Number(cr9aa_numaged4655) : -1,
-        "cr9aa_numaged55": cr9aa_numaged55 !="" || cr9aa_numaged55 === "0" ? Number(cr9aa_numaged55) : -1,
-        "cr9aa_numagedunknown": cr9aa_numagedunknown !="" || cr9aa_numagedunknown === "0" ? Number(cr9aa_numagedunknown) : -1,
-        "cr9aa_regionwest": cr9aa_regionwest !="" || cr9aa_regionwest === "0" ? Number(cr9aa_regionwest) : -1,
-        "cr9aa_regioncentral": cr9aa_regioncentral !="" || cr9aa_regioncentral === "0" ? Number(cr9aa_regioncentral) : -1,
-        "cr9aa_regioneast": cr9aa_regioneast !="" || cr9aa_regioneast === "0" ? Number(cr9aa_regioneast) : -1,
-        "cr9aa_regionoutcounty": cr9aa_regionoutcounty !="" || cr9aa_regionoutcounty === "0" ? Number(cr9aa_regionoutcounty) : -1,
-        "cr9aa_regionunknown": cr9aa_regionunknown !="" || cr9aa_regionunknown === "0" ? Number(cr9aa_regionunknown) : -1,
-        "cr9aa_supervisioncontactlevelnumhigh": cr9aa_supervisioncontactlevelnumhigh !="" || cr9aa_supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_supervisioncontactlevelnumhigh) : -1,
-        "cr9aa_supervisioncontactlevelnumaboveaverage": cr9aa_supervisioncontactlevelnumaboveaverage !="" || cr9aa_supervisioncontactlevelnumaboveaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaboveaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumaverage": cr9aa_supervisioncontactlevelnumaverage !="" || cr9aa_supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumbelowaverage": cr9aa_supervisioncontactlevelnumbelowaverage !="" || cr9aa_supervisioncontactlevelnumbelowaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumbelowaverage) : -1,
-        "cr9aa_supervisioncontactlevelnumlow": cr9aa_supervisioncontactlevelnumlow !="" || cr9aa_supervisioncontactlevelnumlow === "0" ? Number(cr9aa_supervisioncontactlevelnumlow) : -1,
-        "cr9aa_supervisioncontactlevelnumnoscore": cr9aa_supervisioncontactlevelnumnoscore !="" || cr9aa_supervisioncontactlevelnumnoscore === "0" ? Number(cr9aa_supervisioncontactlevelnumnoscore) : -1,
-        "cr9aa_numpermanentlyhoused": cr9aa_numpermanentlyhoused !="" || cr9aa_numpermanentlyhoused === "0" ? Number(cr9aa_numpermanentlyhoused) : -1,
-        "cr9aa_numhomeless": cr9aa_numhomeless !="" || cr9aa_numhomeless === "0" ? Number(cr9aa_numhomeless) : -1,
-        "cr9aa_numcurremployed": cr9aa_numcurremployed !="" || cr9aa_numcurremployed === "0" ? Number(cr9aa_numcurremployed) : -1,
-        "cr9aa_numunemployed": cr9aa_numunemployed !="" || cr9aa_numunemployed === "0" ? Number(cr9aa_numunemployed) : -1,
-        "cr9aa_compsviolationsnumsuccessfullydischarged": cr9aa_compsviolationsnumsuccessfullydischarged !="" || cr9aa_compsviolationsnumsuccessfullydischarged === "0" ? Number(cr9aa_compsviolationsnumsuccessfullydischarged) : -1,
-        "cr9aa_compsviolationsnumfailappear": cr9aa_compsviolationsnumfailappear !="" || cr9aa_compsviolationsnumfailappear === "0" ? Number(cr9aa_compsviolationsnumfailappear) : -1,
-        "cr9aa_compsviolationsnumnewoffenses": cr9aa_compsviolationsnumnewoffenses !="" || cr9aa_compsviolationsnumnewoffenses === "0" ? Number(cr9aa_compsviolationsnumnewoffenses) : -1,
-        "cr9aa_compsviolationsnumtechnicalviolations": cr9aa_compsviolationsnumtechnicalviolations !="" || cr9aa_compsviolationsnumtechnicalviolations === "0" ? Number(cr9aa_compsviolationsnumtechnicalviolations) : -1,
-        "cr9aa_compsviolationsnumcafrejection": cr9aa_compsviolationsnumcafrejection !="" || cr9aa_compsviolationsnumcafrejection === "0" ? Number(cr9aa_compsviolationsnumcafrejection) : -1,
-        "cr9aa_prcsnumcontinuingcases": cr9aa_prcsnumcontinuingcases !="" || cr9aa_prcsnumcontinuingcases === "0" ? Number(cr9aa_prcsnumcontinuingcases) : -1,
-        "cr9aa_prcsnumnewcases": cr9aa_prcsnumnewcases !="" || cr9aa_prcsnumnewcases === "0" ? Number(cr9aa_prcsnumnewcases) : -1,
-        "cr9aa_prcsaveragedpocaseload": cr9aa_prcsaveragedpocaseload !="" || cr9aa_prcsaveragedpocaseload === "0" ? Number(cr9aa_prcsaveragedpocaseload) : -1,
-        "cr9aa_prcsnummales": cr9aa_prcsnummales !="" || cr9aa_prcsnummales === "0" ? Number(cr9aa_prcsnummales) : -1,
-        "cr9aa_prcsnumfemales": cr9aa_prcsnumfemales !="" || cr9aa_prcsnumfemales === "0" ? Number(cr9aa_prcsnumfemales) : -1,
-        "cr9aa_prcsnumwest": cr9aa_prcsnumwest !="" || cr9aa_prcsnumwest === "0" ? Number(cr9aa_prcsnumwest) : -1,
-        "cr9aa_prcsnumcentral": cr9aa_prcsnumcentral !="" || cr9aa_prcsnumcentral === "0" ? Number(cr9aa_prcsnumcentral) : -1,
-        "cr9aa_prcsnumeast": cr9aa_prcsnumeast !="" || cr9aa_prcsnumeast === "0" ? Number(cr9aa_prcsnumeast) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumhigh": cr9aa_pcrssupervisioncontactlevelnumhigh !="" || cr9aa_pcrssupervisioncontactlevelnumhigh === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumhigh) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumaverage": cr9aa_pcrssupervisioncontactlevelnumaverage !="" || cr9aa_pcrssupervisioncontactlevelnumaverage === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumaverage) : -1,
-        "cr9aa_pcrssupervisioncontactlevelnumlow": cr9aa_pcrssupervisioncontactlevelnumlow !="" || cr9aa_pcrssupervisioncontactlevelnumlow === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumlow) : -1,
-        "cr9aa_pcrsrefsforaodstx": cr9aa_pcrsrefsforaodstx !="" || cr9aa_pcrsrefsforaodstx === "0" ? Number(cr9aa_pcrsrefsforaodstx) : -1,
-        "cr9aa_pcrsrefsformentalhealthtx": cr9aa_pcrsrefsformentalhealthtx !="" || cr9aa_pcrsrefsformentalhealthtx === "0" ? Number(cr9aa_pcrsrefsformentalhealthtx) : -1,
-        "cr9aa_pcrsrefsforhousingsvcs": cr9aa_pcrsrefsforhousingsvcs !="" || cr9aa_pcrsrefsforhousingsvcs === "0" ? Number(cr9aa_pcrsrefsforhousingsvcs) : -1,
-        "cr9aa_pcrsrefsforempsvcs": cr9aa_pcrsrefsforempsvcs !="" || cr9aa_pcrsrefsforempsvcs === "0" ? Number(cr9aa_pcrsrefsforempsvcs) : -1,
-        "cr9aa_pcrsrefsforlegalsvcs": cr9aa_pcrsrefsforlegalsvcs !="" || cr9aa_pcrsrefsforlegalsvcs === "0" ? Number(cr9aa_pcrsrefsforlegalsvcs) : -1,
-        "cr9aa_pcrsrefsformentoring": cr9aa_pcrsrefsformentoring !="" || cr9aa_pcrsrefsformentoring === "0" ? Number(cr9aa_pcrsrefsformentoring) : -1,
-        "cr9aa_pcrsrefsforresourceservicecenterwcounty": cr9aa_pcrsrefsforresourceservicecenterwcounty !="" || cr9aa_pcrsrefsforresourceservicecenterwcounty === "0" ? Number(cr9aa_pcrsrefsforresourceservicecenterwcounty) : -1,
-        "cr9aa_pcrsrefsforhr360eastcentralcounty": cr9aa_pcrsrefsforhr360eastcentralcounty !="" || cr9aa_pcrsrefsforhr360eastcentralcounty === "0" ? Number(cr9aa_pcrsrefsforhr360eastcentralcounty) : -1,
-        "cr9aa_pcrsrefsforreunification": cr9aa_pcrsrefsforreunification !="" || cr9aa_pcrsrefsforreunification === "0" ? Number(cr9aa_pcrsrefsforreunification) : -1,
-        "cr9aa_pcrsrefsfort4c": cr9aa_pcrsrefsfort4c !="" || cr9aa_pcrsrefsfort4c === "0" ? Number(cr9aa_pcrsrefsfort4c) : -1,
-        "cr9aa_pcrscurrenthousingnumhomelessortransient": cr9aa_pcrscurrenthousingnumhomelessortransient !="" || cr9aa_pcrscurrenthousingnumhomelessortransient === "0" ? Number(cr9aa_pcrscurrenthousingnumhomelessortransient) : -1,
-        "cr9aa_pcrscompsdischargesnumsuccessful": cr9aa_pcrscompsdischargesnumsuccessful !="" || cr9aa_pcrscompsdischargesnumsuccessful === "0" ? Number(cr9aa_pcrscompsdischargesnumsuccessful) : -1,
-        "cr9aa_pcrscompsdischargesnumunsuc": cr9aa_pcrscompsdischargesnumunsuc !="" || cr9aa_pcrscompsdischargesnumunsuc === "0" ? Number(cr9aa_pcrscompsdischargesnumunsuc) : -1,
-        "cr9aa_pcrsviolationsnumnewoffensesarrests": cr9aa_pcrsviolationsnumnewoffensesarrests !="" || cr9aa_pcrsviolationsnumnewoffensesarrests === "0" ? Number(cr9aa_pcrsviolationsnumnewoffensesarrests) : -1,
-        "cr9aa_pcrsviolationsnumnewconvictions": cr9aa_pcrsviolationsnumnewconvictions !="" || cr9aa_pcrsviolationsnumnewconvictions === "0" ? Number(cr9aa_pcrsviolationsnumnewconvictions) : -1,
-        "cr9aa_pcrsviolationsnumrevocationfortechvio": cr9aa_pcrsviolationsnumrevocationfortechvio !="" || cr9aa_pcrsviolationsnumrevocationfortechvio === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfortechvio) : -1,
-        "cr9aa_pcrsviolationsnumrevocationfornewarrest": cr9aa_pcrsviolationsnumrevocationfornewarrest !="" || cr9aa_pcrsviolationsnumrevocationfornewarrest === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfornewarrest) : -1,
-        "cr9aa_z1170numcontinuingcases": cr9aa_z1170numcontinuingcases !="" || cr9aa_z1170numcontinuingcases === "0" ? Number(cr9aa_z1170numcontinuingcases) : -1,
-        "cr9aa_z1170numnewcases": cr9aa_z1170numnewcases !="" || cr9aa_z1170numnewcases === "0" ? Number(cr9aa_z1170numnewcases) : -1,
-        "cr9aa_z1170averagedpocaseload": cr9aa_z1170averagedpocaseload !="" || cr9aa_z1170averagedpocaseload === "0" ? Number(cr9aa_z1170averagedpocaseload) : -1,
-        "cr9aa_z1170males": cr9aa_z1170males !="" || cr9aa_z1170males === "0" ? Number(cr9aa_z1170males) : -1,
-        "cr9aa_z1170females": cr9aa_z1170females !="" || cr9aa_z1170females === "0" ? Number(cr9aa_z1170females) : -1,
-        "cr9aa_z1170regionwest": cr9aa_z1170regionwest !="" || cr9aa_z1170regionwest === "0" ? Number(cr9aa_z1170regionwest) : -1,
-        "cr9aa_z1170regioncentral": cr9aa_z1170regioncentral !="" || cr9aa_z1170regioncentral === "0" ? Number(cr9aa_z1170regioncentral) : -1,
-        "cr9aa_z1170regioneast": cr9aa_z1170regioneast !="" || cr9aa_z1170regioneast === "0" ? Number(cr9aa_z1170regioneast) : -1,
-        "cr9aa_z1170regionothercounties": cr9aa_z1170regionothercounties !="" || cr9aa_z1170regionothercounties === "0" ? Number(cr9aa_z1170regionothercounties) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumhigh": cr9aa_z1170supervisioncontactlevelnumhigh !="" || cr9aa_z1170supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumhigh) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumaverage": cr9aa_z1170supervisioncontactlevelnumaverage !="" || cr9aa_z1170supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumaverage) : -1,
-        "cr9aa_z1170supervisioncontactlevelnumlow": cr9aa_z1170supervisioncontactlevelnumlow !="" || cr9aa_z1170supervisioncontactlevelnumlow === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumlow) : -1,
-        "cr9aa_z1170refsforaodstx": cr9aa_z1170refsforaodstx !="" || cr9aa_z1170refsforaodstx === "0" ? Number(cr9aa_z1170refsforaodstx) : -1,
-        "cr9aa_z1170refsformentalhealthtx": cr9aa_z1170refsformentalhealthtx !="" || cr9aa_z1170refsformentalhealthtx === "0" ? Number(cr9aa_z1170refsformentalhealthtx) : -1,
-        "cr9aa_z1170refsformedicaltx": cr9aa_z1170refsformedicaltx !="" || cr9aa_z1170refsformedicaltx === "0" ? Number(cr9aa_z1170refsformedicaltx) : -1,
-        "cr9aa_z1170refsforhousingsvcs": cr9aa_z1170refsforhousingsvcs !="" || cr9aa_z1170refsforhousingsvcs === "0" ? Number(cr9aa_z1170refsforhousingsvcs) : -1,
-        "cr9aa_z1170refsforempsvcs": cr9aa_z1170refsforempsvcs !="" || cr9aa_z1170refsforempsvcs === "0" ? Number(cr9aa_z1170refsforempsvcs) : -1,
-        "cr9aa_z1170refsforlegalsvcs": cr9aa_z1170refsforlegalsvcs !="" || cr9aa_z1170refsforlegalsvcs === "0" ? Number(cr9aa_z1170refsforlegalsvcs) : -1,
-        "cr9aa_z1170refsformentoring": cr9aa_z1170refsformentoring !="" || cr9aa_z1170refsformentoring === "0" ? Number(cr9aa_z1170refsformentoring) : -1,
-        "cr9aa_z1170refsforresourceservicecenterwestcty": cr9aa_z1170refsforresourceservicecenterwestcty !="" || cr9aa_z1170refsforresourceservicecenterwestcty === "0" ? Number(cr9aa_z1170refsforresourceservicecenterwestcty) : -1,
-        "cr9aa_z1170refsforhr360eastcentralcounty": cr9aa_z1170refsforhr360eastcentralcounty !="" || cr9aa_z1170refsforhr360eastcentralcounty === "0" ? Number(cr9aa_z1170refsforhr360eastcentralcounty) : -1,
-        "cr9aa_z1170refsforreunification": cr9aa_z1170refsforreunification !="" || cr9aa_z1170refsforreunification === "0" ? Number(cr9aa_z1170refsforreunification) : -1,
-        "cr9aa_z1170refsfort4c": cr9aa_z1170refsfort4c !="" || cr9aa_z1170refsfort4c === "0" ? Number(cr9aa_z1170refsfort4c) : -1,
-        "cr9aa_z1170currenthousingnumhomelessortransient": cr9aa_z1170currenthousingnumhomelessortransient !="" || cr9aa_z1170currenthousingnumhomelessortransient === "0" ? Number(cr9aa_z1170currenthousingnumhomelessortransient) : -1,
-        "cr9aa_z1170compsdischargesnumsuccessful": cr9aa_z1170compsdischargesnumsuccessful !="" || cr9aa_z1170compsdischargesnumsuccessful === "0" ? Number(cr9aa_z1170compsdischargesnumsuccessful) : -1,
-        "cr9aa_z1170compsdischargesnumunsuc": cr9aa_z1170compsdischargesnumunsuc !="" || cr9aa_z1170compsdischargesnumunsuc === "0" ? Number(cr9aa_z1170compsdischargesnumunsuc) : -1,
-        "cr9aa_z1170violationsnumnewoffensesarrests": cr9aa_z1170violationsnumnewoffensesarrests !="" || cr9aa_z1170violationsnumnewoffensesarrests === "0" ? Number(cr9aa_z1170violationsnumnewoffensesarrests) : -1,
-        "cr9aa_z1170violationsnumnewconvictions": cr9aa_z1170violationsnumnewconvictions !="" || cr9aa_z1170violationsnumnewconvictions === "0" ? Number(cr9aa_z1170violationsnumnewconvictions) : -1,
-        "cr9aa_z1170violationsnumrevocationfortechnicalv": cr9aa_z1170violationsnumrevocationfortechnicalv !="" || cr9aa_z1170violationsnumrevocationfortechnicalv === "0" ? Number(cr9aa_z1170violationsnumrevocationfortechnicalv) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(document).on('click', '#save', function() {
+    submitOrSave("save");
+  });
+  $(document).on('click', '#submit', function() {
+     $("#toast-container").html(""); 
+    $("#form").validator().on("submit", function(e) {
+     $("#toast-container").html(""); 
+               if (e.isDefaultPrevented()) {
+                $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                toastr.error(
+                    '',
+                    'Please fill required fields', {
+                        "positionClass": "toast-bottom-center",
+                        onHidden: function() {
+                            
+                        }
+                    }); 
+                    toastr.clear();                      
+                } else {
+                        submitOrSave("submit");
+                    }
+                });
+  });
+
+  function submitOrSave(flag) {
+    var submitStatus = "";
+    if (flag == "save") {
+      submitStatus = "In Progress";
+    } else {
+      submitStatus = "Submitted";
+    }
+
+    $(".loading").show();
+      
+    var cr9aa_numcontinuingcasespretrial= $("#cr9aa_numcontinuingcasespretrial").val().trim();
+      var cr9aa_numnewclientsassessedpretrial= $("#cr9aa_numnewclientsassessedpretrial").val().trim();
+      var cr9aa_numstartingpretrialsupervisionnewcases= $("#cr9aa_numstartingpretrialsupervisionnewcases").val().trim();
+      var cr9aa_averagedpocaseloadpretrial= $("#cr9aa_averagedpocaseloadpretrial").val().trim();
+      var cr9aa_nummennewcases= $("#cr9aa_nummennewcases").val().trim();
+      var cr9aa_numwomennewcases= $("#cr9aa_numwomennewcases").val().trim();
+      var cr9aa_numagedgt25= $("#cr9aa_numagedgt25").val().trim();
+      var cr9aa_numaged2635= $("#cr9aa_numaged2635").val().trim();
+      var cr9aa_numaged3645= $("#cr9aa_numaged3645").val().trim();
+      var cr9aa_numaged4655= $("#cr9aa_numaged4655").val().trim();
+      var cr9aa_numaged55= $("#cr9aa_numaged55").val().trim();
+      var cr9aa_numagedunknown= $("#cr9aa_numagedunknown").val().trim();
+      var cr9aa_regionwest= $("#cr9aa_regionwest").val().trim();
+      var cr9aa_regioncentral= $("#cr9aa_regioncentral").val().trim();
+      var cr9aa_regioneast= $("#cr9aa_regioneast").val().trim();
+      var cr9aa_regionoutcounty= $("#cr9aa_regionoutcounty").val().trim();
+      var cr9aa_regionunknown= $("#cr9aa_regionunknown").val().trim();
+      var cr9aa_supervisioncontactlevelnumhigh= $("#cr9aa_supervisioncontactlevelnumhigh").val().trim();
+      var cr9aa_supervisioncontactlevelnumaboveaverage= $("#cr9aa_supervisioncontactlevelnumaboveaverage").val().trim();
+      var cr9aa_supervisioncontactlevelnumaverage= $("#cr9aa_supervisioncontactlevelnumaverage").val().trim();
+      var cr9aa_supervisioncontactlevelnumbelowaverage= $("#cr9aa_supervisioncontactlevelnumbelowaverage").val().trim();
+      var cr9aa_supervisioncontactlevelnumlow= $("#cr9aa_supervisioncontactlevelnumlow").val().trim();
+      var cr9aa_supervisioncontactlevelnumnoscore= $("#cr9aa_supervisioncontactlevelnumnoscore").val().trim();
+      var cr9aa_numpermanentlyhoused= $("#cr9aa_numpermanentlyhoused").val().trim();
+      var cr9aa_numhomeless= $("#cr9aa_numhomeless").val().trim();
+      var cr9aa_numcurremployed= $("#cr9aa_numcurremployed").val().trim();
+      var cr9aa_numunemployed= $("#cr9aa_numunemployed").val().trim();
+      var cr9aa_compsviolationsnumsuccessfullydischarged= $("#cr9aa_compsviolationsnumsuccessfullydischarged").val().trim();
+      var cr9aa_compsviolationsnumfailappear= $("#cr9aa_compsviolationsnumfailappear").val().trim();
+      var cr9aa_compsviolationsnumnewoffenses= $("#cr9aa_compsviolationsnumnewoffenses").val().trim();
+      var cr9aa_compsviolationsnumtechnicalviolations= $("#cr9aa_compsviolationsnumtechnicalviolations").val().trim();
+      var cr9aa_compsviolationsnumcafrejection= $("#cr9aa_compsviolationsnumcafrejection").val().trim();
+      var cr9aa_prcsnumcontinuingcases= $("#cr9aa_prcsnumcontinuingcases").val().trim();
+      var cr9aa_prcsnumnewcases= $("#cr9aa_prcsnumnewcases").val().trim();
+      var cr9aa_prcsaveragedpocaseload= $("#cr9aa_prcsaveragedpocaseload").val().trim();
+      var cr9aa_prcsnummales= $("#cr9aa_prcsnummales").val().trim();
+      var cr9aa_prcsnumfemales= $("#cr9aa_prcsnumfemales").val().trim();
+      var cr9aa_prcsnumwest= $("#cr9aa_prcsnumwest").val().trim();
+      var cr9aa_prcsnumcentral= $("#cr9aa_prcsnumcentral").val().trim();
+      var cr9aa_prcsnumeast= $("#cr9aa_prcsnumeast").val().trim();
+      var cr9aa_pcrssupervisioncontactlevelnumhigh= $("#cr9aa_pcrssupervisioncontactlevelnumhigh").val().trim();
+      var cr9aa_pcrssupervisioncontactlevelnumaverage= $("#cr9aa_pcrssupervisioncontactlevelnumaverage").val().trim();
+      var cr9aa_pcrssupervisioncontactlevelnumlow= $("#cr9aa_pcrssupervisioncontactlevelnumlow").val().trim();
+      var cr9aa_pcrsrefsforaodstx= $("#cr9aa_pcrsrefsforaodstx").val().trim();
+      var cr9aa_pcrsrefsformentalhealthtx= $("#cr9aa_pcrsrefsformentalhealthtx").val().trim();
+      var cr9aa_pcrsrefsforhousingsvcs= $("#cr9aa_pcrsrefsforhousingsvcs").val().trim();
+      var cr9aa_pcrsrefsforempsvcs= $("#cr9aa_pcrsrefsforempsvcs").val().trim();
+      var cr9aa_pcrsrefsforlegalsvcs= $("#cr9aa_pcrsrefsforlegalsvcs").val().trim();
+      var cr9aa_pcrsrefsformentoring= $("#cr9aa_pcrsrefsformentoring").val().trim();
+      var cr9aa_pcrsrefsforresourceservicecenterwcounty= $("#cr9aa_pcrsrefsforresourceservicecenterwcounty").val().trim();
+      var cr9aa_pcrsrefsforhr360eastcentralcounty= $("#cr9aa_pcrsrefsforhr360eastcentralcounty").val().trim();
+      var cr9aa_pcrsrefsforreunification= $("#cr9aa_pcrsrefsforreunification").val().trim();
+      var cr9aa_pcrsrefsfort4c= $("#cr9aa_pcrsrefsfort4c").val().trim();
+      var cr9aa_pcrscurrenthousingnumhomelessortransient= $("#cr9aa_pcrscurrenthousingnumhomelessortransient").val().trim();
+      var cr9aa_pcrscompsdischargesnumsuccessful= $("#cr9aa_pcrscompsdischargesnumsuccessful").val().trim();
+      var cr9aa_pcrscompsdischargesnumunsuc= $("#cr9aa_pcrscompsdischargesnumunsuc").val().trim();
+      var cr9aa_pcrsviolationsnumnewoffensesarrests= $("#cr9aa_pcrsviolationsnumnewoffensesarrests").val().trim();
+      var cr9aa_pcrsviolationsnumnewconvictions= $("#cr9aa_pcrsviolationsnumnewconvictions").val().trim();
+      var cr9aa_pcrsviolationsnumrevocationfortechvio= $("#cr9aa_pcrsviolationsnumrevocationfortechvio").val().trim();
+      var cr9aa_pcrsviolationsnumrevocationfornewarrest= $("#cr9aa_pcrsviolationsnumrevocationfornewarrest").val().trim();
+      var cr9aa_z1170numcontinuingcases= $("#cr9aa_z1170numcontinuingcases").val().trim();
+      var cr9aa_z1170numnewcases= $("#cr9aa_z1170numnewcases").val().trim();
+      var cr9aa_z1170averagedpocaseload= $("#cr9aa_z1170averagedpocaseload").val().trim();
+      var cr9aa_z1170males= $("#cr9aa_z1170males").val().trim();
+      var cr9aa_z1170females= $("#cr9aa_z1170females").val().trim();
+      var cr9aa_z1170regionwest= $("#cr9aa_z1170regionwest").val().trim();
+      var cr9aa_z1170regioncentral= $("#cr9aa_z1170regioncentral").val().trim();
+      var cr9aa_z1170regioneast= $("#cr9aa_z1170regioneast").val().trim();
+      var cr9aa_z1170regionothercounties= $("#cr9aa_z1170regionothercounties").val().trim();
+      var cr9aa_z1170supervisioncontactlevelnumhigh= $("#cr9aa_z1170supervisioncontactlevelnumhigh").val().trim();
+      var cr9aa_z1170supervisioncontactlevelnumaverage= $("#cr9aa_z1170supervisioncontactlevelnumaverage").val().trim();
+      var cr9aa_z1170supervisioncontactlevelnumlow= $("#cr9aa_z1170supervisioncontactlevelnumlow").val().trim();
+      var cr9aa_z1170refsforaodstx= $("#cr9aa_z1170refsforaodstx").val().trim();
+      var cr9aa_z1170refsformentalhealthtx= $("#cr9aa_z1170refsformentalhealthtx").val().trim();
+      var cr9aa_z1170refsformedicaltx= $("#cr9aa_z1170refsformedicaltx").val().trim();
+      var cr9aa_z1170refsforhousingsvcs= $("#cr9aa_z1170refsforhousingsvcs").val().trim();
+      var cr9aa_z1170refsforempsvcs= $("#cr9aa_z1170refsforempsvcs").val().trim();
+      var cr9aa_z1170refsforlegalsvcs= $("#cr9aa_z1170refsforlegalsvcs").val().trim();
+      var cr9aa_z1170refsformentoring= $("#cr9aa_z1170refsformentoring").val().trim();
+      var cr9aa_z1170refsforresourceservicecenterwestcty= $("#cr9aa_z1170refsforresourceservicecenterwestcty").val().trim();
+      var cr9aa_z1170refsforhr360eastcentralcounty= $("#cr9aa_z1170refsforhr360eastcentralcounty").val().trim();
+      var cr9aa_z1170refsforreunification= $("#cr9aa_z1170refsforreunification").val().trim();
+      var cr9aa_z1170refsfort4c= $("#cr9aa_z1170refsfort4c").val().trim();
+      var cr9aa_z1170currenthousingnumhomelessortransient= $("#cr9aa_z1170currenthousingnumhomelessortransient").val().trim();
+      var cr9aa_z1170compsdischargesnumsuccessful= $("#cr9aa_z1170compsdischargesnumsuccessful").val().trim();
+      var cr9aa_z1170compsdischargesnumunsuc= $("#cr9aa_z1170compsdischargesnumunsuc").val().trim();
+      var cr9aa_z1170violationsnumnewoffensesarrests= $("#cr9aa_z1170violationsnumnewoffensesarrests").val().trim();
+      var cr9aa_z1170violationsnumnewconvictions= $("#cr9aa_z1170violationsnumnewconvictions").val().trim();
+      var cr9aa_z1170violationsnumrevocationfortechnicalv= $("#cr9aa_z1170violationsnumrevocationfortechnicalv").val().trim();
+      var crdae_sectionone = $("#crdae_sectionone").val().trim();
+      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();          
+
+    {% if recordCount == 0 %}
+    webapi.safeAjax({
+      type: "POST",
+      url: "/_api/cr9aa_probations",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numcontinuingcasespretrial": cr9aa_numcontinuingcasespretrial !="" || cr9aa_numcontinuingcasespretrial === "0" ? Number(cr9aa_numcontinuingcasespretrial) : -1,
+      "cr9aa_numnewclientsassessedpretrial": cr9aa_numnewclientsassessedpretrial !="" || cr9aa_numnewclientsassessedpretrial === "0" ? Number(cr9aa_numnewclientsassessedpretrial) : -1,
+      "cr9aa_numstartingpretrialsupervisionnewcases": cr9aa_numstartingpretrialsupervisionnewcases !="" || cr9aa_numstartingpretrialsupervisionnewcases === "0" ? Number(cr9aa_numstartingpretrialsupervisionnewcases) : -1,
+      "cr9aa_averagedpocaseloadpretrial": cr9aa_averagedpocaseloadpretrial !="" || cr9aa_averagedpocaseloadpretrial === "0" ? Number(cr9aa_averagedpocaseloadpretrial) : -1,
+      "cr9aa_nummennewcases": cr9aa_nummennewcases !="" || cr9aa_nummennewcases === "0" ? Number(cr9aa_nummennewcases) : -1,
+      "cr9aa_numwomennewcases": cr9aa_numwomennewcases !="" || cr9aa_numwomennewcases === "0" ? Number(cr9aa_numwomennewcases) : -1,
+      "cr9aa_numagedgt25": cr9aa_numagedgt25 !="" || cr9aa_numagedgt25 === "0" ? Number(cr9aa_numagedgt25) : -1,
+      "cr9aa_numaged2635": cr9aa_numaged2635 !="" || cr9aa_numaged2635 === "0" ? Number(cr9aa_numaged2635) : -1,
+      "cr9aa_numaged3645": cr9aa_numaged3645 !="" || cr9aa_numaged3645 === "0" ? Number(cr9aa_numaged3645) : -1,
+      "cr9aa_numaged4655": cr9aa_numaged4655 !="" || cr9aa_numaged4655 === "0" ? Number(cr9aa_numaged4655) : -1,
+      "cr9aa_numaged55": cr9aa_numaged55 !="" || cr9aa_numaged55 === "0" ? Number(cr9aa_numaged55) : -1,
+      "cr9aa_numagedunknown": cr9aa_numagedunknown !="" || cr9aa_numagedunknown === "0" ? Number(cr9aa_numagedunknown) : -1,
+      "cr9aa_regionwest": cr9aa_regionwest !="" || cr9aa_regionwest === "0" ? Number(cr9aa_regionwest) : -1,
+      "cr9aa_regioncentral": cr9aa_regioncentral !="" || cr9aa_regioncentral === "0" ? Number(cr9aa_regioncentral) : -1,
+      "cr9aa_regioneast": cr9aa_regioneast !="" || cr9aa_regioneast === "0" ? Number(cr9aa_regioneast) : -1,
+      "cr9aa_regionoutcounty": cr9aa_regionoutcounty !="" || cr9aa_regionoutcounty === "0" ? Number(cr9aa_regionoutcounty) : -1,
+      "cr9aa_regionunknown": cr9aa_regionunknown !="" || cr9aa_regionunknown === "0" ? Number(cr9aa_regionunknown) : -1,
+      "cr9aa_supervisioncontactlevelnumhigh": cr9aa_supervisioncontactlevelnumhigh !="" || cr9aa_supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_supervisioncontactlevelnumhigh) : -1,
+      "cr9aa_supervisioncontactlevelnumaboveaverage": cr9aa_supervisioncontactlevelnumaboveaverage !="" || cr9aa_supervisioncontactlevelnumaboveaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaboveaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumaverage": cr9aa_supervisioncontactlevelnumaverage !="" || cr9aa_supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumbelowaverage": cr9aa_supervisioncontactlevelnumbelowaverage !="" || cr9aa_supervisioncontactlevelnumbelowaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumbelowaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumlow": cr9aa_supervisioncontactlevelnumlow !="" || cr9aa_supervisioncontactlevelnumlow === "0" ? Number(cr9aa_supervisioncontactlevelnumlow) : -1,
+      "cr9aa_supervisioncontactlevelnumnoscore": cr9aa_supervisioncontactlevelnumnoscore !="" || cr9aa_supervisioncontactlevelnumnoscore === "0" ? Number(cr9aa_supervisioncontactlevelnumnoscore) : -1,
+      "cr9aa_numpermanentlyhoused": cr9aa_numpermanentlyhoused !="" || cr9aa_numpermanentlyhoused === "0" ? Number(cr9aa_numpermanentlyhoused) : -1,
+      "cr9aa_numhomeless": cr9aa_numhomeless !="" || cr9aa_numhomeless === "0" ? Number(cr9aa_numhomeless) : -1,
+      "cr9aa_numcurremployed": cr9aa_numcurremployed !="" || cr9aa_numcurremployed === "0" ? Number(cr9aa_numcurremployed) : -1,
+      "cr9aa_numunemployed": cr9aa_numunemployed !="" || cr9aa_numunemployed === "0" ? Number(cr9aa_numunemployed) : -1,
+      "cr9aa_compsviolationsnumsuccessfullydischarged": cr9aa_compsviolationsnumsuccessfullydischarged !="" || cr9aa_compsviolationsnumsuccessfullydischarged === "0" ? Number(cr9aa_compsviolationsnumsuccessfullydischarged) : -1,
+      "cr9aa_compsviolationsnumfailappear": cr9aa_compsviolationsnumfailappear !="" || cr9aa_compsviolationsnumfailappear === "0" ? Number(cr9aa_compsviolationsnumfailappear) : -1,
+      "cr9aa_compsviolationsnumnewoffenses": cr9aa_compsviolationsnumnewoffenses !="" || cr9aa_compsviolationsnumnewoffenses === "0" ? Number(cr9aa_compsviolationsnumnewoffenses) : -1,
+      "cr9aa_compsviolationsnumtechnicalviolations": cr9aa_compsviolationsnumtechnicalviolations !="" || cr9aa_compsviolationsnumtechnicalviolations === "0" ? Number(cr9aa_compsviolationsnumtechnicalviolations) : -1,
+      "cr9aa_compsviolationsnumcafrejection": cr9aa_compsviolationsnumcafrejection !="" || cr9aa_compsviolationsnumcafrejection === "0" ? Number(cr9aa_compsviolationsnumcafrejection) : -1,
+      "cr9aa_prcsnumcontinuingcases": cr9aa_prcsnumcontinuingcases !="" || cr9aa_prcsnumcontinuingcases === "0" ? Number(cr9aa_prcsnumcontinuingcases) : -1,
+      "cr9aa_prcsnumnewcases": cr9aa_prcsnumnewcases !="" || cr9aa_prcsnumnewcases === "0" ? Number(cr9aa_prcsnumnewcases) : -1,
+      "cr9aa_prcsaveragedpocaseload": cr9aa_prcsaveragedpocaseload !="" || cr9aa_prcsaveragedpocaseload === "0" ? Number(cr9aa_prcsaveragedpocaseload) : -1,
+      "cr9aa_prcsnummales": cr9aa_prcsnummales !="" || cr9aa_prcsnummales === "0" ? Number(cr9aa_prcsnummales) : -1,
+      "cr9aa_prcsnumfemales": cr9aa_prcsnumfemales !="" || cr9aa_prcsnumfemales === "0" ? Number(cr9aa_prcsnumfemales) : -1,
+      "cr9aa_prcsnumwest": cr9aa_prcsnumwest !="" || cr9aa_prcsnumwest === "0" ? Number(cr9aa_prcsnumwest) : -1,
+      "cr9aa_prcsnumcentral": cr9aa_prcsnumcentral !="" || cr9aa_prcsnumcentral === "0" ? Number(cr9aa_prcsnumcentral) : -1,
+      "cr9aa_prcsnumeast": cr9aa_prcsnumeast !="" || cr9aa_prcsnumeast === "0" ? Number(cr9aa_prcsnumeast) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumhigh": cr9aa_pcrssupervisioncontactlevelnumhigh !="" || cr9aa_pcrssupervisioncontactlevelnumhigh === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumhigh) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumaverage": cr9aa_pcrssupervisioncontactlevelnumaverage !="" || cr9aa_pcrssupervisioncontactlevelnumaverage === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumaverage) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumlow": cr9aa_pcrssupervisioncontactlevelnumlow !="" || cr9aa_pcrssupervisioncontactlevelnumlow === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumlow) : -1,
+      "cr9aa_pcrsrefsforaodstx": cr9aa_pcrsrefsforaodstx !="" || cr9aa_pcrsrefsforaodstx === "0" ? Number(cr9aa_pcrsrefsforaodstx) : -1,
+      "cr9aa_pcrsrefsformentalhealthtx": cr9aa_pcrsrefsformentalhealthtx !="" || cr9aa_pcrsrefsformentalhealthtx === "0" ? Number(cr9aa_pcrsrefsformentalhealthtx) : -1,
+      "cr9aa_pcrsrefsforhousingsvcs": cr9aa_pcrsrefsforhousingsvcs !="" || cr9aa_pcrsrefsforhousingsvcs === "0" ? Number(cr9aa_pcrsrefsforhousingsvcs) : -1,
+      "cr9aa_pcrsrefsforempsvcs": cr9aa_pcrsrefsforempsvcs !="" || cr9aa_pcrsrefsforempsvcs === "0" ? Number(cr9aa_pcrsrefsforempsvcs) : -1,
+      "cr9aa_pcrsrefsforlegalsvcs": cr9aa_pcrsrefsforlegalsvcs !="" || cr9aa_pcrsrefsforlegalsvcs === "0" ? Number(cr9aa_pcrsrefsforlegalsvcs) : -1,
+      "cr9aa_pcrsrefsformentoring": cr9aa_pcrsrefsformentoring !="" || cr9aa_pcrsrefsformentoring === "0" ? Number(cr9aa_pcrsrefsformentoring) : -1,
+      "cr9aa_pcrsrefsforresourceservicecenterwcounty": cr9aa_pcrsrefsforresourceservicecenterwcounty !="" || cr9aa_pcrsrefsforresourceservicecenterwcounty === "0" ? Number(cr9aa_pcrsrefsforresourceservicecenterwcounty) : -1,
+      "cr9aa_pcrsrefsforhr360eastcentralcounty": cr9aa_pcrsrefsforhr360eastcentralcounty !="" || cr9aa_pcrsrefsforhr360eastcentralcounty === "0" ? Number(cr9aa_pcrsrefsforhr360eastcentralcounty) : -1,
+      "cr9aa_pcrsrefsforreunification": cr9aa_pcrsrefsforreunification !="" || cr9aa_pcrsrefsforreunification === "0" ? Number(cr9aa_pcrsrefsforreunification) : -1,
+      "cr9aa_pcrsrefsfort4c": cr9aa_pcrsrefsfort4c !="" || cr9aa_pcrsrefsfort4c === "0" ? Number(cr9aa_pcrsrefsfort4c) : -1,
+      "cr9aa_pcrscurrenthousingnumhomelessortransient": cr9aa_pcrscurrenthousingnumhomelessortransient !="" || cr9aa_pcrscurrenthousingnumhomelessortransient === "0" ? Number(cr9aa_pcrscurrenthousingnumhomelessortransient) : -1,
+      "cr9aa_pcrscompsdischargesnumsuccessful": cr9aa_pcrscompsdischargesnumsuccessful !="" || cr9aa_pcrscompsdischargesnumsuccessful === "0" ? Number(cr9aa_pcrscompsdischargesnumsuccessful) : -1,
+      "cr9aa_pcrscompsdischargesnumunsuc": cr9aa_pcrscompsdischargesnumunsuc !="" || cr9aa_pcrscompsdischargesnumunsuc === "0" ? Number(cr9aa_pcrscompsdischargesnumunsuc) : -1,
+      "cr9aa_pcrsviolationsnumnewoffensesarrests": cr9aa_pcrsviolationsnumnewoffensesarrests !="" || cr9aa_pcrsviolationsnumnewoffensesarrests === "0" ? Number(cr9aa_pcrsviolationsnumnewoffensesarrests) : -1,
+      "cr9aa_pcrsviolationsnumnewconvictions": cr9aa_pcrsviolationsnumnewconvictions !="" || cr9aa_pcrsviolationsnumnewconvictions === "0" ? Number(cr9aa_pcrsviolationsnumnewconvictions) : -1,
+      "cr9aa_pcrsviolationsnumrevocationfortechvio": cr9aa_pcrsviolationsnumrevocationfortechvio !="" || cr9aa_pcrsviolationsnumrevocationfortechvio === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfortechvio) : -1,
+      "cr9aa_pcrsviolationsnumrevocationfornewarrest": cr9aa_pcrsviolationsnumrevocationfornewarrest !="" || cr9aa_pcrsviolationsnumrevocationfornewarrest === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfornewarrest) : -1,
+      "cr9aa_z1170numcontinuingcases": cr9aa_z1170numcontinuingcases !="" || cr9aa_z1170numcontinuingcases === "0" ? Number(cr9aa_z1170numcontinuingcases) : -1,
+      "cr9aa_z1170numnewcases": cr9aa_z1170numnewcases !="" || cr9aa_z1170numnewcases === "0" ? Number(cr9aa_z1170numnewcases) : -1,
+      "cr9aa_z1170averagedpocaseload": cr9aa_z1170averagedpocaseload !="" || cr9aa_z1170averagedpocaseload === "0" ? Number(cr9aa_z1170averagedpocaseload) : -1,
+      "cr9aa_z1170males": cr9aa_z1170males !="" || cr9aa_z1170males === "0" ? Number(cr9aa_z1170males) : -1,
+      "cr9aa_z1170females": cr9aa_z1170females !="" || cr9aa_z1170females === "0" ? Number(cr9aa_z1170females) : -1,
+      "cr9aa_z1170regionwest": cr9aa_z1170regionwest !="" || cr9aa_z1170regionwest === "0" ? Number(cr9aa_z1170regionwest) : -1,
+      "cr9aa_z1170regioncentral": cr9aa_z1170regioncentral !="" || cr9aa_z1170regioncentral === "0" ? Number(cr9aa_z1170regioncentral) : -1,
+      "cr9aa_z1170regioneast": cr9aa_z1170regioneast !="" || cr9aa_z1170regioneast === "0" ? Number(cr9aa_z1170regioneast) : -1,
+      "cr9aa_z1170regionothercounties": cr9aa_z1170regionothercounties !="" || cr9aa_z1170regionothercounties === "0" ? Number(cr9aa_z1170regionothercounties) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumhigh": cr9aa_z1170supervisioncontactlevelnumhigh !="" || cr9aa_z1170supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumhigh) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumaverage": cr9aa_z1170supervisioncontactlevelnumaverage !="" || cr9aa_z1170supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumaverage) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumlow": cr9aa_z1170supervisioncontactlevelnumlow !="" || cr9aa_z1170supervisioncontactlevelnumlow === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumlow) : -1,
+      "cr9aa_z1170refsforaodstx": cr9aa_z1170refsforaodstx !="" || cr9aa_z1170refsforaodstx === "0" ? Number(cr9aa_z1170refsforaodstx) : -1,
+      "cr9aa_z1170refsformentalhealthtx": cr9aa_z1170refsformentalhealthtx !="" || cr9aa_z1170refsformentalhealthtx === "0" ? Number(cr9aa_z1170refsformentalhealthtx) : -1,
+      "cr9aa_z1170refsformedicaltx": cr9aa_z1170refsformedicaltx !="" || cr9aa_z1170refsformedicaltx === "0" ? Number(cr9aa_z1170refsformedicaltx) : -1,
+      "cr9aa_z1170refsforhousingsvcs": cr9aa_z1170refsforhousingsvcs !="" || cr9aa_z1170refsforhousingsvcs === "0" ? Number(cr9aa_z1170refsforhousingsvcs) : -1,
+      "cr9aa_z1170refsforempsvcs": cr9aa_z1170refsforempsvcs !="" || cr9aa_z1170refsforempsvcs === "0" ? Number(cr9aa_z1170refsforempsvcs) : -1,
+      "cr9aa_z1170refsforlegalsvcs": cr9aa_z1170refsforlegalsvcs !="" || cr9aa_z1170refsforlegalsvcs === "0" ? Number(cr9aa_z1170refsforlegalsvcs) : -1,
+      "cr9aa_z1170refsformentoring": cr9aa_z1170refsformentoring !="" || cr9aa_z1170refsformentoring === "0" ? Number(cr9aa_z1170refsformentoring) : -1,
+      "cr9aa_z1170refsforresourceservicecenterwestcty": cr9aa_z1170refsforresourceservicecenterwestcty !="" || cr9aa_z1170refsforresourceservicecenterwestcty === "0" ? Number(cr9aa_z1170refsforresourceservicecenterwestcty) : -1,
+      "cr9aa_z1170refsforhr360eastcentralcounty": cr9aa_z1170refsforhr360eastcentralcounty !="" || cr9aa_z1170refsforhr360eastcentralcounty === "0" ? Number(cr9aa_z1170refsforhr360eastcentralcounty) : -1,
+      "cr9aa_z1170refsforreunification": cr9aa_z1170refsforreunification !="" || cr9aa_z1170refsforreunification === "0" ? Number(cr9aa_z1170refsforreunification) : -1,
+      "cr9aa_z1170refsfort4c": cr9aa_z1170refsfort4c !="" || cr9aa_z1170refsfort4c === "0" ? Number(cr9aa_z1170refsfort4c) : -1,
+      "cr9aa_z1170currenthousingnumhomelessortransient": cr9aa_z1170currenthousingnumhomelessortransient !="" || cr9aa_z1170currenthousingnumhomelessortransient === "0" ? Number(cr9aa_z1170currenthousingnumhomelessortransient) : -1,
+      "cr9aa_z1170compsdischargesnumsuccessful": cr9aa_z1170compsdischargesnumsuccessful !="" || cr9aa_z1170compsdischargesnumsuccessful === "0" ? Number(cr9aa_z1170compsdischargesnumsuccessful) : -1,
+      "cr9aa_z1170compsdischargesnumunsuc": cr9aa_z1170compsdischargesnumunsuc !="" || cr9aa_z1170compsdischargesnumunsuc === "0" ? Number(cr9aa_z1170compsdischargesnumunsuc) : -1,
+      "cr9aa_z1170violationsnumnewoffensesarrests": cr9aa_z1170violationsnumnewoffensesarrests !="" || cr9aa_z1170violationsnumnewoffensesarrests === "0" ? Number(cr9aa_z1170violationsnumnewoffensesarrests) : -1,
+      "cr9aa_z1170violationsnumnewconvictions": cr9aa_z1170violationsnumnewconvictions !="" || cr9aa_z1170violationsnumnewconvictions === "0" ? Number(cr9aa_z1170violationsnumnewconvictions) : -1,
+      "cr9aa_z1170violationsnumrevocationfortechnicalv": cr9aa_z1170violationsnumrevocationfortechnicalv !="" || cr9aa_z1170violationsnumrevocationfortechnicalv === "0" ? Number(cr9aa_z1170violationsnumrevocationfortechnicalv) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      
         
 
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-  
-          toastr.success(
-            '',
-            'Data Updated Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-  
-        }
-      }); {%endif %}
-  
-  
-    }
-  </script>
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+        toastr.success(
+          '',
+          'Data Inserted Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+      }
+    });
+
+    {% else %}
+
+    webapi.safeAjax({
+      type: "PATCH",
+      url: "/_api/cr9aa_probations({{myquery.results.entities[0].cr9aa_probationid}})",
+      contentType: "application/json",
+      data: JSON.stringify({
+          "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numcontinuingcasespretrial": cr9aa_numcontinuingcasespretrial !="" || cr9aa_numcontinuingcasespretrial === "0" ? Number(cr9aa_numcontinuingcasespretrial) : -1,
+      "cr9aa_numnewclientsassessedpretrial": cr9aa_numnewclientsassessedpretrial !="" || cr9aa_numnewclientsassessedpretrial === "0" ? Number(cr9aa_numnewclientsassessedpretrial) : -1,
+      "cr9aa_numstartingpretrialsupervisionnewcases": cr9aa_numstartingpretrialsupervisionnewcases !="" || cr9aa_numstartingpretrialsupervisionnewcases === "0" ? Number(cr9aa_numstartingpretrialsupervisionnewcases) : -1,
+      "cr9aa_averagedpocaseloadpretrial": cr9aa_averagedpocaseloadpretrial !="" || cr9aa_averagedpocaseloadpretrial === "0" ? Number(cr9aa_averagedpocaseloadpretrial) : -1,
+      "cr9aa_nummennewcases": cr9aa_nummennewcases !="" || cr9aa_nummennewcases === "0" ? Number(cr9aa_nummennewcases) : -1,
+      "cr9aa_numwomennewcases": cr9aa_numwomennewcases !="" || cr9aa_numwomennewcases === "0" ? Number(cr9aa_numwomennewcases) : -1,
+      "cr9aa_numagedgt25": cr9aa_numagedgt25 !="" || cr9aa_numagedgt25 === "0" ? Number(cr9aa_numagedgt25) : -1,
+      "cr9aa_numaged2635": cr9aa_numaged2635 !="" || cr9aa_numaged2635 === "0" ? Number(cr9aa_numaged2635) : -1,
+      "cr9aa_numaged3645": cr9aa_numaged3645 !="" || cr9aa_numaged3645 === "0" ? Number(cr9aa_numaged3645) : -1,
+      "cr9aa_numaged4655": cr9aa_numaged4655 !="" || cr9aa_numaged4655 === "0" ? Number(cr9aa_numaged4655) : -1,
+      "cr9aa_numaged55": cr9aa_numaged55 !="" || cr9aa_numaged55 === "0" ? Number(cr9aa_numaged55) : -1,
+      "cr9aa_numagedunknown": cr9aa_numagedunknown !="" || cr9aa_numagedunknown === "0" ? Number(cr9aa_numagedunknown) : -1,
+      "cr9aa_regionwest": cr9aa_regionwest !="" || cr9aa_regionwest === "0" ? Number(cr9aa_regionwest) : -1,
+      "cr9aa_regioncentral": cr9aa_regioncentral !="" || cr9aa_regioncentral === "0" ? Number(cr9aa_regioncentral) : -1,
+      "cr9aa_regioneast": cr9aa_regioneast !="" || cr9aa_regioneast === "0" ? Number(cr9aa_regioneast) : -1,
+      "cr9aa_regionoutcounty": cr9aa_regionoutcounty !="" || cr9aa_regionoutcounty === "0" ? Number(cr9aa_regionoutcounty) : -1,
+      "cr9aa_regionunknown": cr9aa_regionunknown !="" || cr9aa_regionunknown === "0" ? Number(cr9aa_regionunknown) : -1,
+      "cr9aa_supervisioncontactlevelnumhigh": cr9aa_supervisioncontactlevelnumhigh !="" || cr9aa_supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_supervisioncontactlevelnumhigh) : -1,
+      "cr9aa_supervisioncontactlevelnumaboveaverage": cr9aa_supervisioncontactlevelnumaboveaverage !="" || cr9aa_supervisioncontactlevelnumaboveaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaboveaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumaverage": cr9aa_supervisioncontactlevelnumaverage !="" || cr9aa_supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumbelowaverage": cr9aa_supervisioncontactlevelnumbelowaverage !="" || cr9aa_supervisioncontactlevelnumbelowaverage === "0" ? Number(cr9aa_supervisioncontactlevelnumbelowaverage) : -1,
+      "cr9aa_supervisioncontactlevelnumlow": cr9aa_supervisioncontactlevelnumlow !="" || cr9aa_supervisioncontactlevelnumlow === "0" ? Number(cr9aa_supervisioncontactlevelnumlow) : -1,
+      "cr9aa_supervisioncontactlevelnumnoscore": cr9aa_supervisioncontactlevelnumnoscore !="" || cr9aa_supervisioncontactlevelnumnoscore === "0" ? Number(cr9aa_supervisioncontactlevelnumnoscore) : -1,
+      "cr9aa_numpermanentlyhoused": cr9aa_numpermanentlyhoused !="" || cr9aa_numpermanentlyhoused === "0" ? Number(cr9aa_numpermanentlyhoused) : -1,
+      "cr9aa_numhomeless": cr9aa_numhomeless !="" || cr9aa_numhomeless === "0" ? Number(cr9aa_numhomeless) : -1,
+      "cr9aa_numcurremployed": cr9aa_numcurremployed !="" || cr9aa_numcurremployed === "0" ? Number(cr9aa_numcurremployed) : -1,
+      "cr9aa_numunemployed": cr9aa_numunemployed !="" || cr9aa_numunemployed === "0" ? Number(cr9aa_numunemployed) : -1,
+      "cr9aa_compsviolationsnumsuccessfullydischarged": cr9aa_compsviolationsnumsuccessfullydischarged !="" || cr9aa_compsviolationsnumsuccessfullydischarged === "0" ? Number(cr9aa_compsviolationsnumsuccessfullydischarged) : -1,
+      "cr9aa_compsviolationsnumfailappear": cr9aa_compsviolationsnumfailappear !="" || cr9aa_compsviolationsnumfailappear === "0" ? Number(cr9aa_compsviolationsnumfailappear) : -1,
+      "cr9aa_compsviolationsnumnewoffenses": cr9aa_compsviolationsnumnewoffenses !="" || cr9aa_compsviolationsnumnewoffenses === "0" ? Number(cr9aa_compsviolationsnumnewoffenses) : -1,
+      "cr9aa_compsviolationsnumtechnicalviolations": cr9aa_compsviolationsnumtechnicalviolations !="" || cr9aa_compsviolationsnumtechnicalviolations === "0" ? Number(cr9aa_compsviolationsnumtechnicalviolations) : -1,
+      "cr9aa_compsviolationsnumcafrejection": cr9aa_compsviolationsnumcafrejection !="" || cr9aa_compsviolationsnumcafrejection === "0" ? Number(cr9aa_compsviolationsnumcafrejection) : -1,
+      "cr9aa_prcsnumcontinuingcases": cr9aa_prcsnumcontinuingcases !="" || cr9aa_prcsnumcontinuingcases === "0" ? Number(cr9aa_prcsnumcontinuingcases) : -1,
+      "cr9aa_prcsnumnewcases": cr9aa_prcsnumnewcases !="" || cr9aa_prcsnumnewcases === "0" ? Number(cr9aa_prcsnumnewcases) : -1,
+      "cr9aa_prcsaveragedpocaseload": cr9aa_prcsaveragedpocaseload !="" || cr9aa_prcsaveragedpocaseload === "0" ? Number(cr9aa_prcsaveragedpocaseload) : -1,
+      "cr9aa_prcsnummales": cr9aa_prcsnummales !="" || cr9aa_prcsnummales === "0" ? Number(cr9aa_prcsnummales) : -1,
+      "cr9aa_prcsnumfemales": cr9aa_prcsnumfemales !="" || cr9aa_prcsnumfemales === "0" ? Number(cr9aa_prcsnumfemales) : -1,
+      "cr9aa_prcsnumwest": cr9aa_prcsnumwest !="" || cr9aa_prcsnumwest === "0" ? Number(cr9aa_prcsnumwest) : -1,
+      "cr9aa_prcsnumcentral": cr9aa_prcsnumcentral !="" || cr9aa_prcsnumcentral === "0" ? Number(cr9aa_prcsnumcentral) : -1,
+      "cr9aa_prcsnumeast": cr9aa_prcsnumeast !="" || cr9aa_prcsnumeast === "0" ? Number(cr9aa_prcsnumeast) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumhigh": cr9aa_pcrssupervisioncontactlevelnumhigh !="" || cr9aa_pcrssupervisioncontactlevelnumhigh === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumhigh) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumaverage": cr9aa_pcrssupervisioncontactlevelnumaverage !="" || cr9aa_pcrssupervisioncontactlevelnumaverage === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumaverage) : -1,
+      "cr9aa_pcrssupervisioncontactlevelnumlow": cr9aa_pcrssupervisioncontactlevelnumlow !="" || cr9aa_pcrssupervisioncontactlevelnumlow === "0" ? Number(cr9aa_pcrssupervisioncontactlevelnumlow) : -1,
+      "cr9aa_pcrsrefsforaodstx": cr9aa_pcrsrefsforaodstx !="" || cr9aa_pcrsrefsforaodstx === "0" ? Number(cr9aa_pcrsrefsforaodstx) : -1,
+      "cr9aa_pcrsrefsformentalhealthtx": cr9aa_pcrsrefsformentalhealthtx !="" || cr9aa_pcrsrefsformentalhealthtx === "0" ? Number(cr9aa_pcrsrefsformentalhealthtx) : -1,
+      "cr9aa_pcrsrefsforhousingsvcs": cr9aa_pcrsrefsforhousingsvcs !="" || cr9aa_pcrsrefsforhousingsvcs === "0" ? Number(cr9aa_pcrsrefsforhousingsvcs) : -1,
+      "cr9aa_pcrsrefsforempsvcs": cr9aa_pcrsrefsforempsvcs !="" || cr9aa_pcrsrefsforempsvcs === "0" ? Number(cr9aa_pcrsrefsforempsvcs) : -1,
+      "cr9aa_pcrsrefsforlegalsvcs": cr9aa_pcrsrefsforlegalsvcs !="" || cr9aa_pcrsrefsforlegalsvcs === "0" ? Number(cr9aa_pcrsrefsforlegalsvcs) : -1,
+      "cr9aa_pcrsrefsformentoring": cr9aa_pcrsrefsformentoring !="" || cr9aa_pcrsrefsformentoring === "0" ? Number(cr9aa_pcrsrefsformentoring) : -1,
+      "cr9aa_pcrsrefsforresourceservicecenterwcounty": cr9aa_pcrsrefsforresourceservicecenterwcounty !="" || cr9aa_pcrsrefsforresourceservicecenterwcounty === "0" ? Number(cr9aa_pcrsrefsforresourceservicecenterwcounty) : -1,
+      "cr9aa_pcrsrefsforhr360eastcentralcounty": cr9aa_pcrsrefsforhr360eastcentralcounty !="" || cr9aa_pcrsrefsforhr360eastcentralcounty === "0" ? Number(cr9aa_pcrsrefsforhr360eastcentralcounty) : -1,
+      "cr9aa_pcrsrefsforreunification": cr9aa_pcrsrefsforreunification !="" || cr9aa_pcrsrefsforreunification === "0" ? Number(cr9aa_pcrsrefsforreunification) : -1,
+      "cr9aa_pcrsrefsfort4c": cr9aa_pcrsrefsfort4c !="" || cr9aa_pcrsrefsfort4c === "0" ? Number(cr9aa_pcrsrefsfort4c) : -1,
+      "cr9aa_pcrscurrenthousingnumhomelessortransient": cr9aa_pcrscurrenthousingnumhomelessortransient !="" || cr9aa_pcrscurrenthousingnumhomelessortransient === "0" ? Number(cr9aa_pcrscurrenthousingnumhomelessortransient) : -1,
+      "cr9aa_pcrscompsdischargesnumsuccessful": cr9aa_pcrscompsdischargesnumsuccessful !="" || cr9aa_pcrscompsdischargesnumsuccessful === "0" ? Number(cr9aa_pcrscompsdischargesnumsuccessful) : -1,
+      "cr9aa_pcrscompsdischargesnumunsuc": cr9aa_pcrscompsdischargesnumunsuc !="" || cr9aa_pcrscompsdischargesnumunsuc === "0" ? Number(cr9aa_pcrscompsdischargesnumunsuc) : -1,
+      "cr9aa_pcrsviolationsnumnewoffensesarrests": cr9aa_pcrsviolationsnumnewoffensesarrests !="" || cr9aa_pcrsviolationsnumnewoffensesarrests === "0" ? Number(cr9aa_pcrsviolationsnumnewoffensesarrests) : -1,
+      "cr9aa_pcrsviolationsnumnewconvictions": cr9aa_pcrsviolationsnumnewconvictions !="" || cr9aa_pcrsviolationsnumnewconvictions === "0" ? Number(cr9aa_pcrsviolationsnumnewconvictions) : -1,
+      "cr9aa_pcrsviolationsnumrevocationfortechvio": cr9aa_pcrsviolationsnumrevocationfortechvio !="" || cr9aa_pcrsviolationsnumrevocationfortechvio === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfortechvio) : -1,
+      "cr9aa_pcrsviolationsnumrevocationfornewarrest": cr9aa_pcrsviolationsnumrevocationfornewarrest !="" || cr9aa_pcrsviolationsnumrevocationfornewarrest === "0" ? Number(cr9aa_pcrsviolationsnumrevocationfornewarrest) : -1,
+      "cr9aa_z1170numcontinuingcases": cr9aa_z1170numcontinuingcases !="" || cr9aa_z1170numcontinuingcases === "0" ? Number(cr9aa_z1170numcontinuingcases) : -1,
+      "cr9aa_z1170numnewcases": cr9aa_z1170numnewcases !="" || cr9aa_z1170numnewcases === "0" ? Number(cr9aa_z1170numnewcases) : -1,
+      "cr9aa_z1170averagedpocaseload": cr9aa_z1170averagedpocaseload !="" || cr9aa_z1170averagedpocaseload === "0" ? Number(cr9aa_z1170averagedpocaseload) : -1,
+      "cr9aa_z1170males": cr9aa_z1170males !="" || cr9aa_z1170males === "0" ? Number(cr9aa_z1170males) : -1,
+      "cr9aa_z1170females": cr9aa_z1170females !="" || cr9aa_z1170females === "0" ? Number(cr9aa_z1170females) : -1,
+      "cr9aa_z1170regionwest": cr9aa_z1170regionwest !="" || cr9aa_z1170regionwest === "0" ? Number(cr9aa_z1170regionwest) : -1,
+      "cr9aa_z1170regioncentral": cr9aa_z1170regioncentral !="" || cr9aa_z1170regioncentral === "0" ? Number(cr9aa_z1170regioncentral) : -1,
+      "cr9aa_z1170regioneast": cr9aa_z1170regioneast !="" || cr9aa_z1170regioneast === "0" ? Number(cr9aa_z1170regioneast) : -1,
+      "cr9aa_z1170regionothercounties": cr9aa_z1170regionothercounties !="" || cr9aa_z1170regionothercounties === "0" ? Number(cr9aa_z1170regionothercounties) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumhigh": cr9aa_z1170supervisioncontactlevelnumhigh !="" || cr9aa_z1170supervisioncontactlevelnumhigh === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumhigh) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumaverage": cr9aa_z1170supervisioncontactlevelnumaverage !="" || cr9aa_z1170supervisioncontactlevelnumaverage === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumaverage) : -1,
+      "cr9aa_z1170supervisioncontactlevelnumlow": cr9aa_z1170supervisioncontactlevelnumlow !="" || cr9aa_z1170supervisioncontactlevelnumlow === "0" ? Number(cr9aa_z1170supervisioncontactlevelnumlow) : -1,
+      "cr9aa_z1170refsforaodstx": cr9aa_z1170refsforaodstx !="" || cr9aa_z1170refsforaodstx === "0" ? Number(cr9aa_z1170refsforaodstx) : -1,
+      "cr9aa_z1170refsformentalhealthtx": cr9aa_z1170refsformentalhealthtx !="" || cr9aa_z1170refsformentalhealthtx === "0" ? Number(cr9aa_z1170refsformentalhealthtx) : -1,
+      "cr9aa_z1170refsformedicaltx": cr9aa_z1170refsformedicaltx !="" || cr9aa_z1170refsformedicaltx === "0" ? Number(cr9aa_z1170refsformedicaltx) : -1,
+      "cr9aa_z1170refsforhousingsvcs": cr9aa_z1170refsforhousingsvcs !="" || cr9aa_z1170refsforhousingsvcs === "0" ? Number(cr9aa_z1170refsforhousingsvcs) : -1,
+      "cr9aa_z1170refsforempsvcs": cr9aa_z1170refsforempsvcs !="" || cr9aa_z1170refsforempsvcs === "0" ? Number(cr9aa_z1170refsforempsvcs) : -1,
+      "cr9aa_z1170refsforlegalsvcs": cr9aa_z1170refsforlegalsvcs !="" || cr9aa_z1170refsforlegalsvcs === "0" ? Number(cr9aa_z1170refsforlegalsvcs) : -1,
+      "cr9aa_z1170refsformentoring": cr9aa_z1170refsformentoring !="" || cr9aa_z1170refsformentoring === "0" ? Number(cr9aa_z1170refsformentoring) : -1,
+      "cr9aa_z1170refsforresourceservicecenterwestcty": cr9aa_z1170refsforresourceservicecenterwestcty !="" || cr9aa_z1170refsforresourceservicecenterwestcty === "0" ? Number(cr9aa_z1170refsforresourceservicecenterwestcty) : -1,
+      "cr9aa_z1170refsforhr360eastcentralcounty": cr9aa_z1170refsforhr360eastcentralcounty !="" || cr9aa_z1170refsforhr360eastcentralcounty === "0" ? Number(cr9aa_z1170refsforhr360eastcentralcounty) : -1,
+      "cr9aa_z1170refsforreunification": cr9aa_z1170refsforreunification !="" || cr9aa_z1170refsforreunification === "0" ? Number(cr9aa_z1170refsforreunification) : -1,
+      "cr9aa_z1170refsfort4c": cr9aa_z1170refsfort4c !="" || cr9aa_z1170refsfort4c === "0" ? Number(cr9aa_z1170refsfort4c) : -1,
+      "cr9aa_z1170currenthousingnumhomelessortransient": cr9aa_z1170currenthousingnumhomelessortransient !="" || cr9aa_z1170currenthousingnumhomelessortransient === "0" ? Number(cr9aa_z1170currenthousingnumhomelessortransient) : -1,
+      "cr9aa_z1170compsdischargesnumsuccessful": cr9aa_z1170compsdischargesnumsuccessful !="" || cr9aa_z1170compsdischargesnumsuccessful === "0" ? Number(cr9aa_z1170compsdischargesnumsuccessful) : -1,
+      "cr9aa_z1170compsdischargesnumunsuc": cr9aa_z1170compsdischargesnumunsuc !="" || cr9aa_z1170compsdischargesnumunsuc === "0" ? Number(cr9aa_z1170compsdischargesnumunsuc) : -1,
+      "cr9aa_z1170violationsnumnewoffensesarrests": cr9aa_z1170violationsnumnewoffensesarrests !="" || cr9aa_z1170violationsnumnewoffensesarrests === "0" ? Number(cr9aa_z1170violationsnumnewoffensesarrests) : -1,
+      "cr9aa_z1170violationsnumnewconvictions": cr9aa_z1170violationsnumnewconvictions !="" || cr9aa_z1170violationsnumnewconvictions === "0" ? Number(cr9aa_z1170violationsnumnewconvictions) : -1,
+      "cr9aa_z1170violationsnumrevocationfortechnicalv": cr9aa_z1170violationsnumrevocationfortechnicalv !="" || cr9aa_z1170violationsnumrevocationfortechnicalv === "0" ? Number(cr9aa_z1170violationsnumrevocationfortechnicalv) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      
+
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+
+        toastr.success(
+          '',
+          'Data Updated Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+
+      }
+    }); {%endif %}
+
+
+  }
+</script>

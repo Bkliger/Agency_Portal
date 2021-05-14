@@ -1,333 +1,333 @@
 <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    $(document).on('click', '#save', function() {
-      submitOrSave("save");
-    });
-    $(document).on('click', '#submit', function() {
-       $("#toast-container").html(""); 
-      $("#form").validator().on("submit", function(e) {
-       $("#toast-container").html(""); 
-                 if (e.isDefaultPrevented()) {
-                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
-                  toastr.error(
-                      '',
-                      'Please fill required fields', {
-                          "positionClass": "toast-bottom-center",
-                          onHidden: function() {
-                              
-                          }
-                      }); 
-                      toastr.clear();                      
-                  } else {
-                          submitOrSave("submit");
-                      }
-                  });
-    });
-  
-    function submitOrSave(flag) {
-      var submitStatus = "";
-      if (flag == "save") {
-        submitStatus = "In Progress";
-      } else {
-        submitStatus = "Submitted";
-      }
-  
-      $(".loading").show();
-  
-      var cr9aa_bookingsnummdf1bookings= $("#cr9aa_bookingsnummdf1bookings").val().trim();
-        var cr9aa_bookingsnumcaf2bookings= $("#cr9aa_bookingsnumcaf2bookings").val().trim();
-        var cr9aa_bookingsnumpretrialprogrelease= $("#cr9aa_bookingsnumpretrialprogrelease").val().trim();
-        var cr9aa_bookingsciterelease= $("#cr9aa_bookingsciterelease").val().trim();
-        var cr9aa_bookingsreleaseor= $("#cr9aa_bookingsreleaseor").val().trim();
-        var cr9aa_bookingspc849nocharge= $("#cr9aa_bookingspc849nocharge").val().trim();
-        var cr9aa_cafcountaverageforthereportingperiod= $("#cr9aa_cafcountaverageforthereportingperiod").val().trim();
-        var cr9aa_cafsentratesab109= $("#cr9aa_cafsentratesab109").val().trim();
-        var cr9aa_cafsentratesab109female= $("#cr9aa_cafsentratesab109female").val().trim();
-        var cr9aa_cafsentratesab1093056paroleholds= $("#cr9aa_cafsentratesab1093056paroleholds").val().trim();
-        var cr9aa_cafsentratesab1093056comm= $("#cr9aa_cafsentratesab1093056comm").val().trim();
-        var cr9aa_cafsentratesab109prisonjailcomm1170= $("#cr9aa_cafsentratesab109prisonjailcomm1170").val().trim();
-        var cr9aa_cafsentratestotal3056holdscomm= $("#cr9aa_cafsentratestotal3056holdscomm").val().trim();
-        var cr9aa_cafsentratestotal1170comm= $("#cr9aa_cafsentratestotal1170comm").val().trim();
-        var cr9aa_mdfcount= $("#cr9aa_mdfcount").val().trim();
-        var cr9aa_mdfsentratesab109= $("#cr9aa_mdfsentratesab109").val().trim();
-        var cr9aa_mdfsentratesab109female= $("#cr9aa_mdfsentratesab109female").val().trim();
-        var cr9aa_mdfsentratesab1093056paroleholds= $("#cr9aa_mdfsentratesab1093056paroleholds").val().trim();
-        var cr9aa_mdfsentratesab1093056comm= $("#cr9aa_mdfsentratesab1093056comm").val().trim();
-        var cr9aa_mdfsentratesab109prisonjailcomm1170= $("#cr9aa_mdfsentratesab109prisonjailcomm1170").val().trim();
-        var cr9aa_mdfsentratestotal3056holdscomm= $("#cr9aa_mdfsentratestotal3056holdscomm").val().trim();
-        var cr9aa_mdfsentratestotal1170comm= $("#cr9aa_mdfsentratestotal1170comm").val().trim();
-        var cr9aa_wcdfcount= $("#cr9aa_wcdfcount").val().trim();
-        var cr9aa_wcdfsentratesab109= $("#cr9aa_wcdfsentratesab109").val().trim();
-        var cr9aa_wcdfsentratesab109female= $("#cr9aa_wcdfsentratesab109female").val().trim();
-        var cr9aa_wcdfsentratesab1093056paroleholds= $("#cr9aa_wcdfsentratesab1093056paroleholds").val().trim();
-        var cr9aa_wcdfsentratesab1093056comm= $("#cr9aa_wcdfsentratesab1093056comm").val().trim();
-        var cr9aa_wcdfsentratesab109prisonjailcomm1170= $("#cr9aa_wcdfsentratesab109prisonjailcomm1170").val().trim();
-        var cr9aa_wcdfsentratestotal3056holdscomm= $("#cr9aa_wcdfsentratestotal3056holdscomm").val().trim();
-        var cr9aa_wcdfsentratestotal1170comm= $("#cr9aa_wcdfsentratestotal1170comm").val().trim();
-        var cr9aa_mcdfcount= $("#cr9aa_mcdfcount").val().trim();
-        var cr9aa_mcdfsentratesab109= $("#cr9aa_mcdfsentratesab109").val().trim();
-        var cr9aa_mcdfsentratesab109female= $("#cr9aa_mcdfsentratesab109female").val().trim();
-        var cr9aa_mcdfsentratesab1093056paroleholds= $("#cr9aa_mcdfsentratesab1093056paroleholds").val().trim();
-        var cr9aa_mcdfsentratesab1093056comm= $("#cr9aa_mcdfsentratesab1093056comm").val().trim();
-        var cr9aa_mcdfsentratesab109prisonjailcomm1170= $("#cr9aa_mcdfsentratesab109prisonjailcomm1170").val().trim();
-        var cr9aa_mcdfsentratestotal3056holdscomm= $("#cr9aa_mcdfsentratestotal3056holdscomm").val().trim();
-        var cr9aa_mcdfsentratestotal1170comm= $("#cr9aa_mcdfsentratestotal1170comm").val().trim();
-        var cr9aa_overallfacilitiescountaverage= $("#cr9aa_overallfacilitiescountaverage").val().trim();
-        var cr9aa_overallfacilitiesab109average= $("#cr9aa_overallfacilitiesab109average").val().trim();
-        var cr9aa_overallfacilitiesab109femaleaverage= $("#cr9aa_overallfacilitiesab109femaleaverage").val().trim();
-        var cr9aa_overallfacilitiesab1093056paroleholdsaver= $("#cr9aa_overallfacilitiesab1093056paroleholdsaver").val().trim();
-        var cr9aa_overallfacilitiesab1093056commavg= $("#cr9aa_overallfacilitiesab1093056commavg").val().trim();
-        var cr9aa_overallfacilitiesab109prisonjailcomm1170a= $("#cr9aa_overallfacilitiesab109prisonjailcomm1170a").val().trim();
-        var cr9aa_overallfacilitiestotal3056holdscommtal= $("#cr9aa_overallfacilitiestotal3056holdscommtal").val().trim();
-        var cr9aa_overallfacilitiestotal1170commtal= $("#cr9aa_overallfacilitiestotal1170commtal").val().trim();
-        var cr9aa_overallfacilities1110haveragedaysincust= $("#cr9aa_overallfacilities1110haveragedaysincust").val().trim();
-        var cr9aa_overallfacilitiesparolesentaveragedaysin= $("#cr9aa_overallfacilitiesparolesentaveragedaysin").val().trim();
-        var cr9aa_overallfacilitiesparoleholdsdroppedavgday= $("#cr9aa_overallfacilitiesparoleholdsdroppedavgday").val().trim();
-        var cr9aa_othercustdatagangmembersavg= $("#cr9aa_othercustdatagangmembersavg").val().trim();
-        var cr9aa_othercustdataprotectivecustinmatesavg= $("#cr9aa_othercustdataprotectivecustinmatesavg").val().trim();
-        var cr9aa_othercustdatapc187inmatesavg= $("#cr9aa_othercustdatapc187inmatesavg").val().trim();
-        var cr9aa_othercustdatamentalhealthinmatestal= $("#cr9aa_othercustdatamentalhealthinmatestal").val().trim();
-        var cr9aa_othercustdatamedicalinmatesavg= $("#cr9aa_othercustdatamedicalinmatesavg").val().trim();
-        var cr9aa_othercustdataprcsocwholdstal= $("#cr9aa_othercustdataprcsocwholdstal").val().trim();
-        var cr9aa_othercustdataflashincarcerations3454pctal= $("#cr9aa_othercustdataflashincarcerations3454pctal").val().trim();
-        var cr9aa_othercustdataprcsviolations3455pctal= $("#cr9aa_othercustdataprcsviolations3455pctal").val().trim();
-        var cr9aa_othercustdataprcsholds3453pctal= $("#cr9aa_othercustdataprcsholds3453pctal").val().trim();
-        var cr9aa_othercustdataparoleholdstal= $("#cr9aa_othercustdataparoleholdstal").val().trim();
-        var cr9aa_othercustdataparolecommtal= $("#cr9aa_othercustdataparolecommtal").val().trim();
-        var cr9aa_othercustdataparoleviolationavgdaysincust= $("#cr9aa_othercustdataparoleviolationavgdaysincust").val().trim();
-        var cr9aa_othercustdata1170commtal= $("#cr9aa_othercustdata1170commtal").val().trim();
-        var cr9aa_othercustdatalongest1170commitmenttal= $("#cr9aa_othercustdatalongest1170commitmenttal").val().trim();
-        var cr9aa_othercustdatarecidivismrateavg= $("#cr9aa_othercustdatarecidivismrateavg").val().trim();
-        var cr9aa_mwpnumenrolled= $("#cr9aa_mwpnumenrolled").val().trim();
-        var cr9aa_mwpnumcompletedprogreqs= $("#cr9aa_mwpnumcompletedprogreqs").val().trim();
-        var cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg").val().trim();
-        var cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg").val().trim();
-        var cr9aa_mwpnummenattendedmdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedmdfweeklymeetingsonavg").val().trim();
-        var cr9aa_reachnumwomenenrolled= $("#cr9aa_reachnumwomenenrolled").val().trim();
-        var cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg= $("#cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg").val().trim();
-      var crdae_sectionone = $("#crdae_sectionone").val().trim();
-      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
-      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
-      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
-      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
-      
-  
-      {% if recordCount == 0 %}
-      webapi.safeAjax({
-        type: "POST",
-        url: "/_api/cr9aa_sherrifsoffices",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_bookingsnummdf1bookings": cr9aa_bookingsnummdf1bookings !="" || cr9aa_bookingsnummdf1bookings === "0" ? Number(cr9aa_bookingsnummdf1bookings) : -1,
-        "cr9aa_bookingsnumcaf2bookings": cr9aa_bookingsnumcaf2bookings !="" || cr9aa_bookingsnumcaf2bookings === "0" ? Number(cr9aa_bookingsnumcaf2bookings) : -1,
-        "cr9aa_bookingsnumpretrialprogrelease": cr9aa_bookingsnumpretrialprogrelease !="" || cr9aa_bookingsnumpretrialprogrelease === "0" ? Number(cr9aa_bookingsnumpretrialprogrelease) : -1,
-        "cr9aa_bookingsciterelease": cr9aa_bookingsciterelease !="" || cr9aa_bookingsciterelease === "0" ? Number(cr9aa_bookingsciterelease) : -1,
-        "cr9aa_bookingsreleaseor": cr9aa_bookingsreleaseor !="" || cr9aa_bookingsreleaseor === "0" ? Number(cr9aa_bookingsreleaseor) : -1,
-        "cr9aa_bookingspc849nocharge": cr9aa_bookingspc849nocharge !="" || cr9aa_bookingspc849nocharge === "0" ? Number(cr9aa_bookingspc849nocharge) : -1,
-        "cr9aa_cafcountaverageforthereportingperiod": cr9aa_cafcountaverageforthereportingperiod !="" || cr9aa_cafcountaverageforthereportingperiod === "0" ? Number(cr9aa_cafcountaverageforthereportingperiod) : -1,
-        "cr9aa_cafsentratesab109": cr9aa_cafsentratesab109 !="" || cr9aa_cafsentratesab109 === "0" ? Number(cr9aa_cafsentratesab109) : -1,
-        "cr9aa_cafsentratesab109female": cr9aa_cafsentratesab109female !="" || cr9aa_cafsentratesab109female === "0" ? Number(cr9aa_cafsentratesab109female) : -1,
-        "cr9aa_cafsentratesab1093056paroleholds": cr9aa_cafsentratesab1093056paroleholds !="" || cr9aa_cafsentratesab1093056paroleholds === "0" ? Number(cr9aa_cafsentratesab1093056paroleholds) : -1,
-        "cr9aa_cafsentratesab1093056comm": cr9aa_cafsentratesab1093056comm !="" || cr9aa_cafsentratesab1093056comm === "0" ? Number(cr9aa_cafsentratesab1093056comm) : -1,
-        "cr9aa_cafsentratesab109prisonjailcomm1170": cr9aa_cafsentratesab109prisonjailcomm1170 !="" || cr9aa_cafsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_cafsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_cafsentratestotal3056holdscomm": cr9aa_cafsentratestotal3056holdscomm !="" || cr9aa_cafsentratestotal3056holdscomm === "0" ? Number(cr9aa_cafsentratestotal3056holdscomm) : -1,
-        "cr9aa_cafsentratestotal1170comm": cr9aa_cafsentratestotal1170comm !="" || cr9aa_cafsentratestotal1170comm === "0" ? Number(cr9aa_cafsentratestotal1170comm) : -1,
-        "cr9aa_mdfcount": cr9aa_mdfcount !="" || cr9aa_mdfcount === "0" ? Number(cr9aa_mdfcount) : -1,
-        "cr9aa_mdfsentratesab109": cr9aa_mdfsentratesab109 !="" || cr9aa_mdfsentratesab109 === "0" ? Number(cr9aa_mdfsentratesab109) : -1,
-        "cr9aa_mdfsentratesab109female": cr9aa_mdfsentratesab109female !="" || cr9aa_mdfsentratesab109female === "0" ? Number(cr9aa_mdfsentratesab109female) : -1,
-        "cr9aa_mdfsentratesab1093056paroleholds": cr9aa_mdfsentratesab1093056paroleholds !="" || cr9aa_mdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_mdfsentratesab1093056comm": cr9aa_mdfsentratesab1093056comm !="" || cr9aa_mdfsentratesab1093056comm === "0" ? Number(cr9aa_mdfsentratesab1093056comm) : -1,
-        "cr9aa_mdfsentratesab109prisonjailcomm1170": cr9aa_mdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_mdfsentratestotal3056holdscomm": cr9aa_mdfsentratestotal3056holdscomm !="" || cr9aa_mdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_mdfsentratestotal1170comm": cr9aa_mdfsentratestotal1170comm !="" || cr9aa_mdfsentratestotal1170comm === "0" ? Number(cr9aa_mdfsentratestotal1170comm) : -1,
-        "cr9aa_wcdfcount": cr9aa_wcdfcount !="" || cr9aa_wcdfcount === "0" ? Number(cr9aa_wcdfcount) : -1,
-        "cr9aa_wcdfsentratesab109": cr9aa_wcdfsentratesab109 !="" || cr9aa_wcdfsentratesab109 === "0" ? Number(cr9aa_wcdfsentratesab109) : -1,
-        "cr9aa_wcdfsentratesab109female": cr9aa_wcdfsentratesab109female !="" || cr9aa_wcdfsentratesab109female === "0" ? Number(cr9aa_wcdfsentratesab109female) : -1,
-        "cr9aa_wcdfsentratesab1093056paroleholds": cr9aa_wcdfsentratesab1093056paroleholds !="" || cr9aa_wcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_wcdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_wcdfsentratesab1093056comm": cr9aa_wcdfsentratesab1093056comm !="" || cr9aa_wcdfsentratesab1093056comm === "0" ? Number(cr9aa_wcdfsentratesab1093056comm) : -1,
-        "cr9aa_wcdfsentratesab109prisonjailcomm1170": cr9aa_wcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_wcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_wcdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_wcdfsentratestotal3056holdscomm": cr9aa_wcdfsentratestotal3056holdscomm !="" || cr9aa_wcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_wcdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_wcdfsentratestotal1170comm": cr9aa_wcdfsentratestotal1170comm !="" || cr9aa_wcdfsentratestotal1170comm === "0" ? Number(cr9aa_wcdfsentratestotal1170comm) : -1,
-        "cr9aa_mcdfcount": cr9aa_mcdfcount !="" || cr9aa_mcdfcount === "0" ? Number(cr9aa_mcdfcount) : -1,
-        "cr9aa_mcdfsentratesab109": cr9aa_mcdfsentratesab109 !="" || cr9aa_mcdfsentratesab109 === "0" ? Number(cr9aa_mcdfsentratesab109) : -1,
-        "cr9aa_mcdfsentratesab109female": cr9aa_mcdfsentratesab109female !="" || cr9aa_mcdfsentratesab109female === "0" ? Number(cr9aa_mcdfsentratesab109female) : -1,
-        "cr9aa_mcdfsentratesab1093056paroleholds": cr9aa_mcdfsentratesab1093056paroleholds !="" || cr9aa_mcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mcdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_mcdfsentratesab1093056comm": cr9aa_mcdfsentratesab1093056comm !="" || cr9aa_mcdfsentratesab1093056comm === "0" ? Number(cr9aa_mcdfsentratesab1093056comm) : -1,
-        "cr9aa_mcdfsentratesab109prisonjailcomm1170": cr9aa_mcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mcdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_mcdfsentratestotal3056holdscomm": cr9aa_mcdfsentratestotal3056holdscomm !="" || cr9aa_mcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mcdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_mcdfsentratestotal1170comm": cr9aa_mcdfsentratestotal1170comm !="" || cr9aa_mcdfsentratestotal1170comm === "0" ? Number(cr9aa_mcdfsentratestotal1170comm) : -1,
-        "cr9aa_overallfacilitiescountaverage": cr9aa_overallfacilitiescountaverage !="" || cr9aa_overallfacilitiescountaverage === "0" ? Number(cr9aa_overallfacilitiescountaverage) : -1,
-        "cr9aa_overallfacilitiesab109average": cr9aa_overallfacilitiesab109average !="" || cr9aa_overallfacilitiesab109average === "0" ? Number(cr9aa_overallfacilitiesab109average) : -1,
-        "cr9aa_overallfacilitiesab109femaleaverage": cr9aa_overallfacilitiesab109femaleaverage !="" || cr9aa_overallfacilitiesab109femaleaverage === "0" ? Number(cr9aa_overallfacilitiesab109femaleaverage) : -1,
-        "cr9aa_overallfacilitiesab1093056paroleholdsaver": cr9aa_overallfacilitiesab1093056paroleholdsaver !="" || cr9aa_overallfacilitiesab1093056paroleholdsaver === "0" ? Number(cr9aa_overallfacilitiesab1093056paroleholdsaver) : -1,
-        "cr9aa_overallfacilitiesab1093056commavg": cr9aa_overallfacilitiesab1093056commavg !="" || cr9aa_overallfacilitiesab1093056commavg === "0" ? Number(cr9aa_overallfacilitiesab1093056commavg) : -1,
-        "cr9aa_overallfacilitiesab109prisonjailcomm1170a": cr9aa_overallfacilitiesab109prisonjailcomm1170a !="" || cr9aa_overallfacilitiesab109prisonjailcomm1170a === "0" ? Number(cr9aa_overallfacilitiesab109prisonjailcomm1170a) : -1,
-        "cr9aa_overallfacilitiestotal3056holdscommtal": cr9aa_overallfacilitiestotal3056holdscommtal !="" || cr9aa_overallfacilitiestotal3056holdscommtal === "0" ? Number(cr9aa_overallfacilitiestotal3056holdscommtal) : -1,
-        "cr9aa_overallfacilitiestotal1170commtal": cr9aa_overallfacilitiestotal1170commtal !="" || cr9aa_overallfacilitiestotal1170commtal === "0" ? Number(cr9aa_overallfacilitiestotal1170commtal) : -1,
-        "cr9aa_overallfacilities1110haveragedaysincust": cr9aa_overallfacilities1110haveragedaysincust !="" || cr9aa_overallfacilities1110haveragedaysincust === "0" ? Number(cr9aa_overallfacilities1110haveragedaysincust) : -1,
-        "cr9aa_overallfacilitiesparolesentaveragedaysin": cr9aa_overallfacilitiesparolesentaveragedaysin !="" || cr9aa_overallfacilitiesparolesentaveragedaysin === "0" ? Number(cr9aa_overallfacilitiesparolesentaveragedaysin) : -1,
-        "cr9aa_overallfacilitiesparoleholdsdroppedavgday": cr9aa_overallfacilitiesparoleholdsdroppedavgday !="" || cr9aa_overallfacilitiesparoleholdsdroppedavgday === "0" ? Number(cr9aa_overallfacilitiesparoleholdsdroppedavgday) : -1,
-        "cr9aa_othercustdatagangmembersavg": cr9aa_othercustdatagangmembersavg !="" || cr9aa_othercustdatagangmembersavg === "0" ? Number(cr9aa_othercustdatagangmembersavg) : -1,
-        "cr9aa_othercustdataprotectivecustinmatesavg": cr9aa_othercustdataprotectivecustinmatesavg !="" || cr9aa_othercustdataprotectivecustinmatesavg === "0" ? Number(cr9aa_othercustdataprotectivecustinmatesavg) : -1,
-        "cr9aa_othercustdatapc187inmatesavg": cr9aa_othercustdatapc187inmatesavg !="" || cr9aa_othercustdatapc187inmatesavg === "0" ? Number(cr9aa_othercustdatapc187inmatesavg) : -1,
-        "cr9aa_othercustdatamentalhealthinmatestal": cr9aa_othercustdatamentalhealthinmatestal !="" || cr9aa_othercustdatamentalhealthinmatestal === "0" ? Number(cr9aa_othercustdatamentalhealthinmatestal) : -1,
-        "cr9aa_othercustdatamedicalinmatesavg": cr9aa_othercustdatamedicalinmatesavg !="" || cr9aa_othercustdatamedicalinmatesavg === "0" ? Number(cr9aa_othercustdatamedicalinmatesavg) : -1,
-        "cr9aa_othercustdataprcsocwholdstal": cr9aa_othercustdataprcsocwholdstal !="" || cr9aa_othercustdataprcsocwholdstal === "0" ? Number(cr9aa_othercustdataprcsocwholdstal) : -1,
-        "cr9aa_othercustdataflashincarcerations3454pctal": cr9aa_othercustdataflashincarcerations3454pctal !="" || cr9aa_othercustdataflashincarcerations3454pctal === "0" ? Number(cr9aa_othercustdataflashincarcerations3454pctal) : -1,
-        "cr9aa_othercustdataprcsviolations3455pctal": cr9aa_othercustdataprcsviolations3455pctal !="" || cr9aa_othercustdataprcsviolations3455pctal === "0" ? Number(cr9aa_othercustdataprcsviolations3455pctal) : -1,
-        "cr9aa_othercustdataprcsholds3453pctal": cr9aa_othercustdataprcsholds3453pctal !="" || cr9aa_othercustdataprcsholds3453pctal === "0" ? Number(cr9aa_othercustdataprcsholds3453pctal) : -1,
-        "cr9aa_othercustdataparoleholdstal": cr9aa_othercustdataparoleholdstal !="" || cr9aa_othercustdataparoleholdstal === "0" ? Number(cr9aa_othercustdataparoleholdstal) : -1,
-        "cr9aa_othercustdataparolecommtal": cr9aa_othercustdataparolecommtal !="" || cr9aa_othercustdataparolecommtal === "0" ? Number(cr9aa_othercustdataparolecommtal) : -1,
-        "cr9aa_othercustdataparoleviolationavgdaysincust": cr9aa_othercustdataparoleviolationavgdaysincust !="" || cr9aa_othercustdataparoleviolationavgdaysincust === "0" ? Number(cr9aa_othercustdataparoleviolationavgdaysincust) : -1,
-        "cr9aa_othercustdata1170commtal": cr9aa_othercustdata1170commtal !="" || cr9aa_othercustdata1170commtal === "0" ? Number(cr9aa_othercustdata1170commtal) : -1,
-        "cr9aa_othercustdatalongest1170commitmenttal": cr9aa_othercustdatalongest1170commitmenttal !="" || cr9aa_othercustdatalongest1170commitmenttal === "0" ? Number(cr9aa_othercustdatalongest1170commitmenttal) : -1,
-        "cr9aa_othercustdatarecidivismrateavg": cr9aa_othercustdatarecidivismrateavg !="" || cr9aa_othercustdatarecidivismrateavg === "0" ? Number(cr9aa_othercustdatarecidivismrateavg) : -1,
-        "cr9aa_mwpnumenrolled": cr9aa_mwpnumenrolled !="" || cr9aa_mwpnumenrolled === "0" ? Number(cr9aa_mwpnumenrolled) : -1,
-        "cr9aa_mwpnumcompletedprogreqs": cr9aa_mwpnumcompletedprogreqs !="" || cr9aa_mwpnumcompletedprogreqs === "0" ? Number(cr9aa_mwpnumcompletedprogreqs) : -1,
-        "cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg) : -1,
-        "cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg) : -1,
-        "cr9aa_mwpnummenattendedmdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmdfweeklymeetingsonavg) : -1,
-        "cr9aa_reachnumwomenenrolled": cr9aa_reachnumwomenenrolled !="" || cr9aa_reachnumwomenenrolled === "0" ? Number(cr9aa_reachnumwomenenrolled) : -1,
-        "cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg": cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg !="" || cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg === "0" ? Number(cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(document).on('click', '#save', function() {
+    submitOrSave("save");
+  });
+  $(document).on('click', '#submit', function() {
+     $("#toast-container").html(""); 
+    $("#form").validator().on("submit", function(e) {
+     $("#toast-container").html(""); 
+               if (e.isDefaultPrevented()) {
+                $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                toastr.error(
+                    '',
+                    'Please fill required fields', {
+                        "positionClass": "toast-bottom-center",
+                        onHidden: function() {
+                            
+                        }
+                    }); 
+                    toastr.clear();                      
+                } else {
+                        submitOrSave("submit");
+                    }
+                });
+  });
 
-          
-  
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-          toastr.success(
-            '',
-            'Data Inserted Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-        }
-      });
-  
-      {% else %}
-  
-      webapi.safeAjax({
-        type: "PATCH",
-        url: "/_api/cr9aa_sherrifsoffices({{myquery.results.entities[0].cr9aa_sherrifsofficeid}})",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_bookingsnummdf1bookings": cr9aa_bookingsnummdf1bookings !="" || cr9aa_bookingsnummdf1bookings === "0" ? Number(cr9aa_bookingsnummdf1bookings) : -1,
-        "cr9aa_bookingsnumcaf2bookings": cr9aa_bookingsnumcaf2bookings !="" || cr9aa_bookingsnumcaf2bookings === "0" ? Number(cr9aa_bookingsnumcaf2bookings) : -1,
-        "cr9aa_bookingsnumpretrialprogrelease": cr9aa_bookingsnumpretrialprogrelease !="" || cr9aa_bookingsnumpretrialprogrelease === "0" ? Number(cr9aa_bookingsnumpretrialprogrelease) : -1,
-        "cr9aa_bookingsciterelease": cr9aa_bookingsciterelease !="" || cr9aa_bookingsciterelease === "0" ? Number(cr9aa_bookingsciterelease) : -1,
-        "cr9aa_bookingsreleaseor": cr9aa_bookingsreleaseor !="" || cr9aa_bookingsreleaseor === "0" ? Number(cr9aa_bookingsreleaseor) : -1,
-        "cr9aa_bookingspc849nocharge": cr9aa_bookingspc849nocharge !="" || cr9aa_bookingspc849nocharge === "0" ? Number(cr9aa_bookingspc849nocharge) : -1,
-        "cr9aa_cafcountaverageforthereportingperiod": cr9aa_cafcountaverageforthereportingperiod !="" || cr9aa_cafcountaverageforthereportingperiod === "0" ? Number(cr9aa_cafcountaverageforthereportingperiod) : -1,
-        "cr9aa_cafsentratesab109": cr9aa_cafsentratesab109 !="" || cr9aa_cafsentratesab109 === "0" ? Number(cr9aa_cafsentratesab109) : -1,
-        "cr9aa_cafsentratesab109female": cr9aa_cafsentratesab109female !="" || cr9aa_cafsentratesab109female === "0" ? Number(cr9aa_cafsentratesab109female) : -1,
-        "cr9aa_cafsentratesab1093056paroleholds": cr9aa_cafsentratesab1093056paroleholds !="" || cr9aa_cafsentratesab1093056paroleholds === "0" ? Number(cr9aa_cafsentratesab1093056paroleholds) : -1,
-        "cr9aa_cafsentratesab1093056comm": cr9aa_cafsentratesab1093056comm !="" || cr9aa_cafsentratesab1093056comm === "0" ? Number(cr9aa_cafsentratesab1093056comm) : -1,
-        "cr9aa_cafsentratesab109prisonjailcomm1170": cr9aa_cafsentratesab109prisonjailcomm1170 !="" || cr9aa_cafsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_cafsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_cafsentratestotal3056holdscomm": cr9aa_cafsentratestotal3056holdscomm !="" || cr9aa_cafsentratestotal3056holdscomm === "0" ? Number(cr9aa_cafsentratestotal3056holdscomm) : -1,
-        "cr9aa_cafsentratestotal1170comm": cr9aa_cafsentratestotal1170comm !="" || cr9aa_cafsentratestotal1170comm === "0" ? Number(cr9aa_cafsentratestotal1170comm) : -1,
-        "cr9aa_mdfcount": cr9aa_mdfcount !="" || cr9aa_mdfcount === "0" ? Number(cr9aa_mdfcount) : -1,
-        "cr9aa_mdfsentratesab109": cr9aa_mdfsentratesab109 !="" || cr9aa_mdfsentratesab109 === "0" ? Number(cr9aa_mdfsentratesab109) : -1,
-        "cr9aa_mdfsentratesab109female": cr9aa_mdfsentratesab109female !="" || cr9aa_mdfsentratesab109female === "0" ? Number(cr9aa_mdfsentratesab109female) : -1,
-        "cr9aa_mdfsentratesab1093056paroleholds": cr9aa_mdfsentratesab1093056paroleholds !="" || cr9aa_mdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_mdfsentratesab1093056comm": cr9aa_mdfsentratesab1093056comm !="" || cr9aa_mdfsentratesab1093056comm === "0" ? Number(cr9aa_mdfsentratesab1093056comm) : -1,
-        "cr9aa_mdfsentratesab109prisonjailcomm1170": cr9aa_mdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_mdfsentratestotal3056holdscomm": cr9aa_mdfsentratestotal3056holdscomm !="" || cr9aa_mdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_mdfsentratestotal1170comm": cr9aa_mdfsentratestotal1170comm !="" || cr9aa_mdfsentratestotal1170comm === "0" ? Number(cr9aa_mdfsentratestotal1170comm) : -1,
-        "cr9aa_wcdfcount": cr9aa_wcdfcount !="" || cr9aa_wcdfcount === "0" ? Number(cr9aa_wcdfcount) : -1,
-        "cr9aa_wcdfsentratesab109": cr9aa_wcdfsentratesab109 !="" || cr9aa_wcdfsentratesab109 === "0" ? Number(cr9aa_wcdfsentratesab109) : -1,
-        "cr9aa_wcdfsentratesab109female": cr9aa_wcdfsentratesab109female !="" || cr9aa_wcdfsentratesab109female === "0" ? Number(cr9aa_wcdfsentratesab109female) : -1,
-        "cr9aa_wcdfsentratesab1093056paroleholds": cr9aa_wcdfsentratesab1093056paroleholds !="" || cr9aa_wcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_wcdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_wcdfsentratesab1093056comm": cr9aa_wcdfsentratesab1093056comm !="" || cr9aa_wcdfsentratesab1093056comm === "0" ? Number(cr9aa_wcdfsentratesab1093056comm) : -1,
-        "cr9aa_wcdfsentratesab109prisonjailcomm1170": cr9aa_wcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_wcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_wcdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_wcdfsentratestotal3056holdscomm": cr9aa_wcdfsentratestotal3056holdscomm !="" || cr9aa_wcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_wcdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_wcdfsentratestotal1170comm": cr9aa_wcdfsentratestotal1170comm !="" || cr9aa_wcdfsentratestotal1170comm === "0" ? Number(cr9aa_wcdfsentratestotal1170comm) : -1,
-        "cr9aa_mcdfcount": cr9aa_mcdfcount !="" || cr9aa_mcdfcount === "0" ? Number(cr9aa_mcdfcount) : -1,
-        "cr9aa_mcdfsentratesab109": cr9aa_mcdfsentratesab109 !="" || cr9aa_mcdfsentratesab109 === "0" ? Number(cr9aa_mcdfsentratesab109) : -1,
-        "cr9aa_mcdfsentratesab109female": cr9aa_mcdfsentratesab109female !="" || cr9aa_mcdfsentratesab109female === "0" ? Number(cr9aa_mcdfsentratesab109female) : -1,
-        "cr9aa_mcdfsentratesab1093056paroleholds": cr9aa_mcdfsentratesab1093056paroleholds !="" || cr9aa_mcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mcdfsentratesab1093056paroleholds) : -1,
-        "cr9aa_mcdfsentratesab1093056comm": cr9aa_mcdfsentratesab1093056comm !="" || cr9aa_mcdfsentratesab1093056comm === "0" ? Number(cr9aa_mcdfsentratesab1093056comm) : -1,
-        "cr9aa_mcdfsentratesab109prisonjailcomm1170": cr9aa_mcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mcdfsentratesab109prisonjailcomm1170) : -1,
-        "cr9aa_mcdfsentratestotal3056holdscomm": cr9aa_mcdfsentratestotal3056holdscomm !="" || cr9aa_mcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mcdfsentratestotal3056holdscomm) : -1,
-        "cr9aa_mcdfsentratestotal1170comm": cr9aa_mcdfsentratestotal1170comm !="" || cr9aa_mcdfsentratestotal1170comm === "0" ? Number(cr9aa_mcdfsentratestotal1170comm) : -1,
-        "cr9aa_overallfacilitiescountaverage": cr9aa_overallfacilitiescountaverage !="" || cr9aa_overallfacilitiescountaverage === "0" ? Number(cr9aa_overallfacilitiescountaverage) : -1,
-        "cr9aa_overallfacilitiesab109average": cr9aa_overallfacilitiesab109average !="" || cr9aa_overallfacilitiesab109average === "0" ? Number(cr9aa_overallfacilitiesab109average) : -1,
-        "cr9aa_overallfacilitiesab109femaleaverage": cr9aa_overallfacilitiesab109femaleaverage !="" || cr9aa_overallfacilitiesab109femaleaverage === "0" ? Number(cr9aa_overallfacilitiesab109femaleaverage) : -1,
-        "cr9aa_overallfacilitiesab1093056paroleholdsaver": cr9aa_overallfacilitiesab1093056paroleholdsaver !="" || cr9aa_overallfacilitiesab1093056paroleholdsaver === "0" ? Number(cr9aa_overallfacilitiesab1093056paroleholdsaver) : -1,
-        "cr9aa_overallfacilitiesab1093056commavg": cr9aa_overallfacilitiesab1093056commavg !="" || cr9aa_overallfacilitiesab1093056commavg === "0" ? Number(cr9aa_overallfacilitiesab1093056commavg) : -1,
-        "cr9aa_overallfacilitiesab109prisonjailcomm1170a": cr9aa_overallfacilitiesab109prisonjailcomm1170a !="" || cr9aa_overallfacilitiesab109prisonjailcomm1170a === "0" ? Number(cr9aa_overallfacilitiesab109prisonjailcomm1170a) : -1,
-        "cr9aa_overallfacilitiestotal3056holdscommtal": cr9aa_overallfacilitiestotal3056holdscommtal !="" || cr9aa_overallfacilitiestotal3056holdscommtal === "0" ? Number(cr9aa_overallfacilitiestotal3056holdscommtal) : -1,
-        "cr9aa_overallfacilitiestotal1170commtal": cr9aa_overallfacilitiestotal1170commtal !="" || cr9aa_overallfacilitiestotal1170commtal === "0" ? Number(cr9aa_overallfacilitiestotal1170commtal) : -1,
-        "cr9aa_overallfacilities1110haveragedaysincust": cr9aa_overallfacilities1110haveragedaysincust !="" || cr9aa_overallfacilities1110haveragedaysincust === "0" ? Number(cr9aa_overallfacilities1110haveragedaysincust) : -1,
-        "cr9aa_overallfacilitiesparolesentaveragedaysin": cr9aa_overallfacilitiesparolesentaveragedaysin !="" || cr9aa_overallfacilitiesparolesentaveragedaysin === "0" ? Number(cr9aa_overallfacilitiesparolesentaveragedaysin) : -1,
-        "cr9aa_overallfacilitiesparoleholdsdroppedavgday": cr9aa_overallfacilitiesparoleholdsdroppedavgday !="" || cr9aa_overallfacilitiesparoleholdsdroppedavgday === "0" ? Number(cr9aa_overallfacilitiesparoleholdsdroppedavgday) : -1,
-        "cr9aa_othercustdatagangmembersavg": cr9aa_othercustdatagangmembersavg !="" || cr9aa_othercustdatagangmembersavg === "0" ? Number(cr9aa_othercustdatagangmembersavg) : -1,
-        "cr9aa_othercustdataprotectivecustinmatesavg": cr9aa_othercustdataprotectivecustinmatesavg !="" || cr9aa_othercustdataprotectivecustinmatesavg === "0" ? Number(cr9aa_othercustdataprotectivecustinmatesavg) : -1,
-        "cr9aa_othercustdatapc187inmatesavg": cr9aa_othercustdatapc187inmatesavg !="" || cr9aa_othercustdatapc187inmatesavg === "0" ? Number(cr9aa_othercustdatapc187inmatesavg) : -1,
-        "cr9aa_othercustdatamentalhealthinmatestal": cr9aa_othercustdatamentalhealthinmatestal !="" || cr9aa_othercustdatamentalhealthinmatestal === "0" ? Number(cr9aa_othercustdatamentalhealthinmatestal) : -1,
-        "cr9aa_othercustdatamedicalinmatesavg": cr9aa_othercustdatamedicalinmatesavg !="" || cr9aa_othercustdatamedicalinmatesavg === "0" ? Number(cr9aa_othercustdatamedicalinmatesavg) : -1,
-        "cr9aa_othercustdataprcsocwholdstal": cr9aa_othercustdataprcsocwholdstal !="" || cr9aa_othercustdataprcsocwholdstal === "0" ? Number(cr9aa_othercustdataprcsocwholdstal) : -1,
-        "cr9aa_othercustdataflashincarcerations3454pctal": cr9aa_othercustdataflashincarcerations3454pctal !="" || cr9aa_othercustdataflashincarcerations3454pctal === "0" ? Number(cr9aa_othercustdataflashincarcerations3454pctal) : -1,
-        "cr9aa_othercustdataprcsviolations3455pctal": cr9aa_othercustdataprcsviolations3455pctal !="" || cr9aa_othercustdataprcsviolations3455pctal === "0" ? Number(cr9aa_othercustdataprcsviolations3455pctal) : -1,
-        "cr9aa_othercustdataprcsholds3453pctal": cr9aa_othercustdataprcsholds3453pctal !="" || cr9aa_othercustdataprcsholds3453pctal === "0" ? Number(cr9aa_othercustdataprcsholds3453pctal) : -1,
-        "cr9aa_othercustdataparoleholdstal": cr9aa_othercustdataparoleholdstal !="" || cr9aa_othercustdataparoleholdstal === "0" ? Number(cr9aa_othercustdataparoleholdstal) : -1,
-        "cr9aa_othercustdataparolecommtal": cr9aa_othercustdataparolecommtal !="" || cr9aa_othercustdataparolecommtal === "0" ? Number(cr9aa_othercustdataparolecommtal) : -1,
-        "cr9aa_othercustdataparoleviolationavgdaysincust": cr9aa_othercustdataparoleviolationavgdaysincust !="" || cr9aa_othercustdataparoleviolationavgdaysincust === "0" ? Number(cr9aa_othercustdataparoleviolationavgdaysincust) : -1,
-        "cr9aa_othercustdata1170commtal": cr9aa_othercustdata1170commtal !="" || cr9aa_othercustdata1170commtal === "0" ? Number(cr9aa_othercustdata1170commtal) : -1,
-        "cr9aa_othercustdatalongest1170commitmenttal": cr9aa_othercustdatalongest1170commitmenttal !="" || cr9aa_othercustdatalongest1170commitmenttal === "0" ? Number(cr9aa_othercustdatalongest1170commitmenttal) : -1,
-        "cr9aa_othercustdatarecidivismrateavg": cr9aa_othercustdatarecidivismrateavg !="" || cr9aa_othercustdatarecidivismrateavg === "0" ? Number(cr9aa_othercustdatarecidivismrateavg) : -1,
-        "cr9aa_mwpnumenrolled": cr9aa_mwpnumenrolled !="" || cr9aa_mwpnumenrolled === "0" ? Number(cr9aa_mwpnumenrolled) : -1,
-        "cr9aa_mwpnumcompletedprogreqs": cr9aa_mwpnumcompletedprogreqs !="" || cr9aa_mwpnumcompletedprogreqs === "0" ? Number(cr9aa_mwpnumcompletedprogreqs) : -1,
-        "cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg) : -1,
-        "cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg) : -1,
-        "cr9aa_mwpnummenattendedmdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmdfweeklymeetingsonavg) : -1,
-        "cr9aa_reachnumwomenenrolled": cr9aa_reachnumwomenenrolled !="" || cr9aa_reachnumwomenenrolled === "0" ? Number(cr9aa_reachnumwomenenrolled) : -1,
-        "cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg": cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg !="" || cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg === "0" ? Number(cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
-
-
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-  
-          toastr.success(
-            '',
-            'Data Updated Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-  
-        }
-      }); {%endif %}
-  
-  
+  function submitOrSave(flag) {
+    var submitStatus = "";
+    if (flag == "save") {
+      submitStatus = "In Progress";
+    } else {
+      submitStatus = "Submitted";
     }
-  </script>
+
+    $(".loading").show();
+
+    var cr9aa_bookingsnummdf1bookings= $("#cr9aa_bookingsnummdf1bookings").val().trim();
+      var cr9aa_bookingsnumcaf2bookings= $("#cr9aa_bookingsnumcaf2bookings").val().trim();
+      var cr9aa_bookingsnumpretrialprogrelease= $("#cr9aa_bookingsnumpretrialprogrelease").val().trim();
+      var cr9aa_bookingsciterelease= $("#cr9aa_bookingsciterelease").val().trim();
+      var cr9aa_bookingsreleaseor= $("#cr9aa_bookingsreleaseor").val().trim();
+      var cr9aa_bookingspc849nocharge= $("#cr9aa_bookingspc849nocharge").val().trim();
+      var cr9aa_cafcountaverageforthereportingperiod= $("#cr9aa_cafcountaverageforthereportingperiod").val().trim();
+      var cr9aa_cafsentratesab109= $("#cr9aa_cafsentratesab109").val().trim();
+      var cr9aa_cafsentratesab109female= $("#cr9aa_cafsentratesab109female").val().trim();
+      var cr9aa_cafsentratesab1093056paroleholds= $("#cr9aa_cafsentratesab1093056paroleholds").val().trim();
+      var cr9aa_cafsentratesab1093056comm= $("#cr9aa_cafsentratesab1093056comm").val().trim();
+      var cr9aa_cafsentratesab109prisonjailcomm1170= $("#cr9aa_cafsentratesab109prisonjailcomm1170").val().trim();
+      var cr9aa_cafsentratestotal3056holdscomm= $("#cr9aa_cafsentratestotal3056holdscomm").val().trim();
+      var cr9aa_cafsentratestotal1170comm= $("#cr9aa_cafsentratestotal1170comm").val().trim();
+      var cr9aa_mdfcount= $("#cr9aa_mdfcount").val().trim();
+      var cr9aa_mdfsentratesab109= $("#cr9aa_mdfsentratesab109").val().trim();
+      var cr9aa_mdfsentratesab109female= $("#cr9aa_mdfsentratesab109female").val().trim();
+      var cr9aa_mdfsentratesab1093056paroleholds= $("#cr9aa_mdfsentratesab1093056paroleholds").val().trim();
+      var cr9aa_mdfsentratesab1093056comm= $("#cr9aa_mdfsentratesab1093056comm").val().trim();
+      var cr9aa_mdfsentratesab109prisonjailcomm1170= $("#cr9aa_mdfsentratesab109prisonjailcomm1170").val().trim();
+      var cr9aa_mdfsentratestotal3056holdscomm= $("#cr9aa_mdfsentratestotal3056holdscomm").val().trim();
+      var cr9aa_mdfsentratestotal1170comm= $("#cr9aa_mdfsentratestotal1170comm").val().trim();
+      var cr9aa_wcdfcount= $("#cr9aa_wcdfcount").val().trim();
+      var cr9aa_wcdfsentratesab109= $("#cr9aa_wcdfsentratesab109").val().trim();
+      var cr9aa_wcdfsentratesab109female= $("#cr9aa_wcdfsentratesab109female").val().trim();
+      var cr9aa_wcdfsentratesab1093056paroleholds= $("#cr9aa_wcdfsentratesab1093056paroleholds").val().trim();
+      var cr9aa_wcdfsentratesab1093056comm= $("#cr9aa_wcdfsentratesab1093056comm").val().trim();
+      var cr9aa_wcdfsentratesab109prisonjailcomm1170= $("#cr9aa_wcdfsentratesab109prisonjailcomm1170").val().trim();
+      var cr9aa_wcdfsentratestotal3056holdscomm= $("#cr9aa_wcdfsentratestotal3056holdscomm").val().trim();
+      var cr9aa_wcdfsentratestotal1170comm= $("#cr9aa_wcdfsentratestotal1170comm").val().trim();
+      var cr9aa_mcdfcount= $("#cr9aa_mcdfcount").val().trim();
+      var cr9aa_mcdfsentratesab109= $("#cr9aa_mcdfsentratesab109").val().trim();
+      var cr9aa_mcdfsentratesab109female= $("#cr9aa_mcdfsentratesab109female").val().trim();
+      var cr9aa_mcdfsentratesab1093056paroleholds= $("#cr9aa_mcdfsentratesab1093056paroleholds").val().trim();
+      var cr9aa_mcdfsentratesab1093056comm= $("#cr9aa_mcdfsentratesab1093056comm").val().trim();
+      var cr9aa_mcdfsentratesab109prisonjailcomm1170= $("#cr9aa_mcdfsentratesab109prisonjailcomm1170").val().trim();
+      var cr9aa_mcdfsentratestotal3056holdscomm= $("#cr9aa_mcdfsentratestotal3056holdscomm").val().trim();
+      var cr9aa_mcdfsentratestotal1170comm= $("#cr9aa_mcdfsentratestotal1170comm").val().trim();
+      var cr9aa_overallfacilitiescountaverage= $("#cr9aa_overallfacilitiescountaverage").val().trim();
+      var cr9aa_overallfacilitiesab109average= $("#cr9aa_overallfacilitiesab109average").val().trim();
+      var cr9aa_overallfacilitiesab109femaleaverage= $("#cr9aa_overallfacilitiesab109femaleaverage").val().trim();
+      var cr9aa_overallfacilitiesab1093056paroleholdsaver= $("#cr9aa_overallfacilitiesab1093056paroleholdsaver").val().trim();
+      var cr9aa_overallfacilitiesab1093056commavg= $("#cr9aa_overallfacilitiesab1093056commavg").val().trim();
+      var cr9aa_overallfacilitiesab109prisonjailcomm1170a= $("#cr9aa_overallfacilitiesab109prisonjailcomm1170a").val().trim();
+      var cr9aa_overallfacilitiestotal3056holdscommtal= $("#cr9aa_overallfacilitiestotal3056holdscommtal").val().trim();
+      var cr9aa_overallfacilitiestotal1170commtal= $("#cr9aa_overallfacilitiestotal1170commtal").val().trim();
+      var cr9aa_overallfacilities1110haveragedaysincust= $("#cr9aa_overallfacilities1110haveragedaysincust").val().trim();
+      var cr9aa_overallfacilitiesparolesentaveragedaysin= $("#cr9aa_overallfacilitiesparolesentaveragedaysin").val().trim();
+      var cr9aa_overallfacilitiesparoleholdsdroppedavgday= $("#cr9aa_overallfacilitiesparoleholdsdroppedavgday").val().trim();
+      var cr9aa_othercustdatagangmembersavg= $("#cr9aa_othercustdatagangmembersavg").val().trim();
+      var cr9aa_othercustdataprotectivecustinmatesavg= $("#cr9aa_othercustdataprotectivecustinmatesavg").val().trim();
+      var cr9aa_othercustdatapc187inmatesavg= $("#cr9aa_othercustdatapc187inmatesavg").val().trim();
+      var cr9aa_othercustdatamentalhealthinmatestal= $("#cr9aa_othercustdatamentalhealthinmatestal").val().trim();
+      var cr9aa_othercustdatamedicalinmatesavg= $("#cr9aa_othercustdatamedicalinmatesavg").val().trim();
+      var cr9aa_othercustdataprcsocwholdstal= $("#cr9aa_othercustdataprcsocwholdstal").val().trim();
+      var cr9aa_othercustdataflashincarcerations3454pctal= $("#cr9aa_othercustdataflashincarcerations3454pctal").val().trim();
+      var cr9aa_othercustdataprcsviolations3455pctal= $("#cr9aa_othercustdataprcsviolations3455pctal").val().trim();
+      var cr9aa_othercustdataprcsholds3453pctal= $("#cr9aa_othercustdataprcsholds3453pctal").val().trim();
+      var cr9aa_othercustdataparoleholdstal= $("#cr9aa_othercustdataparoleholdstal").val().trim();
+      var cr9aa_othercustdataparolecommtal= $("#cr9aa_othercustdataparolecommtal").val().trim();
+      var cr9aa_othercustdataparoleviolationavgdaysincust= $("#cr9aa_othercustdataparoleviolationavgdaysincust").val().trim();
+      var cr9aa_othercustdata1170commtal= $("#cr9aa_othercustdata1170commtal").val().trim();
+      var cr9aa_othercustdatalongest1170commitmenttal= $("#cr9aa_othercustdatalongest1170commitmenttal").val().trim();
+      var cr9aa_othercustdatarecidivismrateavg= $("#cr9aa_othercustdatarecidivismrateavg").val().trim();
+      var cr9aa_mwpnumenrolled= $("#cr9aa_mwpnumenrolled").val().trim();
+      var cr9aa_mwpnumcompletedprogreqs= $("#cr9aa_mwpnumcompletedprogreqs").val().trim();
+      var cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg").val().trim();
+      var cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg").val().trim();
+      var cr9aa_mwpnummenattendedmdfweeklymeetingsonavg= $("#cr9aa_mwpnummenattendedmdfweeklymeetingsonavg").val().trim();
+      var cr9aa_reachnumwomenenrolled= $("#cr9aa_reachnumwomenenrolled").val().trim();
+      var cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg= $("#cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg").val().trim();
+    var crdae_sectionone = $("#crdae_sectionone").val().trim();
+    var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+    var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+    var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+    var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+    
+
+    {% if recordCount == 0 %}
+    webapi.safeAjax({
+      type: "POST",
+      url: "/_api/cr9aa_sherrifsoffices",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_bookingsnummdf1bookings": cr9aa_bookingsnummdf1bookings !="" || cr9aa_bookingsnummdf1bookings === "0" ? Number(cr9aa_bookingsnummdf1bookings) : -1,
+      "cr9aa_bookingsnumcaf2bookings": cr9aa_bookingsnumcaf2bookings !="" || cr9aa_bookingsnumcaf2bookings === "0" ? Number(cr9aa_bookingsnumcaf2bookings) : -1,
+      "cr9aa_bookingsnumpretrialprogrelease": cr9aa_bookingsnumpretrialprogrelease !="" || cr9aa_bookingsnumpretrialprogrelease === "0" ? Number(cr9aa_bookingsnumpretrialprogrelease) : -1,
+      "cr9aa_bookingsciterelease": cr9aa_bookingsciterelease !="" || cr9aa_bookingsciterelease === "0" ? Number(cr9aa_bookingsciterelease) : -1,
+      "cr9aa_bookingsreleaseor": cr9aa_bookingsreleaseor !="" || cr9aa_bookingsreleaseor === "0" ? Number(cr9aa_bookingsreleaseor) : -1,
+      "cr9aa_bookingspc849nocharge": cr9aa_bookingspc849nocharge !="" || cr9aa_bookingspc849nocharge === "0" ? Number(cr9aa_bookingspc849nocharge) : -1,
+      "cr9aa_cafcountaverageforthereportingperiod": cr9aa_cafcountaverageforthereportingperiod !="" || cr9aa_cafcountaverageforthereportingperiod === "0" ? Number(cr9aa_cafcountaverageforthereportingperiod) : -1,
+      "cr9aa_cafsentratesab109": cr9aa_cafsentratesab109 !="" || cr9aa_cafsentratesab109 === "0" ? Number(cr9aa_cafsentratesab109) : -1,
+      "cr9aa_cafsentratesab109female": cr9aa_cafsentratesab109female !="" || cr9aa_cafsentratesab109female === "0" ? Number(cr9aa_cafsentratesab109female) : -1,
+      "cr9aa_cafsentratesab1093056paroleholds": cr9aa_cafsentratesab1093056paroleholds !="" || cr9aa_cafsentratesab1093056paroleholds === "0" ? Number(cr9aa_cafsentratesab1093056paroleholds) : -1,
+      "cr9aa_cafsentratesab1093056comm": cr9aa_cafsentratesab1093056comm !="" || cr9aa_cafsentratesab1093056comm === "0" ? Number(cr9aa_cafsentratesab1093056comm) : -1,
+      "cr9aa_cafsentratesab109prisonjailcomm1170": cr9aa_cafsentratesab109prisonjailcomm1170 !="" || cr9aa_cafsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_cafsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_cafsentratestotal3056holdscomm": cr9aa_cafsentratestotal3056holdscomm !="" || cr9aa_cafsentratestotal3056holdscomm === "0" ? Number(cr9aa_cafsentratestotal3056holdscomm) : -1,
+      "cr9aa_cafsentratestotal1170comm": cr9aa_cafsentratestotal1170comm !="" || cr9aa_cafsentratestotal1170comm === "0" ? Number(cr9aa_cafsentratestotal1170comm) : -1,
+      "cr9aa_mdfcount": cr9aa_mdfcount !="" || cr9aa_mdfcount === "0" ? Number(cr9aa_mdfcount) : -1,
+      "cr9aa_mdfsentratesab109": cr9aa_mdfsentratesab109 !="" || cr9aa_mdfsentratesab109 === "0" ? Number(cr9aa_mdfsentratesab109) : -1,
+      "cr9aa_mdfsentratesab109female": cr9aa_mdfsentratesab109female !="" || cr9aa_mdfsentratesab109female === "0" ? Number(cr9aa_mdfsentratesab109female) : -1,
+      "cr9aa_mdfsentratesab1093056paroleholds": cr9aa_mdfsentratesab1093056paroleholds !="" || cr9aa_mdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_mdfsentratesab1093056comm": cr9aa_mdfsentratesab1093056comm !="" || cr9aa_mdfsentratesab1093056comm === "0" ? Number(cr9aa_mdfsentratesab1093056comm) : -1,
+      "cr9aa_mdfsentratesab109prisonjailcomm1170": cr9aa_mdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_mdfsentratestotal3056holdscomm": cr9aa_mdfsentratestotal3056holdscomm !="" || cr9aa_mdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_mdfsentratestotal1170comm": cr9aa_mdfsentratestotal1170comm !="" || cr9aa_mdfsentratestotal1170comm === "0" ? Number(cr9aa_mdfsentratestotal1170comm) : -1,
+      "cr9aa_wcdfcount": cr9aa_wcdfcount !="" || cr9aa_wcdfcount === "0" ? Number(cr9aa_wcdfcount) : -1,
+      "cr9aa_wcdfsentratesab109": cr9aa_wcdfsentratesab109 !="" || cr9aa_wcdfsentratesab109 === "0" ? Number(cr9aa_wcdfsentratesab109) : -1,
+      "cr9aa_wcdfsentratesab109female": cr9aa_wcdfsentratesab109female !="" || cr9aa_wcdfsentratesab109female === "0" ? Number(cr9aa_wcdfsentratesab109female) : -1,
+      "cr9aa_wcdfsentratesab1093056paroleholds": cr9aa_wcdfsentratesab1093056paroleholds !="" || cr9aa_wcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_wcdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_wcdfsentratesab1093056comm": cr9aa_wcdfsentratesab1093056comm !="" || cr9aa_wcdfsentratesab1093056comm === "0" ? Number(cr9aa_wcdfsentratesab1093056comm) : -1,
+      "cr9aa_wcdfsentratesab109prisonjailcomm1170": cr9aa_wcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_wcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_wcdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_wcdfsentratestotal3056holdscomm": cr9aa_wcdfsentratestotal3056holdscomm !="" || cr9aa_wcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_wcdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_wcdfsentratestotal1170comm": cr9aa_wcdfsentratestotal1170comm !="" || cr9aa_wcdfsentratestotal1170comm === "0" ? Number(cr9aa_wcdfsentratestotal1170comm) : -1,
+      "cr9aa_mcdfcount": cr9aa_mcdfcount !="" || cr9aa_mcdfcount === "0" ? Number(cr9aa_mcdfcount) : -1,
+      "cr9aa_mcdfsentratesab109": cr9aa_mcdfsentratesab109 !="" || cr9aa_mcdfsentratesab109 === "0" ? Number(cr9aa_mcdfsentratesab109) : -1,
+      "cr9aa_mcdfsentratesab109female": cr9aa_mcdfsentratesab109female !="" || cr9aa_mcdfsentratesab109female === "0" ? Number(cr9aa_mcdfsentratesab109female) : -1,
+      "cr9aa_mcdfsentratesab1093056paroleholds": cr9aa_mcdfsentratesab1093056paroleholds !="" || cr9aa_mcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mcdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_mcdfsentratesab1093056comm": cr9aa_mcdfsentratesab1093056comm !="" || cr9aa_mcdfsentratesab1093056comm === "0" ? Number(cr9aa_mcdfsentratesab1093056comm) : -1,
+      "cr9aa_mcdfsentratesab109prisonjailcomm1170": cr9aa_mcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mcdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_mcdfsentratestotal3056holdscomm": cr9aa_mcdfsentratestotal3056holdscomm !="" || cr9aa_mcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mcdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_mcdfsentratestotal1170comm": cr9aa_mcdfsentratestotal1170comm !="" || cr9aa_mcdfsentratestotal1170comm === "0" ? Number(cr9aa_mcdfsentratestotal1170comm) : -1,
+      "cr9aa_overallfacilitiescountaverage": cr9aa_overallfacilitiescountaverage !="" || cr9aa_overallfacilitiescountaverage === "0" ? Number(cr9aa_overallfacilitiescountaverage) : -1,
+      "cr9aa_overallfacilitiesab109average": cr9aa_overallfacilitiesab109average !="" || cr9aa_overallfacilitiesab109average === "0" ? Number(cr9aa_overallfacilitiesab109average) : -1,
+      "cr9aa_overallfacilitiesab109femaleaverage": cr9aa_overallfacilitiesab109femaleaverage !="" || cr9aa_overallfacilitiesab109femaleaverage === "0" ? Number(cr9aa_overallfacilitiesab109femaleaverage) : -1,
+      "cr9aa_overallfacilitiesab1093056paroleholdsaver": cr9aa_overallfacilitiesab1093056paroleholdsaver !="" || cr9aa_overallfacilitiesab1093056paroleholdsaver === "0" ? Number(cr9aa_overallfacilitiesab1093056paroleholdsaver) : -1,
+      "cr9aa_overallfacilitiesab1093056commavg": cr9aa_overallfacilitiesab1093056commavg !="" || cr9aa_overallfacilitiesab1093056commavg === "0" ? Number(cr9aa_overallfacilitiesab1093056commavg) : -1,
+      "cr9aa_overallfacilitiesab109prisonjailcomm1170a": cr9aa_overallfacilitiesab109prisonjailcomm1170a !="" || cr9aa_overallfacilitiesab109prisonjailcomm1170a === "0" ? Number(cr9aa_overallfacilitiesab109prisonjailcomm1170a) : -1,
+      "cr9aa_overallfacilitiestotal3056holdscommtal": cr9aa_overallfacilitiestotal3056holdscommtal !="" || cr9aa_overallfacilitiestotal3056holdscommtal === "0" ? Number(cr9aa_overallfacilitiestotal3056holdscommtal) : -1,
+      "cr9aa_overallfacilitiestotal1170commtal": cr9aa_overallfacilitiestotal1170commtal !="" || cr9aa_overallfacilitiestotal1170commtal === "0" ? Number(cr9aa_overallfacilitiestotal1170commtal) : -1,
+      "cr9aa_overallfacilities1110haveragedaysincust": cr9aa_overallfacilities1110haveragedaysincust !="" || cr9aa_overallfacilities1110haveragedaysincust === "0" ? Number(cr9aa_overallfacilities1110haveragedaysincust) : -1,
+      "cr9aa_overallfacilitiesparolesentaveragedaysin": cr9aa_overallfacilitiesparolesentaveragedaysin !="" || cr9aa_overallfacilitiesparolesentaveragedaysin === "0" ? Number(cr9aa_overallfacilitiesparolesentaveragedaysin) : -1,
+      "cr9aa_overallfacilitiesparoleholdsdroppedavgday": cr9aa_overallfacilitiesparoleholdsdroppedavgday !="" || cr9aa_overallfacilitiesparoleholdsdroppedavgday === "0" ? Number(cr9aa_overallfacilitiesparoleholdsdroppedavgday) : -1,
+      "cr9aa_othercustdatagangmembersavg": cr9aa_othercustdatagangmembersavg !="" || cr9aa_othercustdatagangmembersavg === "0" ? Number(cr9aa_othercustdatagangmembersavg) : -1,
+      "cr9aa_othercustdataprotectivecustinmatesavg": cr9aa_othercustdataprotectivecustinmatesavg !="" || cr9aa_othercustdataprotectivecustinmatesavg === "0" ? Number(cr9aa_othercustdataprotectivecustinmatesavg) : -1,
+      "cr9aa_othercustdatapc187inmatesavg": cr9aa_othercustdatapc187inmatesavg !="" || cr9aa_othercustdatapc187inmatesavg === "0" ? Number(cr9aa_othercustdatapc187inmatesavg) : -1,
+      "cr9aa_othercustdatamentalhealthinmatestal": cr9aa_othercustdatamentalhealthinmatestal !="" || cr9aa_othercustdatamentalhealthinmatestal === "0" ? Number(cr9aa_othercustdatamentalhealthinmatestal) : -1,
+      "cr9aa_othercustdatamedicalinmatesavg": cr9aa_othercustdatamedicalinmatesavg !="" || cr9aa_othercustdatamedicalinmatesavg === "0" ? Number(cr9aa_othercustdatamedicalinmatesavg) : -1,
+      "cr9aa_othercustdataprcsocwholdstal": cr9aa_othercustdataprcsocwholdstal !="" || cr9aa_othercustdataprcsocwholdstal === "0" ? Number(cr9aa_othercustdataprcsocwholdstal) : -1,
+      "cr9aa_othercustdataflashincarcerations3454pctal": cr9aa_othercustdataflashincarcerations3454pctal !="" || cr9aa_othercustdataflashincarcerations3454pctal === "0" ? Number(cr9aa_othercustdataflashincarcerations3454pctal) : -1,
+      "cr9aa_othercustdataprcsviolations3455pctal": cr9aa_othercustdataprcsviolations3455pctal !="" || cr9aa_othercustdataprcsviolations3455pctal === "0" ? Number(cr9aa_othercustdataprcsviolations3455pctal) : -1,
+      "cr9aa_othercustdataprcsholds3453pctal": cr9aa_othercustdataprcsholds3453pctal !="" || cr9aa_othercustdataprcsholds3453pctal === "0" ? Number(cr9aa_othercustdataprcsholds3453pctal) : -1,
+      "cr9aa_othercustdataparoleholdstal": cr9aa_othercustdataparoleholdstal !="" || cr9aa_othercustdataparoleholdstal === "0" ? Number(cr9aa_othercustdataparoleholdstal) : -1,
+      "cr9aa_othercustdataparolecommtal": cr9aa_othercustdataparolecommtal !="" || cr9aa_othercustdataparolecommtal === "0" ? Number(cr9aa_othercustdataparolecommtal) : -1,
+      "cr9aa_othercustdataparoleviolationavgdaysincust": cr9aa_othercustdataparoleviolationavgdaysincust !="" || cr9aa_othercustdataparoleviolationavgdaysincust === "0" ? Number(cr9aa_othercustdataparoleviolationavgdaysincust) : -1,
+      "cr9aa_othercustdata1170commtal": cr9aa_othercustdata1170commtal !="" || cr9aa_othercustdata1170commtal === "0" ? Number(cr9aa_othercustdata1170commtal) : -1,
+      "cr9aa_othercustdatalongest1170commitmenttal": cr9aa_othercustdatalongest1170commitmenttal !="" || cr9aa_othercustdatalongest1170commitmenttal === "0" ? Number(cr9aa_othercustdatalongest1170commitmenttal) : -1,
+      "cr9aa_othercustdatarecidivismrateavg": cr9aa_othercustdatarecidivismrateavg !="" || cr9aa_othercustdatarecidivismrateavg === "0" ? Number(cr9aa_othercustdatarecidivismrateavg) : -1,
+      "cr9aa_mwpnumenrolled": cr9aa_mwpnumenrolled !="" || cr9aa_mwpnumenrolled === "0" ? Number(cr9aa_mwpnumenrolled) : -1,
+      "cr9aa_mwpnumcompletedprogreqs": cr9aa_mwpnumcompletedprogreqs !="" || cr9aa_mwpnumcompletedprogreqs === "0" ? Number(cr9aa_mwpnumcompletedprogreqs) : -1,
+      "cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg) : -1,
+      "cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg) : -1,
+      "cr9aa_mwpnummenattendedmdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmdfweeklymeetingsonavg) : -1,
+      "cr9aa_reachnumwomenenrolled": cr9aa_reachnumwomenenrolled !="" || cr9aa_reachnumwomenenrolled === "0" ? Number(cr9aa_reachnumwomenenrolled) : -1,
+      "cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg": cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg !="" || cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg === "0" ? Number(cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+
+        
+
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+        toastr.success(
+          '',
+          'Data Inserted Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+      }
+    });
+
+    {% else %}
+
+    webapi.safeAjax({
+      type: "PATCH",
+      url: "/_api/cr9aa_sherrifsoffices({{myquery.results.entities[0].cr9aa_sherrifsofficeid}})",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_bookingsnummdf1bookings": cr9aa_bookingsnummdf1bookings !="" || cr9aa_bookingsnummdf1bookings === "0" ? Number(cr9aa_bookingsnummdf1bookings) : -1,
+      "cr9aa_bookingsnumcaf2bookings": cr9aa_bookingsnumcaf2bookings !="" || cr9aa_bookingsnumcaf2bookings === "0" ? Number(cr9aa_bookingsnumcaf2bookings) : -1,
+      "cr9aa_bookingsnumpretrialprogrelease": cr9aa_bookingsnumpretrialprogrelease !="" || cr9aa_bookingsnumpretrialprogrelease === "0" ? Number(cr9aa_bookingsnumpretrialprogrelease) : -1,
+      "cr9aa_bookingsciterelease": cr9aa_bookingsciterelease !="" || cr9aa_bookingsciterelease === "0" ? Number(cr9aa_bookingsciterelease) : -1,
+      "cr9aa_bookingsreleaseor": cr9aa_bookingsreleaseor !="" || cr9aa_bookingsreleaseor === "0" ? Number(cr9aa_bookingsreleaseor) : -1,
+      "cr9aa_bookingspc849nocharge": cr9aa_bookingspc849nocharge !="" || cr9aa_bookingspc849nocharge === "0" ? Number(cr9aa_bookingspc849nocharge) : -1,
+      "cr9aa_cafcountaverageforthereportingperiod": cr9aa_cafcountaverageforthereportingperiod !="" || cr9aa_cafcountaverageforthereportingperiod === "0" ? Number(cr9aa_cafcountaverageforthereportingperiod) : -1,
+      "cr9aa_cafsentratesab109": cr9aa_cafsentratesab109 !="" || cr9aa_cafsentratesab109 === "0" ? Number(cr9aa_cafsentratesab109) : -1,
+      "cr9aa_cafsentratesab109female": cr9aa_cafsentratesab109female !="" || cr9aa_cafsentratesab109female === "0" ? Number(cr9aa_cafsentratesab109female) : -1,
+      "cr9aa_cafsentratesab1093056paroleholds": cr9aa_cafsentratesab1093056paroleholds !="" || cr9aa_cafsentratesab1093056paroleholds === "0" ? Number(cr9aa_cafsentratesab1093056paroleholds) : -1,
+      "cr9aa_cafsentratesab1093056comm": cr9aa_cafsentratesab1093056comm !="" || cr9aa_cafsentratesab1093056comm === "0" ? Number(cr9aa_cafsentratesab1093056comm) : -1,
+      "cr9aa_cafsentratesab109prisonjailcomm1170": cr9aa_cafsentratesab109prisonjailcomm1170 !="" || cr9aa_cafsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_cafsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_cafsentratestotal3056holdscomm": cr9aa_cafsentratestotal3056holdscomm !="" || cr9aa_cafsentratestotal3056holdscomm === "0" ? Number(cr9aa_cafsentratestotal3056holdscomm) : -1,
+      "cr9aa_cafsentratestotal1170comm": cr9aa_cafsentratestotal1170comm !="" || cr9aa_cafsentratestotal1170comm === "0" ? Number(cr9aa_cafsentratestotal1170comm) : -1,
+      "cr9aa_mdfcount": cr9aa_mdfcount !="" || cr9aa_mdfcount === "0" ? Number(cr9aa_mdfcount) : -1,
+      "cr9aa_mdfsentratesab109": cr9aa_mdfsentratesab109 !="" || cr9aa_mdfsentratesab109 === "0" ? Number(cr9aa_mdfsentratesab109) : -1,
+      "cr9aa_mdfsentratesab109female": cr9aa_mdfsentratesab109female !="" || cr9aa_mdfsentratesab109female === "0" ? Number(cr9aa_mdfsentratesab109female) : -1,
+      "cr9aa_mdfsentratesab1093056paroleholds": cr9aa_mdfsentratesab1093056paroleholds !="" || cr9aa_mdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_mdfsentratesab1093056comm": cr9aa_mdfsentratesab1093056comm !="" || cr9aa_mdfsentratesab1093056comm === "0" ? Number(cr9aa_mdfsentratesab1093056comm) : -1,
+      "cr9aa_mdfsentratesab109prisonjailcomm1170": cr9aa_mdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_mdfsentratestotal3056holdscomm": cr9aa_mdfsentratestotal3056holdscomm !="" || cr9aa_mdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_mdfsentratestotal1170comm": cr9aa_mdfsentratestotal1170comm !="" || cr9aa_mdfsentratestotal1170comm === "0" ? Number(cr9aa_mdfsentratestotal1170comm) : -1,
+      "cr9aa_wcdfcount": cr9aa_wcdfcount !="" || cr9aa_wcdfcount === "0" ? Number(cr9aa_wcdfcount) : -1,
+      "cr9aa_wcdfsentratesab109": cr9aa_wcdfsentratesab109 !="" || cr9aa_wcdfsentratesab109 === "0" ? Number(cr9aa_wcdfsentratesab109) : -1,
+      "cr9aa_wcdfsentratesab109female": cr9aa_wcdfsentratesab109female !="" || cr9aa_wcdfsentratesab109female === "0" ? Number(cr9aa_wcdfsentratesab109female) : -1,
+      "cr9aa_wcdfsentratesab1093056paroleholds": cr9aa_wcdfsentratesab1093056paroleholds !="" || cr9aa_wcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_wcdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_wcdfsentratesab1093056comm": cr9aa_wcdfsentratesab1093056comm !="" || cr9aa_wcdfsentratesab1093056comm === "0" ? Number(cr9aa_wcdfsentratesab1093056comm) : -1,
+      "cr9aa_wcdfsentratesab109prisonjailcomm1170": cr9aa_wcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_wcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_wcdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_wcdfsentratestotal3056holdscomm": cr9aa_wcdfsentratestotal3056holdscomm !="" || cr9aa_wcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_wcdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_wcdfsentratestotal1170comm": cr9aa_wcdfsentratestotal1170comm !="" || cr9aa_wcdfsentratestotal1170comm === "0" ? Number(cr9aa_wcdfsentratestotal1170comm) : -1,
+      "cr9aa_mcdfcount": cr9aa_mcdfcount !="" || cr9aa_mcdfcount === "0" ? Number(cr9aa_mcdfcount) : -1,
+      "cr9aa_mcdfsentratesab109": cr9aa_mcdfsentratesab109 !="" || cr9aa_mcdfsentratesab109 === "0" ? Number(cr9aa_mcdfsentratesab109) : -1,
+      "cr9aa_mcdfsentratesab109female": cr9aa_mcdfsentratesab109female !="" || cr9aa_mcdfsentratesab109female === "0" ? Number(cr9aa_mcdfsentratesab109female) : -1,
+      "cr9aa_mcdfsentratesab1093056paroleholds": cr9aa_mcdfsentratesab1093056paroleholds !="" || cr9aa_mcdfsentratesab1093056paroleholds === "0" ? Number(cr9aa_mcdfsentratesab1093056paroleholds) : -1,
+      "cr9aa_mcdfsentratesab1093056comm": cr9aa_mcdfsentratesab1093056comm !="" || cr9aa_mcdfsentratesab1093056comm === "0" ? Number(cr9aa_mcdfsentratesab1093056comm) : -1,
+      "cr9aa_mcdfsentratesab109prisonjailcomm1170": cr9aa_mcdfsentratesab109prisonjailcomm1170 !="" || cr9aa_mcdfsentratesab109prisonjailcomm1170 === "0" ? Number(cr9aa_mcdfsentratesab109prisonjailcomm1170) : -1,
+      "cr9aa_mcdfsentratestotal3056holdscomm": cr9aa_mcdfsentratestotal3056holdscomm !="" || cr9aa_mcdfsentratestotal3056holdscomm === "0" ? Number(cr9aa_mcdfsentratestotal3056holdscomm) : -1,
+      "cr9aa_mcdfsentratestotal1170comm": cr9aa_mcdfsentratestotal1170comm !="" || cr9aa_mcdfsentratestotal1170comm === "0" ? Number(cr9aa_mcdfsentratestotal1170comm) : -1,
+      "cr9aa_overallfacilitiescountaverage": cr9aa_overallfacilitiescountaverage !="" || cr9aa_overallfacilitiescountaverage === "0" ? Number(cr9aa_overallfacilitiescountaverage) : -1,
+      "cr9aa_overallfacilitiesab109average": cr9aa_overallfacilitiesab109average !="" || cr9aa_overallfacilitiesab109average === "0" ? Number(cr9aa_overallfacilitiesab109average) : -1,
+      "cr9aa_overallfacilitiesab109femaleaverage": cr9aa_overallfacilitiesab109femaleaverage !="" || cr9aa_overallfacilitiesab109femaleaverage === "0" ? Number(cr9aa_overallfacilitiesab109femaleaverage) : -1,
+      "cr9aa_overallfacilitiesab1093056paroleholdsaver": cr9aa_overallfacilitiesab1093056paroleholdsaver !="" || cr9aa_overallfacilitiesab1093056paroleholdsaver === "0" ? Number(cr9aa_overallfacilitiesab1093056paroleholdsaver) : -1,
+      "cr9aa_overallfacilitiesab1093056commavg": cr9aa_overallfacilitiesab1093056commavg !="" || cr9aa_overallfacilitiesab1093056commavg === "0" ? Number(cr9aa_overallfacilitiesab1093056commavg) : -1,
+      "cr9aa_overallfacilitiesab109prisonjailcomm1170a": cr9aa_overallfacilitiesab109prisonjailcomm1170a !="" || cr9aa_overallfacilitiesab109prisonjailcomm1170a === "0" ? Number(cr9aa_overallfacilitiesab109prisonjailcomm1170a) : -1,
+      "cr9aa_overallfacilitiestotal3056holdscommtal": cr9aa_overallfacilitiestotal3056holdscommtal !="" || cr9aa_overallfacilitiestotal3056holdscommtal === "0" ? Number(cr9aa_overallfacilitiestotal3056holdscommtal) : -1,
+      "cr9aa_overallfacilitiestotal1170commtal": cr9aa_overallfacilitiestotal1170commtal !="" || cr9aa_overallfacilitiestotal1170commtal === "0" ? Number(cr9aa_overallfacilitiestotal1170commtal) : -1,
+      "cr9aa_overallfacilities1110haveragedaysincust": cr9aa_overallfacilities1110haveragedaysincust !="" || cr9aa_overallfacilities1110haveragedaysincust === "0" ? Number(cr9aa_overallfacilities1110haveragedaysincust) : -1,
+      "cr9aa_overallfacilitiesparolesentaveragedaysin": cr9aa_overallfacilitiesparolesentaveragedaysin !="" || cr9aa_overallfacilitiesparolesentaveragedaysin === "0" ? Number(cr9aa_overallfacilitiesparolesentaveragedaysin) : -1,
+      "cr9aa_overallfacilitiesparoleholdsdroppedavgday": cr9aa_overallfacilitiesparoleholdsdroppedavgday !="" || cr9aa_overallfacilitiesparoleholdsdroppedavgday === "0" ? Number(cr9aa_overallfacilitiesparoleholdsdroppedavgday) : -1,
+      "cr9aa_othercustdatagangmembersavg": cr9aa_othercustdatagangmembersavg !="" || cr9aa_othercustdatagangmembersavg === "0" ? Number(cr9aa_othercustdatagangmembersavg) : -1,
+      "cr9aa_othercustdataprotectivecustinmatesavg": cr9aa_othercustdataprotectivecustinmatesavg !="" || cr9aa_othercustdataprotectivecustinmatesavg === "0" ? Number(cr9aa_othercustdataprotectivecustinmatesavg) : -1,
+      "cr9aa_othercustdatapc187inmatesavg": cr9aa_othercustdatapc187inmatesavg !="" || cr9aa_othercustdatapc187inmatesavg === "0" ? Number(cr9aa_othercustdatapc187inmatesavg) : -1,
+      "cr9aa_othercustdatamentalhealthinmatestal": cr9aa_othercustdatamentalhealthinmatestal !="" || cr9aa_othercustdatamentalhealthinmatestal === "0" ? Number(cr9aa_othercustdatamentalhealthinmatestal) : -1,
+      "cr9aa_othercustdatamedicalinmatesavg": cr9aa_othercustdatamedicalinmatesavg !="" || cr9aa_othercustdatamedicalinmatesavg === "0" ? Number(cr9aa_othercustdatamedicalinmatesavg) : -1,
+      "cr9aa_othercustdataprcsocwholdstal": cr9aa_othercustdataprcsocwholdstal !="" || cr9aa_othercustdataprcsocwholdstal === "0" ? Number(cr9aa_othercustdataprcsocwholdstal) : -1,
+      "cr9aa_othercustdataflashincarcerations3454pctal": cr9aa_othercustdataflashincarcerations3454pctal !="" || cr9aa_othercustdataflashincarcerations3454pctal === "0" ? Number(cr9aa_othercustdataflashincarcerations3454pctal) : -1,
+      "cr9aa_othercustdataprcsviolations3455pctal": cr9aa_othercustdataprcsviolations3455pctal !="" || cr9aa_othercustdataprcsviolations3455pctal === "0" ? Number(cr9aa_othercustdataprcsviolations3455pctal) : -1,
+      "cr9aa_othercustdataprcsholds3453pctal": cr9aa_othercustdataprcsholds3453pctal !="" || cr9aa_othercustdataprcsholds3453pctal === "0" ? Number(cr9aa_othercustdataprcsholds3453pctal) : -1,
+      "cr9aa_othercustdataparoleholdstal": cr9aa_othercustdataparoleholdstal !="" || cr9aa_othercustdataparoleholdstal === "0" ? Number(cr9aa_othercustdataparoleholdstal) : -1,
+      "cr9aa_othercustdataparolecommtal": cr9aa_othercustdataparolecommtal !="" || cr9aa_othercustdataparolecommtal === "0" ? Number(cr9aa_othercustdataparolecommtal) : -1,
+      "cr9aa_othercustdataparoleviolationavgdaysincust": cr9aa_othercustdataparoleviolationavgdaysincust !="" || cr9aa_othercustdataparoleviolationavgdaysincust === "0" ? Number(cr9aa_othercustdataparoleviolationavgdaysincust) : -1,
+      "cr9aa_othercustdata1170commtal": cr9aa_othercustdata1170commtal !="" || cr9aa_othercustdata1170commtal === "0" ? Number(cr9aa_othercustdata1170commtal) : -1,
+      "cr9aa_othercustdatalongest1170commitmenttal": cr9aa_othercustdatalongest1170commitmenttal !="" || cr9aa_othercustdatalongest1170commitmenttal === "0" ? Number(cr9aa_othercustdatalongest1170commitmenttal) : -1,
+      "cr9aa_othercustdatarecidivismrateavg": cr9aa_othercustdatarecidivismrateavg !="" || cr9aa_othercustdatarecidivismrateavg === "0" ? Number(cr9aa_othercustdatarecidivismrateavg) : -1,
+      "cr9aa_mwpnumenrolled": cr9aa_mwpnumenrolled !="" || cr9aa_mwpnumenrolled === "0" ? Number(cr9aa_mwpnumenrolled) : -1,
+      "cr9aa_mwpnumcompletedprogreqs": cr9aa_mwpnumcompletedprogreqs !="" || cr9aa_mwpnumcompletedprogreqs === "0" ? Number(cr9aa_mwpnumcompletedprogreqs) : -1,
+      "cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedwcdfweeklymeetingsonavg) : -1,
+      "cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmcdfweeklymeetingsonavg) : -1,
+      "cr9aa_mwpnummenattendedmdfweeklymeetingsonavg": cr9aa_mwpnummenattendedmdfweeklymeetingsonavg !="" || cr9aa_mwpnummenattendedmdfweeklymeetingsonavg === "0" ? Number(cr9aa_mwpnummenattendedmdfweeklymeetingsonavg) : -1,
+      "cr9aa_reachnumwomenenrolled": cr9aa_reachnumwomenenrolled !="" || cr9aa_reachnumwomenenrolled === "0" ? Number(cr9aa_reachnumwomenenrolled) : -1,
+      "cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg": cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg !="" || cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg === "0" ? Number(cr9aa_reachnumwomenattendedwcdfweeklymtgsonavg) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+
+
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+
+        toastr.success(
+          '',
+          'Data Updated Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+
+      }
+    }); {%endif %}
+
+
+  }
+</script>
