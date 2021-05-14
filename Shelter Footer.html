@@ -102,7 +102,7 @@
         var cr9aa_outcomesunsuccessfulexitsduetolackofen= $("#cr9aa_outcomesunsuccessfulexitsduetolackofen").val().trim();
         var cr9aa_outcomesunsuccessfulexitsabsconding= $("#cr9aa_outcomesunsuccessfulexitsabsconding").val().trim();
         var cr9aa_outcomesunsuccessfulexitsduetorelocation= $("#cr9aa_outcomesunsuccessfulexitsduetorelocation").val().trim();
-        var crdae_outcomesnumAB109unsuccessexits= $("#crdae_outcomesnumAB109unsuccessexits").val().trim();
+        var crdae_outcomesnumab109unsuccessexits= $("#crdae_outcomesnumab109unsuccessexits").val().trim();
       var crdae_sectionone = $("#crdae_sectionone").val().trim();
       var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
       var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
@@ -285,7 +285,7 @@
         "cr9aa_outcomesunsuccessfulexitsduetolackofen": cr9aa_outcomesunsuccessfulexitsduetolackofen !="" || cr9aa_outcomesunsuccessfulexitsduetolackofen === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetolackofen) : -1,
         "cr9aa_outcomesunsuccessfulexitsabsconding": cr9aa_outcomesunsuccessfulexitsabsconding !="" || cr9aa_outcomesunsuccessfulexitsabsconding === "0" ? Number(cr9aa_outcomesunsuccessfulexitsabsconding) : -1,
         "cr9aa_outcomesunsuccessfulexitsduetorelocation": cr9aa_outcomesunsuccessfulexitsduetorelocation !="" || cr9aa_outcomesunsuccessfulexitsduetorelocation === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetorelocation) : -1,
-        "crdae_outcomesnumAB109unsuccessexits": crdae_outcomesnumAB109unsuccessexits !="" || crdae_outcomesnumAB109unsuccessexits === "0" ? Number(crdae_outcomesnumAB109unsuccessexits) : -1,
+        "crdae_outcomesnumab109unsuccessexits": crdae_outcomesnumab109unsuccessexits !="" || crdae_outcomesnumab109unsuccessexits === "0" ? Number(crdae_outcomesnumab109unsuccessexits) : -1,
         "crdae_sectionone": crdae_sectionone,
         "crdae_sectiontwo": crdae_sectiontwo,
         "crdae_sectionthree": crdae_sectionthree,
@@ -417,7 +417,7 @@
         url: "/_api/cr9aa_shelters({{myquery.results.entities[0].cr9aa_shelterid}})",
         contentType: "application/json",
         data: JSON.stringify({
-            "crdae_startyear": "{{request.params['startyear']}}",
+        "crdae_startyear": "{{request.params['startyear']}}",
         "crdae_endyear": "{{request.params['endyear']}}",
         "crdae_startmonth": "{{request.params['startmonth']}}",
         "crdae_endmonth": "{{request.params['endmonth']}}",
@@ -487,7 +487,7 @@
         "cr9aa_outcomesunsuccessfulexitsduetolackofen": cr9aa_outcomesunsuccessfulexitsduetolackofen !="" || cr9aa_outcomesunsuccessfulexitsduetolackofen === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetolackofen) : -1,
         "cr9aa_outcomesunsuccessfulexitsabsconding": cr9aa_outcomesunsuccessfulexitsabsconding !="" || cr9aa_outcomesunsuccessfulexitsabsconding === "0" ? Number(cr9aa_outcomesunsuccessfulexitsabsconding) : -1,
         "cr9aa_outcomesunsuccessfulexitsduetorelocation": cr9aa_outcomesunsuccessfulexitsduetorelocation !="" || cr9aa_outcomesunsuccessfulexitsduetorelocation === "0" ? Number(cr9aa_outcomesunsuccessfulexitsduetorelocation) : -1,
-        "crdae_outcomesnumAB109unsuccessexits": crdae_outcomesnumAB109unsuccessexits !="" || crdae_outcomesnumAB109unsuccessexits === "0" ? Number(crdae_outcomesnumAB109unsuccessexits) : -1,
+        "crdae_outcomesnumab109unsuccessexits": crdae_outcomesnumab109unsuccessexits !="" || crdae_outcomesnumab109unsuccessexits === "0" ? Number(crdae_outcomesnumab109unsuccessexits) : -1,
         "crdae_sectionone": crdae_sectionone,
         "crdae_sectiontwo": crdae_sectiontwo,
         "crdae_sectionthree": crdae_sectionthree,

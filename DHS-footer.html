@@ -1,201 +1,201 @@
 <script>
-    $(document).ready(function(){
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-    $(document).on('click', '#save', function() {
-      submitOrSave("save");
-    });
-    $(document).on('click', '#submit', function() {
-       $("#toast-container").html(""); 
-      $("#form").validator().on("submit", function(e) {
-       $("#toast-container").html(""); 
-                 if (e.isDefaultPrevented()) {
-                  $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
-                  toastr.error(
-                      '',
-                      'Please fill required fields', {
-                          "positionClass": "toast-bottom-center",
-                          onHidden: function() {
-                              
-                          }
-                      }); 
-                      toastr.clear();                      
-                  } else {
-                          submitOrSave("submit");
-                      }
-                  });
-    });
-  
-    function submitOrSave(flag) {
-      var submitStatus = "";
-      if (flag == "save") {
-        submitStatus = "In Progress";
-      } else {
-        submitStatus = "Submitted";
-      }
-  
-      $(".loading").show();
-        
-      var cr9aa_numnursingsickcallsmdf= $("#cr9aa_numnursingsickcallsmdf").val().trim();
-        var cr9aa_numnursingsickcallswcdf= $("#cr9aa_numnursingsickcallswcdf").val().trim();
-        var cr9aa_numnursingsickcallsmcdf= $("#cr9aa_numnursingsickcallsmcdf").val().trim();
-        var cr9aa_nummdsickcallsmdf= $("#cr9aa_nummdsickcallsmdf").val().trim();
-        var cr9aa_nummdsickcallswcdf= $("#cr9aa_nummdsickcallswcdf").val().trim();
-        var cr9aa_nummdsickcallsmcdf= $("#cr9aa_nummdsickcallsmcdf").val().trim();
-        var cr9aa_numdentalsickcallsmdf= $("#cr9aa_numdentalsickcallsmdf").val().trim();
-        var cr9aa_numdentalsickcallswcdf= $("#cr9aa_numdentalsickcallswcdf").val().trim();
-        var cr9aa_numdentalsickcallsmcdf= $("#cr9aa_numdentalsickcallsmcdf").val().trim();
-        var cr9aa_numpsychiatristsickcallsmdf= $("#cr9aa_numpsychiatristsickcallsmdf").val().trim();
-        var cr9aa_numpsychiatristsickcallswcdf= $("#cr9aa_numpsychiatristsickcallswcdf").val().trim();
-        var cr9aa_numpsychiatristsickcallsmcdf= $("#cr9aa_numpsychiatristsickcallsmcdf").val().trim();
-        var cr9aa_nummentalhealthsickcallsmdf= $("#cr9aa_nummentalhealthsickcallsmdf").val().trim();
-        var cr9aa_nummentalhealthsickcallswcdf= $("#cr9aa_nummentalhealthsickcallswcdf").val().trim();
-        var cr9aa_nummentalhealthsickcallsmcdf= $("#cr9aa_nummentalhealthsickcallsmcdf").val().trim();
-        var cr9aa_nummentalhealthrnsickcallsmdf= $("#cr9aa_nummentalhealthrnsickcallsmdf").val().trim();
-        var cr9aa_nummentalhealthrnsickcallswcdf= $("#cr9aa_nummentalhealthrnsickcallswcdf").val().trim();
-        var cr9aa_nummentalhealthrnsickcallsmcdf= $("#cr9aa_nummentalhealthrnsickcallsmcdf").val().trim();
-        var cr9aa_numintakescreeningsforab109inmatesmdf= $("#cr9aa_numintakescreeningsforab109inmatesmdf").val().trim();
-        var cr9aa_numneedsassessmentsforab109inmatesmdf= $("#cr9aa_numneedsassessmentsforab109inmatesmdf").val().trim();
-        var cr9aa_numpatientsreceivingmatmdf= $("#cr9aa_numpatientsreceivingmatmdf").val().trim();
-        var cr9aa_numintakescreeningsforab109inmateswcdf= $("#cr9aa_numintakescreeningsforab109inmateswcdf").val().trim();
-        var cr9aa_numneedsassessmentsforab109inmateswcdf= $("#cr9aa_numneedsassessmentsforab109inmateswcdf").val().trim();
-        var cr9aa_numpatientsreceivingmatwcdf= $("#cr9aa_numpatientsreceivingmatwcdf").val().trim();
-        var cr9aa_numintakescreeningsforab109inmatesmcdf= $("#cr9aa_numintakescreeningsforab109inmatesmcdf").val().trim();
-        var cr9aa_numneedsassessmentsforab109inmatesmcdf= $("#cr9aa_numneedsassessmentsforab109inmatesmcdf").val().trim();
-        var cr9aa_numpatientsreceivingmatmcdf= $("#cr9aa_numpatientsreceivingmatmcdf").val().trim();
-      var crdae_sectionone = $("#crdae_sectionone").val().trim();
-      var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
-      var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
-      var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
-      var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
-        
-  
-      {% if recordCount == 0 %}
-      webapi.safeAjax({
-        type: "POST",
-        url: "/_api/cr9aa_dhses",
-        contentType: "application/json",
-        data: JSON.stringify({
-        "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numnursingsickcallsmdf": cr9aa_numnursingsickcallsmdf !="" || cr9aa_numnursingsickcallsmdf === "0" ? Number(cr9aa_numnursingsickcallsmdf) : -1,
-        "cr9aa_numnursingsickcallswcdf": cr9aa_numnursingsickcallswcdf !="" || cr9aa_numnursingsickcallswcdf === "0" ? Number(cr9aa_numnursingsickcallswcdf) : -1,
-        "cr9aa_numnursingsickcallsmcdf": cr9aa_numnursingsickcallsmcdf !="" || cr9aa_numnursingsickcallsmcdf === "0" ? Number(cr9aa_numnursingsickcallsmcdf) : -1,
-        "cr9aa_nummdsickcallsmdf": cr9aa_nummdsickcallsmdf !="" || cr9aa_nummdsickcallsmdf === "0" ? Number(cr9aa_nummdsickcallsmdf) : -1,
-        "cr9aa_nummdsickcallswcdf": cr9aa_nummdsickcallswcdf !="" || cr9aa_nummdsickcallswcdf === "0" ? Number(cr9aa_nummdsickcallswcdf) : -1,
-        "cr9aa_nummdsickcallsmcdf": cr9aa_nummdsickcallsmcdf !="" || cr9aa_nummdsickcallsmcdf === "0" ? Number(cr9aa_nummdsickcallsmcdf) : -1,
-        "cr9aa_numdentalsickcallsmdf": cr9aa_numdentalsickcallsmdf !="" || cr9aa_numdentalsickcallsmdf === "0" ? Number(cr9aa_numdentalsickcallsmdf) : -1,
-        "cr9aa_numdentalsickcallswcdf": cr9aa_numdentalsickcallswcdf !="" || cr9aa_numdentalsickcallswcdf === "0" ? Number(cr9aa_numdentalsickcallswcdf) : -1,
-        "cr9aa_numdentalsickcallsmcdf": cr9aa_numdentalsickcallsmcdf !="" || cr9aa_numdentalsickcallsmcdf === "0" ? Number(cr9aa_numdentalsickcallsmcdf) : -1,
-        "cr9aa_numpsychiatristsickcallsmdf": cr9aa_numpsychiatristsickcallsmdf !="" || cr9aa_numpsychiatristsickcallsmdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmdf) : -1,
-        "cr9aa_numpsychiatristsickcallswcdf": cr9aa_numpsychiatristsickcallswcdf !="" || cr9aa_numpsychiatristsickcallswcdf === "0" ? Number(cr9aa_numpsychiatristsickcallswcdf) : -1,
-        "cr9aa_numpsychiatristsickcallsmcdf": cr9aa_numpsychiatristsickcallsmcdf !="" || cr9aa_numpsychiatristsickcallsmcdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmcdf) : -1,
-        "cr9aa_nummentalhealthsickcallsmdf": cr9aa_nummentalhealthsickcallsmdf !="" || cr9aa_nummentalhealthsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmdf) : -1,
-        "cr9aa_nummentalhealthsickcallswcdf": cr9aa_nummentalhealthsickcallswcdf !="" || cr9aa_nummentalhealthsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthsickcallswcdf) : -1,
-        "cr9aa_nummentalhealthsickcallsmcdf": cr9aa_nummentalhealthsickcallsmcdf !="" || cr9aa_nummentalhealthsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmcdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallsmdf": cr9aa_nummentalhealthrnsickcallsmdf !="" || cr9aa_nummentalhealthrnsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallswcdf": cr9aa_nummentalhealthrnsickcallswcdf !="" || cr9aa_nummentalhealthrnsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallswcdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallsmcdf": cr9aa_nummentalhealthrnsickcallsmcdf !="" || cr9aa_nummentalhealthrnsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmcdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmatesmdf": cr9aa_numintakescreeningsforab109inmatesmdf !="" || cr9aa_numintakescreeningsforab109inmatesmdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmatesmdf": cr9aa_numneedsassessmentsforab109inmatesmdf !="" || cr9aa_numneedsassessmentsforab109inmatesmdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmdf) : -1,
-        "cr9aa_numpatientsreceivingmatmdf": cr9aa_numpatientsreceivingmatmdf !="" || cr9aa_numpatientsreceivingmatmdf === "0" ? Number(cr9aa_numpatientsreceivingmatmdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmateswcdf": cr9aa_numintakescreeningsforab109inmateswcdf !="" || cr9aa_numintakescreeningsforab109inmateswcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmateswcdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmateswcdf": cr9aa_numneedsassessmentsforab109inmateswcdf !="" || cr9aa_numneedsassessmentsforab109inmateswcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmateswcdf) : -1,
-        "cr9aa_numpatientsreceivingmatwcdf": cr9aa_numpatientsreceivingmatwcdf !="" || cr9aa_numpatientsreceivingmatwcdf === "0" ? Number(cr9aa_numpatientsreceivingmatwcdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmatesmcdf": cr9aa_numintakescreeningsforab109inmatesmcdf !="" || cr9aa_numintakescreeningsforab109inmatesmcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmcdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmatesmcdf": cr9aa_numneedsassessmentsforab109inmatesmcdf !="" || cr9aa_numneedsassessmentsforab109inmatesmcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmcdf) : -1,
-        "cr9aa_numpatientsreceivingmatmcdf": cr9aa_numpatientsreceivingmatmcdf !="" || cr9aa_numpatientsreceivingmatmcdf === "0" ? Number(cr9aa_numpatientsreceivingmatmcdf) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
-        
-          
-  
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-          toastr.success(
-            '',
-            'Data Inserted Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-        }
-      });
-  
-      {% else %}
-  
-      webapi.safeAjax({
-        type: "PATCH",
-        url: "/_api/cr9aa_dhses({{myquery.results.entities[0].cr9aa_dhsid}})",
-        contentType: "application/json",
-        data: JSON.stringify({
-         "crdae_startyear": "{{request.params['startyear']}}",
-        "crdae_endyear": "{{request.params['endyear']}}",
-        "crdae_startmonth": "{{request.params['startmonth']}}",
-        "crdae_endmonth": "{{request.params['endmonth']}}",
-        "cr9aa_numnursingsickcallsmdf": cr9aa_numnursingsickcallsmdf !="" || cr9aa_numnursingsickcallsmdf === "0" ? Number(cr9aa_numnursingsickcallsmdf) : -1,
-        "cr9aa_numnursingsickcallswcdf": cr9aa_numnursingsickcallswcdf !="" || cr9aa_numnursingsickcallswcdf === "0" ? Number(cr9aa_numnursingsickcallswcdf) : -1,
-        "cr9aa_numnursingsickcallsmcdf": cr9aa_numnursingsickcallsmcdf !="" || cr9aa_numnursingsickcallsmcdf === "0" ? Number(cr9aa_numnursingsickcallsmcdf) : -1,
-        "cr9aa_nummdsickcallsmdf": cr9aa_nummdsickcallsmdf !="" || cr9aa_nummdsickcallsmdf === "0" ? Number(cr9aa_nummdsickcallsmdf) : -1,
-        "cr9aa_nummdsickcallswcdf": cr9aa_nummdsickcallswcdf !="" || cr9aa_nummdsickcallswcdf === "0" ? Number(cr9aa_nummdsickcallswcdf) : -1,
-        "cr9aa_nummdsickcallsmcdf": cr9aa_nummdsickcallsmcdf !="" || cr9aa_nummdsickcallsmcdf === "0" ? Number(cr9aa_nummdsickcallsmcdf) : -1,
-        "cr9aa_numdentalsickcallsmdf": cr9aa_numdentalsickcallsmdf !="" || cr9aa_numdentalsickcallsmdf === "0" ? Number(cr9aa_numdentalsickcallsmdf) : -1,
-        "cr9aa_numdentalsickcallswcdf": cr9aa_numdentalsickcallswcdf !="" || cr9aa_numdentalsickcallswcdf === "0" ? Number(cr9aa_numdentalsickcallswcdf) : -1,
-        "cr9aa_numdentalsickcallsmcdf": cr9aa_numdentalsickcallsmcdf !="" || cr9aa_numdentalsickcallsmcdf === "0" ? Number(cr9aa_numdentalsickcallsmcdf) : -1,
-        "cr9aa_numpsychiatristsickcallsmdf": cr9aa_numpsychiatristsickcallsmdf !="" || cr9aa_numpsychiatristsickcallsmdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmdf) : -1,
-        "cr9aa_numpsychiatristsickcallswcdf": cr9aa_numpsychiatristsickcallswcdf !="" || cr9aa_numpsychiatristsickcallswcdf === "0" ? Number(cr9aa_numpsychiatristsickcallswcdf) : -1,
-        "cr9aa_numpsychiatristsickcallsmcdf": cr9aa_numpsychiatristsickcallsmcdf !="" || cr9aa_numpsychiatristsickcallsmcdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmcdf) : -1,
-        "cr9aa_nummentalhealthsickcallsmdf": cr9aa_nummentalhealthsickcallsmdf !="" || cr9aa_nummentalhealthsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmdf) : -1,
-        "cr9aa_nummentalhealthsickcallswcdf": cr9aa_nummentalhealthsickcallswcdf !="" || cr9aa_nummentalhealthsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthsickcallswcdf) : -1,
-        "cr9aa_nummentalhealthsickcallsmcdf": cr9aa_nummentalhealthsickcallsmcdf !="" || cr9aa_nummentalhealthsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmcdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallsmdf": cr9aa_nummentalhealthrnsickcallsmdf !="" || cr9aa_nummentalhealthrnsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallswcdf": cr9aa_nummentalhealthrnsickcallswcdf !="" || cr9aa_nummentalhealthrnsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallswcdf) : -1,
-        "cr9aa_nummentalhealthrnsickcallsmcdf": cr9aa_nummentalhealthrnsickcallsmcdf !="" || cr9aa_nummentalhealthrnsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmcdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmatesmdf": cr9aa_numintakescreeningsforab109inmatesmdf !="" || cr9aa_numintakescreeningsforab109inmatesmdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmatesmdf": cr9aa_numneedsassessmentsforab109inmatesmdf !="" || cr9aa_numneedsassessmentsforab109inmatesmdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmdf) : -1,
-        "cr9aa_numpatientsreceivingmatmdf": cr9aa_numpatientsreceivingmatmdf !="" || cr9aa_numpatientsreceivingmatmdf === "0" ? Number(cr9aa_numpatientsreceivingmatmdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmateswcdf": cr9aa_numintakescreeningsforab109inmateswcdf !="" || cr9aa_numintakescreeningsforab109inmateswcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmateswcdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmateswcdf": cr9aa_numneedsassessmentsforab109inmateswcdf !="" || cr9aa_numneedsassessmentsforab109inmateswcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmateswcdf) : -1,
-        "cr9aa_numpatientsreceivingmatwcdf": cr9aa_numpatientsreceivingmatwcdf !="" || cr9aa_numpatientsreceivingmatwcdf === "0" ? Number(cr9aa_numpatientsreceivingmatwcdf) : -1,
-        "cr9aa_numintakescreeningsforab109inmatesmcdf": cr9aa_numintakescreeningsforab109inmatesmcdf !="" || cr9aa_numintakescreeningsforab109inmatesmcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmcdf) : -1,
-        "cr9aa_numneedsassessmentsforab109inmatesmcdf": cr9aa_numneedsassessmentsforab109inmatesmcdf !="" || cr9aa_numneedsassessmentsforab109inmatesmcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmcdf) : -1,
-        "cr9aa_numpatientsreceivingmatmcdf": cr9aa_numpatientsreceivingmatmcdf !="" || cr9aa_numpatientsreceivingmatmcdf === "0" ? Number(cr9aa_numpatientsreceivingmatmcdf) : -1,
-        "crdae_sectionone": crdae_sectionone,
-        "crdae_sectiontwo": crdae_sectiontwo,
-        "crdae_sectionthree": crdae_sectionthree,
-        "crdae_sectionfour": crdae_sectionfour,
-        "crdae_sectionfive": crdae_sectionfive,
-        "crdae_submittedstatus": submitStatus
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  $(document).on('click', '#save', function() {
+    submitOrSave("save");
+  });
+  $(document).on('click', '#submit', function() {
+     $("#toast-container").html(""); 
+    $("#form").validator().on("submit", function(e) {
+     $("#toast-container").html(""); 
+               if (e.isDefaultPrevented()) {
+                $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
+                toastr.error(
+                    '',
+                    'Please fill required fields', {
+                        "positionClass": "toast-bottom-center",
+                        onHidden: function() {
+                            
+                        }
+                    }); 
+                    toastr.clear();                      
+                } else {
+                        submitOrSave("submit");
+                    }
+                });
+  });
+
+  function submitOrSave(flag) {
+    var submitStatus = "";
+    if (flag == "save") {
+      submitStatus = "In Progress";
+    } else {
+      submitStatus = "Submitted";
+    }
+
+    $(".loading").show();
+      
+    var cr9aa_numnursingsickcallsmdf= $("#cr9aa_numnursingsickcallsmdf").val().trim();
+      var cr9aa_numnursingsickcallswcdf= $("#cr9aa_numnursingsickcallswcdf").val().trim();
+      var cr9aa_numnursingsickcallsmcdf= $("#cr9aa_numnursingsickcallsmcdf").val().trim();
+      var cr9aa_nummdsickcallsmdf= $("#cr9aa_nummdsickcallsmdf").val().trim();
+      var cr9aa_nummdsickcallswcdf= $("#cr9aa_nummdsickcallswcdf").val().trim();
+      var cr9aa_nummdsickcallsmcdf= $("#cr9aa_nummdsickcallsmcdf").val().trim();
+      var cr9aa_numdentalsickcallsmdf= $("#cr9aa_numdentalsickcallsmdf").val().trim();
+      var cr9aa_numdentalsickcallswcdf= $("#cr9aa_numdentalsickcallswcdf").val().trim();
+      var cr9aa_numdentalsickcallsmcdf= $("#cr9aa_numdentalsickcallsmcdf").val().trim();
+      var cr9aa_numpsychiatristsickcallsmdf= $("#cr9aa_numpsychiatristsickcallsmdf").val().trim();
+      var cr9aa_numpsychiatristsickcallswcdf= $("#cr9aa_numpsychiatristsickcallswcdf").val().trim();
+      var cr9aa_numpsychiatristsickcallsmcdf= $("#cr9aa_numpsychiatristsickcallsmcdf").val().trim();
+      var cr9aa_nummentalhealthsickcallsmdf= $("#cr9aa_nummentalhealthsickcallsmdf").val().trim();
+      var cr9aa_nummentalhealthsickcallswcdf= $("#cr9aa_nummentalhealthsickcallswcdf").val().trim();
+      var cr9aa_nummentalhealthsickcallsmcdf= $("#cr9aa_nummentalhealthsickcallsmcdf").val().trim();
+      var cr9aa_nummentalhealthrnsickcallsmdf= $("#cr9aa_nummentalhealthrnsickcallsmdf").val().trim();
+      var cr9aa_nummentalhealthrnsickcallswcdf= $("#cr9aa_nummentalhealthrnsickcallswcdf").val().trim();
+      var cr9aa_nummentalhealthrnsickcallsmcdf= $("#cr9aa_nummentalhealthrnsickcallsmcdf").val().trim();
+      var cr9aa_numintakescreeningsforab109inmatesmdf= $("#cr9aa_numintakescreeningsforab109inmatesmdf").val().trim();
+      var cr9aa_numneedsassessmentsforab109inmatesmdf= $("#cr9aa_numneedsassessmentsforab109inmatesmdf").val().trim();
+      var cr9aa_numpatientsreceivingmatmdf= $("#cr9aa_numpatientsreceivingmatmdf").val().trim();
+      var cr9aa_numintakescreeningsforab109inmateswcdf= $("#cr9aa_numintakescreeningsforab109inmateswcdf").val().trim();
+      var cr9aa_numneedsassessmentsforab109inmateswcdf= $("#cr9aa_numneedsassessmentsforab109inmateswcdf").val().trim();
+      var cr9aa_numpatientsreceivingmatwcdf= $("#cr9aa_numpatientsreceivingmatwcdf").val().trim();
+      var cr9aa_numintakescreeningsforab109inmatesmcdf= $("#cr9aa_numintakescreeningsforab109inmatesmcdf").val().trim();
+      var cr9aa_numneedsassessmentsforab109inmatesmcdf= $("#cr9aa_numneedsassessmentsforab109inmatesmcdf").val().trim();
+      var cr9aa_numpatientsreceivingmatmcdf= $("#cr9aa_numpatientsreceivingmatmcdf").val().trim();
+    var crdae_sectionone = $("#crdae_sectionone").val().trim();
+    var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
+    var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
+    var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
+    var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+      
+
+    {% if recordCount == 0 %}
+    webapi.safeAjax({
+      type: "POST",
+      url: "/_api/cr9aa_dhses",
+      contentType: "application/json",
+      data: JSON.stringify({
+      "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numnursingsickcallsmdf": cr9aa_numnursingsickcallsmdf !="" || cr9aa_numnursingsickcallsmdf === "0" ? Number(cr9aa_numnursingsickcallsmdf) : -1,
+      "cr9aa_numnursingsickcallswcdf": cr9aa_numnursingsickcallswcdf !="" || cr9aa_numnursingsickcallswcdf === "0" ? Number(cr9aa_numnursingsickcallswcdf) : -1,
+      "cr9aa_numnursingsickcallsmcdf": cr9aa_numnursingsickcallsmcdf !="" || cr9aa_numnursingsickcallsmcdf === "0" ? Number(cr9aa_numnursingsickcallsmcdf) : -1,
+      "cr9aa_nummdsickcallsmdf": cr9aa_nummdsickcallsmdf !="" || cr9aa_nummdsickcallsmdf === "0" ? Number(cr9aa_nummdsickcallsmdf) : -1,
+      "cr9aa_nummdsickcallswcdf": cr9aa_nummdsickcallswcdf !="" || cr9aa_nummdsickcallswcdf === "0" ? Number(cr9aa_nummdsickcallswcdf) : -1,
+      "cr9aa_nummdsickcallsmcdf": cr9aa_nummdsickcallsmcdf !="" || cr9aa_nummdsickcallsmcdf === "0" ? Number(cr9aa_nummdsickcallsmcdf) : -1,
+      "cr9aa_numdentalsickcallsmdf": cr9aa_numdentalsickcallsmdf !="" || cr9aa_numdentalsickcallsmdf === "0" ? Number(cr9aa_numdentalsickcallsmdf) : -1,
+      "cr9aa_numdentalsickcallswcdf": cr9aa_numdentalsickcallswcdf !="" || cr9aa_numdentalsickcallswcdf === "0" ? Number(cr9aa_numdentalsickcallswcdf) : -1,
+      "cr9aa_numdentalsickcallsmcdf": cr9aa_numdentalsickcallsmcdf !="" || cr9aa_numdentalsickcallsmcdf === "0" ? Number(cr9aa_numdentalsickcallsmcdf) : -1,
+      "cr9aa_numpsychiatristsickcallsmdf": cr9aa_numpsychiatristsickcallsmdf !="" || cr9aa_numpsychiatristsickcallsmdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmdf) : -1,
+      "cr9aa_numpsychiatristsickcallswcdf": cr9aa_numpsychiatristsickcallswcdf !="" || cr9aa_numpsychiatristsickcallswcdf === "0" ? Number(cr9aa_numpsychiatristsickcallswcdf) : -1,
+      "cr9aa_numpsychiatristsickcallsmcdf": cr9aa_numpsychiatristsickcallsmcdf !="" || cr9aa_numpsychiatristsickcallsmcdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmcdf) : -1,
+      "cr9aa_nummentalhealthsickcallsmdf": cr9aa_nummentalhealthsickcallsmdf !="" || cr9aa_nummentalhealthsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmdf) : -1,
+      "cr9aa_nummentalhealthsickcallswcdf": cr9aa_nummentalhealthsickcallswcdf !="" || cr9aa_nummentalhealthsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthsickcallswcdf) : -1,
+      "cr9aa_nummentalhealthsickcallsmcdf": cr9aa_nummentalhealthsickcallsmcdf !="" || cr9aa_nummentalhealthsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmcdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallsmdf": cr9aa_nummentalhealthrnsickcallsmdf !="" || cr9aa_nummentalhealthrnsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallswcdf": cr9aa_nummentalhealthrnsickcallswcdf !="" || cr9aa_nummentalhealthrnsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallswcdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallsmcdf": cr9aa_nummentalhealthrnsickcallsmcdf !="" || cr9aa_nummentalhealthrnsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmcdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmatesmdf": cr9aa_numintakescreeningsforab109inmatesmdf !="" || cr9aa_numintakescreeningsforab109inmatesmdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmatesmdf": cr9aa_numneedsassessmentsforab109inmatesmdf !="" || cr9aa_numneedsassessmentsforab109inmatesmdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmdf) : -1,
+      "cr9aa_numpatientsreceivingmatmdf": cr9aa_numpatientsreceivingmatmdf !="" || cr9aa_numpatientsreceivingmatmdf === "0" ? Number(cr9aa_numpatientsreceivingmatmdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmateswcdf": cr9aa_numintakescreeningsforab109inmateswcdf !="" || cr9aa_numintakescreeningsforab109inmateswcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmateswcdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmateswcdf": cr9aa_numneedsassessmentsforab109inmateswcdf !="" || cr9aa_numneedsassessmentsforab109inmateswcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmateswcdf) : -1,
+      "cr9aa_numpatientsreceivingmatwcdf": cr9aa_numpatientsreceivingmatwcdf !="" || cr9aa_numpatientsreceivingmatwcdf === "0" ? Number(cr9aa_numpatientsreceivingmatwcdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmatesmcdf": cr9aa_numintakescreeningsforab109inmatesmcdf !="" || cr9aa_numintakescreeningsforab109inmatesmcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmcdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmatesmcdf": cr9aa_numneedsassessmentsforab109inmatesmcdf !="" || cr9aa_numneedsassessmentsforab109inmatesmcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmcdf) : -1,
+      "cr9aa_numpatientsreceivingmatmcdf": cr9aa_numpatientsreceivingmatmcdf !="" || cr9aa_numpatientsreceivingmatmcdf === "0" ? Number(cr9aa_numpatientsreceivingmatmcdf) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      
         
 
-        }),
-        success: function(res, status, xhr) {
-          $(".loading").hide();
-  
-          toastr.success(
-            '',
-            'Data Updated Successfully', {
-              timeOut: 2000,
-              fadeOut: 3000,
-              "positionClass": "toast-bottom-center",
-              onHidden: function() {
-                window.location.reload();
-              }
-            });
-  
-        }
-      }); {%endif %}
-  
-  
-    }
-  </script>
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+        toastr.success(
+          '',
+          'Data Inserted Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+      }
+    });
+
+    {% else %}
+
+    webapi.safeAjax({
+      type: "PATCH",
+      url: "/_api/cr9aa_dhses({{myquery.results.entities[0].cr9aa_dhsid}})",
+      contentType: "application/json",
+      data: JSON.stringify({
+       "crdae_startyear": "{{request.params['startyear']}}",
+      "crdae_endyear": "{{request.params['endyear']}}",
+      "crdae_startmonth": "{{request.params['startmonth']}}",
+      "crdae_endmonth": "{{request.params['endmonth']}}",
+      "cr9aa_numnursingsickcallsmdf": cr9aa_numnursingsickcallsmdf !="" || cr9aa_numnursingsickcallsmdf === "0" ? Number(cr9aa_numnursingsickcallsmdf) : -1,
+      "cr9aa_numnursingsickcallswcdf": cr9aa_numnursingsickcallswcdf !="" || cr9aa_numnursingsickcallswcdf === "0" ? Number(cr9aa_numnursingsickcallswcdf) : -1,
+      "cr9aa_numnursingsickcallsmcdf": cr9aa_numnursingsickcallsmcdf !="" || cr9aa_numnursingsickcallsmcdf === "0" ? Number(cr9aa_numnursingsickcallsmcdf) : -1,
+      "cr9aa_nummdsickcallsmdf": cr9aa_nummdsickcallsmdf !="" || cr9aa_nummdsickcallsmdf === "0" ? Number(cr9aa_nummdsickcallsmdf) : -1,
+      "cr9aa_nummdsickcallswcdf": cr9aa_nummdsickcallswcdf !="" || cr9aa_nummdsickcallswcdf === "0" ? Number(cr9aa_nummdsickcallswcdf) : -1,
+      "cr9aa_nummdsickcallsmcdf": cr9aa_nummdsickcallsmcdf !="" || cr9aa_nummdsickcallsmcdf === "0" ? Number(cr9aa_nummdsickcallsmcdf) : -1,
+      "cr9aa_numdentalsickcallsmdf": cr9aa_numdentalsickcallsmdf !="" || cr9aa_numdentalsickcallsmdf === "0" ? Number(cr9aa_numdentalsickcallsmdf) : -1,
+      "cr9aa_numdentalsickcallswcdf": cr9aa_numdentalsickcallswcdf !="" || cr9aa_numdentalsickcallswcdf === "0" ? Number(cr9aa_numdentalsickcallswcdf) : -1,
+      "cr9aa_numdentalsickcallsmcdf": cr9aa_numdentalsickcallsmcdf !="" || cr9aa_numdentalsickcallsmcdf === "0" ? Number(cr9aa_numdentalsickcallsmcdf) : -1,
+      "cr9aa_numpsychiatristsickcallsmdf": cr9aa_numpsychiatristsickcallsmdf !="" || cr9aa_numpsychiatristsickcallsmdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmdf) : -1,
+      "cr9aa_numpsychiatristsickcallswcdf": cr9aa_numpsychiatristsickcallswcdf !="" || cr9aa_numpsychiatristsickcallswcdf === "0" ? Number(cr9aa_numpsychiatristsickcallswcdf) : -1,
+      "cr9aa_numpsychiatristsickcallsmcdf": cr9aa_numpsychiatristsickcallsmcdf !="" || cr9aa_numpsychiatristsickcallsmcdf === "0" ? Number(cr9aa_numpsychiatristsickcallsmcdf) : -1,
+      "cr9aa_nummentalhealthsickcallsmdf": cr9aa_nummentalhealthsickcallsmdf !="" || cr9aa_nummentalhealthsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmdf) : -1,
+      "cr9aa_nummentalhealthsickcallswcdf": cr9aa_nummentalhealthsickcallswcdf !="" || cr9aa_nummentalhealthsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthsickcallswcdf) : -1,
+      "cr9aa_nummentalhealthsickcallsmcdf": cr9aa_nummentalhealthsickcallsmcdf !="" || cr9aa_nummentalhealthsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthsickcallsmcdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallsmdf": cr9aa_nummentalhealthrnsickcallsmdf !="" || cr9aa_nummentalhealthrnsickcallsmdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallswcdf": cr9aa_nummentalhealthrnsickcallswcdf !="" || cr9aa_nummentalhealthrnsickcallswcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallswcdf) : -1,
+      "cr9aa_nummentalhealthrnsickcallsmcdf": cr9aa_nummentalhealthrnsickcallsmcdf !="" || cr9aa_nummentalhealthrnsickcallsmcdf === "0" ? Number(cr9aa_nummentalhealthrnsickcallsmcdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmatesmdf": cr9aa_numintakescreeningsforab109inmatesmdf !="" || cr9aa_numintakescreeningsforab109inmatesmdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmatesmdf": cr9aa_numneedsassessmentsforab109inmatesmdf !="" || cr9aa_numneedsassessmentsforab109inmatesmdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmdf) : -1,
+      "cr9aa_numpatientsreceivingmatmdf": cr9aa_numpatientsreceivingmatmdf !="" || cr9aa_numpatientsreceivingmatmdf === "0" ? Number(cr9aa_numpatientsreceivingmatmdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmateswcdf": cr9aa_numintakescreeningsforab109inmateswcdf !="" || cr9aa_numintakescreeningsforab109inmateswcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmateswcdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmateswcdf": cr9aa_numneedsassessmentsforab109inmateswcdf !="" || cr9aa_numneedsassessmentsforab109inmateswcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmateswcdf) : -1,
+      "cr9aa_numpatientsreceivingmatwcdf": cr9aa_numpatientsreceivingmatwcdf !="" || cr9aa_numpatientsreceivingmatwcdf === "0" ? Number(cr9aa_numpatientsreceivingmatwcdf) : -1,
+      "cr9aa_numintakescreeningsforab109inmatesmcdf": cr9aa_numintakescreeningsforab109inmatesmcdf !="" || cr9aa_numintakescreeningsforab109inmatesmcdf === "0" ? Number(cr9aa_numintakescreeningsforab109inmatesmcdf) : -1,
+      "cr9aa_numneedsassessmentsforab109inmatesmcdf": cr9aa_numneedsassessmentsforab109inmatesmcdf !="" || cr9aa_numneedsassessmentsforab109inmatesmcdf === "0" ? Number(cr9aa_numneedsassessmentsforab109inmatesmcdf) : -1,
+      "cr9aa_numpatientsreceivingmatmcdf": cr9aa_numpatientsreceivingmatmcdf !="" || cr9aa_numpatientsreceivingmatmcdf === "0" ? Number(cr9aa_numpatientsreceivingmatmcdf) : -1,
+      "crdae_sectionone": crdae_sectionone,
+      "crdae_sectiontwo": crdae_sectiontwo,
+      "crdae_sectionthree": crdae_sectionthree,
+      "crdae_sectionfour": crdae_sectionfour,
+      "crdae_sectionfive": crdae_sectionfive,
+      "crdae_submittedstatus": submitStatus
+      
+
+      }),
+      success: function(res, status, xhr) {
+        $(".loading").hide();
+
+        toastr.success(
+          '',
+          'Data Updated Successfully', {
+            timeOut: 2000,
+            fadeOut: 3000,
+            "positionClass": "toast-bottom-center",
+            onHidden: function() {
+              window.location.reload();
+            }
+          });
+
+      }
+    }); {%endif %}
+
+
+  }
+</script>
