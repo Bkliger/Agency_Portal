@@ -96,7 +96,7 @@
                 <div class="col">
                   <p class="popup-txt"># of new calls</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_numnewcalls" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numnewcalls = myquery.results.entities[0].cr9aa_numnewcalls | round: 0 %}{% if cr9aa_numnewcalls == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numnewcalls | round: 0}}{% endif %}{% endif %}">    
                 </div>
               </div>
@@ -105,7 +105,7 @@
                 <div class="col">
                     <p class="popup-txt"># of follow-up calls</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_numfollowupcalls" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numfollowupcalls = myquery.results.entities[0].cr9aa_numfollowupcalls | round: 0 %}{% if cr9aa_numfollowupcalls == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numfollowupcalls | round: 0}}{% endif %}{% endif %}">    
                 </div>
               </div>
@@ -114,7 +114,7 @@
                 <div class="col">
                   <p class="popup-txt"># of 5150s</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_num5150s" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_num5150s = myquery.results.entities[0].cr9aa_num5150s | round: 0 %}{% if cr9aa_num5150s == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_num5150s | round: 0}}{% endif %}{% endif %}">    
                 </div>
               </div>
