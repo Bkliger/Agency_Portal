@@ -100,7 +100,7 @@
                 <div class="col">
                   <p class="popup-txt"># referrals</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_socialworknumrefs" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_socialworknumrefs = myquery.results.entities[0].cr9aa_socialworknumrefs | round: 0 %}{% if cr9aa_socialworknumrefs == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_socialworknumrefs | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -109,7 +109,7 @@
                 <div class="col">
                   <p class="popup-txt"># assessments</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_socialworknumassessments" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_socialworknumassessments = myquery.results.entities[0].cr9aa_socialworknumassessments | round: 0 %}{% if cr9aa_socialworknumassessments == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_socialworknumassessments | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -118,7 +118,7 @@
                 <div class="col">
                   <p class="popup-txt"># men assessed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_socialworknummenassessed" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_socialworknummenassessed = myquery.results.entities[0].cr9aa_socialworknummenassessed | round: 0 %}{% if cr9aa_socialworknummenassessed == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_socialworknummenassessed | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -127,7 +127,7 @@
                 <div class="col">
                   <p class="popup-txt"># women assessed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_socialworknumwomenassessed" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_socialworknumwomenassessed = myquery.results.entities[0].cr9aa_socialworknumwomenassessed | round: 0 %}{% if cr9aa_socialworknumwomenassessed == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_socialworknumwomenassessed | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -136,7 +136,7 @@
                 <div class="col">
                   <p class="popup-txt">referral to outside agencies</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_socialworknumrefoutsideagencies" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_socialworknumrefoutsideagencies = myquery.results.entities[0].cr9aa_socialworknumrefoutsideagencies | round: 0 %}{% if cr9aa_socialworknumrefoutsideagencies == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_socialworknumrefoutsideagencies | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -154,7 +154,7 @@
                 <div class="col">
                   <p class="popup-txt"># receiving representation at 1st appearance = # defendants represented at arraignment</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acernumrecrepat1stappearanceeqnumdefendan" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acernumrecrepat1stappearanceeqnumdefendan = myquery.results.entities[0].cr9aa_acernumrecrepat1stappearanceeqnumdefendan | round: 0 %}{% if cr9aa_acernumrecrepat1stappearanceeqnumdefendan == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acernumrecrepat1stappearanceeqnumdefendan | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -163,7 +163,7 @@
                 <div class="col">
                   <p class="popup-txt"># released from custody at 1st appearance</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acernumreleasedfromcustat1stappearance" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acernumreleasedfromcustat1stappearance = myquery.results.entities[0].cr9aa_acernumreleasedfromcustat1stappearance | round: 0 %}{% if cr9aa_acernumreleasedfromcustat1stappearance == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acernumreleasedfromcustat1stappearance | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -172,7 +172,7 @@
                 <div class="col">
                   <p class="popup-txt"># case resolutions at 1st appearance</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acernumcaseresolutionsat1stappearance" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acernumcaseresolutionsat1stappearance = myquery.results.entities[0].cr9aa_acernumcaseresolutionsat1stappearance | round: 0 %}{% if cr9aa_acernumcaseresolutionsat1stappearance == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acernumcaseresolutionsat1stappearance | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -181,7 +181,7 @@
                 <div class="col">
                   <p class="popup-txt">% ACER releases</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_aceracerreleases" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_aceracerreleases = myquery.results.entities[0].cr9aa_aceracerreleases | round: 0 %}{% if cr9aa_aceracerreleases == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_aceracerreleases | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -190,7 +190,7 @@
                 <div class="col">
                   <p class="popup-txt"># of ACER dispositions</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acernumacerdispositions" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acernumacerdispositions = myquery.results.entities[0].cr9aa_acernumacerdispositions | round: 0 %}{% if cr9aa_acernumacerdispositions == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acernumacerdispositions | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -199,7 +199,7 @@
                 <div class="col">
                   <p class="popup-txt"># of defendents represented at arraignment</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acernumdefendentsrepresentedatarraignment" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acernumdefendentsrepresentedatarraignment = myquery.results.entities[0].cr9aa_acernumdefendentsrepresentedatarraignment | round: 0 %}{% if cr9aa_acernumdefendentsrepresentedatarraignment == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acernumdefendentsrepresentedatarraignment | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -208,7 +208,7 @@
                 <div class="col">
                   <p class="popup-txt">% of cases disposed through ACER</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_acercasesdisposedthroughacer" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_acercasesdisposedthroughacer = myquery.results.entities[0].cr9aa_acercasesdisposedthroughacer | round: 0 %}{% if cr9aa_acercasesdisposedthroughacer == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_acercasesdisposedthroughacer | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -231,7 +231,7 @@
                 <div class="col">
                   <p class="popup-txt"># expungement petitions filed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumexpungementpetitionsfiled" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumexpungementpetitionsfiled = myquery.results.entities[0].cr9aa_cleanslatenumexpungementpetitionsfiled | round: 0 %}{% if cr9aa_cleanslatenumexpungementpetitionsfiled == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumexpungementpetitionsfiled | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -240,7 +240,7 @@
                 <div class="col">
                   <p class="popup-txt"># expungement petitions granted</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumexpungementpetitionsgranted" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumexpungementpetitionsgranted = myquery.results.entities[0].cr9aa_cleanslatenumexpungementpetitionsgranted | round: 0 %}{% if cr9aa_cleanslatenumexpungementpetitionsgranted == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumexpungementpetitionsgranted | round: 0}}{% endif %}{% endif %}">
                 </div>
               </div>
@@ -249,7 +249,7 @@
                 <div class="col">
                   <p class="popup-txt"># requests for certificate of rehabilitation filed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumrequestsforcertrehabilitati" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumrequestsforcertrehabilitati = myquery.results.entities[0].cr9aa_cleanslatenumrequestsforcertrehabilitati | round: 0 %}{% if cr9aa_cleanslatenumrequestsforcertrehabilitati == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumrequestsforcertrehabilitati | round: 0}}{% endif %}{% endif %}">
                 </div>
               </div>
@@ -258,7 +258,7 @@
                 <div class="col">
                   <p class="popup-txt"># requests for certificate of rehabilitation granted</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumrequestsforcertrehabilitatio" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumrequestsforcertrehabilitatio = myquery.results.entities[0].cr9aa_cleanslatenumrequestsforcertrehabilitatio | round: 0 %}{% if cr9aa_cleanslatenumrequestsforcertrehabilitatio == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumrequestsforcertrehabilitatio | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -267,7 +267,7 @@
                 <div class="col">
                   <p class="popup-txt"># requests for arrest sealing filed </p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumrequestsforarrestsealingfile" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumrequestsforarrestsealingfile = myquery.results.entities[0].cr9aa_cleanslatenumrequestsforarrestsealingfile | round: 0 %}{% if cr9aa_cleanslatenumrequestsforarrestsealingfile == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumrequestsforarrestsealingfile | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -276,7 +276,7 @@
                 <div class="col">
                   <p class="popup-txt"># request for arrest sealing granted</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumrequestforarrestsealinggrant" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumrequestforarrestsealinggrant = myquery.results.entities[0].cr9aa_cleanslatenumrequestforarrestsealinggrant | round: 0 %}{% if cr9aa_cleanslatenumrequestforarrestsealinggrant == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumrequestforarrestsealinggrant | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -285,7 +285,7 @@
                 <div class="col">
                   <p class="popup-txt"># Prop 47 petitions filed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumprop47petitionsfiled" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumprop47petitionsfiled = myquery.results.entities[0].cr9aa_cleanslatenumprop47petitionsfiled | round: 0 %}{% if cr9aa_cleanslatenumprop47petitionsfiled == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumprop47petitionsfiled | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -294,7 +294,7 @@
                 <div class="col">
                   <p class="popup-txt"># prop 47 petitions granted </p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatenumprop47petitionsgranted" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatenumprop47petitionsgranted = myquery.results.entities[0].cr9aa_cleanslatenumprop47petitionsgranted | round: 0 %}{% if cr9aa_cleanslatenumprop47petitionsgranted == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatenumprop47petitionsgranted | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -303,7 +303,7 @@
                 <div class="col">
                   <p class="popup-txt">Total # of CS petitions filed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatetotalnumcspetitionsfiled" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatetotalnumcspetitionsfiled = myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsfiled | round: 0 %}{% if cr9aa_cleanslatetotalnumcspetitionsfiled == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsfiled | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -312,7 +312,7 @@
                 <div class="col">
                   <p class="popup-txt">Total # of CS petitions granted</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatetotalnumcspetitionsgranted" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatetotalnumcspetitionsgranted = myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsgranted | round: 0 %}{% if cr9aa_cleanslatetotalnumcspetitionsgranted == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsgranted | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -321,7 +321,7 @@
                 <div class="col">
                   <p class="popup-txt">Total # of CS petitions denied</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslatetotalnumcspetitionsdenied" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslatetotalnumcspetitionsdenied = myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsdenied | round: 0 %}{% if cr9aa_cleanslatetotalnumcspetitionsdenied == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslatetotalnumcspetitionsdenied | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -330,7 +330,7 @@
                 <div class="col">
                   <p class="popup-txt">Average # of petitions filed per individual*</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslateavgnumpetitionsfiledperindividu" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslateavgnumpetitionsfiledperindividu = myquery.results.entities[0].cr9aa_cleanslateavgnumpetitionsfiledperindividu | round: 0 %}{% if cr9aa_cleanslateavgnumpetitionsfiledperindividu == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslateavgnumpetitionsfiledperindividu | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -339,7 +339,7 @@
                 <div class="col">
                   <p class="popup-txt">Average # of petitions granted per individual*</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_cleanslateavgnumpetitionsgrantedperindivi" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_cleanslateavgnumpetitionsgrantedperindivi = myquery.results.entities[0].cr9aa_cleanslateavgnumpetitionsgrantedperindivi | round: 0 %}{% if cr9aa_cleanslateavgnumpetitionsgrantedperindivi == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_cleanslateavgnumpetitionsgrantedperindivi | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -361,7 +361,7 @@
                 <div class="col">
                   <p class="popup-txt"># of EarlyRep participants appearing at arraignment court date with EarlyRep attorney</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_earlyrepnumearlyreppartsappearatarraignct" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_earlyrepnumearlyreppartsappearatarraignct = myquery.results.entities[0].cr9aa_earlyrepnumearlyreppartsappearatarraignct | round: 0 %}{% if cr9aa_earlyrepnumearlyreppartsappearatarraignct == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_earlyrepnumearlyreppartsappearatarraignct | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -370,7 +370,7 @@
                 <div class="col">
                   <p class="popup-txt"># of EarlyRep participants failing to appear at arraignment court date </p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_earlyrepnumearlyreppartsfailingappearatar" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_earlyrepnumearlyreppartsfailingappearatar = myquery.results.entities[0].cr9aa_earlyrepnumearlyreppartsfailingappearatar | round: 0 %}{% if cr9aa_earlyrepnumearlyreppartsfailingappearatar == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_earlyrepnumearlyreppartsfailingappearatar | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -379,7 +379,7 @@
                 <div class="col">
                   <p class="popup-txt"># of new cases opened</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_earlyrepnumnewcasesopened" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_earlyrepnumnewcasesopened = myquery.results.entities[0].cr9aa_earlyrepnumnewcasesopened | round: 0 %}{% if cr9aa_earlyrepnumnewcasesopened == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_earlyrepnumnewcasesopened | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -388,7 +388,7 @@
                 <div class="col">
                   <p class="popup-txt"># of cases closed</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_earlyrepnumcasesclosed" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_earlyrepnumcasesclosed = myquery.results.entities[0].cr9aa_earlyrepnumcasesclosed | round: 0 %}{% if cr9aa_earlyrepnumcasesclosed == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_earlyrepnumcasesclosed | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
@@ -397,7 +397,7 @@
                 <div class="col">
                   <p class="popup-txt"># of on-going active cases</p>
                 </div>
-                <div class="col">
+                <div class="col form-group">
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_earlyrepnumongoingactivecases" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_earlyrepnumongoingactivecases = myquery.results.entities[0].cr9aa_earlyrepnumongoingactivecases | round: 0 %}{% if cr9aa_earlyrepnumongoingactivecases == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_earlyrepnumongoingactivecases | round: 0}}{% endif %}{% endif %}">            
                 </div>
               </div>
