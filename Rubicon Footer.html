@@ -1,4 +1,11 @@
 {% include "Rubicon Footer 1" %}
-{% include "Rubicon Footer 2" %}
-{% include "Rubicon Footer 3" %}
+    {% if recordCount == 0 %}
+        {% include "Rubicon Footer 2" %}
+        {% include "Rubicon Footer 3" %}
+    {% else %}
+        {% include "Rubicon Footer 4" %}
+        {% include "Rubicon Footer 5" %}
+    {% endif %}
 
+}
+</script>
