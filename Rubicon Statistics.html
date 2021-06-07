@@ -1,18 +1,67 @@
+{% assign role = user.roles[0] %}
+{% if role == 'ORJ' %}
+  {% assign viewMode = 'readonly=readonly'%}
+{% else %}
+  {% assign viewMode = ''%}
+{% endif %}
 <form id="form" role="form">
-  {% fetchxml myquery %}
+  {% fetchxml myquery_R %}
   <fetch mapping="logical">
-    <entity name="cr9aa_hr360">
+    <entity name="crdae_rubicon">
       <all-attributes />​
       <filter type='and'>
-        <condition attribute='cr9aa_startyear' operator='eq' value="{{request.params['startyear']}}" />
-        <condition attribute='cr9aa_endyear' operator='eq' value="{{request.params['endyear']}}" />
-        <condition attribute='cr9aa_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
-        <condition attribute='cr9aa_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
       </filter>
     </entity>
   </fetch>
   {% endfetchxml %}
-  {% assign recordCount = myquery.results.entities.size %}
+
+  {% fetchxml myquery_E %}
+  <fetch mapping="logical">
+    <entity name="crdae_rubiconeast">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+
+  {% fetchxml myquery_C %}
+  <fetch mapping="logical">
+    <entity name="crdae_rubiconcentral">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+
+  {% fetchxml myquery_W %}
+  <fetch mapping="logical">
+    <entity name="crdae_rubiconwest">
+      <all-attributes />​
+      <filter type='and'>
+        <condition attribute='crdae_startyear' operator='eq' value="{{request.params['startyear']}}" />
+        <condition attribute='crdae_endyear' operator='eq' value="{{request.params['endyear']}}" />
+        <condition attribute='crdae_startmonth' operator='eq' value="{{request.params['startmonth']}}" />
+        <condition attribute='crdae_endmonth' operator='eq' value="{{request.params['endmonth']}}" />
+      </filter>
+    </entity>
+  </fetch>
+  {% endfetchxml %}
+
+  {% assign recordCount = myquery_R.results.entities.size %}
   <div class="container">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <div class="fiscal-year-month"> 
@@ -23,31 +72,33 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
-    <div class="col-xs-12 text-right margin">
-      <!-- Button trigger modal -->
-      {% if recordCount > 0  %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button type="button" class="btn btn-primary" id="save">
-        Save </button>
-      {% endif %}
-      {% endif %}
-  
-      {% if recordCount == 0  %}
-      <button type="button" class="btn btn-primary" id="save">
-        Save </button>
-      {% endif %}
-  
-      {% if recordCount > 0 %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
-        Submit </button>
-      {% endif %}
-      {% endif %}
-  
-      {% if recordCount == 0  %}
-      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
-        Submit </button>
-      {% endif %}
+    {% if role != 'ORJ' %}
+      <div class="col-xs-12 text-right margin">
+        <!-- Button trigger modal -->
+        {% if recordCount > 0  %}
+        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" %}
+        <button type="button" class="btn btn-primary" id="save">
+          Save </button>
+        {% endif %}
+        {% endif %}
+
+        {% if recordCount == 0  %}
+        <button type="button" class="btn btn-primary" id="save">
+          Save </button>
+        {% endif %}
+
+        {% if recordCount > 0 %}
+        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" %}
+        <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+          Submit </button>
+        {% endif %}
+        {% endif %}
+
+        {% if recordCount == 0  %}
+        <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+          Submit </button>
+        {% endif %}
+    {% endif %}
   
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Print </button>
@@ -70,86 +121,76 @@
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <br>
-        {% include "Rubicon Statistics Part 1" %}
-        {% include "Rubicon Statistics Part 2" %}
+        {% include "Rubicon Statistics Part 1" %} 
+        {% include "Rubicon Statistics Part 2" %}    
+        {% include "Rubicon Statistics Part 3" %}    
+        {% include "Rubicon Statistics Part 4" %}    
+      </div>
 
-    <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+      <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
         <div class="container">
-            <div class="row">
-              <div class="col text-left">
-                <h2>Quarterly Data Entry (Narrative)</h2>
-              </div>
-            </div>
-        </div>
-    
-          <div class="container">
-    
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Section One: Performance and
-                  Demographic Data Measures</p>
-              </div>
-              <div class="col form-group">
-                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionone}}{% endif %}</textarea>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Section two: Budget Expenditures</p>
-              </div>
-              <div class="col form-group">
-                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectiontwo}}{% endif %}</textarea>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
-              </div>
-              <div class="col form-group">
-                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionthree}}{% endif %}</textarea>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
-              </div>
-              <div class="col form-group">
-                <textarea class="form-control" required data-required-error="This field is required" id="cr9aa_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfour}}{% endif %}</textarea>
-              </div>
-            </div>
-    
-            <div class="row">
-              <div class="col">
-                <p class="popup-txt">Section Five: Next Steps</p>
-              </div>
-              <div class="col form-group">
-                <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="cr9aa_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].cr9aa_sectionfive}}{% endif %}</textarea>
-              </div>
+          <div class="row">
+            <div class="col text-left">
+              <h2>Quarterly Data Entry (Narrative)</h2>
             </div>
           </div>
         </div>
-   
-        <div class="tab-pane fade" id="budget-tab" role="tabpanel" aria-labelledby="budget-tab">
-          <div class="container">
-            <p></br></p>
   
-           
+        <div class="container">
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section One: Performance and
+                Demographic Data Measures</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
+            </div>
           </div>
-        </div>      
   
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section two: Budget Expenditures</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <p class="popup-txt">Section Five: Next Steps</p>
+            </div>
+            <div class="col form-group">
+              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="empty-space">
-    </div>
-    </form>
-    <script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
-
+  </div>
         
+  <div class="empty-space">
+  </div>
 
-
-  
-  {% include "HR360 Footer" %}
+</form>
+<script src="https://ers-dev.powerappsportals.com/validator.min.js"></script> 
+{% include "Rubicon Footer" %}   

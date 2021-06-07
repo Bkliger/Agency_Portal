@@ -1,21 +1,66 @@
 <div class="container">
-{% if user %}
-{% assign role = user.roles[0] %}
-    {% if role == "HR360" %}
-        {% include "HR360 Dashboard" %}
-     {% else if role == "Centerforce" %}
-        {% include "CenterForce Dashboard" %}
+    {% if user %}
+    {% assign role = user.roles[0] %}
+        {% if role == "HR360" %}
+            {% include "HR360 Dashboard" %}
+        {% elsif role == "Bay Area Legal Aid" %}
+            {% include "BALA Dashboard" %}
+        {% elsif role == "Centerforce-FR" %}
+             {% include "Centerforce-FR Dashboard" %}
+        {% elsif role == "Centerforce" %}
+            {% include "Centerforce Dashboard" %} 
+        {% elsif role == "BHS" %}
+            {% include "BHS Dashboard" %} 
+        {% elsif role == "Shelter, Inc." %}
+            {% include "Shelter Dashboard" %} 
+        {% elsif role == "Fast Eddie's Auto Service" %}
+            {% include "Fast Eddie's Dashboard" %} 
+        {% elsif role == "LFCD" %}
+            {% include "LFCD Dashboard" %} 
+        {% elsif role == "MWP" %}
+            {% include "MWP Dashboard" %} 
+        {% elsif role == "Mz. Shirliz" %}
+            {% include "Mz. Shirliz Dashboard" %} 
+        {% elsif role == "Reentry Success Center" %}
+            {% include "RSC Dashboard" %} 
+        {% elsif role == "Richmond WDB" %}
+            {% include "Richmond WDB Dashboard" %} 
+        {% elsif role == "Sherrif's Office" %}
+            {% include "Sherrif's Office Dashboard" %} 
+        {% elsif role == "Walnut Creek MHET" %}
+            {% include "Walnut Creek PD Dashboard" %} 
+        {% elsif role == "Court" %}
+            {% include "Court Dashboard" %} 
+        {% elsif role == "District Attorney's Office" %}
+            {% include "DA Dashboard" %} 
+        {% elsif role == "DHS" %}
+            {% include "DHS Dashboard" %} 
+        {% elsif role == "Pittsburg PD--MHET" %}
+            {% include "Pittsburg PD Dashboard" %} 
+        {% elsif role == "Probation" %}
+            {% include "Probation Dashboard" %} 
+        {% elsif role == "Public Defenders Office" %}
+            {% include "Public Defenders Dashboard" %} 
+        {% elsif role == "Richmond PD--MHET" %}
+            {% include "Richmond PD Dashboard" %}
+        {% elsif role == "Rubicon" %}
+            {% include "Rubicon Dashboard" %}
+        {% elsif role == "ORJ" %}
+            {% include "ORJ Dashboard" %}  
+        {% endif %}
+     
+    
+        {% else %}
+    
+        <h1 class="text-center">Please login or you're not authorized to see this page.!</h1>
+    
     {% endif %}
-{% else %}
-
-<h1 class="text-center">Please login or you're not authorized to see this page.!</h1>
-
-{% endif %}
-</div>
-<script>
-$(document).ready(function(){
-
-$('.dashboard-table').DataTable();
-
-});
-</script>
+    </div>
+    <script>
+    $(document).ready(function(){
+    
+    $('.dashboard-table').DataTable();
+    
+    });
+    </script>
+    

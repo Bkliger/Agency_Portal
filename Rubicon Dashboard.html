@@ -33,7 +33,7 @@
   </entity>
 </fetch>
 {% endfetchxml %}
-{% fetchxml hr360 %}
+{% fetchxml rubicon %}
 <fetch mapping="logical">
   <entity name="crdae_rubicon">
     <all-attributes />
@@ -58,11 +58,11 @@
         </tr>
       </thead>
       <tbody>
-      {% for item in hr360.results.entities %}
+      {% for item in rubicon.results.entities %}
         <tr>
-          <td><a href="/rubicon-statistics?startyear={{item.cr9aa_startyear}}&endyear={{item.cr9aa_endyear}}&startmonth={{item.cr9aa_startmonth}}&endmonth={{item.cr9aa_endmonth}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</a></td>
-          <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>
-          <td>{{item.cr9aa_submittedstatus}}</td>
+          <td><a href="/rubicon-statistics?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+          <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>
+          <td>{{item.crdae_submittedstatus}}</td>
           <td>{{item.createdon}}</td>
         </tr>
       {% endfor %}
@@ -127,7 +127,7 @@ function checkRecordExistance(startyear,endyear,startmonth,endmonth){
   var settings = {
   "async": false,
   "crossDomain": true,
-  "url": "/api/?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth,
+  "url": "/api/?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth+"&entity=cr9aa_hr360&prefix=crdae",
   "method": "GET",
   "headers": {
       "content-type": "application/json",
@@ -149,7 +149,7 @@ function checkRecordExistance(startyear,endyear,startmonth,endmonth){
               }
             });
       }else{
-        window.location="/rubicon-statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
+        window.location="/Rubicon-Statistics?startyear="+startyear+"&endyear="+endyear+"&startmonth="+startmonth+"&endmonth="+endmonth;
       }
   });    
   
