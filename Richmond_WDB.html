@@ -25,8 +25,11 @@
         <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
         <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
       </div>
-      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
-      <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
+      {% if role == 'ORJ' %}
+        <h3 class="my-0 mr-md-auto user-name">{{request.params['agency']}}</h3>  
+      {% else %}
+        <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      {% endif %}
     </div>
     <!-- Popup with a button -->
   {% if role != 'ORJ' %}
@@ -340,7 +343,7 @@
 
               <div class="row">
                 <div class="col">
-                  <p class="popup-txt"><b>ACES (2 week pgm)</b></p>
+                  <p class="popup-txt sub-headings"><b>ACES (2 week pgm)</b></p>
                 </div>
               </div>
 
