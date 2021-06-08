@@ -25,7 +25,11 @@
         <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
         <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
       </div>
-      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      {% if role == 'ORJ' %}
+        <h3 class="my-0 mr-md-auto user-name">{{request.params['agency']}}</h3>  
+      {% else %}
+        <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      {% endif %}
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
@@ -78,26 +82,10 @@
         <br>
         <div class="container">
           <div class="row">
-
-            <div class="col text-left">
-              <h2>District Attorney's Office</h2>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="container">
-          <div class="row">
             <div class="col">
               <div class="row">
                 <div class="col heading-border">
-                  <h4>District Attorney's Office</h4>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b># AB 109 individuals </b></p>
+                  <h4># AB 109 individuals </h4>
                 </div>
               </div>
 
@@ -128,14 +116,11 @@
                 </div>
               </div>
 
-
               <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b>Types of sentences, AB 109:</b></p>
+                <div class="col heading-border">
+                  <h4>Types of sentences, AB 109: </h4>
                 </div>
               </div>
-
-
 
               <div class="row">
                 <div class="col">
@@ -173,14 +158,11 @@
                 </div>
               </div>
 
-
               <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b>Supervision Revocations, AB 109:</b></p>
+                <div class="col heading-border">
+                  <h4>Supervision Revocations, AB 109:</h4>
                 </div>
-              </div>
-
-
+              </div> 
 
               <div class="row">
                 <div class="col">
@@ -219,10 +201,12 @@
               </div>
 
               <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b>ACER</b></p>
+                <div class="col heading-border">
+                  <h4>ACER</h4>
                 </div>
-              </div>
+              </div> 
+
+      
 
               <div class="row">
                 <div class="col">
@@ -243,10 +227,10 @@
               </div>
 
               <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b>Victim-Witness Advocates</b></p>
+                <div class="col heading-border">
+                  <h4>Victim-Witness Advocates</h4>
                 </div>
-              </div>
+              </div> 
 
               <div class="row">
                 <div class="col">
@@ -314,10 +298,10 @@
               </div>
 
               <div class="row">
-                <div class="col">
-                  <p class="popup-txt sub-headings"><b>Domestic Violence</b></p>
+                <div class="col heading-border">
+                  <h4>Domestic Violence</h4>
                 </div>
-              </div>
+              </div> 
 
               <div class="row">
                 <div class="col">
@@ -354,9 +338,6 @@
                   <input class="form-control" required data-required-error="This field is required" id="cr9aa_numcaseswlifeexposuredomviolence" type="text" value="{% if recordCount > 0 %}{% assign cr9aa_numcaseswlifeexposuredomviolence = myquery.results.entities[0].cr9aa_numcaseswlifeexposuredomviolence | round: 0 %}{% if cr9aa_numcaseswlifeexposuredomviolence == -1.00 %}{% else %}{{myquery.results.entities[0].cr9aa_numcaseswlifeexposuredomviolence | round: 0}}{% endif %}{% endif %}">          
                 </div>
               </div>
-
-
-
             </div>
           </div>
         </div>

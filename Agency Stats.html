@@ -1,0 +1,64 @@
+{% fetchxml agency %}
+<fetch mapping="logical">
+  <entity name="{{request.params['entityname']}}">
+    <all-attributes />
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% fetchxml partial_url %}
+<fetch mapping="logical">
+  <entity name="crdae_agencies">
+    <all-attributes />
+      <filter type='and'>
+        <condition attribute='crdae_name' operator='eq' value="{{request.params['entityname']}}" />
+      </filter>  
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign agency_url = partial_url.results.entities[0].crdae_partialurl %}
+{% assign prefix = partial_url.results.entities[0].crdae_prefix %} 
+{% assign agency_name = partial_url.results.entities[0].crdae_displayname %}
+<div class="container">
+    <div class="col-xs-12 margin">
+        <h2>{{agency_name}}</h2>
+    </div>        
+    <div class="col-xs-12">
+
+        <table class="dashboard-table table-striped">
+        <thead>
+            <tr>
+            <th>Year</th>
+            <th>Quarter</th>
+            <th>Status</th>
+            <th>Submitted Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in agency.results.entities %} 
+          {% if prefix == "crdae" %}          
+            <tr>
+            <td><a href="/{{agency_url}}?startyear={{item.crdae_startyear}}&endyear={{item.crdae_endyear}}&startmonth={{item.crdae_startmonth}}&endmonth={{item.crdae_endmonth}}&agency={{agency_name}}">{{item.crdae_startyear}}-{{item.crdae_endyear}}</a></td>
+            <td>{{item.crdae_startmonth}}-{{item.crdae_endmonth}}</td>          
+            <td>{{item.crdae_submittedstatus}}</td>
+            <td>{{item.createdon}}</td>
+            </tr>    
+          {% else %}
+            <tr>
+            <td><a href="/{{agency_url}}?startyear={{item.cr9aa_startyear}}&endyear={{item.cr9aa_endyear}}&startmonth={{item.cr9aa_startmonth}}&endmonth={{item.cr9aa_endmonth}}&agency={{agency_name}}">{{item.cr9aa_startyear}}-{{item.cr9aa_endyear}}</a></td>
+            <td>{{item.cr9aa_startmonth}}-{{item.cr9aa_endmonth}}</td>          
+            <td>{{item.cr9aa_submittedstatus}}</td>
+            <td>{{item.createdon}}</td>
+            </tr>    
+          {% endif %}                    
+        {% endfor %}
+        </tbody>
+        </table>  
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+
+$('.dashboard-table').DataTable();
+
+});
+</script>

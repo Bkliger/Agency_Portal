@@ -25,12 +25,17 @@
         <div class="year-value"><b>Fiscal Year:</b> {{request.params['startyear']}}-{{request.params['endyear']}}</div> 
         <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
       </div>
-      <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      {% if role == 'ORJ' %}
+        <h3 class="my-0 mr-md-auto user-name">{{request.params['agency']}}</h3>  
+      {% else %}
+        <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      {% endif %}
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
     <div class="col-xs-12 text-right margin">
       <!-- Button trigger modal -->
+  {% if role != 'ORJ' %}
       {% if recordCount > 0  %}
       {% if myquery.results.entities[0].crdae_submittedstatus == "In Progress" %}
       <button type="button" class="btn btn-primary" id="save">
@@ -54,7 +59,7 @@
       <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
         Submit </button>
       {% endif %}
-  
+  {% endif %}  
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Print </button>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

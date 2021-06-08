@@ -1,0 +1,48 @@
+{% fetchxml agencies %}
+<fetch mapping="logical">
+  <entity name="crdae_agencies">
+    <all-attributes />
+  </entity>
+</fetch>
+{% endfetchxml %}
+
+<div class="col-xs-12">
+    <br>
+    <br>
+    <table class="dashboard-table table-striped">
+      <thead>
+        <tr>
+          <th>Agency Name</th>
+          <th>Last Entry Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for item in agencies.results.entities %}  
+            {% fetchxml agency %}
+             <fetch mapping="logical">
+            <entity name="{{item.crdae_name}}">
+                <all-attributes />
+            </entity>
+            </fetch>              
+            {% endfetchxml %} 
+            {% if agency.results.entities.size > 0%} 
+                {% assign lastentry = agency.results.entities.last %} 
+            {% else %}
+                {% assign lastentry = '' %}    
+            {% endif %}   
+         <tr>
+          <td><a href="/agency-stats/?entityname={{item.crdae_name}}">{{item.crdae_displayname}}</a></td>
+          <td>{{lastentry.createdon}}</td>
+          {% if item.crdae_prefix == "crdae" %}
+          <td>{{lastentry.crdae_submittedstatus}}</td>
+          {% else %}
+          <td>{{lastentry.cr9aa_submittedstatus}}</td>
+          {% endif %}
+
+        </tr>           
+
+      {% endfor %}
+      </tbody>
+    </table>  
+</div>
