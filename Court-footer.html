@@ -2,9 +2,46 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });
-  $(document).on('click', '#save', function() {
+  $(document).on('click', '#save', function(e) {
+    e.preventDefault();
     submitOrSave("save");
   });
+
+  {% if role == 'ORJ' %}
+    
+    $(document).on('click', '#re-submit', function(e) {
+          e.preventDefault();
+          webapi.safeAjax({
+              type: "PATCH",
+              url: "/_api/cr9aa_courts({{myquery.results.entities[0].cr9aa_courtid}})",
+              contentType: "application/json",
+              data: JSON.stringify({
+                    "crdae_submittedstatus": "In Progress"
+              }),
+            success: function(res, status, xhr) {
+              $(".loading").hide();
+
+              toastr.success(
+                '',
+                'Re-submitted Successfully', {
+                  timeOut: 2000,
+                  fadeOut: 3000,
+                  "positionClass": "toast-bottom-center",
+                  onHidden: function() {
+                    window.location.reload();
+                  }
+                });
+
+            }              
+
+          });
+
+
+    });
+
+  {% endif %}
+
+
   $(document).on('click', '#submit', function() {
      $("#toast-container").html(""); 
     $("#form").validator().on("submit", function(e) {
@@ -21,6 +58,7 @@
                     }); 
                     toastr.clear();                      
                 } else {
+                        e.preventDefault();  
                         submitOrSave("submit");
                     }
                 });

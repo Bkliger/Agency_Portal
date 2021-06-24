@@ -33,7 +33,7 @@
             {% endif %}   
          <tr>
           <td><a href="/agency-stats/?entityname={{item.crdae_name}}">{{item.crdae_displayname}}</a></td>
-          <td>{{lastentry.createdon}}</td>
+          <td>{{lastentry.modifiedon}}</td>
           {% if item.crdae_prefix == "crdae" %}
           <td>{{lastentry.crdae_submittedstatus}}</td>
           {% else %}

@@ -3,13 +3,49 @@
     $('[data-toggle="tooltip"]').tooltip();
   });
   $(document).on('click', '#save', function() {
+    event.preventDefault();
     submitOrSave("save");
   });
+
+  {% if role == 'ORJ' %}
+    
+    $(document).on('click', '#re-submit', function() {
+      
+         event.preventDefault();
+          webapi.safeAjax({
+              type: "PATCH",
+              url: "/_api/cr9aa_balas({{myquery.results.entities[0].cr9aa_balaid}})",
+              contentType: "application/json",
+              data: JSON.stringify({
+                    "crdae_submittedstatus": "In Progress"
+              }),
+            success: function(res, status, xhr) {
+              $(".loading").hide();
+
+              toastr.success(
+                '',
+                'Re-submitted Successfully', {
+                  timeOut: 2000,
+                  fadeOut: 3000,
+                  "positionClass": "toast-bottom-center",
+                  onHidden: function() {
+                    window.location.reload();
+                  }
+                });
+
+            }              
+
+          });
+
+
+    });
+
+  {% endif %}
   $(document).on('click', '#submit', function() {
      $("#toast-container").html(""); 
     $("#form").validator().on("submit", function(e) {
      $("#toast-container").html(""); 
-               if (e.isDefaultPrevented()) {
+               if (event.isDefaultPrevented()) {
                 $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
                 toastr.error(
                     '',
@@ -21,6 +57,7 @@
                     }); 
                     toastr.clear();                      
                 } else {
+                        event.preventDefault();  
                         submitOrSave("submit");
                     }
                 });
