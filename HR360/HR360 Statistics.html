@@ -33,53 +33,69 @@
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
-  {% if role != 'ORJ' %}
+
     <div class="col-xs-12 text-right margin">
-      <!-- Button trigger modal -->
-      {% if recordCount > 0  %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button type="button" class="btn btn-primary" id="save">
-        Save </button>
-      {% endif %}
-      {% endif %}
-  
-      {% if recordCount == 0  %}
-      <button type="button" class="btn btn-primary" id="save">
-        Save </button>
-      {% endif %}
-  
-      {% if recordCount > 0 %}
-      {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
-      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
-        Submit </button>
-      {% endif %}
-      {% endif %}
-  
-      {% if recordCount == 0  %}
-      <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
-        Submit </button>
-      {% endif %}
-  
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Print </button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Close </button>
+      <div class="pull-right">
+        {% if role != 'ORJ' %}
+          <!-- Button trigger modal -->
+          {% if recordCount > 0  %}
+            {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+             <button type="button" class="btn btn-primary" id="save">
+              Save </button>
+            {% endif %}
+          {% endif %}
+      
+          {% if recordCount == 0  %}
+            <button type="button" class="btn btn-primary" id="save">
+            Save </button>
+          {% endif %}
+      
+          {% if recordCount > 0 %}
+            {% if myquery.results.entities[0].cr9aa_submittedstatus == "In Progress" %}
+              <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+              Submit </button>
+            {% endif %}
+          {% endif %}
+      
+          {% if recordCount == 0  %}
+          <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
+            Submit </button>
+          {% endif %}
+        {% endif %}
+
+        {% if role == 'ORJ' %}
+          {% if recordCount > 0 %}
+                      {% if myquery.results.entities[0].cr9aa_submittedstatus == "Submitted" %}
+                      <button class="btn btn-primary" type="submit" id="re-submit">
+                        Re-Submit </button>           
+                      {% endif %}
+              {% endif %}
+        {% endif %}
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Print </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Close </button>
+      </div>
+
+      <div class="col-xs-12">
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item active">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="budget" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Budget</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    {% endif %}
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item active">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="budget" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Budget</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
-      </li>
-    </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <br>

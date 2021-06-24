@@ -2,9 +2,44 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });
-  $(document).on('click', '#save', function() {
+  $(document).on('click', '#save', function(e) {
+    e.preventDefault();
     submitOrSave("save");
   });
+
+  {% if role == 'ORJ' %}
+    
+    $(document).on('click', '#re-submit', function(e) {
+          e.preventDefault();
+          webapi.safeAjax({
+              type: "PATCH",
+              url: "/_api/cr9aa_centerforces({{myquery.results.entities[0].cr9aa_centerforceid}})",
+              contentType: "application/json",
+              data: JSON.stringify({
+                    "crdae_submittedstatus": "In Progress"
+              }),
+            success: function(res, status, xhr) {
+              $(".loading").hide();
+
+              toastr.success(
+                '',
+                'Re-submitted Successfully', {
+                  timeOut: 2000,
+                  fadeOut: 3000,
+                  "positionClass": "toast-bottom-center",
+                  onHidden: function() {
+                    window.location.reload();
+                  }
+                });
+
+            }              
+
+          });
+
+
+    });
+  {% endif %}
+
   $(document).on('click', '#submit', function() {
      $("#toast-container").html(""); 
     $("#form").validator().on("submit", function(e) {
@@ -21,6 +56,7 @@
                     }); 
                     toastr.clear();                      
                 } else {
+                        e.preventDefault();  
                         submitOrSave("submit");
                     }
                 });
@@ -76,11 +112,11 @@
       var cr9aa_reasonsforincompletelackengage= $("#cr9aa_reasonsforincompletelackengage").val().trim();
       var cr9aa_reasonsforincompleteabsconding= $("#cr9aa_reasonsforincompleteabsconding").val().trim();
       var cr9aa_reasonsforincompleterelocationcasexfer= $("#cr9aa_reasonsforincompleterelocationcasexfer").val().trim();
-    var crdae_sectionone = $("#crdae_sectionone").val().trim();
-    var crdae_sectiontwo = $("#crdae_sectiontwo").val().trim();
-    var crdae_sectionthree = $("#crdae_sectionthree").val().trim();
-    var crdae_sectionfour = $("#crdae_sectionfour").val().trim();
-    var crdae_sectionfive = $("#crdae_sectionfive").val().trim();
+    var cr9aa_sectionone = $("#cr9aa_sectionone").val().trim();
+    var cr9aa_sectiontwo = $("#cr9aa_sectiontwo").val().trim();
+    var cr9aa_sectionthree = $("#cr9aa_sectionthree").val().trim();
+    var cr9aa_sectionfour = $("#cr9aa_sectionfour").val().trim();
+    var cr9aa_sectionfive = $("#cr9aa_sectionfive").val().trim();
       var crdae_programmgrcur = $("#crdae_programmgrcur").val().trim();
       var crdae_parentingcoachcur = $("#crdae_parentingcoachcur").val().trim();
       var crdae_totalsalscur = $("#crdae_totalsalscur").val().trim();
@@ -204,11 +240,11 @@
       "cr9aa_reasonsforincompletelackengage": cr9aa_reasonsforincompletelackengage !="" || cr9aa_reasonsforincompletelackengage === "0" ? Number(cr9aa_reasonsforincompletelackengage) : -1,
       "cr9aa_reasonsforincompleteabsconding": cr9aa_reasonsforincompleteabsconding !="" || cr9aa_reasonsforincompleteabsconding === "0" ? Number(cr9aa_reasonsforincompleteabsconding) : -1,
       "cr9aa_reasonsforincompleterelocationcasexfer": cr9aa_reasonsforincompleterelocationcasexfer !="" || cr9aa_reasonsforincompleterelocationcasexfer === "0" ? Number(cr9aa_reasonsforincompleterelocationcasexfer) : -1,
-      "cr9aa_sectionone": crdae_sectionone,
-      "cr9aa_sectiontwo": crdae_sectiontwo,
-      "cr9aa_sectionthree": crdae_sectionthree,
-      "cr9aa_sectionfour": crdae_sectionfour,
-      "cr9aa_sectionfive": crdae_sectionfive,
+      "cr9aa_sectionone": cr9aa_sectionone,
+      "cr9aa_sectiontwo": cr9aa_sectiontwo,
+      "cr9aa_sectionthree": cr9aa_sectionthree,
+      "cr9aa_sectionfour": cr9aa_sectionfour,
+      "cr9aa_sectionfive": cr9aa_sectionfive,
       "crdae_submittedstatus": submitStatus,
       "crdae_executivedircur": Number(crdae_executivedircur),
       "crdae_programmgrcur": Number(crdae_programmgrcur),
@@ -351,11 +387,11 @@
           "cr9aa_reasonsforincompletelackengage": cr9aa_reasonsforincompletelackengage !="" || cr9aa_reasonsforincompletelackengage === "0" ? Number(cr9aa_reasonsforincompletelackengage) : -1,
           "cr9aa_reasonsforincompleteabsconding": cr9aa_reasonsforincompleteabsconding !="" || cr9aa_reasonsforincompleteabsconding === "0" ? Number(cr9aa_reasonsforincompleteabsconding) : -1,
           "cr9aa_reasonsforincompleterelocationcasexfer": cr9aa_reasonsforincompleterelocationcasexfer !="" || cr9aa_reasonsforincompleterelocationcasexfer === "0" ? Number(cr9aa_reasonsforincompleterelocationcasexfer) : -1,
-          "cr9aa_sectionone": crdae_sectionone,
-          "cr9aa_sectiontwo": crdae_sectiontwo,
-          "cr9aa_sectionthree": crdae_sectionthree,
-          "cr9aa_sectionfour": crdae_sectionfour,
-          "cr9aa_sectionfive": crdae_sectionfive,
+          "cr9aa_sectionone": cr9aa_sectionone,
+          "cr9aa_sectiontwo": cr9aa_sectiontwo,
+          "cr9aa_sectionthree": cr9aa_sectionthree,
+          "cr9aa_sectionfour": cr9aa_sectionfour,
+          "cr9aa_sectionfive": cr9aa_sectionfive,
           "crdae_submittedstatus": submitStatus,
           "crdae_executivedircur": Number(crdae_executivedircur),
           "crdae_programmgrcur": Number(crdae_programmgrcur),
