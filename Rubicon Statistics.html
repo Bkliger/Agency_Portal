@@ -62,6 +62,7 @@
   {% endfetchxml %}
 
   {% assign recordCount = myquery_R.results.entities.size %}
+
   <div class="container">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
       <div class="fiscal-year-month"> 
@@ -69,6 +70,8 @@
         <div class="month-value"><b>Quarter:</b> {{request.params['startmonth']}}-{{request.params['endmonth']}}</div>
       </div>
       <h3 class="my-0 mr-md-auto user-name">{{user.fullname}} ({{user.roles[0]}})</h3>
+      <h3 class="my-0 mr-md-auto user-name">record count {{recordCount}}</h3>
+
       <!--<a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>
     <!-- Popup with a button -->
@@ -76,7 +79,7 @@
       <div class="col-xs-12 text-right margin">
         <!-- Button trigger modal -->
         {% if recordCount > 0  %}
-        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" %}
+        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_E.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_C.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_W.results.entities[0].crdae_submittedstatus == "In Progress" %}
         <button type="button" class="btn btn-primary" id="save">
           Save </button>
         {% endif %}
@@ -88,7 +91,7 @@
         {% endif %}
 
         {% if recordCount > 0 %}
-        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" %}
+        {% if myquery_R.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_E.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_C.results.entities[0].crdae_submittedstatus == "In Progress" And myquery_W.results.entities[0].crdae_submittedstatus == "In Progress" %}
         <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
           Submit </button>
         {% endif %}
@@ -144,7 +147,7 @@
                 Demographic Data Measures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -153,7 +156,7 @@
               <p class="popup-txt">Section two: Budget Expenditures</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -162,7 +165,7 @@
               <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -171,7 +174,7 @@
               <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
             </div>
           </div>
   
@@ -180,11 +183,387 @@
               <p class="popup-txt">Section Five: Next Steps</p>
             </div>
             <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
+              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
             </div>
           </div>
         </div>
       </div>
+      <div class="tab-pane fade" id="budget-tab" role="tabpanel" aria-labelledby="budget-tab">
+        <div class="container">
+          <p></br></p>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Total budget allocation under current contract</th>
+                <th scope="col">Expenditures this reporting period</th>
+                <th scope="col">Total expenditures to date</th>
+                <th scope="col">Further information justification or comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Admin Personnel</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Director of Community Based Programs</th>
+                <td> <input class="form-control" id="crdae_dircommbasedprogsbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_dircommbasedprogsbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_dircommbasedprogscurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_dircommbasedprogscurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_dircommbasedprogstot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_dircommbasedprogstot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_dircommbasedprogsfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_dircommbasedprogsfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Senior Quality Assurance Manager</th>
+                <td> <input class="form-control" id="crdae_senqualassurmgrbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senqualassurmgrbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senqualassurmgrcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senqualassurmgrcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senqualassurmgrtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senqualassurmgrtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senqualassurmgrfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senqualassurmgrfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">QA Coordinator</th>
+                <td> <input class="form-control" id="crdae_qacoordinatorbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_qacoordinatorbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_qacoordinatorcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_qacoordinatorcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_qacoordinatortot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_qacoordinatortot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_qacoordinatorfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_qacoordinatorfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Chief Program Officer</th>
+                <td> <input class="form-control" id="crdae_fieldcoordinator2budget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_fieldcoordinator2budget | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_fieldcoordinator2current" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_fieldcoordinator2current | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_fieldcoordinator2total" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_fieldcoordinator2total | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_fieldcoordinator2further" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_fieldcoordinator2further}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>Admin Personnel Subtotal</strong></th>
+                <td> <input class="form-control" id="crdae_adminperssubtotalbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminperssubtotalbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminperssubtotalcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminperssubtotalcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminperssubtotaltot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminperssubtotaltot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminperssubtotalfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminperssubtotalfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Admin Staff Fringe Benefits</th>
+                <td> <input class="form-control" id="crdae_adminstafffringebensbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminstafffringebensbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminstafffringebenscurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminstafffringebenscurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminstafffringebenstot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminstafffringebenstot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_adminstafffringebensfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_adminstafffringebensfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>Subtotal Administration</strong></th>
+                <td> <input class="form-control" id="crdae_subtotaladminbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotaladminbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotaladmincurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotaladmincurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotaladmintot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotaladmintot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotaladminfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotaladminfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row">Service Delivery Personnel </th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Site/Office Manager Central </th>
+                <td> <input class="form-control" id="crdae_siteofcmgrcenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrcenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrcencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrcencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrcentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrcentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrcenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrcenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Site Office Manager West</th>
+                <td> <input class="form-control" id="crdae_siteofcmgrwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Site Office Manager East</th>
+                <td> <input class="form-control" id="crdae_siteofcmgrebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgretot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgretot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_siteofcmgrefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_siteofcmgrefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Connections Manager West and East</th>
+                <td> <input class="form-control" id="crdae_consmgrwandebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_consmgrwandebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_consmgrwandecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_consmgrwandecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_consmgrwandetot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_consmgrwandetot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_consmgrwandefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_consmgrwandefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Wellness Coach East</th>
+                <td> <input class="form-control" id="crdae_wellnessmgrebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_wellnessmgrebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_wellnessmgrecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_wellnessmgrecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_wellnessmgretot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_wellnessmgretot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_wellnessmgrefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_wellnessmgrefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Wellness Manager East </th>
+                <td> <input class="form-control" id="crdae_totalsalariesbudget" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariesbudget | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalsalariescurrent" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariescurrent | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalsalariestotal" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariestotal | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalsalariesfurther" type="text" value="{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_totalsalariesfurther}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Senior Workforce Liaison West</th>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Senior Workforce Liaison East</th>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonetot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonetot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_senwkfrcliaisonefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_senwkfrcliaisonefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Commercial Property Maintenance Supervisor West </th>
+                <td> <input class="form-control" id="crdae_commpropmaintsupwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_commpropmaintsupwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_commpropmaintsupwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_commpropmaintsupwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_commpropmaintsupwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_commpropmaintsupwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_commpropmaintsupwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_commpropmaintsupwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Lead  Impact Coach/ Facilitator Central </th>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfaccenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfaccenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfaccencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfaccencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfaccentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfaccentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfaccenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfaccenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Lead  Impact Coach/ Facilitator West </th>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Lead  Impact Coach/ Facilitator East </th>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacetot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacetot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_leadimpactcoachfacefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_leadimpactcoachfacefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Program Assistant West</th>
+                <td> <input class="form-control" id="crdae_programassistantwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_programassistantwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programassistantwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_programassistantwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programassistantwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_programassistantwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_programassistantwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_programassistantwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Impact Coach Central </th>
+                <td> <input class="form-control" id="crdae_impactcoachcenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachcenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachcencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachcencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachcentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachcentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachcenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachcenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Impact Coach West</th>
+                <td> <input class="form-control" id="crdae_impactcoachwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Impact Coach East</th>
+                <td> <input class="form-control" id="crdae_impactcoachebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachetot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachetot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_impactcoachefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_impactcoachefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Career Advisor Central  </th>
+                <td> <input class="form-control" id="crdae_careeradvisorcenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorcenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorcencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorcencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorcentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorcentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorcenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorcenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Career Advisor West</th>
+                <td> <input class="form-control" id="crdae_careeradvisorwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Career Advisor East</th>
+                <td> <input class="form-control" id="crdae_careeradvisorebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisoretot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisoretot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_careeradvisorefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_careeradvisorefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Financial Coach Central </th>
+                <td> <input class="form-control" id="crdae_financialcoachcenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachcenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachcencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachcencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachcentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachcentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachcenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachcenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Financial Coach West</th>
+                <td> <input class="form-control" id="crdae_financialcoachwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Financial Coach East</th>
+                <td> <input class="form-control" id="crdae_financialcoachebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_financialcoachwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_financialcoachwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Employment Coach Central </th>
+                <td> <input class="form-control" id="crdae_empcoachcenbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachcenbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachcencurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachcencurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachcentot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachcentot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachcenfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachcenfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Employment Coach West</th>
+                <td> <input class="form-control" id="crdae_empcoachwbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachwbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachwcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachwcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachwtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachwtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachwfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachwfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Employment Coach East</th>
+                <td> <input class="form-control" id="crdae_empcoachebud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachebud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachecurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachecurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachetot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachetot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_empcoachefur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_empcoachefur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>Service Delivery Total Salaries</strong></th>
+                <td> <input class="form-control" id="crdae_svcdeltotalsalariesbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdeltotalsalariesbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdeltotalsalariescurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdeltotalsalariescurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdeltotalsalariestot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdeltotalsalariestot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdeltotalsalariesfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdeltotalsalariesfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Service Delivery Fringe Benefits</th>
+                <td> <input class="form-control" id="crdae_svcdelfringebensbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdelfringebensbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdelfringebenscurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdelfringebenscurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdelfringebenstot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdelfringebenstot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_svcdelfringebensfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_svcdelfringebensfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>Subtotal Service Delivery</strong></th>
+                <td> <input class="form-control" id="crdae_subtotalsvcdelbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotalsvcdelbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotalsvcdelcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotalsvcdelcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotalsvcdeltot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotalsvcdeltot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subtotalsvcdelfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subtotalsvcdelfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>TOTAL PERSONNEL</strong></th>
+                <td> <input class="form-control" id="crdae_totalpersonnelbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totalpersonnelbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalpersonnelcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totalpersonnelcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalpersonneltot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totalpersonneltot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totalpersonnelfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totalpersonnelfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row">Operatings</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Occupancy</th>
+                <td> <input class="form-control" id="crdae_occupancybud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_occupancybud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_occupancycurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_occupancycurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_occupancytot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_occupancytot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_occupancyfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_occupancyfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Utilities</th>
+                <td> <input class="form-control" id="crdae_utilitiesbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_utilitiesbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_utilitiescurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_utilitiescurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_utilitiestot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_utilitiestot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_utilitiesfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_utilitiesfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Telephones, Postage, Insurance, Equipment</th>
+                <td> <input class="form-control" id="crdae_telpostinsequipbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_telpostinsequipbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_telpostinsequipcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_telpostinsequipcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_telpostinsequiptot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_telpostinsequiptot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_telpostinsequipfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_telpostinsequipfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Printing/ Photocopying</th>
+                <td> <input class="form-control" id="crdae_printingphotocopyingbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_printingphotocopyingbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_printingphotocopyingcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_printingphotocopyingcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_printingphotocopyingtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_printingphotocopyingtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_printingphotocopyingfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_printingphotocopyingfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Materials</th>
+                <td> <input class="form-control" id="crdae_materialsbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_materialsbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_materialscurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_materialscurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_materialstot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_materialstot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_materialsfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_materialsfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Staff Development</th>
+                <td> <input class="form-control" id="crdae_staffdevbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_staffdevbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_staffdevcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_staffdevcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_staffdevtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_staffdevtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_staffdevfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_staffdevfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Travel</th>
+                <td> <input class="form-control" id="crdae_travelbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_travelbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_travelcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_travelcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_traveltot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_traveltot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_travelfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_travelfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Participant Support</th>
+                <td> <input class="form-control" id="crdae_participantsupportbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_participantsupportbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_participantsupportcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_participantsupportcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_participantsupporttot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_participantsupporttot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_participantsupportfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_participantsupportfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">Subcontractors</th>
+                <td> <input class="form-control" id="crdae_subcontractorsbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subcontractorsbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subcontractorscurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subcontractorscurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subcontractorstot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subcontractorstot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_subcontractorsfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_subcontractorsfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>OPERATING EXPENSE TOTAL</strong></th>
+                <td> <input class="form-control" id="crdae_opexpensetotbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_opexpensetotbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_opexpensetotcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_opexpensetotcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_opexpensetottot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_opexpensetottot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_opexpensetotfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_opexpensetotfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;">INDIRECT EXPENSES</th>
+                <td> <input class="form-control" id="crdae_indirectexpensesbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_indirectexpensesbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_indirectexpensescurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_indirectexpensescurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_indirectexpensestot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_indirectexpensestot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_indirectexpensesfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_indirectexpensesfur}} {% endif %}"></td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-weight:400;"><strong>Total Demand</strong></th>
+                <td> <input class="form-control" id="crdae_totaldemandbud" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totaldemandbud | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totaldemandcurr" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totaldemandcurr | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totaldemandtot" type="text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totaldemandtot | round: 2}} {% endif %}"></td>
+                <td> <input class="form-control" id="crdae_totaldemandfur type=text" value="{% if recordCount > 0 %}{{myquery_R.results.entities[0].crdae_totaldemandfur}} {% endif %}"></td>
+              </tr>  
+            </tbody>
+          </table>
+        </div>
+      </div>     
     </div>
   </div>
         

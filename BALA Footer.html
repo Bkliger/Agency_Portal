@@ -2,16 +2,16 @@
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
   });
-  $(document).on('click', '#save', function() {
-    event.preventDefault();
+  $(document).on('click', '#save', function(e) {
+    e.preventDefault();
     submitOrSave("save");
   });
 
   {% if role == 'ORJ' %}
     
-    $(document).on('click', '#re-submit', function() {
+    $(document).on('click', '#re-submit', function(e) {
       
-         event.preventDefault();
+         e.preventDefault();
           webapi.safeAjax({
               type: "PATCH",
               url: "/_api/cr9aa_balas({{myquery.results.entities[0].cr9aa_balaid}})",
@@ -45,7 +45,7 @@
      $("#toast-container").html(""); 
     $("#form").validator().on("submit", function(e) {
      $("#toast-container").html(""); 
-               if (event.isDefaultPrevented()) {
+               if (e.isDefaultPrevented()) {
                 $('#submit').attr("data-original-title","Do not submit until all data is complete"); 
                 toastr.error(
                     '',
@@ -57,7 +57,7 @@
                     }); 
                     toastr.clear();                      
                 } else {
-                        event.preventDefault();  
+                        e.preventDefault();  
                         submitOrSave("submit");
                     }
                 });

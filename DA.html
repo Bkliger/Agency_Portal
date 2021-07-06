@@ -32,7 +32,6 @@
       {% endif %}
     </div>
     <!-- Popup with a button -->
-  {% if role != 'ORJ' %}
     <div class="col-xs-12 text-right margin">
       <div class="pull-right">
         {% if role != 'ORJ' %}
@@ -60,15 +59,16 @@
           <button class="btn btn-primary" type="submit" id="submit" data-toggle="tooltip" title="Do not submit until all data is complete">
             Submit </button>
           {% endif %}
+        {% endif %}
 
-          {% if role == 'ORJ' %}
-            {% if recordCount > 0 %}
-                        {% if myquery.results.entities[0].crdae_submittedstatus == "Submitted" %}
-                        <button class="btn btn-primary" type="submit" id="re-submit">
-                          Re-Submit </button>           
-                        {% endif %}
-            {% endif %}
+        {% if role == 'ORJ' %}
+          {% if recordCount > 0 %}
+                      {% if myquery.results.entities[0].crdae_submittedstatus == "Submitted" %}
+                      <button class="btn btn-primary" type="submit" id="re-submit">
+                        Re-Submit </button>           
+                      {% endif %}
           {% endif %}
+        {% endif %}
       
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Print </button>
