@@ -77,267 +77,263 @@
           Close </button>
       </div>
 
-      <div class="col-xs-12"></div>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item active">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
-            </li>
-          </ul>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item active">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Statistics</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="narrative-tab" data-toggle="tab" href="#narrative" role="tab" aria-controls="narrative" aria-selected="false">Narrative</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="attachment-tab" data-toggle="tab" href="#budget-tab" role="tab" aria-controls="budget-tab" aria-selected="false">Attachments</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <br>
+          <div class="col text-left">
+            <h4 class="popup-txt sub-headings"># AB 109 clients by classification</h4>
+          </div>
+
+          <form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">PC 1170(h)</th>
+                  <th scope="col">PRCS</th>
+                  <th scope="col">Parole</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"># with new charges</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargespc1170h = myquery.results.entities[0].crdae_numwnewchargespc1170h | round: 0 %}{% if crdae_numwnewchargespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargespc1170h | round: 0}}{% endif %}{% endif %}">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargesprcs = myquery.results.entities[0].crdae_numwnewchargesprcs | round: 0 %}{% if crdae_numwnewchargesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargesprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargesparole = myquery.results.entities[0].crdae_numwnewchargesparole | round: 0 %}{% if crdae_numwnewchargesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargesparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"># with new convictions</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionspc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionspc1170h = myquery.results.entities[0].crdae_numwnewconvictionspc1170h | round: 0 %}{% if crdae_numwnewconvictionspc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionspc1170h | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionsprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionsprcs = myquery.results.entities[0].crdae_numwnewconvictionsprcs | round: 0 %}{% if crdae_numwnewconvictionsprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionsprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionsparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionsparole = myquery.results.entities[0].crdae_numwnewconvictionsparole | round: 0 %}{% if crdae_numwnewconvictionsparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionsparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+
+          <div class="col text-left">
+            <h4 class="popup-txt sub-headings" >Types of AB 109 Sentences</h4>
+          </div>
+
+          <form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">PC 1170(h)</th>
+                  <th scope="col">PRCS</th>
+                  <th scope="col">Parole</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">#total AB 109 sentences(no PC3455/PC3000.08)</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008pc1" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008pc1 = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008pc1 | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008pc1 == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008pc1 | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008prcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008prcs = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008prcs | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008prcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008prcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008paro" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008paro = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008paro | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008paro == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008paro | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"># AB 109 split sentences</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencespc1170h = myquery.results.entities[0].crdae_numab109splitsentencespc1170h | round: 0 %}{% if crdae_numab109splitsentencespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencespc1170h | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencesprcs = myquery.results.entities[0].crdae_numab109splitsentencesprcs | round: 0 %}{% if crdae_numab109splitsentencesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencesprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencesparole = myquery.results.entities[0].crdae_numab109splitsentencesparole | round: 0 %}{% if crdae_numab109splitsentencesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencesparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"># AB 109 supervision only</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlypc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlypc1170h = myquery.results.entities[0].crdae_numab109supervisiononlypc1170h | round: 0 %}{% if crdae_numab109supervisiononlypc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlypc1170h | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlyprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlyprcs = myquery.results.entities[0].crdae_numab109supervisiononlyprcs | round: 0 %}{% if crdae_numab109supervisiononlyprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlyprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlyparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlyparole = myquery.results.entities[0].crdae_numab109supervisiononlyparole | round: 0 %}{% if crdae_numab109supervisiononlyparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlyparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"># AB 109 jail only</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlypc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlypc1170h = myquery.results.entities[0].crdae_numab109jailonlypc1170h | round: 0 %}{% if crdae_numab109jailonlypc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlypc1170h | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlyprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlyprcs = myquery.results.entities[0].crdae_numab109jailonlyprcs | round: 0 %}{% if crdae_numab109jailonlyprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlyprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlyparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlyparole = myquery.results.entities[0].crdae_numab109jailonlyparole | round: 0 %}{% if crdae_numab109jailonlyparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlyparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+
+          <div class="col text-left">
+            <h4 class="popup-txt sub-headings">Non AB 109 sentences</h4>
+          </div>
+
+          <form>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">PC 1170(h)</th>
+                  <th scope="col">PRCS</th>
+                  <th scope="col">Parole</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"># all other non-AB 109 felonies</th>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniespc1170h = myquery.results.entities[0].crdae_numallothernonab109feloniespc1170h | round: 0 %}{% if crdae_numallothernonab109feloniespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniespc1170h | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniesprcs = myquery.results.entities[0].crdae_numallothernonab109feloniesprcs | round: 0 %}{% if crdae_numallothernonab109feloniesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniesprcs | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniesparole = myquery.results.entities[0].crdae_numallothernonab109feloniesparole | round: 0 %}{% if crdae_numallothernonab109feloniesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniesparole | round: 0}}{% endif %}{% endif %}">                  
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade in active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <br>
-        <div class="col text-left">
-          <h4 class="popup-txt sub-headings"># AB 109 clients by classification</h4>
-        </div>
-
-        <form>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">PC 1170(h)</th>
-                <th scope="col">PRCS</th>
-                <th scope="col">Parole</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"># with new charges</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargespc1170h = myquery.results.entities[0].crdae_numwnewchargespc1170h | round: 0 %}{% if crdae_numwnewchargespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargespc1170h | round: 0}}{% endif %}{% endif %}">
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargesprcs = myquery.results.entities[0].crdae_numwnewchargesprcs | round: 0 %}{% if crdae_numwnewchargesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargesprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewchargesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewchargesparole = myquery.results.entities[0].crdae_numwnewchargesparole | round: 0 %}{% if crdae_numwnewchargesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewchargesparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># with new convictions</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionspc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionspc1170h = myquery.results.entities[0].crdae_numwnewconvictionspc1170h | round: 0 %}{% if crdae_numwnewconvictionspc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionspc1170h | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionsprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionsprcs = myquery.results.entities[0].crdae_numwnewconvictionsprcs | round: 0 %}{% if crdae_numwnewconvictionsprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionsprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numwnewconvictionsparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numwnewconvictionsparole = myquery.results.entities[0].crdae_numwnewconvictionsparole | round: 0 %}{% if crdae_numwnewconvictionsparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numwnewconvictionsparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-
-        <div class="col text-left">
-          <h4 class="popup-txt sub-headings" >Types of AB 109 Sentences</h4>
-        </div>
-
-        <form>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">PC 1170(h)</th>
-                <th scope="col">PRCS</th>
-                <th scope="col">Parole</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">#total AB 109 sentences(no PC3455/PC3000.08)</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008pc1" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008pc1 = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008pc1 | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008pc1 == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008pc1 | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008prcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008prcs = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008prcs | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008prcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008prcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numtalab109sentencesnopc3455pc300008paro" type="text" value="{% if recordCount > 0 %}{% assign crdae_numtalab109sentencesnopc3455pc300008paro = myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008paro | round: 0 %}{% if crdae_numtalab109sentencesnopc3455pc300008paro == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numtalab109sentencesnopc3455pc300008paro | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># AB 109 split sentences</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencespc1170h = myquery.results.entities[0].crdae_numab109splitsentencespc1170h | round: 0 %}{% if crdae_numab109splitsentencespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencespc1170h | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencesprcs = myquery.results.entities[0].crdae_numab109splitsentencesprcs | round: 0 %}{% if crdae_numab109splitsentencesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencesprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109splitsentencesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109splitsentencesparole = myquery.results.entities[0].crdae_numab109splitsentencesparole | round: 0 %}{% if crdae_numab109splitsentencesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109splitsentencesparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># AB 109 supervision only</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlypc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlypc1170h = myquery.results.entities[0].crdae_numab109supervisiononlypc1170h | round: 0 %}{% if crdae_numab109supervisiononlypc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlypc1170h | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlyprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlyprcs = myquery.results.entities[0].crdae_numab109supervisiononlyprcs | round: 0 %}{% if crdae_numab109supervisiononlyprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlyprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109supervisiononlyparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109supervisiononlyparole = myquery.results.entities[0].crdae_numab109supervisiononlyparole | round: 0 %}{% if crdae_numab109supervisiononlyparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109supervisiononlyparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row"># AB 109 jail only</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlypc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlypc1170h = myquery.results.entities[0].crdae_numab109jailonlypc1170h | round: 0 %}{% if crdae_numab109jailonlypc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlypc1170h | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlyprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlyprcs = myquery.results.entities[0].crdae_numab109jailonlyprcs | round: 0 %}{% if crdae_numab109jailonlyprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlyprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numab109jailonlyparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numab109jailonlyparole = myquery.results.entities[0].crdae_numab109jailonlyparole | round: 0 %}{% if crdae_numab109jailonlyparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numab109jailonlyparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-
-        <div class="col text-left">
-          <h4 class="popup-txt sub-headings">Non AB 109 sentences</h4>
-        </div>
-
-        <form>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">PC 1170(h)</th>
-                <th scope="col">PRCS</th>
-                <th scope="col">Parole</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"># all other non-AB 109 felonies</th>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniespc1170h" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniespc1170h = myquery.results.entities[0].crdae_numallothernonab109feloniespc1170h | round: 0 %}{% if crdae_numallothernonab109feloniespc1170h == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniespc1170h | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniesprcs" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniesprcs = myquery.results.entities[0].crdae_numallothernonab109feloniesprcs | round: 0 %}{% if crdae_numallothernonab109feloniesprcs == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniesprcs | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group">
-                    <input class="form-control" required data-required-error="This field is required" id="crdae_numallothernonab109feloniesparole" type="text" value="{% if recordCount > 0 %}{% assign crdae_numallothernonab109feloniesparole = myquery.results.entities[0].crdae_numallothernonab109feloniesparole | round: 0 %}{% if crdae_numallothernonab109feloniesparole == -1.00 %}{% else %}{{myquery.results.entities[0].crdae_numallothernonab109feloniesparole | round: 0}}{% endif %}{% endif %}">                  
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
-      <div class="tab-pane fade" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
-        <div class="container">
-          <div class="row">
-            <div class="col text-left">
-              <h2>Quarterly Data Entry (Narrative)</h2>
+        <div class="tab-pane fade text-left" id="narrative" role="tabpanel" aria-labelledby="narrative-tab">
+          <div class="container">
+            <div class="row">
+              <div class="col text-left">
+                <h2>Quarterly Data Entry (Narrative)</h2>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <div class="container">
-  
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section One: Performance and
-                Demographic Data Measures</p>
+
+          <div class="container">
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section One: Performance and
+                  Demographic Data Measures</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
+              </div>
             </div>
-            <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionone" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionone}}{% endif %}</textarea>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section two: Budget Expenditures</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
+              </div>
             </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section two: Budget Expenditures</p>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
+              </div>
             </div>
-            <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectiontwo" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectiontwo}}{% endif %}</textarea>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
+              </div>
             </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Three: Section Four: Concerns/Changes with Organiztional Context or Partners</p>
-            </div>
-            <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionthree" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionthree}}{% endif %}</textarea>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Four: Programmatic Outcomes, Lessons Learned</p>
-            </div>
-            <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" id="crdae_sectionfour" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfour}}{% endif %}</textarea>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <p class="popup-txt">Section Five: Next Steps</p>
-            </div>
-            <div class="col form-group">
-              <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
+
+            <div class="row">
+              <div class="col">
+                <p class="popup-txt">Section Five: Next Steps</p>
+              </div>
+              <div class="col form-group">
+                <textarea class="form-control" required data-required-error="This field is required" required data-required-error="This field is required" id="crdae_sectionfive" rows="3">{% if recordCount > 0 %}{{myquery.results.entities[0].crdae_sectionfive}}{% endif %}</textarea>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
   <div class="empty-space">
   </div>
